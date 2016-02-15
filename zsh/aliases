@@ -51,7 +51,9 @@ alias wp="cd /Applications/MAMP/htdocs"
 # Dev
 alias dev="ruby ~/.dotfiles/dev_scripts/tools.rb"
 alias mmi="cd ~/Sites/my-micro-invest"
-alias mmi_reset="rake db:drop db:create; mysql -p mmi -uroot --password="" < ~/Sites/Dump/mmi_latest.sql"
+# alias mmi_reset="rake db:drop db:create; mysql -p mmi -uroot --password="" < ~/Sites/Dump/mmi_latest.sql"
+alias fr="foreman run"
+alias mmi_reset="rake db:drop db:create; pg_restore --verbose --clean --no-acl --no-owner -d mmi ~/Sites/Dump/mmi_latest.sql"
 
 # Grunt
 alias serve="grunt serve"

@@ -1,29 +1,35 @@
 "*":
-  "exception-reporting":
-    userId: "d873afba-9978-f1e8-8be8-d03d4eb3fc34"
-  welcome:
-    showOnStartup: false
+  "atom-beautify":
+    _analyticsUserId: "0252158c-9432-4627-b72c-fe2cd77d08d4"
+  "autocomplete-plus": {}
   core:
     disabledPackages: [
       "autocomplete-ruby"
       "linter-jsxhint"
-      "theme-roulette"
-      "language-jsx"
       "atom-erb"
-      "notebook"
       "nuclide-flow"
       "nuclide-hack"
-      "nuclide-hg-repository"
       "nuclide-installer"
-      "nuclide-language-hack"
       "nuclide-click-to-symbol"
+      "linter"
     ]
     projectHome: "/Users/boris/Sites"
+    themes: [
+      "atom-material-ui"
+      "atom-material-syntax-dark"
+    ]
+  "css-comb":
+    config: "custom"
   editor:
-    invisibles: {}
-    fontSize: 18
     fontFamily: "Hack"
+    fontSize: 19
+    invisibles: {}
     showIndentGuide: true
+  "exception-reporting":
+    userId: "d873afba-9978-f1e8-8be8-d03d4eb3fc34"
+  "file-watcher":
+    promptWhenFileHasChangedOnDisk: false
+  "grunt-runner": {}
   linter:
     ignoredLinterErrors: [
       "jshint"
@@ -31,24 +37,27 @@
     subtleLinterErrors: [
       "rubocop"
     ]
-  react: {}
-  "linter-rubocop":
-    rubocopExecutablePath: "/Users/boris/.rbenv/shims/rubocop"
-    executablePath: "/Users/boris/.rbenv/shims/rubocop"
-  "autocomplete-plus": {}
-  "grunt-runner": {}
-  "tree-view": {}
-  "oblique-strategies":
-    showAfterInactivitySeconds: 60
-  "linter-jshint": {}
-  "atom-beautify":
-    _analyticsUserId: "0252158c-9432-4627-b72c-fe2cd77d08d4"
-  "css-comb":
-    config: "custom"
-  "file-watcher":
-    promptWhenFileHasChangedOnDisk: false
-  nuclide:
-    remoteProjectsConfig: []
+  "linter-jshint":
+    disableWhenNoJshintrcFileInPath: true
+    executablePath: "/usr/local/bin/jshint"
+    lintInlineJavaScript: true
   "linter-reek":
     executablePath: "/Users/boris/.rbenv/versions/2.2.0/bin/reek"
+  "linter-rubocop":
+    command: "/Users/boris/.rbenv/versions/2.2.0/bin/rubocop"
+    rubocopExecutablePath: "/Users/boris/.rbenv/versions/2.2.0/bin/rubocop"
   "markdown-writer": {}
+  nuclide:
+    remoteProjectsConfig: []
+  "oblique-strategies":
+    showAfterInactivitySeconds: 60
+  react:
+    enabledForAllJavascriptFiles: true
+  "tool-bar":
+    position: "Left"
+  "tree-view": {}
+  welcome:
+    showOnStartup: false
+".coffee.jsx.source":
+  editor:
+    autoIndentOnPaste: true
