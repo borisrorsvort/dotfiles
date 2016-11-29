@@ -5,3 +5,12 @@
 [submodule "dracula"]
   path = themes/dracula
   url = https://github.com/zenorocha/dracula-theme.git
+[submodule "dotbot"]
+	path = dotbot
+	url = https://github.com/anishathalye/dotbot
+[submodule "dotbot-brew"]
+	path = dotbot-brew
+	url = https://github.com/d12frosted/dotbot-brew.git
+[submodule "dotbot-apt-get"]
+	path = dotbot-apt-get
+	url = https://github.com/rubenvereecken/dotbot-apt-get

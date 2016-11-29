@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+set -e
+
+DEFAULT_CONFIG_PREFIX="default"
+CONFIG_SUFFIX=".conf.yaml"
+DOTBOT_DIR="dotbot"
+
+DOTBOT_BIN="bin/dotbot"
+BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+CONFIGS_DIR="configs/"
+
+cd "${BASEDIR}"
+git submodule update --init --recursive "${DOTBOT_DIR}"
+
+configs=("$DEFAULT_CONFIG_PREFIX $@")
+
+for CONFIG in $configs; do
+  "${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" --plugin-dir dotbot-brew -c "${CONFIGS_DIR}${CONFIG}${CONFIG_SUFFIX}"
+done

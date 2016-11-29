@@ -16,17 +16,17 @@ def sudo(command = nil)
 end
 
 def start_dev_env
-  start_mysql
-  start_mongod
+  # start_mysqls
+  # start_mongod
   start_redis
-  start_nginx
+  # start_nginx
 end
 
 def stop_dev_env
-  stop_mysql
-  stop_mongod
+  # stop_mysql
+  # stop_mongod
   stop_redis
-  stop_nginx
+  # stop_nginx
 end
 
 def start_if_not_running(service)
@@ -69,15 +69,15 @@ end
 # Nginx
 #
 
-def nginx_running?
-  %x{ps aux | grep \`cat /usr/local/var/run/nginx.pid 2> /dev/null\` 2> /dev/null} =~ /nginx: master process nginx/
-end
-
-def start_nginx
-  start_if_not_running :nginx do
-    sudo "nginx"
-  end
-end
+# def nginx_running?
+#   %x{ps aux | grep \`cat /usr/local/var/run/nginx.pid 2> /dev/null\` 2> /dev/null} =~ /nginx: master process nginx/
+# end
+#
+# def start_nginx
+#   start_if_not_running :nginx do
+#     sudo "nginx"
+#   end
+# end
 
 def stop_nginx
   stop_if_running :nginx do
@@ -94,12 +94,12 @@ end
 #
 
 def redis_running?
-  `redis-cli ping 2> /dev/null` =~ /PONG/
+  sudo `redis-cli ping 2> /dev/null` =~ /PONG/
 end
 
 def start_redis
   start_if_not_running :redis do
-    sudo "redis-server /usr/local/etc/redis.conf 2> /dev/null > /dev/null&"
+    sudo "redis-server 2> /dev/null > /dev/null&"
   end
 end
 

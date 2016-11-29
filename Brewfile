@@ -22,18 +22,11 @@ brew install phantomjs
 brew install readline
 brew install zsh
 brew install heroku-toolbelt
-brew install elasticsearch
-brew install git-flow-avh
-brew install nginx
-brew install sphinx
-brew install node
 brew install openssl
 brew install ossp-uuid
 brew install pkg-config
 brew install tig
 brew install webkit2png
-brew install cmatrix
-brew install fortune
 
 # medias
 echo "-------------------------------"
@@ -54,11 +47,6 @@ brew install libpng
 brew install libtiff
 brew install libtool
 brew install libyaml
-brew install media-info
-brew install x264
-brew install xvid
-brew install xz
-brew install gifsicle
 
 # languages
 echo "-------------------------------"
@@ -68,7 +56,6 @@ echo "-------------------------------"
 brew install node
 brew install ruby-build
 brew install ruby-install
-brew install python
 
 # databases
 echo "-------------------------------"
@@ -80,42 +67,9 @@ brew install memcached
 brew install mongodb
 brew install sqlite
 brew install mysql
-brew cask install postgres
+brew install pip
 
-# Common tools
-echo "-------------------------------"
-echo Installing common tools ...
-echo "-------------------------------"
-
-brew tap caskroom/versions
-brew cask install --appdir="/Applications" atom
-brew cask install --appdir="/Applications" dropbox
-brew cask install --appdir="/Applications" google-drive
-brew cask install --appdir="/Applications" google-chrome
-brew cask install --appdir="/Applications" iterm2
-brew cask install --appdir="/Applications" macdown
-brew cask install --appdir="/Applications" onepassword
-brew cask install --appdir="/Applications" slack
-brew cask install --appdir="/Applications" vlc
-brew cask install --appdir="/Applications" transmit
-brew cask install --appdir="/Applications" sourcetree
-
-# Tp stuff
-echo "-------------------------------"
-echo Installing weird stuffs ...
-echo "-------------------------------"
-
-brew cask install xquartz
-brew cask install suspicious-package
-
-# Misc
-echo "-------------------------------"
-echo Installing misc stuff ...
-echo "-------------------------------"
-
-brew cask install --appdir="/Applications" steam
-brew cask install --appdir="/Applications" skype
-brew cask install --appdir="/Applications" spotify
+pip install glances
 
 # cleanup
 echo "-------------------------------"
@@ -124,4 +78,3 @@ echo "-------------------------------"
 
 brew cleanup --force
 brew cask cleanup
-rm -f -r /Library/Caches/Homebrew/*

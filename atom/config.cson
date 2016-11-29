@@ -2,50 +2,82 @@
   "atom-beautify":
     _analyticsUserId: "0252158c-9432-4627-b72c-fe2cd77d08d4"
   "autocomplete-plus": {}
+  "autocomplete-ruby": {}
+  autosave:
+    enabled: true
   core:
+    allowPendingPaneItems: false
     disabledPackages: [
-      "autocomplete-ruby"
       "linter-jsxhint"
-      "atom-erb"
       "nuclide-flow"
       "nuclide-hack"
       "nuclide-installer"
       "nuclide-click-to-symbol"
-      "linter"
+      "atom-css-comb"
+      "atom-erb"
+      "atom-handlebars"
+      "autocomplete-ruby"
+      "color-picker"
+      "language-docker"
+      "language-gherkin"
+      "language-nginx"
+      "autocomplete-plus"
+      "change-case"
+      "file-icons"
+      "git-control"
+      "javascript-standard-snippets"
+      "js-patterns-atom-snippets"
+      "linter-handlebars"
+      "linter-ruby"
+      "rails-i18n"
+      "rspec"
+      "rspec3-snippets"
+      "ruby-block"
+      "standard-formatter"
+      "tasks"
+      "terminal-plus"
+      "turbo-javascript"
+      "linter-reek"
     ]
     projectHome: "/Users/boris/Sites"
+    telemetryConsent: "no"
     themes: [
-      "atom-material-ui"
-      "atom-material-syntax-dark"
+      "atom-light-ui"
+      "atom-light-syntax"
     ]
   "css-comb":
     config: "custom"
   editor:
-    fontFamily: "Hack"
-    fontSize: 19
+    autoIndentOnPaste: false
     invisibles: {}
     showIndentGuide: true
+  emmet: {}
   "exception-reporting":
     userId: "d873afba-9978-f1e8-8be8-d03d4eb3fc34"
   "file-watcher":
     promptWhenFileHasChangedOnDisk: false
+  "format-standard":
+    formatOnSave: true
   "grunt-runner": {}
   linter:
+    errorPanelHeight: 26
     ignoredLinterErrors: [
       "jshint"
     ]
     subtleLinterErrors: [
       "rubocop"
     ]
+  "linter-js-standard":
+    showEslintRules: true
   "linter-jshint":
     disableWhenNoJshintrcFileInPath: true
     executablePath: "/usr/local/bin/jshint"
     lintInlineJavaScript: true
   "linter-reek":
-    executablePath: "/Users/boris/.rbenv/versions/2.2.0/bin/reek"
+    executablePath: "/home/boris/.rbenv/shims/reek"
   "linter-rubocop":
-    command: "/Users/boris/.rbenv/versions/2.2.0/bin/rubocop"
-    rubocopExecutablePath: "/Users/boris/.rbenv/versions/2.2.0/bin/rubocop"
+    command: "/home/boris/.rbenv/shims/rubocop"
+    rubocopExecutablePath: "/home/boris/.rbenv/shims/rubocop"
   "markdown-writer": {}
   nuclide:
     remoteProjectsConfig: []
@@ -53,6 +85,13 @@
     showAfterInactivitySeconds: 60
   react:
     enabledForAllJavascriptFiles: true
+  rspec:
+    command: "foreman run rspec"
+  "rubocop-auto-correct":
+    rubocopCommandPath: "/home/boris/.rbenv/shims/rubocop"
+  "standard-formatter":
+    formatOnSave: true
+  tasks: {}
   "tool-bar":
     position: "Left"
   "tree-view": {}

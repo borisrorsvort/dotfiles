@@ -1,0 +1,86 @@
+- shell:
+  - ['ruby -e $(curl -fsSL "https://raw.githubusercontent.com/Linuxbrew/install/master/install")', Installing Brew]
+  - [brew update, Updating Brew]
+
+- tap:
+  - caskroom/fonts
+
+- brew:
+  - ant
+  - autoconf
+  - bison
+  - bzip2
+  - cmake
+  - colordiff
+  - curl
+  - expat
+  - ffmpeg
+  - fontconfig
+  - freetype
+  - gdbm
+  - gettext
+  - gh
+  - gist
+  - git
+  - git-flow
+  - go
+  - gpatch
+  - graphicsmagick
+  - heroku-toolbelt
+  - htop
+  - hub
+  - imagemagick
+  - jdk
+  - jpeg
+  - jq
+  - lame
+  - libedit
+  - libevent
+  - libffi
+  - libidn
+  - libpng
+  - libtiff
+  - libtool
+  - libxml2
+  - libyaml
+  - little-cms2
+  - m4
+  - makedepend
+  - memcached
+  - mysql
+  - ncurses
+  - node
+  - oniguruma
+  - openjpeg
+  - openssl
+  - ossp-uuid
+  - patchelf
+  - pcre
+  - pixman
+  - pkg-config
+  - rbenv
+  - readline
+  - redis
+  - ruby-build
+  - ruby-install
+  - scons
+  - sqlite
+  - texi2html
+  - texinfo
+  - tig
+  - vim
+  - webkit2png
+  - x264
+  - xvid
+  - xz
+  - yasm
+  - zlib
+  - zsh
+  - z
+
+- cask: [colorpicker, vlc]
+
+- shell:
+  - [git submodule update --init --recursive, Installing submodules]
+  - ./install -p dotbot-apt-get/aptget.py -c packages.conf.yaml
+  - pip install glances
