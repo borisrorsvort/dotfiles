@@ -1,4 +1,8 @@
+- link:
+  ~/.atom/config.cson: atom/config.linux.cson
+
 - shell:
+  - [apm install --packages-file ~/.dotfiles/atom/package-list.txt, Installing atom packages]
   - ['ruby -e $(curl -fsSL "https://raw.githubusercontent.com/Linuxbrew/install/master/install")', Installing Brew]
   - [brew update, Updating Brew]
 
@@ -81,6 +85,7 @@
 - cask: [colorpicker, vlc]
 
 - shell:
+  - [chsh -s /bin/zsh, Set zsh as the default shell]
   - [git submodule update --init --recursive, Installing submodules]
   - ./install -p dotbot-apt-get/aptget.py -c packages.conf.yaml
   - pip install glances

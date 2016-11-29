@@ -18,6 +18,3 @@
     ~/.zlogout: zlogout
     ~/.zshenv: zshenv
     ~/.zshrc: zshrc
-#
-# - shell:
-#   - [chsh -s /bin/zsh, Set zsh as the default shell]
