@@ -26,7 +26,6 @@
   - gh
   - gist
   - git
-  - git-flow
   - go
   - gpatch
   - graphicsmagick
@@ -82,10 +81,8 @@
   - zsh
   - z
 
-- cask: [colorpicker, vlc]
-
 - shell:
-  - [chsh -s /bin/zsh, Set zsh as the default shell]
+  - ["chsh -s /bin/zsh", Set zsh as the default shell]
   - [git submodule update --init --recursive, Installing submodules]
-  - ./install -p dotbot-apt-get/aptget.py -c packages.conf.yaml
+  - "./install -p dotbot-apt-get/aptget.py -c packages.conf.yaml"
   - pip install glances
