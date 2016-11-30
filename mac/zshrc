@@ -31,8 +31,8 @@ source $ZSH/oh-my-zsh.sh
 source $HOME/.dotfiles/dev_scripts/k.sh
 
 # Aliases/functions
-source $HOME/.dotfiles/git/aliases
-source $HOME/.dotfiles/git/functions
+source $HOME/.dotfiles/shell/aliases
+source $HOME/.dotfiles/shell/functions
 
 # Rbenv
 export CC=/usr/bin/gcc

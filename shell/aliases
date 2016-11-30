@@ -7,12 +7,12 @@ elif [[ $platform == 'Darwin' ]]; then
 fi
 
 alias amend="git commit --amend"
-alias aliases='atom ~/.dotfiles/zsh/aliases'
+alias aliases='atom ~/.dotfiles/shell/aliases'
 alias bake='bundle exec rake'
 alias be='bundle exec'
 alias killruby='killall -9 ruby'
 alias rc='rails console'
-alias so='source ~/.dotfiles/zsh/aliases'
+alias so='source ~/.dotfiles/shell/aliases'
 alias dotfiles='atom ~/.dotfiles/'
 alias fs='foreman start'
 
@@ -50,6 +50,7 @@ alias wp="cd /Applications/MAMP/htdocs"
 
 # Dev
 alias dev="ruby ~/.dotfiles/dev_scripts/tools.rb"
+alias service="ruby ~/.dotfiles/dev_scripts/services.rb"
 alias mmi="cd ~/Sites/my-micro-invest"
 # alias mmi_reset="rake db:drop db:create; mysql -p mmi -uroot --password="" < ~/Sites/Dump/mmi_latest.sql"
 alias fr="foreman run"
