@@ -1,0 +1,44 @@
+# Zsh-
+# Path to your oh-my-zsh configuration.
+ZSH="$HOME/.dotfiles/oh-my-zsh"
+
+# Autocomplete
+COMPLETION_WAITING_DOTS="true"
+
+# Save a ton of history
+HISTSIZE=20000
+HISTFILE=~/.zsh_history
+SAVEHIST=20000
+
+# Editor
+export EDITOR="atom"
+export BUNDLER_EDITOR="atom"
+
+# MAMP
+export MAMP_PHP=/Applications/MAMP/bin/php/php5.6.2/bin
+export PATH="$MAMP_PHP:$PATH"
+
+ZSH_THEME="random"
+
+plugins=(atom ant z zsh-syntax-highlighting git brew bundler gem git-flow history-substring-search osx rails ruby ssh-agent nyan cap zeus boris k)
+
+# Options
+unsetopt correct_all
+unsetopt correct
+
+# Oh My Zsh
+source $ZSH/oh-my-zsh.sh
+source $HOME/.dotfiles/dev_scripts/k.sh
+
+# Aliases/functions
+source $HOME/.dotfiles/git/aliases
+source $HOME/.dotfiles/git/functions
+
+# Rbenv
+export CC=/usr/bin/gcc
+export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_45.jdk/Contents/Home";
+export ANDROID_HOME="$HOME/Library/Android/sdk/platforms";
+export PATH="/usr/local/heroku/bin:/Applications/Postgres.app/Contents/Versions/9.4/bin:$PATH"
+export PATH="$HOME/Library/Android/sdk/tools:$HOME/Library/Android/sdk/platform-tools:$PATH"
+export PATH="$HOME/.rbenv/bin:$HOME/.rbenv/shims:/usr/local/bin:/bin:/usr/sbin:/sbin:/usr/local/sbin:/usr/X11/bin:/usr/local/share/npm/bin:$PATH"
+eval "$(rbenv init -)"

@@ -1,5 +1,6 @@
 - link:
-  ~/.atom/config.cson: atom/config.linux.cson
+  ~/.zshrc: linux/zshrc
+  ~/.atom/config.cson: linux/atom.cson
 
 - shell:
   - [apm install --packages-file ~/.dotfiles/atom/package-list.txt, Installing atom packages]
@@ -84,5 +85,6 @@
 - shell:
   - ["chsh -s /bin/zsh", Set zsh as the default shell]
   - [git submodule update --init --recursive, Installing submodules]
-  - "./install -p dotbot-apt-get/aptget.py -c packages.conf.yaml"
-  - pip install glances
+  - brew cleanup --force
+  - brew cask cleanup
+  - rm -f -r /Library/Caches/Homebrew/*

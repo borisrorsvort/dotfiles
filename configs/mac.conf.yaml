@@ -1,5 +1,7 @@
 - link:
-  ~/.atom/config.cson: atom/config.mac.cson
+  ~/.zshrc: mac/zshrc
+  ~/.atom/config.cson: mac/atom.cson
+  ~/.osx: mac/osx
 
 - brew:
   - ack
@@ -124,5 +126,9 @@
 
 - shell:
   - [chsh -s /bin/zsh, Set zsh as the default shell]
-  - pip install glances
+  - [git submodule update --init --recursive, Installing submodules]
   - [apm install --packages-file ~/.dotfiles/atom/package-list.txt, Installing atom packages]
+  - "./install -p dotbot-apt-get/aptget.py -c packages.conf.yaml"
+  - brew cleanup --force
+  - brew cask cleanup
+  - rm -f -r /Library/Caches/Homebrew/*

@@ -2,16 +2,10 @@
 log/
 # IDEs and Editors #
 ####################
-*.sublime-project
-*.sublime-workspace
 *.swp
 *.swp
 *~
 zeus.json
-
-# TP #
-####################
-custom_plan.rb
 
 # Compiled #
 ############
@@ -36,7 +30,6 @@ Thumbs.db
 ######################
 .venv
 .vfenv
-.env
 .env.fish
 
 # Interim Caches #

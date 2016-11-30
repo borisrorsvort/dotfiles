@@ -1,12 +1,3 @@
-function g {
-  if [[ $# > 0 ]]; then
-    git $@
-  else
-    git status
-  fi
-}
-compdef g=git
-
 function todo {
   atom ~/Dropbox\ \(Personal\)/todos/$1.todo
 }
