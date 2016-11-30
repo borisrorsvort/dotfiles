@@ -1,90 +1,90 @@
 - link:
-  ~/.zshrc: linux/zshrc
-  ~/.atom/config.cson: linux/atom.cson
+    ~/.zshrc: linux/zshrc
+    ~/.atom/config.cson: linux/atom.cson
 
 - shell:
-  - [apm install --packages-file ~/.dotfiles/atom/package-list.txt, Installing atom packages]
-  - ['ruby -e $(curl -fsSL "https://raw.githubusercontent.com/Linuxbrew/install/master/install")', Installing Brew]
-  - [brew update, Updating Brew]
+    - ['ruby -e $(curl -fsSL "https://raw.githubusercontent.com/Linuxbrew/install/master/install")', Installing Brew]
+    - [brew update, Updating Brew]
 
 - tap:
-  - caskroom/fonts
+    - caskroom/fonts
 
 - brew:
-  - ant
-  - autoconf
-  - bison
-  - bzip2
-  - cmake
-  - colordiff
-  - curl
-  - expat
-  - ffmpeg
-  - fontconfig
-  - freetype
-  - gdbm
-  - gettext
-  - gh
-  - gist
-  - git
-  - go
-  - gpatch
-  - graphicsmagick
-  - heroku-toolbelt
-  - htop
-  - hub
-  - imagemagick
-  - jdk
-  - jpeg
-  - jq
-  - lame
-  - libedit
-  - libevent
-  - libffi
-  - libidn
-  - libpng
-  - libtiff
-  - libtool
-  - libxml2
-  - libyaml
-  - little-cms2
-  - m4
-  - makedepend
-  - memcached
-  - mysql
-  - ncurses
-  - node
-  - oniguruma
-  - openjpeg
-  - openssl
-  - ossp-uuid
-  - patchelf
-  - pcre
-  - pixman
-  - pkg-config
-  - rbenv
-  - readline
-  - redis
-  - ruby-build
-  - ruby-install
-  - scons
-  - sqlite
-  - texi2html
-  - texinfo
-  - tig
-  - vim
-  - webkit2png
-  - x264
-  - xvid
-  - xz
-  - yasm
-  - zlib
-  - zsh
-  - z
+    - ant
+    - autoconf
+    - bison
+    - bzip2
+    - cmake
+    - colordiff
+    - curl
+    - expat
+    - ffmpeg
+    - fontconfig
+    - freetype
+    - gdbm
+    - gettext
+    - gh
+    - gist
+    - git
+    - go
+    - gpatch
+    - graphicsmagick
+    - heroku-toolbelt
+    - htop
+    - hub
+    - imagemagick
+    - jdk
+    - jpeg
+    - jq
+    - lame
+    - libedit
+    - libevent
+    - libffi
+    - libidn
+    - libpng
+    - libtiff
+    - libtool
+    - libxml2
+    - libyaml
+    - little-cms2
+    - m4
+    - makedepend
+    - memcached
+    - mysql
+    - ncurses
+    - node
+    - oniguruma
+    - openjpeg
+    - openssl
+    - ossp-uuid
+    - patchelf
+    - pcre
+    - pixman
+    - pkg-config
+    - rbenv
+    - readline
+    - redis
+    - ruby-build
+    - ruby-install
+    - scons
+    - sqlite
+    - texi2html
+    - texinfo
+    - tig
+    - vim
+    - webkit2png
+    - x264
+    - xvid
+    - xz
+    - yasm
+    - zlib
+    - zsh
+    - z
 
 - shell:
-  - ["chsh -s /bin/zsh", Set zsh as the default shell]
-  - [git submodule update --init --recursive, Installing submodules]
-  - brew cleanup --force
-  - brew cask cleanup
-  - rm -f -r /Library/Caches/Homebrew/*
+    - [git submodule update --init --recursive, Installing submodules]
+    - brew cleanup --force
+    - brew cask cleanup
+    - rm -f -r /Library/Caches/Homebrew/*
+    - [apm install --packages-file ~/.dotfiles/atom/package-list.txt, Installing atom packages]
+    - ["chsh -s /bin/zsh", Set zsh as the default shell]

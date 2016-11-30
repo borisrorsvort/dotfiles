@@ -1,20 +1,20 @@
 - defaults:
-  link:
-    create: true
-    relink: true
+    link:
+      create: true
+      relink: true
+      force: true
 
 - clean: ['~']
 
 - link:
-  ~/.dev_srcipts: dev_scripts
-  ~/.oh-my-zsh: oh-my-zsh
-  ~/.zsh: zsh
-  ~/.gemrc: gemrc
-  ~/.gitconfig: gitconfig
-  ~/.gitignore: gitignore
-  ~/.irbrc: irbrc
-  ~/.screenrc: screenrc
-  ~/.psqlrc: psqlrc
-  ~/.zlogin: zlogin
-  ~/.zlogout: zlogout
-  ~/.zshenv: zshenv
+    ~/.dev_srcipts: dev_scripts
+    ~/.oh-my-zsh: oh-my-zsh
+    ~/.gemrc: gemrc
+    ~/.gitconfig: gitconfig
+    ~/.gitignore: gitignore
+    ~/.irbrc: irbrc
+    ~/.screenrc: screenrc
+    ~/.psqlrc: psqlrc
+    ~/.zlogin: zlogin
+    ~/.zlogout: zlogout
+    ~/.zshenv: zshenv
