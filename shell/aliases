@@ -12,7 +12,7 @@ alias bake='bundle exec rake'
 alias be='bundle exec'
 alias killruby='killall -9 ruby'
 alias rc='rails console'
-alias so='source ~/.dotfiles/shell/aliases'
+alias so='source ~/.zshrc'
 alias dotfiles='atom ~/.dotfiles/'
 alias fs='foreman start'
 

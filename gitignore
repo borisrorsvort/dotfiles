@@ -34,3 +34,5 @@ Thumbs.db
 
 # Interim Caches #
 .sass-cache
+
+dump.rdb

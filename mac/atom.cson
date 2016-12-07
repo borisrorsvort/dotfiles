@@ -27,7 +27,6 @@
       uno: "#6d839f"
   editor:
     fontFamily: "Hack"
-    fontSize: 15
     invisibles: {}
     showInvisibles: true
   "exception-reporting":

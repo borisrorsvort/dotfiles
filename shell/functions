@@ -17,3 +17,11 @@ function snippets {
 function gifit {
   ruby ~/.dotfiles/dev_scripts/screengif/screengif.rb --input $1 --output $2
 }
+
+function f {
+  git checkout -b feature/$1
+}
+
+function fix {
+  git checkout -b fix/$1
+}
