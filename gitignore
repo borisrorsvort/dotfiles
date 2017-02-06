@@ -36,3 +36,4 @@ Thumbs.db
 .sass-cache
 
 dump.rdb
+dev_scripts/services.rb

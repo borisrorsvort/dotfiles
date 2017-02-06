@@ -2,35 +2,35 @@
 
 class Service
   COMMANDS = {
-    # postgresql: {
-    #   start: 'pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start > /dev/null',
-    #   stop:  'pg_ctl -D /usr/local/var/postgres stop > /dev/null',
-    #   ping:  'pg_isready',
-    #   pong:  'accepting connections',
-    # },
+    postgresql: {
+      start: 'brew services start postgresql > /dev/null',
+      stop:  'brew services stop postgresql > /dev/null',
+      ping:  'brew services list | grep -E "postgresql"',
+      pong:  'started'
+    },
     mongod: {
-      start: 'mongod --dbpath=/usr/local/var/mongodb --fork --logpath /usr/local/var/mongodb/mongodb.log --logappend  2> /dev/null > /dev/null',
-      stop: 'kill -s SIGTERM \`cat /usr/local/var/mongodb/db/mongod.lock\` 2> /dev/null',
-      ping: 'ps aux | grep \`cat /usr/local/var/mongodb/mongod.lock\` 2> /dev/null',
-      pong: 'mongod'
+      start: 'brew services start mongodb > /dev/null',
+      stop: 'brew services stop mongodb > /dev/null',
+      ping: 'brew services list | grep -E "mongodb"',
+      pong: 'started'
     },
     mysql: {
-      start: 'mysqld_safe 2> /dev/null > /dev/null &',
-      stop: 'mysqladmin -u root shutdown',
-      ping: 'mysqladmin -u root ping 2> /dev/null',
-      pong: 'mysqld is alive'
+      start: 'brew services start mysql > /dev/null',
+      stop: 'brew services stop mysql > /dev/null',
+      ping: 'brew services list | grep -E "mysql"',
+      pong: 'started'
     },
     nginx: {
-      start: 'nginx',
-      stop: 'nginx -s stop 2> /dev/null',
-      ping: 'sudo ps cax | grep -E nginx',
-      pong: 'nginx: master process nginx'
+      start: 'brew services start nginx > /dev/null',
+      stop: 'brew services stop nginx > /dev/null',
+      ping: 'brew services list | grep -E "nginx"',
+      pong: 'started'
     },
     redis: {
-      start: 'redis-server > /dev/null &',
-      stop:  'redis-cli shutdown > /dev/null',
-      ping:  'redis-cli ping 2> /dev/null',
-      pong:  'PONG'
+      start: 'brew services start redis > /dev/null',
+      stop: 'brew services stop redis > /dev/null',
+      ping: 'brew services list | grep -E "redis"',
+      pong: 'started'
     }
   }.freeze
   ICONS = { on: '🍺', off: '💀', wait: '💬' }.freeze

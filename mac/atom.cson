@@ -27,7 +27,9 @@
       uno: "#6d839f"
   editor:
     fontFamily: "Hack"
+    fontSize: 16
     invisibles: {}
+    showIndentGuide: true
     showInvisibles: true
   "exception-reporting":
     userId: "d873afba-9978-f1e8-8be8-d03d4eb3fc34"
@@ -37,7 +39,7 @@
   "keyboard-localization":
     useKeyboardLayout: "fr_FR-bepo"
   linter:
-    errorPanelHeight: 130
+    errorPanelHeight: 25
     ignoredLinterErrors: [
       "jshint"
     ]
@@ -55,6 +57,7 @@
     executablePath: "/Users/boris/.rbenv/shims/reek"
   "linter-rubocop":
     command: "/Users/boris/.rbenv/versions/2.3.1/bin/rubocop"
+  "linter-spell": {}
   "markdown-writer": {}
   nuclide:
     remoteProjectsConfig: []
