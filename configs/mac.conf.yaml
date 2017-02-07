@@ -35,7 +35,6 @@
     - ruby-build
     - ruby-install
     - spark
-    - sphinx
     - sqlite
     - terminal-notifier
     - tig

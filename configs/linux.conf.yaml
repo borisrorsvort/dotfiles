@@ -1,6 +1,8 @@
 - link:
     ~/.zshrc: linux/zshrc
     ~/.atom/config.cson: linux/atom.cson
+    ~/.dotfiles/dev_scripts/services.rb: linux/services.rb
+
 
 - shell:
     - ['ruby -e $(curl -fsSL "https://raw.githubusercontent.com/Linuxbrew/install/master/install")', Installing Brew]
@@ -10,81 +12,43 @@
     - caskroom/fonts
 
 - brew:
-    - ant
+    - ack
     - autoconf
-    - bison
-    - bzip2
-    - cmake
-    - colordiff
-    - curl
-    - expat
     - ffmpeg
     - fontconfig
-    - freetype
-    - gdbm
-    - gettext
+    - gcc
+    - geoip
     - gh
+    - gifsicle
     - gist
     - git
-    - go
-    - gpatch
     - graphicsmagick
-    - heroku-toolbelt
-    - htop
-    - hub
     - imagemagick
-    - jdk
-    - jpeg
-    - jq
-    - lame
-    - libedit
-    - libevent
-    - libffi
-    - libidn
-    - libpng
-    - libtiff
-    - libtool
-    - libxml2
-    - libyaml
-    - little-cms2
-    - m4
-    - makedepend
     - memcached
-    - mysql
-    - ncurses
     - node
-    - oniguruma
-    - openjpeg
     - openssl
     - ossp-uuid
-    - patchelf
-    - pcre
-    - pixman
-    - pkg-config
+    - phantomjs
+    - pngcrush
+    - postgres
+    - python
     - rbenv
     - readline
     - redis
     - ruby-build
     - ruby-install
-    - scons
+    - spark
     - sqlite
-    - texi2html
-    - texinfo
     - tig
-    - vim
+    - watchman
     - webkit2png
-    - x264
-    - xvid
-    - xz
-    - yasm
-    - zlib
-    - zsh
     - z
+    - zsh
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
     - brew cleanup --force
     - brew cask cleanup
-    - rm -f -r /Library/Caches/Homebrew/*
     - [apm install --packages-file ~/.dotfiles/atom/package-list.txt, Installing atom packages]
     - ["chsh -s /bin/zsh", Set zsh as the default shell]
+    - ['initdb -D $HOME/.linuxbrew/var/postgres > /dev/null; gem install bundler; gem install pg -- --with-pg-config=$HOME/.linuxbrew/bin/pg_config', Setting up postgres]
