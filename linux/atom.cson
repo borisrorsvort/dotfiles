@@ -42,8 +42,8 @@
     projectHome: "/Users/boris/Sites"
     telemetryConsent: "no"
     themes: [
-      "atom-light-ui"
-      "atom-light-syntax"
+      "spacegray-dark-ui"
+      "spacegray-dark-syntax"
     ]
   "css-comb":
     config: "custom"

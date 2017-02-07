@@ -13,7 +13,7 @@ SAVEHIST=20000
 export EDITOR="atom"
 export BUNDLER_EDITOR="atom"
 
-ZSH_THEME="random"
+ZSH_THEME="hyperzsh"
 
 plugins=(atom ant z zsh-syntax-highlighting git brew bundler gem git-flow history-substring-search rails ruby ssh-agent cap zeus boris k)
 

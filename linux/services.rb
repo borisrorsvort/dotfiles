@@ -4,7 +4,7 @@ class Service
   COMMANDS = {
     postgresql: {
       start: 'pg_ctl start -D $HOME/.linuxbrew/var/postgres -l logfile > /dev/null',
-      stop:  'pg_ctl stop -D $HOME/.linuxbrew/var/postgres 2> /dev/null',
+      stop:  'pg_ctl stop -D $HOME/.linuxbrew/var/postgres 2> /dev/null; sudo pkill postgres 2> /dev/null',
       ping:  'pg_ctl status -D $HOME/.linuxbrew/var/postgres | grep "server is running"',
       pong:  'server is running'
     },
