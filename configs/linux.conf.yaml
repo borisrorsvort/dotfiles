@@ -2,7 +2,7 @@
     ~/.zshrc: linux/zshrc
     ~/.atom/config.cson: linux/atom.cson
     ~/.dotfiles/dev_scripts/services.rb: linux/services.rb
-
+    ~/.themes: themes
 
 - shell:
     - ['ruby -e $(curl -fsSL "https://raw.githubusercontent.com/Linuxbrew/install/master/install")', Installing Brew]
@@ -49,6 +49,8 @@
     - [git submodule update --init --recursive, Installing submodules]
     - brew cleanup --force
     - brew cask cleanup
-    - [apm install --packages-file ~/.dotfiles/atom/package-list.txt, Installing atom packages]
     - ["chsh -s /bin/zsh", Set zsh as the default shell]
-    - ['initdb -D $HOME/.linuxbrew/var/postgres > /dev/null; gem install bundler; gem install pg -- --with-pg-config=$HOME/.linuxbrew/bin/pg_config', Setting up postgres]
+    - initdb -D $HOME/.linuxbrew/var/postgres > /dev/null
+    - gem install bundler
+    - gem install pg -- --with-pg-config=$HOME/.linuxbrew/bin/pg_config'
+    - [apm install --packages-file ~/.dotfiles/atom/package-list.txt, Installing atom packages]

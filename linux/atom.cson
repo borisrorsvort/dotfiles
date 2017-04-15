@@ -1,12 +1,17 @@
 "*":
   "atom-beautify":
     _analyticsUserId: "0252158c-9432-4627-b72c-fe2cd77d08d4"
+  "atom-markdown-auto-preview":
+    handleCloses: true
+    handleOpens: true
+  "atom-toolbar": {}
   "autocomplete-plus": {}
   "autocomplete-ruby": {}
   autosave:
     enabled: true
   core:
     allowPendingPaneItems: false
+    closeDeletedFileTabs: true
     disabledPackages: [
       "linter-jsxhint"
       "nuclide-flow"
@@ -21,12 +26,9 @@
       "language-docker"
       "language-gherkin"
       "language-nginx"
-      "autocomplete-plus"
       "change-case"
-      "file-icons"
       "git-control"
       "javascript-standard-snippets"
-      "js-patterns-atom-snippets"
       "linter-handlebars"
       "linter-ruby"
       "rails-i18n"
@@ -34,16 +36,19 @@
       "rspec3-snippets"
       "ruby-block"
       "standard-formatter"
-      "tasks"
       "terminal-plus"
-      "turbo-javascript"
       "linter-reek"
+      "language-gfm"
+      "atom-toolbar"
+    ]
+    packagesWithKeymapsDisabled: [
+      "tool-bar-markdown-writer"
     ]
     projectHome: "/Users/boris/Sites"
     telemetryConsent: "no"
     themes: [
-      "spacegray-dark-ui"
-      "spacegray-dark-syntax"
+      "nord-atom-ui"
+      "nord-atom-syntax"
     ]
   "css-comb":
     config: "custom"
@@ -60,7 +65,6 @@
     formatOnSave: true
   "grunt-runner": {}
   linter:
-    errorPanelHeight: 26
     ignoredLinterErrors: [
       "jshint"
     ]
@@ -78,11 +82,22 @@
   "linter-rubocop":
     command: "/home/boris/.rbenv/shims/rubocop"
     rubocopExecutablePath: "/home/boris/.rbenv/shims/rubocop"
-  "markdown-writer": {}
+  "markdown-preview-plus":
+    useGitHubStyle: true
+  "markdown-writer":
+    relativeImagePath: true
+    siteEngine: "jekyll"
   nuclide:
     remoteProjectsConfig: []
   "oblique-strategies":
     showAfterInactivitySeconds: 60
+  "prettier-atom":
+    formatOnSaveOptions: {}
+    prettierEslintOptions:
+      prettierLast: true
+    prettierOptions:
+      singleQuote: true
+    useEslint: true
   react:
     enabledForAllJavascriptFiles: true
   rspec:
@@ -93,7 +108,10 @@
     formatOnSave: true
   tasks: {}
   "tool-bar":
-    position: "Left"
+    fullWidth: false
+    visible: false
+  "tool-bar-markdown-writer":
+    visibility: "showToolbarOnMarkdown"
   "tree-view": {}
   welcome:
     showOnStartup: false
