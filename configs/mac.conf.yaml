@@ -8,8 +8,6 @@
     - ack
     - autoconf
     - cmatrix
-    - ffmpeg
-    - fontconfig
     - gcc
     - geoip
     - gh
@@ -45,10 +43,12 @@
     - zsh
 
 - shell:
-    - [git submodule update --init --recursive, Installing submodules]
+    - [git submodule update --recursive, Installing submodules]
     - brew cleanup --force
     - brew cask cleanup
     - rm -f -r /Library/Caches/Homebrew/*
     - [apm install --packages-file ~/.dotfiles/atom/package-list.txt, Installing atom packages]
     - [chsh -s /bin/zsh, Set zsh as the default shell]
-    - ['initdb -D /usr/local/var/postgres > /dev/null; gem install bundler; gem install pg -- --with-pg-config=/usr/local/bin/pg_config', Setting up postgres]
+    - initdb -D /usr/local/var/postgres
+    - gem install bundler
+    - ['gem install pg -- --with-pg-config=/usr/local/bin/pg_config', Setting up postgres]
