@@ -18,28 +18,14 @@
       "nuclide-hack"
       "nuclide-installer"
       "nuclide-click-to-symbol"
-      "atom-css-comb"
       "atom-erb"
-      "atom-handlebars"
       "autocomplete-ruby"
-      "color-picker"
-      "language-docker"
-      "language-gherkin"
-      "language-nginx"
-      "change-case"
-      "git-control"
       "javascript-standard-snippets"
-      "linter-handlebars"
-      "linter-ruby"
-      "rails-i18n"
-      "rspec"
       "rspec3-snippets"
-      "ruby-block"
       "standard-formatter"
-      "terminal-plus"
       "linter-reek"
       "language-gfm"
-      "atom-toolbar"
+      "markdown-preview"
     ]
     packagesWithKeymapsDisabled: [
       "tool-bar-markdown-writer"
@@ -82,11 +68,13 @@
   "linter-rubocop":
     command: "/home/boris/.rbenv/shims/rubocop"
     rubocopExecutablePath: "/home/boris/.rbenv/shims/rubocop"
-  "markdown-preview-plus":
-    useGitHubStyle: true
+  "markdown-preview-enhanced":
+    breakOnSingleNewline: false
+    enableTypographer: true
+    enableZenMode: true
+  "markdown-preview-plus": {}
   "markdown-writer":
     relativeImagePath: true
-    siteEngine: "jekyll"
   nuclide:
     remoteProjectsConfig: []
   "oblique-strategies":
@@ -118,3 +106,6 @@
 ".coffee.jsx.source":
   editor:
     autoIndentOnPaste: true
+".md.text":
+  editor:
+    showIndentGuide: false
