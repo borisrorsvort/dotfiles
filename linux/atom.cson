@@ -10,7 +10,6 @@
   autosave:
     enabled: true
   core:
-    allowPendingPaneItems: false
     closeDeletedFileTabs: true
     disabledPackages: [
       "linter-jsxhint"
@@ -40,6 +39,7 @@
     config: "custom"
   editor:
     autoIndentOnPaste: false
+    fontSize: 16
     invisibles: {}
     showIndentGuide: true
   emmet: {}
@@ -69,16 +69,21 @@
     command: "/home/boris/.rbenv/shims/rubocop"
     rubocopExecutablePath: "/home/boris/.rbenv/shims/rubocop"
   "markdown-preview-enhanced":
-    breakOnSingleNewline: false
     enableTypographer: true
-    enableZenMode: true
+    exportPDFPageFormat: "A4"
+    whiteBackground: true
   "markdown-preview-plus": {}
   "markdown-writer":
     relativeImagePath: true
+  "nord-atom-ui":
+    darkerFormFocusEffect: true
   nuclide:
     remoteProjectsConfig: []
   "oblique-strategies":
     showAfterInactivitySeconds: 60
+  "opened-files":
+    colorStyle: "solid"
+    removeOnClose: true
   "prettier-atom":
     formatOnSaveOptions: {}
     prettierEslintOptions:
@@ -97,7 +102,6 @@
   tasks: {}
   "tool-bar":
     fullWidth: false
-    visible: false
   "tool-bar-markdown-writer":
     visibility: "showToolbarOnMarkdown"
   "tree-view": {}

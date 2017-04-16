@@ -6,27 +6,11 @@ elif [[ $platform == 'Darwin' ]]; then
   alias a='ls -lrthG'
 fi
 
-alias amend="git commit --amend"
+# Shell
 alias aliases='atom ~/.dotfiles/shell/aliases'
-alias bake='bundle exec rake'
-alias be='bundle exec'
-alias killruby='killall -9 ruby'
-alias rc='rails console'
 alias so='source ~/.zshrc'
 alias dotfiles='atom ~/.dotfiles/'
-alias fs='foreman start'
-
-# Postgres
-alias startpostgres='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
-alias stoppostgres='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log stop'
-
-# Heroku staging
-alias staging-console='heroku run console --remote staging'
-alias staging-tail='heroku logs --tail --remote staging'
-
-# Heroku production
-alias production-console='heroku run console --remote production'
-alias production-tail='heroku logs --tail --remote production'
+alias dir="ls -R | grep ":" | sed -e 's/://' -e 's/[^-][^\/]*\//--/g' -e 's/^/ /' -e 's/-/|/'"
 
 # Heroku databases utils
 alias db-pull-staging='heroku db:pull --remote staging --confirm `basename $PWD`-staging'
@@ -44,30 +28,16 @@ alias bd="git branch -D"
 alias checkout="git branch checkout"
 alias develop="g checkout develop"
 alias master="g checkout master"
+alias amend="git commit --amend"
 
-# htdoc
+# Wordpress
 alias wp="cd /Applications/MAMP/htdocs"
 
 # Dev
 alias dev="ruby ~/.dotfiles/dev_scripts/services.rb"
-alias mmi="cd ~/Sites/my-micro-invest"
-# alias mmi_reset="rake db:drop db:create; mysql -p mmi -uroot --password="" < ~/Sites/Dump/mmi_latest.sql"
 alias fr="foreman run"
-alias mmi_reset="be rake db:drop db:create:all; pg_restore --verbose --clean --no-acl --no-owner -d mmi ~/Sites/Dump/mmi_latest.sql"
-
-# Grunt
-alias serve="grunt serve"
-
-# todos
-alias to='todo'
-alias lto='list-todo'
-
-alias rspec="nocorrect rspec"
-alias spring="nocorrect spring"
-
-alias flushdns='dscacheutil -flushcache'
-
-# jenkins
-alias testit='tp; script/tp_jenkins;'
-
-alias dir="ls -R | grep ":" | sed -e 's/://' -e 's/[^-][^\/]*\//--/g' -e 's/^/ /' -e 's/-/|/'"
+alias fs='foreman start'
+alias rc='rails console'
+alias bake='bundle exec rake'
+alias be='bundle exec'
+alias killruby='killall -9 ruby'
