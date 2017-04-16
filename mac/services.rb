@@ -26,6 +26,12 @@ class Service
       ping: 'brew services list | grep -E "nginx"',
       pong: 'started'
     },
+    memcached: {
+      start: 'brew services start memcached > /dev/null',
+      stop: 'brew services stop memcached > /dev/null',
+      ping: 'brew services list | grep -E "memcached"',
+      pong: 'started'
+    },
     redis: {
       start: 'brew services start redis > /dev/null',
       stop: 'brew services stop redis > /dev/null',
