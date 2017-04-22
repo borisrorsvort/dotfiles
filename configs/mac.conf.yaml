@@ -1,3 +1,5 @@
+- clean: ~/.atom/config.cson
+
 - link:
     ~/.zshrc: mac/zshrc
     ~/.atom/config.cson: mac/atom.cson
@@ -44,11 +46,11 @@
 
 - shell:
     - [git submodule update --recursive, Installing submodules]
-    - brew cleanup --force
+    - [brew cleanup --force, Brew cleanup]
     - brew cask cleanup
     - rm -f -r /Library/Caches/Homebrew/*
     - [apm install --packages-file ~/.dotfiles/atom/package-list.txt, Installing atom packages]
     - [chsh -s /bin/zsh, Set zsh as the default shell]
-    - initdb -D /usr/local/var/postgres
-    - gem install bundler
-    - ['gem install pg -- --with-pg-config=/usr/local/bin/pg_config', Setting up postgres]
+    - [gem install bundler, Installing bundler]
+    - [initdb -D /usr/local/var/postgres, Setting up postgres]
+    - ['gem install pg -- --with-pg-config=/usr/local/bin/pg_config', Installing postgres gem]

@@ -1,11 +1,13 @@
 "*":
   "atom-beautify":
     _analyticsUserId: "0252158c-9432-4627-b72c-fe2cd77d08d4"
+  "atom-toolbar":
+    visible: false
   "autocomplete-plus": {}
   "autocomplete-ruby": {}
   autosave: {}
+  break: {}
   core:
-    allowPendingPaneItems: false
     disabledPackages: [
       "linter-jsxhint"
       "nuclide-flow"
@@ -13,20 +15,26 @@
       "nuclide-installer"
       "nuclide-click-to-symbol"
       "jquery-snippets"
+      "language-gfm"
+      "standard-formatter"
+      "linter-js-standard"
+      "atom-toolbar"
     ]
     projectHome: "/Users/boris/Sites"
     telemetryConsent: "no"
     themes: [
-      "spacegray-dark-ui"
-      "one-dark-syntax"
+      "one-light-ui"
+      "one-light-syntax"
     ]
+    titleBar: "custom"
   "css-comb":
     config: "custom"
+  "document-outline":
+    maxHeadingDepth: 2
   "duotone-dark-syntax":
     color:
       uno: "#6d839f"
   editor:
-    fontFamily: "Hack"
     fontSize: 16
     invisibles: {}
     showIndentGuide: true
@@ -35,11 +43,12 @@
     userId: "d873afba-9978-f1e8-8be8-d03d4eb3fc34"
   "file-watcher":
     promptWhenFileHasChangedOnDisk: false
+  fonts:
+    fontFamily: "Hack"
   "grunt-runner": {}
   "keyboard-localization":
     useKeyboardLayout: "fr_FR-bepo"
   linter:
-    errorPanelHeight: 25
     ignoredLinterErrors: [
       "jshint"
     ]
@@ -56,8 +65,14 @@
   "linter-reek":
     executablePath: "/Users/boris/.rbenv/shims/reek"
   "linter-rubocop":
-    command: "/Users/boris/.rbenv/versions/2.3.1/bin/rubocop"
+    command: "/Users/bluesquare/.rbenv/versions/2.3.1/bin/rubocop"
   "linter-spell": {}
+  "markdown-preview-enhanced":
+    enableTypographer: true
+    enableZenMode: true
+    exportPDFPageFormat: "A4"
+    previewTheme: "one-light-syntax"
+    showBackToTopButton: false
   "markdown-writer": {}
   nuclide:
     remoteProjectsConfig: []
@@ -65,12 +80,19 @@
     showAfterInactivitySeconds: 60
   "one-dark-ui":
     layoutMode: "Spacious"
+  "one-light-ui": {}
   react:
     enabledForAllJavascriptFiles: true
   rspec:
     command: "foreman run rspec"
   "rubocop-auto-correct":
     rubocopCommandPath: "/Users/boris/.rbenv/versions/2.3.1/bin/rubocop"
+  "seti-syntax":
+    themeColor: "Purple"
+  "seti-ui":
+    compactView: true
+    disableAnimations: true
+    themeColor: "Purple"
   "split-diff":
     diffWords: true
     ignoreWhitespace: true
@@ -79,6 +101,8 @@
     syncHorizontalScroll: true
   tasks: {}
   "tool-bar":
+    fullWidth: false
+    iconSize: "16px"
     position: "Left"
   "tree-view":
     hideVcsIgnoredFiles: true
@@ -87,3 +111,6 @@
 ".coffee.jsx.source":
   editor:
     autoIndentOnPaste: true
+".md.text":
+  editor:
+    softWrap: true

@@ -20,7 +20,6 @@ alias db-backup-production='heroku pgbackups:capture --remote production'
 alias db-backups='heroku pgbackups --remote production'
 
 # Legit
-alias up="git up"
 alias sync="up;gp"
 alias gs="tig status"
 alias branches="git branch -l"

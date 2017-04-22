@@ -55,6 +55,7 @@
 
   # Sync
   sync = plu && pso
+	up = pull --rebase --autostash
 [color]
   diff = auto
   status = auto
