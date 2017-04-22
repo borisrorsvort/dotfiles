@@ -102,6 +102,7 @@
   tasks: {}
   "tool-bar":
     fullWidth: false
+    visible: false
   "tool-bar-markdown-writer":
     visibility: "showToolbarOnMarkdown"
   "tree-view": {}
