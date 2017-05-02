@@ -2,6 +2,10 @@ function gifit {
   ruby ~/.dotfiles/dev_scripts/screengif/screengif.rb --input $1 --output $2
 }
 
+function notes {
+  atom $DROPBOX/Notes/$1
+}
+
 function f {
   git checkout -b feature/$1
 }

@@ -19,6 +19,8 @@
       "standard-formatter"
       "linter-js-standard"
       "atom-toolbar"
+      "break"
+      "markdown-writer"
     ]
     projectHome: "/Users/boris/Sites"
     telemetryConsent: "no"
@@ -30,12 +32,12 @@
   "css-comb":
     config: "custom"
   "document-outline":
-    maxHeadingDepth: 2
+    maxHeadingDepth: 3
   "duotone-dark-syntax":
     color:
       uno: "#6d839f"
   editor:
-    fontSize: 16
+    fontSize: 17
     invisibles: {}
     showIndentGuide: true
     showInvisibles: true
@@ -67,13 +69,21 @@
   "linter-rubocop":
     command: "/Users/bluesquare/.rbenv/versions/2.3.1/bin/rubocop"
   "linter-spell": {}
+  "linter-ui-default": {}
   "markdown-preview-enhanced":
     enableTypographer: true
+    enableWikiLinkSyntax: false
     enableZenMode: true
     exportPDFPageFormat: "A4"
-    previewTheme: "one-light-syntax"
+    frontMatterRenderingOption: "none"
+    imageFolderPath: "media"
+    openPreviewPaneAutomatically: false
+    pdfUseGithub: false
+    previewTheme: "atom-light-syntax"
     showBackToTopButton: false
-  "markdown-writer": {}
+  "markdown-writer":
+    relativeImagePath: true
+    renameImageOnCopy: true
   nuclide:
     remoteProjectsConfig: []
   "oblique-strategies":
@@ -81,6 +91,10 @@
   "one-dark-ui":
     layoutMode: "Spacious"
   "one-light-ui": {}
+  "prettier-atom":
+    formatOnSaveOptions:
+      enabled: true
+    useEslint: true
   react:
     enabledForAllJavascriptFiles: true
   rspec:
@@ -93,6 +107,11 @@
     compactView: true
     disableAnimations: true
     themeColor: "Purple"
+  "spell-check":
+    locales: [
+      "en—US"
+      "fr"
+    ]
   "split-diff":
     diffWords: true
     ignoreWhitespace: true
@@ -103,7 +122,6 @@
   "tool-bar":
     fullWidth: false
     iconSize: "16px"
-    position: "Left"
   "tree-view":
     hideVcsIgnoredFiles: true
   welcome:

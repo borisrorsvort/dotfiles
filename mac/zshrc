@@ -14,6 +14,7 @@ SAVEHIST=20000
 export EDITOR="atom"
 export BUNDLER_EDITOR="atom"
 
+export DROPBOX="$HOME/Dropbox"
 # MAMP
 export MAMP_PHP=/Applications/MAMP/bin/php/php5.6.2/bin
 export PATH="$MAMP_PHP:$PATH"
