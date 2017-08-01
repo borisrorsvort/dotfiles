@@ -1,111 +1,37 @@
 "*":
-  "atom-beautify":
-    _analyticsUserId: "0252158c-9432-4627-b72c-fe2cd77d08d4"
-  "atom-markdown-auto-preview":
-    handleCloses: true
-    handleOpens: true
-  "atom-toolbar": {}
-  "autocomplete-plus": {}
-  "autocomplete-ruby": {}
-  autosave:
-    enabled: true
+  "atom-toolbar":
+    visible: false
   core:
-    closeDeletedFileTabs: true
     disabledPackages: [
-      "linter-jsxhint"
-      "nuclide-flow"
-      "nuclide-hack"
-      "nuclide-installer"
-      "nuclide-click-to-symbol"
-      "atom-erb"
-      "autocomplete-ruby"
-      "javascript-standard-snippets"
-      "rspec3-snippets"
+      "linter-js-standard"
       "standard-formatter"
-      "linter-reek"
-      "language-gfm"
-      "markdown-preview"
+      "break"
+      "markdown-preview-enhanced"
     ]
-    packagesWithKeymapsDisabled: [
-      "tool-bar-markdown-writer"
-    ]
-    projectHome: "/Users/boris/Sites"
     telemetryConsent: "no"
     themes: [
-      "nord-atom-ui"
-      "nord-atom-syntax"
+      "one-light-ui"
+      "one-light-syntax"
     ]
-  "css-comb":
-    config: "custom"
-  editor:
-    autoIndentOnPaste: false
-    fontSize: 16
-    invisibles: {}
-    showIndentGuide: true
-  emmet: {}
+  "document-outline":
+    maxHeadingDepth: 3
+    showByDefault: true
+  editor: {}
   "exception-reporting":
-    userId: "d873afba-9978-f1e8-8be8-d03d4eb3fc34"
-  "file-watcher":
-    promptWhenFileHasChangedOnDisk: false
-  "format-standard":
-    formatOnSave: true
-  "grunt-runner": {}
-  linter:
-    ignoredLinterErrors: [
-      "jshint"
-    ]
-    subtleLinterErrors: [
-      "rubocop"
-    ]
-  "linter-js-standard":
-    showEslintRules: true
-  "linter-jshint":
-    disableWhenNoJshintrcFileInPath: true
-    executablePath: "/usr/local/bin/jshint"
-    lintInlineJavaScript: true
-  "linter-reek":
-    executablePath: "/home/boris/.rbenv/shims/reek"
-  "linter-rubocop":
-    command: "/home/boris/.rbenv/shims/rubocop"
-    rubocopExecutablePath: "/home/boris/.rbenv/shims/rubocop"
-  "markdown-preview-enhanced":
-    enableTypographer: true
-    exportPDFPageFormat: "A4"
-    whiteBackground: true
-  "markdown-preview-plus": {}
-  "markdown-writer":
-    relativeImagePath: true
-  "nord-atom-ui":
-    darkerFormFocusEffect: true
-  nuclide:
-    remoteProjectsConfig: []
-  "oblique-strategies":
-    showAfterInactivitySeconds: 60
-  "opened-files":
-    colorStyle: "solid"
-    removeOnClose: true
+    userId: "e7dbc301-342f-4930-bbee-23bb216cb84f"
+  "linter-eslint":
+    fixOnSave: true
+    useGlobalEslint: true
+  "linter-ui-default": {}
+  "markdown-preview-plus":
+    pandocRemoveReferences: false
   "prettier-atom":
-    formatOnSaveOptions: {}
-    prettierEslintOptions:
-      prettierLast: true
-    prettierOptions:
-      singleQuote: true
+    formatOnSaveOptions:
+      enabled: true
     useEslint: true
-  react:
-    enabledForAllJavascriptFiles: true
-  rspec:
-    command: "foreman run rspec"
-  "rubocop-auto-correct":
-    rubocopCommandPath: "/home/boris/.rbenv/shims/rubocop"
-  "standard-formatter":
-    formatOnSave: true
-  tasks: {}
   "tool-bar":
     fullWidth: false
-    visible: false
-  "tool-bar-markdown-writer":
-    visibility: "showToolbarOnMarkdown"
-  "tree-view": {}
+    iconSize: "16px"
   welcome:
     showOnStartup: false
 ".coffee.jsx.source":
@@ -113,4 +39,4 @@
     autoIndentOnPaste: true
 ".md.text":
   editor:
-    showIndentGuide: false
+    softWrap: true

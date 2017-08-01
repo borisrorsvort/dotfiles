@@ -14,12 +14,12 @@ class Service
     #   ping: 'brew services list | grep -E "mongodb"',
     #   pong: 'started'
     # },
-    # mysql: {
-    #   start: 'brew services start mysql > /dev/null',
-    #   stop: 'brew services stop mysql > /dev/null',
-    #   ping: 'brew services list | grep -E "mysql"',
-    #   pong: 'started'
-    # },
+    mysql: {
+      start: 'sudo service mysql start > /dev/null',
+      stop: 'sudo service mysql stop > /dev/null',
+      ping: 'sudo service mysql status | grep "active"',
+      pong: 'active'
+    },
     # nginx: {
     #   start: 'brew services start nginx > /dev/null',
     #   stop: 'brew services stop nginx > /dev/null',
