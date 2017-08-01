@@ -3,7 +3,7 @@ function gifit {
 }
 
 function notes {
-  atom $DROPBOX/Notes/$1
+  code $DROPBOX/Notes/$1
 }
 
 function f {

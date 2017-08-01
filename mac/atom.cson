@@ -3,11 +3,16 @@
     _analyticsUserId: "0252158c-9432-4627-b72c-fe2cd77d08d4"
   "atom-toolbar":
     visible: false
+  "autocomplete-bibtex":
+    bibtex: [
+      "/Users/bluesquare/Dropbox/Notes/Zotero/My Library/My Library.bib"
+    ]
   "autocomplete-plus": {}
   "autocomplete-ruby": {}
   autosave: {}
   break: {}
   core:
+    closeDeletedFileTabs: true
     disabledPackages: [
       "linter-jsxhint"
       "nuclide-flow"
@@ -16,10 +21,10 @@
       "nuclide-click-to-symbol"
       "jquery-snippets"
       "language-gfm"
-      "standard-formatter"
-      "linter-js-standard"
       "atom-toolbar"
       "break"
+      "markdown-preview-enhanced"
+      "zotero-picker"
       "markdown-writer"
     ]
     projectHome: "/Users/boris/Sites"
@@ -37,10 +42,14 @@
     color:
       uno: "#6d839f"
   editor:
-    fontSize: 17
+    fontSize: 15
     invisibles: {}
     showIndentGuide: true
     showInvisibles: true
+    softWrap: true
+  emmet: {}
+  "eslint-fixer":
+    zerror: {}
   "exception-reporting":
     userId: "d873afba-9978-f1e8-8be8-d03d4eb3fc34"
   "file-watcher":
@@ -69,18 +78,28 @@
   "linter-rubocop":
     command: "/Users/bluesquare/.rbenv/versions/2.3.1/bin/rubocop"
   "linter-spell": {}
-  "linter-ui-default": {}
+  "linter-ui-default":
+    panelHeight: 69
+    showPanel: true
   "markdown-preview-enhanced":
     enableTypographer: true
     enableWikiLinkSyntax: false
-    enableZenMode: true
     exportPDFPageFormat: "A4"
     frontMatterRenderingOption: "none"
     imageFolderPath: "media"
     openPreviewPaneAutomatically: false
+    orientation: "landscape"
     pdfUseGithub: false
     previewTheme: "atom-light-syntax"
     showBackToTopButton: false
+    usePandocParser: true
+  "markdown-preview-plus":
+    enablePandoc: true
+    pandocArguments: [
+      "--smart"
+    ]
+    pandocBIBFileFallback: "/Users/bluesquare/Dropbox/Notes/Zotero/My Library/My Library.bib"
+    pandocBibliography: true
   "markdown-writer":
     relativeImagePath: true
     renameImageOnCopy: true
@@ -94,13 +113,17 @@
   "prettier-atom":
     formatOnSaveOptions:
       enabled: true
+    prettierEslintOptions: {}
+    prettierOptions:
+      jsxBracketSameLine: true
     useEslint: true
   react:
     enabledForAllJavascriptFiles: true
   rspec:
     command: "foreman run rspec"
   "rubocop-auto-correct":
-    rubocopCommandPath: "/Users/boris/.rbenv/versions/2.3.1/bin/rubocop"
+    autoRun: true
+    rubocopCommandPath: "/Users/bluesquare/.rbenv/shims/rubocop"
   "seti-syntax":
     themeColor: "Purple"
   "seti-ui":
@@ -126,6 +149,8 @@
     hideVcsIgnoredFiles: true
   welcome:
     showOnStartup: false
+  "zotero-citations":
+    citationStyle: "pandoc"
 ".coffee.jsx.source":
   editor:
     autoIndentOnPaste: true

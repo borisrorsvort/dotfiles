@@ -18,3 +18,6 @@
     ~/.zlogin: zlogin
     ~/.zlogout: zlogout
     ~/.zshenv: zshenv
+
+- shell:
+    - 'gem install bundleup'

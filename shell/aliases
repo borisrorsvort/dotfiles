@@ -7,9 +7,9 @@ elif [[ $platform == 'Darwin' ]]; then
 fi
 
 # Shell
-alias aliases='atom ~/.dotfiles/shell/aliases'
+alias aliases='code ~/.dotfiles/shell/aliases'
 alias so='source ~/.zshrc'
-alias dotfiles='atom ~/.dotfiles/'
+alias dotfiles='code ~/.dotfiles/'
 alias dir="ls -R | grep ":" | sed -e 's/://' -e 's/[^-][^\/]*\//--/g' -e 's/^/ /' -e 's/-/|/'"
 
 # Heroku databases utils
@@ -21,6 +21,7 @@ alias db-backups='heroku pgbackups --remote production'
 
 # Legit
 alias up="git up"
+alias bu="bundleup"
 alias sync="up; gp"
 alias gs="tig status"
 alias branches="git branch -l"
@@ -41,3 +42,7 @@ alias rc='rails console'
 alias bake='bundle exec rake'
 alias be='bundle exec'
 alias killruby='killall -9 ruby'
+
+# Blsq
+
+alias dv="ruby ~/Sites/blsq_projects/blsq_projects.rb"
