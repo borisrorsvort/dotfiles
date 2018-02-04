@@ -7,7 +7,7 @@
 - clean: ['~']
 
 - link:
-    ~/.dev_srcipts: dev_scripts
+    ~/.dev_scripts: dev_scripts
     ~/.oh-my-zsh: oh-my-zsh
     ~/.gemrc: gemrc
     ~/.gitconfig: gitconfig
@@ -18,6 +18,9 @@
     ~/.zlogin: zlogin
     ~/.zlogout: zlogout
     ~/.zshenv: zshenv
+    ~/.janus: vim-config/janus
+    ~/.vimrc.before: vim-config/vimrc.before
+    ~/.vimrc.after: vim-config/vimrc.after
 
 - shell:
     - 'gem install bundleup'
