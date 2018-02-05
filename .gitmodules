@@ -19,3 +19,9 @@
 [submodule "vim-config/janus/goyo.vim"]
 	path = vim-config/janus/goyo.vim
 	url = https://github.com/junegunn/goyo.vim.git
+[submodule "vim-config/janus/vim-surround"]
+	path = vim-config/janus/vim-surround
+	url = https://github.com/tpope/vim-surround.git
+[submodule "vim-config/janus/auto-pairs"]
+	path = vim-config/janus/auto-pairs
+	url = https://github.com/jiangmiao/auto-pairs.git
