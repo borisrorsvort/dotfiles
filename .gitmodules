@@ -3,25 +3,19 @@
   url = https://github.com/robbyrussell/oh-my-zsh.git
 [submodule "dotbot"]
 	path = dotbot
-	url = https://github.com/anishathalye/dotbot
+	url = https://github.com/anishathalye/dotbot.git
 [submodule "dotbot-brew"]
 	path = dotbot-brew
 	url = https://github.com/d12frosted/dotbot-brew.git
 [submodule "dotbot-apt-get"]
 	path = dotbot-apt-get
-	url = https://github.com/rubenvereecken/dotbot-apt-get
+	url = https://github.com/rubenvereecken/dotbot-apt-get.git
 [submodule "vim-config/janus/vim-bepo"]
 	path = vim-config/janus/vim-bepo
 	url = https://github.com/michamos/vim-bepo/
 [submodule "vim-config/janus/vim-airline"]
 	path = vim-config/janus/vim-airline
 	url = https://github.com/vim-airline/vim-airline.git
-[submodule "vim-config/janus/focus.vim"]
-	path = vim-config/janus/focus.vim
-	url = https://github.com/merlinrebrovic/focus.vim
-[submodule "vim-config/janus/command-t"]
-	path = vim-config/janus/command-t
-	url = https://github.com/wincent/command-t.git
 [submodule "vim-config/janus/goyo.vim"]
 	path = vim-config/janus/goyo.vim
 	url = https://github.com/junegunn/goyo.vim.git

@@ -21,6 +21,5 @@
     ~/.janus: vim-config/janus
     ~/.vimrc.before: vim-config/vimrc.before
     ~/.vimrc.after: vim-config/vimrc.after
-
 - shell:
-    - 'gem install bundleup'
+    - [git submodule update --init --recursive, Installing submodules]
