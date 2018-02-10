@@ -19,7 +19,7 @@ export DROPBOX="$HOME/Dropbox"
 export MAMP_PHP=/Applications/MAMP/bin/php/php5.6.2/bin
 export PATH="$MAMP_PHP:$PATH"
 
-ZSH_THEME="hyperzsh"
+ZSH_THEME=hyperzsh
 
 plugins=(atom ant z zsh-syntax-highlighting git brew bundler gem git-flow history-substring-search osx rails ruby ssh-agent nyan cap zeus boris k)
 
