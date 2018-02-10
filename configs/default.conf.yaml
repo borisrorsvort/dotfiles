@@ -6,6 +6,9 @@
 
 - clean: ['~']
 
+- shell:
+    - [git submodule update --init --recursive, Installing submodules]
+
 - link:
     ~/.dev_scripts: dev_scripts
     ~/.oh-my-zsh: oh-my-zsh
@@ -18,8 +21,4 @@
     ~/.zlogin: zlogin
     ~/.zlogout: zlogout
     ~/.zshenv: zshenv
-    ~/.janus: vim-config/janus
-    ~/.vimrc.before: vim-config/vimrc.before
-    ~/.vimrc.after: vim-config/vimrc.after
-- shell:
-    - [git submodule update --init --recursive, Installing submodules]
+    ~/.oh-my-zsh/themes/hyperzsh.zsh-theme: shell/hyperzsh/hyperzsh.zsh-theme

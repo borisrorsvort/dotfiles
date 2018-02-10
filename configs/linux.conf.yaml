@@ -1,6 +1,5 @@
 - link:
     ~/.zshrc: linux/zshrc
-    ~/.atom/config.cson: linux/atom.cson
     ~/.dotfiles/dev_scripts/services.rb: linux/services.rb
     ~/.themes: themes
 

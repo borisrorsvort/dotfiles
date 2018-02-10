@@ -1,8 +1,5 @@
-- clean: ~/.atom/config.cson
-
 - link:
     ~/.zshrc: mac/zshrc
-    ~/.atom/config.cson: mac/atom.cson
     ~/.osx: mac/osx
     ~/.dotfiles/dev_scripts/services.rb: mac/services.rb
 
