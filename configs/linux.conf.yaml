@@ -3,53 +3,41 @@
     ~/.dotfiles/dev_scripts/services.rb: linux/services.rb
     ~/.themes: themes
 
-- shell:
-    - ['ruby -e $(curl -fsSL "https://raw.githubusercontent.com/Linuxbrew/install/master/install")', Installing Brew]
-    - [brew update, Updating Brew]
-
-- tap:
-    - caskroom/fonts
-
-- brew:
-    - ack
-    - autoconf
-    - ffmpeg
-    - fontconfig
-    - gcc
-    - geoip
-    - gh
-    - gifsicle
-    - gist
-    - git
-    - graphicsmagick
-    - imagemagick
-    - memcached
-    - node
-    - openssl
-    - ossp-uuid
-    - phantomjs
-    - pngcrush
-    - postgres
-    - python
-    - rbenv
-    - readline
-    - redis
-    - ruby-build
-    - ruby-install
-    - spark
-    - sqlite
-    - tig
-    - watchman
-    - webkit2png
-    - z
-    - zsh
+# - brew:
+#     - ack
+#     - autoconf
+#     - ffmpeg
+#     - fontconfig
+#     - gcc
+#     - geoip
+#     - gh
+#     - gifsicle
+#     - gist
+#     - git
+#     - graphicsmagick
+#     - imagemagick
+#     - memcached
+#     - node
+#     - openssl
+#     - ossp-uuid
+#     - phantomjs
+#     - pngcrush
+#     - postgres
+#     - python
+#     - rbenv
+#     - readline
+#     - redis
+#     - ruby-build
+#     - ruby-install
+#     - spark
+#     - sqlite
+#     - tig
+#     - watchman
+#     - webkit2png
+#     - z
+#     - zsh
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
-    - brew cleanup --force
-    - brew cask cleanup
     - ["chsh -s /bin/zsh", Set zsh as the default shell]
-    - initdb -D $HOME/.linuxbrew/var/postgres > /dev/null
     - gem install bundler
-    - gem install pg -- --with-pg-config=$HOME/.linuxbrew/bin/pg_config'
-    - [apm install --packages-file ~/.dotfiles/atom/package-list.txt, Installing atom packages]

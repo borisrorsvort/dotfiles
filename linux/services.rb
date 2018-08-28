@@ -3,10 +3,10 @@
 class Service
   COMMANDS = {
     postgresql: {
-      start: 'pg_ctl start -D $HOME/.linuxbrew/var/postgres -l logfile > /dev/null',
-      stop:  'pg_ctl stop -D $HOME/.linuxbrew/var/postgres 2> /dev/null; sudo pkill postgres 2> /dev/null',
-      ping:  'pg_ctl status -D $HOME/.linuxbrew/var/postgres | grep "server is running"',
-      pong:  'server is running'
+      start: 'sudo service postgresql start > /dev/null',
+      stop:  'sudo service postgresql stop > /dev/null',
+      ping:  'sudo service postgresql status | grep "active"',
+      pong:  'active'
     },
     # mongod: {
     #   start: 'brew services start mongodb > /dev/null',
@@ -27,10 +27,10 @@ class Service
     #   pong: 'started'
     # },
     redis: {
-      start: 'redis-server --daemonize yes',
-      stop: 'redis-cli shutdown',
-      ping: 'ps aux | grep redis-server',
-      pong: 'redis-server \*'
+      start: 'sudo service redis-server start > /dev/null',
+      stop: 'sudo service redis-server stop > /dev/null',
+      ping: 'sudo service redis-server status | grep "active"',
+      pong: 'active'
     }
   }.freeze
   ICONS = { on: '🍺', off: '💀', wait: '💬' }.freeze

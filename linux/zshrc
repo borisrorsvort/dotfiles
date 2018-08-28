@@ -31,7 +31,6 @@ source $HOME/.dotfiles/dev_scripts/k.sh
 source $HOME/.dotfiles/shell/aliases
 source $HOME/.dotfiles/shell/functions
 
-export PATH="$HOME/.rbenv/shims:$HOME/.linuxbrew/bin:$PATH:/usr/bin:/usr/local/bin:/bin"
-export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
-export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
+export PATH="$HOME/.rbenv/bin:$PATH:/usr/bin:/usr/local/bin:/bin"
 export PATH="$HOME/.yarn/bin:$PATH"
+eval "$(rbenv init -)"
