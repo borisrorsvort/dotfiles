@@ -2,6 +2,14 @@
 # Path to your oh-my-zsh configuration.
 ZSH="$HOME/.dotfiles/oh-my-zsh"
 
+# zlib
+# For compilers to find zlib you may need to set:
+export LDFLAGS="-L/usr/local/opt/zlib/lib"
+export CPPFLAGS="-I/usr/local/opt/zlib/include"
+
+# For pkg-config to find zlib you may need to set:
+export PKG_CONFIG_PATH="/usr/local/opt/zlib/lib/pkgconfig"
+
 # Autocomplete
 COMPLETION_WAITING_DOTS="true"
 
@@ -11,8 +19,8 @@ HISTFILE=~/.zsh_history
 SAVEHIST=20000
 
 # Editor
-export EDITOR="atom"
-export BUNDLER_EDITOR="atom"
+export EDITOR="code"
+export BUNDLER_EDITOR="code"
 
 export DROPBOX="$HOME/Dropbox"
 # MAMP

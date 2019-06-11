@@ -1,9 +1,10 @@
 [user]
-  name = Boris Rorsvort
-  email = boris.rorsvort@gmail.com
+	name = Boris Rorsvort
+	email = boris.rorsvort@gmail.com
+	signingkey = boris@rorsvort.com
 [core]
 	excludesfile = /Users/bluesquare/.gitignore
-  editor = atom
+  editor = code
 [alias]
   # Add
   ad = add
