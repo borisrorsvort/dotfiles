@@ -9,8 +9,6 @@
     - cmatrix
     - gcc
     - geoip
-    - gh
-    - gifsicle
     - gist
     - git
     - graphicsmagick
@@ -22,8 +20,6 @@
     - node
     - openssl
     - ossp-uuid
-    - phantomjs
-    - pngcrush
     - postgresql
     - python
     - rbenv
@@ -36,18 +32,15 @@
     - terminal-notifier
     - tig
     - watchman
-    - webkit2png
+    - yarn
     - wifi-password
     - z
     - zsh
 
 - shell:
     - [git submodule update --recursive, Installing submodules]
-    - [brew cleanup --force, Brew cleanup]
-    - brew cask cleanup
-    - rm -f -r /Library/Caches/Homebrew/*
-    - [apm install --packages-file ~/.dotfiles/atom/package-list.txt, Installing atom packages]
-    - [chsh -s /bin/zsh, Set zsh as the default shell]
+    - [brew cleanup, Brew cleanup]
+    - [rbenv install 2.5.2, Install new ruby]
+    - [rbenv global 2.5.2, Setting default ruby]
     - [gem install bundler, Installing bundler]
-    - [initdb -D /usr/local/var/postgres, Setting up postgres]
-    - ['gem install pg -- --with-pg-config=/usr/local/bin/pg_config', Installing postgres gem]
+    - [chsh -s /bin/zsh, Set zsh as the default shell]
