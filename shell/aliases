@@ -21,12 +21,11 @@ alias db-backups='heroku pgbackups --remote production'
 
 # Legit
 alias up="git up"
-alias bu="bundleup"
+alias bu="bundle update"
 alias sync="up; gp"
 alias gs="tig status"
 alias branches="git branch -l"
 alias bd="git branch -D"
-alias checkout="git branch checkout"
 alias develop="g checkout develop"
 alias master="g checkout master"
 alias amend="git commit --amend"
@@ -42,7 +41,3 @@ alias rc='rails console'
 alias bake='bundle exec rake'
 alias be='bundle exec'
 alias killruby='killall -9 ruby'
-
-# Blsq
-
-alias dv="ruby ~/Sites/blsq_projects/blsq_projects.rb"

@@ -8,24 +8,24 @@ class Service
       ping:  'brew services list | grep -E "postgresql"',
       pong:  'started'
     },
-    mongod: {
-      start: 'brew services start mongodb > /dev/null',
-      stop: 'brew services stop mongodb > /dev/null',
-      ping: 'brew services list | grep -E "mongodb"',
-      pong: 'started'
-    },
-    mysql: {
-      start: 'brew services start mysql > /dev/null',
-      stop: 'brew services stop mysql > /dev/null',
-      ping: 'brew services list | grep -E "mysql"',
-      pong: 'started'
-    },
-    nginx: {
-      start: 'brew services start nginx > /dev/null',
-      stop: 'brew services stop nginx > /dev/null',
-      ping: 'brew services list | grep -E "nginx"',
-      pong: 'started'
-    },
+    # mongod: {
+    #   start: 'brew services start mongodb > /dev/null',
+    #   stop: 'brew services stop mongodb > /dev/null',
+    #   ping: 'brew services list | grep -E "mongodb"',
+    #   pong: 'started'
+    # },
+    # mysql: {
+    #   start: 'brew services start mysql > /dev/null',
+    #   stop: 'brew services stop mysql > /dev/null',
+    #   ping: 'brew services list | grep -E "mysql"',
+    #   pong: 'started'
+    # },
+    # nginx: {
+    #   start: 'brew services start nginx > /dev/null',
+    #   stop: 'brew services stop nginx > /dev/null',
+    #   ping: 'brew services list | grep -E "nginx"',
+    #   pong: 'started'
+    # },
     memcached: {
       start: 'brew services start memcached > /dev/null',
       stop: 'brew services stop memcached > /dev/null',

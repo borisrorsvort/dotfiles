@@ -19,17 +19,13 @@ HISTFILE=~/.zsh_history
 SAVEHIST=20000
 
 # Editor
-export EDITOR="code"
-export BUNDLER_EDITOR="code"
-
 export DROPBOX="$HOME/Dropbox"
-# MAMP
 export MAMP_PHP=/Applications/MAMP/bin/php/php5.6.2/bin
 export PATH="$MAMP_PHP:$PATH"
 
 ZSH_THEME=hyperzsh
 
-plugins=(atom ant z zsh-syntax-highlighting git brew bundler gem git-flow history-substring-search osx rails ruby ssh-agent nyan cap zeus boris k)
+plugins=(ant z git brew bundler gem git-flow history-substring-search osx rails ruby ssh-agent)
 
 # Options
 unsetopt correct_all

@@ -1,6 +1,6 @@
 [user]
 	name = Boris Rorsvort
-	email = boris.rorsvort@gmail.com
+	email = boris@rorsvort.com
 	signingkey = boris@rorsvort.com
 [core]
 	excludesfile = /Users/bluesquare/.gitignore
