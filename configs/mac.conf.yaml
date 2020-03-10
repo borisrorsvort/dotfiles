@@ -1,46 +1,46 @@
 - link:
-    ~/.zshrc: mac/zshrc
-    ~/.osx: mac/osx
-    ~/.dotfiles/dev_scripts/services.rb: mac/services.rb
+      ~/.zshrc: mac/zshrc
+      ~/.osx: mac/osx
+      ~/.dotfiles/dev_scripts/services.rb: mac/services.rb
 
 - brew:
-    - ack
-    - autoconf
-    - cmatrix
-    - gcc
-    - geoip
-    - gist
-    - git
-    - graphicsmagick
-    - imagemagick
-    - memcached
-    - mongodb
-    - mysql
-    - nginx
-    - node
-    - openssl
-    - ossp-uuid
-    - postgresql
-    - python
-    - rbenv
-    - readline
-    - redis
-    - ruby-build
-    - ruby-install
-    - spark
-    - sqlite
-    - terminal-notifier
-    - tig
-    - watchman
-    - yarn
-    - wifi-password
-    - z
-    - zsh
+      - ack
+      - autoconf
+      - cmatrix
+      - gcc
+      - geoip
+      - gist
+      - git
+      - graphicsmagick
+      - imagemagick
+      - memcached
+      - mongodb
+      - mysql
+      - nginx
+      - node
+      - openssl
+      - ossp-uuid
+      - postgresql
+      - python
+      - rbenv
+      - readline
+      - redis
+      - ruby-build
+      - ruby-install
+      - spark
+      - sqlite
+      - terminal-notifier
+      - tig
+      - watchman
+      - wifi-password
+      - yarn
+      - z
+      - zsh
 
 - shell:
-    - [git submodule update --recursive, Installing submodules]
-    - [brew cleanup, Brew cleanup]
-    - [rbenv install 2.5.2, Install new ruby]
-    - [rbenv global 2.5.2, Setting default ruby]
-    - [gem install bundler, Installing bundler]
-    - [chsh -s /bin/zsh, Set zsh as the default shell]
+      - [git submodule update --recursive, Installing submodules]
+      - [brew cleanup, Brew cleanup]
+      - [rbenv install 2.6.5, Install new ruby]
+      - [rbenv global 2.6.5, Setting default ruby]
+      - [gem install bundler, Installing bundler]
+      - [chsh -s /bin/zsh, Set zsh as the default shell]
