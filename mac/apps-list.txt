@@ -1,0 +1,59 @@
+/Applications/Monosnap.app
+/Applications/Eagle.app
+/Applications/Postico.app
+/Applications/Figma.app
+/Applications/Airflow.app
+/Applications/Karabiner-Elements.app
+/Applications/Karabiner-EventViewer.app
+/Applications/SomaFM.app
+/Applications/Reeder.app
+/Applications/Capo.app
+/Applications/Xcode.app
+/Applications/Smart Converter.app
+/Applications/Jira.app
+/Applications/JSONPeep.app
+/Applications/DaisyDisk.app
+/Applications/Transmission.app
+/Applications/Mapping Tonal Harmony Pro.app
+/Applications/Affinity Designer.app
+/Applications/Mountain Duck.app
+/Applications/Safari.app
+/Applications/GPG Keychain.app
+/Applications/Rest.app
+/Applications/Tessitura Pro.app
+/Applications/Blender.app
+/Applications/calibre.app
+/Applications/zoom.us.app
+/Applications/WhatsApp.app
+/Applications/GitHub Desktop.app
+/Applications/Private Internet Access.app
+/Applications/Affinity Photo.app
+/Applications/LibreOffice.app
+/Applications/Fork.app
+/Applications/Enpass.app
+/Applications/Divvy.app
+/Applications/Brave Browser.app
+/Applications/Pages.app
+/Applications/GarageBand.app
+/Applications/Google Slides.app
+/Applications/1Password 7.app
+/Applications/IconKit.app
+/Applications/Paprika Recipe Manager 3.app
+/Applications/The Unarchiver.app
+/Applications/MuseScore 3.app
+/Applications/iReal Pro.app
+/Applications/Postico 2.app
+/Applications/iTerm.app
+/Applications/GoodNotes.app
+/Applications/Typora.app
+/Applications/Firefox.app
+/Applications/SiteSucker.app
+/Applications/Postman.app
+/Applications/Affinity Publisher.app
+/Applications/AdGuard for Safari.app
+/Applications/Kelir Pro.app
+/Applications/Sketch.app
+/Applications/Slack.app
+/Applications/iA Writer.app
+/Applications/Twitter.app
+/Applications/Garmin Express.app
