@@ -13,6 +13,7 @@
       - git
       - graphicsmagick
       - imagemagick
+      - lazygit
       - memcached
       - mongodb
       - mysql

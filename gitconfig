@@ -3,8 +3,8 @@
 	email = boris@rorsvort.com
 	signingkey = boris@rorsvort.com
 [core]
-	excludesfile = /Users/bluesquare/.gitignore
-  editor = code
+  editor = vim
+	ignorecase = false
 [alias]
   # Add
   ad = add
@@ -75,6 +75,7 @@
     protocol = https
 [pull]
   rebase = true
+	default = current
 [help]
   autocorrect = 1
 [filter "media"]

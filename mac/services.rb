@@ -4,9 +4,9 @@ class Service
   COMMANDS = {
     postgresql: {
       start: 'brew services start postgresql > /dev/null',
-      stop:  'brew services stop postgresql > /dev/null',
-      ping:  'brew services list | grep -E "postgresql"',
-      pong:  'started'
+      stop: 'brew services stop postgresql > /dev/null',
+      ping: 'brew services list | grep -E "postgresql"',
+      pong: 'started'
     },
     # mongod: {
     #   start: 'brew services start mongodb > /dev/null',
@@ -70,12 +70,14 @@ class Service
 
   def start
     return if running?
+
     system command(:start)
     wait_until(running: true)
   end
 
   def stop
     return unless running?
+
     system command(:stop)
     wait_until(running: false)
   end
@@ -89,6 +91,7 @@ class Service
   def wait_until(running: true, timeout: 10)
     timeout.times do
       break if running?(running)
+
       sleep(1)
     end
   end

@@ -23,12 +23,13 @@ alias db-backups='heroku pgbackups --remote production'
 alias up="git up"
 alias bu="bundle update"
 alias sync="up; gp"
-alias gs="tig status"
+alias gs="lazygit"
 alias branches="git branch -l"
 alias bd="git branch -D"
 alias develop="g checkout develop"
 alias master="g checkout master"
 alias amend="git commit --amend"
+alias migrate="bin/rails db:migrate db:rollback && bin/rails db:migrate db:test:prepare"
 
 # Wordpress
 alias wp="cd /Applications/MAMP/htdocs"
@@ -41,3 +42,4 @@ alias rc='rails console'
 alias bake='bundle exec rake'
 alias be='bundle exec'
 alias killruby='killall -9 ruby'
+alias notifyDone='terminal-notifier -title "Terminal" -message "Done with task!"'
