@@ -3,7 +3,7 @@
 	email = boris@rorsvort.com
 	signingkey = boris@rorsvort.com
 [core]
-  editor = vim
+  editor = code --wait
 	ignorecase = false
 [alias]
   # Add
@@ -86,12 +86,6 @@
   user = borisrorsvort
 [gh]
   protocol = https
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
-[mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
 [filter "lfs"]
 	required = true
 	clean = git-lfs clean -- %f

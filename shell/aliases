@@ -29,6 +29,7 @@ alias bd="git branch -D"
 alias develop="g checkout develop"
 alias master="g checkout master"
 alias amend="git commit --amend"
+alias fixup='git add .; git commit -am "fixup"; git push'
 alias migrate="bin/rails db:migrate db:rollback && bin/rails db:migrate db:test:prepare"
 
 # Wordpress
@@ -39,6 +40,7 @@ alias dev="ruby ~/.dotfiles/dev_scripts/services.rb"
 alias fr="foreman run"
 alias fs='foreman start'
 alias rc='rails console'
+alias rs='./bin/server'
 alias bake='bundle exec rake'
 alias be='bundle exec'
 alias killruby='killall -9 ruby'

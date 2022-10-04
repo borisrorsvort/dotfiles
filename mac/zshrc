@@ -1,20 +1,7 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
-# Zsh-
-# Path to your oh-my-zsh configuration.
+# Zsh Path to your oh-my-zsh configuration.
 ZSH="$HOME/.dotfiles/oh-my-zsh"
-ZSH_THEME="powerlevel10k/powerlevel10k"
-plugins=(ant z git brew bundler gem history-substring-search osx rails ruby ssh-agent nvm command-not-found)
-
-# zlib
-# For compilers to find zlib you may need to set:
-export LDFLAGS="-L/usr/local/opt/zlib/lib"
-export CPPFLAGS="-I/usr/local/opt/zlib/include"
+ZSH_THEME="af-magic"
+plugins=(ant z git brew bundler gem history-substring-search osx rails ruby nvm command-not-found)
 
 # For pkg-config to find zlib you may need to set:
 export PKG_CONFIG_PATH="/usr/local/opt/zlib/lib/pkgconfig"
@@ -27,57 +14,49 @@ HISTSIZE=20000
 HISTFILE=~/.zsh_history
 SAVEHIST=20000
 
-# Editor
-export MAMP_PHP=/Applications/MAMP/bin/php/php5.6.2/bin
-export PATH="$MAMP_PHP:$PATH"
-
 # Options
 unsetopt correct_all
 unsetopt correct
 
-# Oh My Zsh
 source $ZSH/oh-my-zsh.sh
 source $HOME/.dotfiles/dev_scripts/k.sh
-
-# Aliases/functions
 source $HOME/.dotfiles/shell/aliases
 source $HOME/.dotfiles/shell/functions
+
+export EDITOR="micro --wait"
+export BUNDLER_EDITOR="micro --wait"
+export LDFLAGS="-L/usr/local/opt/openssl@1.1/lib"
+export CPPFLAGS="-I/usr/local/opt/openssl@1.1/include"^
+export CC=/usr/bin/gcc
+export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
+export PATH="$HOME/.rbenv/bin:$HOME/.rbenv/shims:/usr/local/bin:/bin:/usr/sbin:/sbin:/usr/local/sbin:/usr/X11/bin:/usr/local/share/npm/bin:$PATH:`yarn global bin`"
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+# export PATH="/usr/local/opt/postgresql/bin:$PATH"
+# export PATH="/usr/local/opt/postgresql@12/bin:$PATH"
 
 # NVM config
 export NVM_DIR="$HOME/.nvm"
 NVM_HOMEBREW="/usr/local/opt/nvm/nvm.sh"
 [ -s "$NVM_HOMEBREW" ] && \. "$NVM_HOMEBREW"
 
-# Open ssl
-export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
-export LDFLAGS="-L/usr/local/opt/openssl@1.1/lib"
-export CPPFLAGS="-I/usr/local/opt/openssl@1.1/include"^
-
-# Rbenv
-export CC=/usr/bin/gcc
-export PATH="$HOME/.rbenv/bin:$HOME/.rbenv/shims:/usr/local/bin:/bin:/usr/sbin:/sbin:/usr/local/sbin:/usr/X11/bin:/usr/local/share/npm/bin:$PATH:`yarn global bin`"
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-export PATH="/usr/local/opt/postgresql/bin:$PATH"
-export PATH="/usr/local/opt/postgresql@12/bin:$PATH"
-
-# eval "$(rbenv init -); ssh-add -A"
+echo 'ssh-agent loaded'
+eval "$(ssh-agent -s)"
 eval "$(rbenv init -)"
+echo 'Rbenv loaded'
 
-# place this after nvm initialization!
 # autoload -U add-zsh-hook
-# load-nvmrc() {
-#   if [[ -f .nvmrc && -r .nvmrc ]]; then
-#     nvm use
-#   elif [[ $(nvm version) != $(nvm version default)  ]]; then
-#     echo "Reverting to nvm default version"
-#     nvm use default
-#   fi
-# }
-# add-zsh-hook chpwd load-nvmrc
-# load-nvmrc
+load-nvmrc() {
+  if [[ -f .nvmrc && -r .nvmrc ]]; then
+    nvm use
+  elif [[ $(nvm version) != $(nvm version default)  ]]; then
+    echo "Reverting to nvm default version"
+    nvm use default
+  fi
+}
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+add-zsh-hook chpwd load-nvmrc
+echo 'Loading nvmrc'
+load-nvmrc
+
+# # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 # [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
