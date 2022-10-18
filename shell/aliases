@@ -7,9 +7,10 @@ elif [[ $platform == 'Darwin' ]]; then
 fi
 
 # Shell
-alias aliases='code ~/.dotfiles/shell/aliases'
+alias v='lvim'
+alias aliases='lvim ~/.dotfiles/shell/aliases'
 alias so='source ~/.zshrc'
-alias dotfiles='code ~/.dotfiles/'
+alias dotfiles='lvim ~/.dotfiles/'
 alias dir="ls -R | grep ":" | sed -e 's/://' -e 's/[^-][^\/]*\//--/g' -e 's/^/ /' -e 's/-/|/'"
 
 # Heroku databases utils
