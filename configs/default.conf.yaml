@@ -1,24 +1,23 @@
 - defaults:
-    link:
-      create: true
-      relink: true
-      force: true
+      link:
+          create: true
+          relink: true
+          force: true
 
-- clean: ['~']
+- clean: ["~"]
 
 - shell:
-    - [git submodule update --init --recursive, Installing submodules]
+      - [git submodule update --init --recursive, Installing submodules]
 
 - link:
-    ~/.dev_scripts: dev_scripts
-    ~/.oh-my-zsh: oh-my-zsh
-    ~/.gemrc: gemrc
-    ~/.gitconfig: gitconfig
-    ~/.gitignore: gitignore
-    ~/.irbrc: irbrc
-    ~/.screenrc: screenrc
-    ~/.psqlrc: psqlrc
-    ~/.zlogin: zlogin
-    ~/.zlogout: zlogout
-    ~/.zshenv: zshenv
-    ~/.oh-my-zsh/themes/hyperzsh.zsh-theme: shell/hyperzsh/hyperzsh.zsh-theme
+      ~/.dev_scripts: dev_scripts
+      ~/.oh-my-zsh: oh-my-zsh
+      ~/.gemrc: gemrc
+      ~/.gitconfig: gitconfig
+      ~/.gitignore: gitignore
+      ~/.irbrc: irbrc
+      ~/.screenrc: screenrc
+      ~/.psqlrc: psqlrc
+      ~/.zlogin: zlogin
+      ~/.zlogout: zlogout
+      ~/.zshenv: zshenv
