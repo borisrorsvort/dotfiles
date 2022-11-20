@@ -46,3 +46,6 @@ alias bake='bundle exec rake'
 alias be='bundle exec'
 alias killruby='killall -9 ruby'
 alias notifyDone='terminal-notifier -title "Terminal" -message "Done with task!"'
+
+# Notes
+alias notes='lvim ~/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/Notes'

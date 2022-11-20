@@ -1,7 +1,7 @@
 # Zsh Path to your oh-my-zsh configuration.
-ZSH="$HOME/.dotfiles/oh-my-zsh"
+ZSH="$HOME/oh-my-zsh"
 ZSH_THEME="af-magic"
-plugins=(ant z git brew bundler gem history-substring-search osx rails ruby nvm command-not-found)
+plugins=(z git brew bundler rbenv node npm gem rails ruby command-not-found ssh-agent ls nvm)
 
 # For pkg-config to find zlib you may need to set:
 export PKG_CONFIG_PATH="/usr/local/opt/zlib/lib/pkgconfig"
@@ -19,7 +19,6 @@ unsetopt correct_all
 unsetopt correct
 
 source $ZSH/oh-my-zsh.sh
-source $HOME/.dotfiles/dev_scripts/k.sh
 source $HOME/.dotfiles/shell/aliases
 source $HOME/.dotfiles/shell/functions
 
@@ -34,18 +33,17 @@ export PATH="$HOME/.rbenv/bin:$HOME/.rbenv/shims:/usr/local/bin:/bin:/usr/sbin:/
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 # NVM config
-export NVM_DIR="$HOME/.nvm"
-NVM_HOMEBREW="/usr/local/opt/nvm/nvm.sh"
-[ -s "$NVM_HOMEBREW" ] && \. "$NVM_HOMEBREW"
+export NVM_LAZY=1
+export NVM_AUTOLOAD=1
+export NVM_HOMEBREW=$(brew --prefix nvm)
 
-eval "$(ssh-agent -s)"
+# eval "$(ssh-agent -s)"
 eval "$(rbenv init -)"
 
 autoload -U add-zsh-hook
 use_nvmrc_version_automatically() {
   if [[ -f .nvmrc ]]; then
-    echo ".nvmrc FOUND now INSTALLING and USING $(cat .nvmrc)"
-    nvm install $(cat .nvmrc) && nvm use $(cat .nvmrc)
+    nvm use $(cat .nvmrc)
   fi
 }
 add-zsh-hook chpwd use_nvmrc_version_automatically
