@@ -1,12 +1,10 @@
 -- general
-
 -- lvim.keys.normal_mode["<S-l>"] = ":BufferLineCycleNext<CR>"
 -- lvim.keys.normal_mode["<S-h>"] = ":BufferLineCyclePrev<CR>"
 -- unmap a default keymapping
 -- vim.keymap.del("n", "<C-Up>")
 -- override a default keymapping
 -- lvim.keys.normal_mode["<C-q>"] = ":q<cr>" -- or vim.keymap.set("n", "<C-q>", ":q<cr>" )
-
 -- Change Telescope navigation to use j and k for navigation and n and p for history in both input and normal mode.
 -- we use protected-mode (pcall) just in case the plugin wasn't loaded yet.
 -- local _, actions = pcall(require, "telescope.actions")
@@ -24,11 +22,12 @@
 --     ["<C-k>"] = actions.move_selection_previous,
 --   },
 -- }
-
-
 -- VIM general settings
-
-vim.filetype.add { extension = { mjml = "eruby" } }
+vim.filetype.add {
+  extension = {
+    mjml = "eruby"
+  }
+}
 vim.opt.mouse = "a" -- allow the mouse to be used in neovim
 vim.opt.relativenumber = true
 lvim.log.level = "warn"
@@ -41,21 +40,11 @@ lvim.builtin.terminal.active = true
 lvim.builtin.nvimtree.setup.view.side = "left"
 
 lvim.builtin.nvimtree.setup.renderer.icons.show.git = true
-lvim.builtin.nvimtree.setup.live_filter = { always_show_folders = false }
-lvim.builtin.treesitter.ensure_installed = {
-  "bash",
-  "c",
-  "javascript",
-  "json",
-  "lua",
-  "python",
-  "typescript",
-  "tsx",
-  "ruby",
-  "css",
-  "rust",
-  "yaml",
+lvim.builtin.nvimtree.setup.live_filter = {
+  always_show_folders = false
 }
+lvim.builtin.treesitter.ensure_installed = { "bash", "c", "javascript", "json", "lua", "python", "typescript", "tsx",
+  "ruby", "css", "rust", "yaml" }
 
 lvim.builtin.treesitter.ignore_install = { "haskell" }
 lvim.builtin.treesitter.highlight.enable = true
@@ -64,8 +53,8 @@ lvim.builtin.telescope.pickers.live_grep = {
   layout_config = {
     width = 0.9,
     height = 0.9,
-    prompt_position = "bottom",
-  },
+    prompt_position = "bottom"
+  }
 }
 
 lvim.builtin.telescope.pickers.grep_string = {
@@ -73,8 +62,8 @@ lvim.builtin.telescope.pickers.grep_string = {
   layout_config = {
     width = 0.9,
     height = 0.9,
-    prompt_position = "bottom",
-  },
+    prompt_position = "bottom"
+  }
 }
 
 -- generic LSP settings
@@ -175,7 +164,7 @@ lvim.builtin.which_key.mappings["T"] = {
   name = "Test",
   f = { "<cmd>TestFile<cr>", "File" },
   n = { "<cmd>TestNearest<cr>", "Nearest" },
-  s = { "<cmd>TestSuite<cr>", "Suite" },
+  s = { "<cmd>TestSuite<cr>", "Suite" }
 }
 
 lvim.builtin.which_key.mappings["s"] = {
@@ -192,26 +181,18 @@ lvim.builtin.which_key.mappings["s"] = {
   t = { "<cmd>Telescope live_grep<cr>", "Text" },
   k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
   C = { "<cmd>Telescope commands<cr>", "Commands" },
-  p = {
-    "<cmd>lua require('telescope.builtin').colorscheme({enable_preview = true})<cr>",
-    "Colorscheme with Preview",
-  }
+  p = { "<cmd>lua require('telescope.builtin').colorscheme({enable_preview = true})<cr>", "Colorscheme with Preview" }
 }
-
 
 -- Additional Plugins
-lvim.plugins = {
-  { "michamos/vim-bepo" },
-  -- { 'Ergodis/vim-bepo' },
-  { "vim-test/vim-test" },
-  { 'tpope/vim-rails' },
-  { 'tpope/vim-unimpaired' },
-  { 'machakann/vim-sandwich' },
-  { 'phaazon/hop.nvim' }
-}
+lvim.plugins = { { "michamos/vim-bepo" }, -- { 'Ergodis/vim-bepo' },
+  { "vim-test/vim-test" }, { 'tpope/vim-rails' }, { 'tpope/vim-unimpaired' }, { 'machakann/vim-sandwich' },
+  { 'phaazon/hop.nvim' } }
 
 local function map(mode, lhs, rhs, opts)
-  local options = { noremap = true }
+  local options = {
+    noremap = true
+  }
   if opts then
     options = vim.tbl_extend("force", options, opts)
   end

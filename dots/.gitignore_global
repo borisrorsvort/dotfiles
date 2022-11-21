@@ -6,3 +6,6 @@
 .idea
 
 !.gitkeep
+
+
+~/dotfiles/lvim/plugin/packer_compiled.lua

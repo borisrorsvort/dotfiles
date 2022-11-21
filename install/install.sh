@@ -7,7 +7,7 @@ DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && cd .. && pwd )"
 
 # Clear cache
 . "$DOTFILES_DIR/bin/dotfiles" clean
-# Clear cache
+# Add symlinks
 . "$DOTFILES_DIR/bin/dotfiles" symlinks
 
 # Replace default hosts file
@@ -16,5 +16,6 @@ DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && cd .. && pwd )"
 # Add keys from keychain to ssh agent
 ssh-add -A 2>/dev/null;
 
-# Set zsh as default shell
+zsh
+
 chsh -s /bin/zsh
