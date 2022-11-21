@@ -39,7 +39,6 @@ sub_clean () {
     brew cleanup
     npm cache clean --force
     yarn cache clean
-    composer clear-cache
     echo -e "${GREEN}$ARROW Success! Clean command finished.${NC}"
 }
 
