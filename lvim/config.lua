@@ -43,8 +43,10 @@ lvim.builtin.nvimtree.setup.renderer.icons.show.git = true
 lvim.builtin.nvimtree.setup.live_filter = {
   always_show_folders = false
 }
-lvim.builtin.treesitter.ensure_installed = { "bash", "c", "javascript", "json", "lua", "python", "typescript", "tsx",
-  "ruby", "css", "rust", "yaml" }
+
+lvim.builtin.treesitter.ensure_installed = {
+  "bash", "c", "javascript", "json", "lua", "python", "typescript", "tsx", "ruby", "css", "rust", "yaml"
+}
 
 lvim.builtin.treesitter.ignore_install = { "haskell" }
 lvim.builtin.treesitter.highlight.enable = true
@@ -141,23 +143,30 @@ lvim.builtin.telescope.pickers.grep_string = {
 --   },
 -- }
 
-local nvim_lsp = require("lspconfig")
-
-nvim_lsp.solargraph.setup {
-  filetypes = { "ruby", "rakefile" },
-  root_dir = nvim_lsp.util.root_pattern("Gemfile", ".git", "."),
-  settings = {
-    solargraph = {
-      autoformat = true,
-      completion = true,
-      diagnostic = true,
-      folding = true,
-      references = true,
-      rename = true,
-      symbols = true
+-- local nvim_lsp = require("lspconfig")
+require("lspconfig").ruby_ls.setup {
+  init_options = {
+    enabledFeatures = {
+      "codeActions", "diagnostics", "documentHighlights", "documentSymbols", "formatting", "inlayHint", "hover"
     }
   }
 }
+-- require("lspconfig").solargraph.setup {
+--   filetypes = { "ruby", "rakefile" },
+--   settings = {
+--     solargraph = {
+--       autoformat = true,
+--       completion = true,
+--       diagnostic = true,
+--       logLevel = "debug",
+--       folding = true,
+--       references = true,
+--       formatting = true,
+--       rename = true,
+--       symbols = true
+--     }
+--   }
+-- }
 
 lvim.builtin.terminal.active = true
 lvim.builtin.which_key.mappings["T"] = {
@@ -185,9 +194,14 @@ lvim.builtin.which_key.mappings["s"] = {
 }
 
 -- Additional Plugins
-lvim.plugins = { { "michamos/vim-bepo" }, -- { 'Ergodis/vim-bepo' },
-  { "vim-test/vim-test" }, { 'tpope/vim-rails' }, { 'tpope/vim-unimpaired' }, { 'machakann/vim-sandwich' },
-  { 'phaazon/hop.nvim' } }
+lvim.plugins = {
+  { "michamos/vim-bepo" }, -- { 'Ergodis/vim-bepo' },
+  { "vim-test/vim-test" },
+  { 'tpope/vim-rails' },
+  { 'tpope/vim-unimpaired' },
+  { 'machakann/vim-sandwich' },
+  { 'phaazon/hop.nvim' }
+}
 
 local function map(mode, lhs, rhs, opts)
   local options = {

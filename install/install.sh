@@ -16,6 +16,5 @@ DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && cd .. && pwd )"
 # Add keys from keychain to ssh agent
 ssh-add -A 2>/dev/null;
 
-zsh
-
 chsh -s /bin/zsh
+zsh
