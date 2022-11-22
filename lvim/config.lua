@@ -36,6 +36,8 @@ lvim.colorscheme = "tokyonight-night"
 lvim.leader = "space"
 lvim.builtin.alpha.mode = "dashboard"
 lvim.builtin.terminal.active = true
+lvim.builtin.terminal.open_mapping = [[<c-t>]]
+lvim.builtin.terminal.direction = "horizontal"
 
 lvim.builtin.nvimtree.setup.view.side = "left"
 
@@ -85,7 +87,9 @@ lvim.builtin.telescope.pickers.grep_string = {
 -- }
 
 -- ---@usage disable automatic installation of servers
--- lvim.lsp.installer.setup.automatic_installation = false
+lvim.lsp.installer.setup.automatic_installation = false
+-- vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "solargraph" })
+
 
 -- ---configure a server manually. !!Requires `:LvimCacheReset` to take effect!!
 -- ---see the full default list `:lua print(vim.inspect(lvim.lsp.automatic_configuration.skipped_servers))`
@@ -144,19 +148,46 @@ lvim.builtin.telescope.pickers.grep_string = {
 -- }
 
 -- local nvim_lsp = require("lspconfig")
-require("lspconfig").ruby_ls.setup {
-  init_options = {
-    enabledFeatures = {
-      "codeActions", "diagnostics", "documentHighlights", "documentSymbols", "formatting", "inlayHint", "hover"
+-- require("lspconfig").ruby_ls.setup {
+--   init_options = {
+--     enabledFeatures = {
+--       "codeActions", "diagnostics", "documentHighlights", "documentSymbols", "formatting", "inlayHint", "hover"
+--     }
+--   }
+-- }
+
+local common_opts = require("lvim/lsp").get_common_opts()
+vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "solargraph" })
+local util = require("lspconfig/util")
+local opts = {
+  cmd = { "solargraph", "stdio" },
+  filetypes = { "ruby" },
+  root_dir = util.root_pattern("Gemfile", ".git"),
+  settings = {
+    solargraph = {
+      autoformat = true,
+      completion = true,
+      useBundler = true,
+      diagnostic = true,
+      logLevel = "debug",
+      folding = true,
+      references = true,
+      formatting = true,
+      rename = true,
+      symbols = true
     }
-  }
+  },
 }
+require("lspconfig")["solargraph"].setup(vim.tbl_extend("force", opts, common_opts))
 -- require("lspconfig").solargraph.setup {
+
+--   cmd = { "solargraph", "stdio" },
 --   filetypes = { "ruby", "rakefile" },
 --   settings = {
 --     solargraph = {
 --       autoformat = true,
 --       completion = true,
+--       useBundler = true,
 --       diagnostic = true,
 --       logLevel = "debug",
 --       folding = true,
@@ -168,7 +199,6 @@ require("lspconfig").ruby_ls.setup {
 --   }
 -- }
 
-lvim.builtin.terminal.active = true
 lvim.builtin.which_key.mappings["T"] = {
   name = "Test",
   f = { "<cmd>TestFile<cr>", "File" },
@@ -215,6 +245,7 @@ end
 
 map("n", "<C-b>", "<cmd>BufferLineCyclePrev<cr>")
 map("n", "<C-é>", "<cmd>BufferLineCycleNext<cr>")
+
 require('hop').setup();
 map("n", "f", "<cmd>lua require'hop'.hint_words()<cr>")
 map("n", "F", "<cmd>lua require'hop'.hint_lines()<cr>")
