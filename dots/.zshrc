@@ -130,6 +130,7 @@ alias dir="ls -R | grep ":" | sed -e 's/://' -e 's/[^-][^\/]*\//--/g' -e 's/^/ /
 alias up="git up"
 alias bu="bundle update"
 alias sync="up; gp"
+alias fixup='gc -am "fix: quickfix"; gp'
 alias gs="lazygit"
 alias develop="g checkout develop"
 alias master="g checkout master"
