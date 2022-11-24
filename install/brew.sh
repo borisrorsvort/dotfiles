@@ -46,6 +46,8 @@ brew install zsh
 brew install heroku
 brew install htop
 brew install neovim
+brew install gnu-sed # nvim pluging spectre requirement
+brew install ripgrep
 
 # Wait a bit before moving on...
 sleep 1

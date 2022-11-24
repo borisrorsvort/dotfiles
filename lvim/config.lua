@@ -70,7 +70,31 @@ lvim.lsp.installer.setup.automatic_installation = false
 lvim.plugins = {
   { "michamos/vim-bepo" },
   { "vim-test/vim-test" },
-  { 'tpope/vim-rails' },
+  {
+    "tpope/vim-rails",
+    cmd = {
+      "Eview",
+      "Econtroller",
+      "Emodel",
+      "Smodel",
+      "Sview",
+      "Scontroller",
+      "Vmodel",
+      "Vview",
+      "Vcontroller",
+      "Tmodel",
+      "Tview",
+      "Tcontroller",
+      "Rails",
+      "Generate",
+      "Runner",
+      "Extract"
+    }
+  },
+  {
+    "tpope/vim-bundler",
+    cmd = { "Bundler", "Bopen", "Bsplit", "Btabedit" }
+  },
   { 'tpope/vim-unimpaired' },
   { 'machakann/vim-sandwich' },
   { 'phaazon/hop.nvim' },
@@ -78,6 +102,42 @@ lvim.plugins = {
     "ray-x/lsp_signature.nvim",
     event = "BufRead",
     config = function() require "lsp_signature".on_attach() end,
+  },
+  { 'nvim-lua/plenary.nvim' },
+  { 'windwp/nvim-spectre',
+    event = "BufRead",
+    config = function()
+      require("spectre").setup({
+        live_update = true,
+        is_insert_mode = true
+      })
+    end
+  },
+  {
+    "karb94/neoscroll.nvim",
+    event = "WinScrolled",
+    config = function()
+      require('neoscroll').setup({
+        -- All these keys will be mapped to their corresponding default scrolling animation
+        mappings = { '<C-u>', '<C-d>', '<C-b>', '<C-f>',
+          '<C-y>', '<C-e>', 'zt', 'zz', 'zb' },
+        hide_cursor = true, -- Hide cursor while scrolling
+        stop_eof = true, -- Stop at <EOF> when scrolling downwards
+        use_local_scrolloff = false, -- Use the local scope of scrolloff instead of the global scope
+        respect_scrolloff = false, -- Stop scrolling when the cursor reaches the scrolloff margin of the file
+        cursor_scrolls_alone = true, -- The cursor will keep on scrolling even if the window cannot scroll further
+        easing_function = nil, -- Default easing function
+        pre_hook = nil, -- Function to run before the scrolling animation starts
+        post_hook = nil, -- Function to run after the scrolling animation ends
+      })
+    end
+  },
+  {
+    "folke/todo-comments.nvim",
+    event = "BufRead",
+    config = function()
+      require("todo-comments").setup()
+    end,
   }
 }
 
@@ -107,9 +167,6 @@ require("lspconfig")["solargraph"].setup(vim.tbl_extend("force", opts, common_op
 -- require "lsp_signature".setup();
 require('hop').setup();
 
-
-
-
 local function map(mode, lhs, rhs, opts)
   local options = {
     noremap = true
@@ -120,9 +177,24 @@ local function map(mode, lhs, rhs, opts)
   vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
-map("n", "<C-n>", "<cmd>:bnext<cr>")
+map("n", "<C-r>", "<cmd>:bnext<cr>")
 map("n", "<C-c>", "<cmd>:bprevious<cr>")
 map("n", "f", "<cmd>lua require'hop'.hint_words()<cr>")
 map("n", "F", "<cmd>lua require'hop'.hint_lines()<cr>")
 map("v", "f", "<cmd>lua require'hop'.hint_words()<cr>")
 map("v", "F", "<cmd>lua require'hop'.hint_lines()<cr>")
+map("n", "S", "<cmd>lua require('spectre').open_visual()<cr>")
+
+
+-- function _G.set_terminal_keymaps()
+--   local term_option = { buffer = 0 }
+--   vim.keymap.set('t', '<esc>', [[<C-\><C-n>]], term_option)
+--   vim.keymap.set('t', 'ts', [[<C-\><C-n>]], term_option)
+--   vim.keymap.set('t', '<C-c>', [[<Cmd>wincmd h<CR>]], term_option)
+--   vim.keymap.set('t', '<C-t>', [[<Cmd>wincmd j<CR>]], term_option)
+--   vim.keymap.set('t', '<C-s>', [[<Cmd>wincmd k<CR>]], term_option)
+--   vim.keymap.set('t', '<C-r>', [[<Cmd>wincmd l<CR>]], term_option)
+-- end
+
+-- -- if you only want these mappings for toggle term use term://*toggleterm#* instead
+-- vim.cmd('autocmd! TermOpen term://toggleterm#* lua set_terminal_keymaps()')
