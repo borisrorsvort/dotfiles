@@ -34,9 +34,9 @@ export PATH="$HOME/.rbenv/bin:$HOME/.rbenv/shims:/usr/local/bin:/bin:/usr/sbin:/
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 # NVM config
-export NVM_LAZY=1
-export NVM_AUTOLOAD=1
-export NVM_HOMEBREW=$(brew --prefix nvm)
+# export NVM_LAZY=1
+# export NVM_AUTOLOAD=1
+# export NVM_HOMEBREW=$(brew --prefix nvm)
 
 # eval "$(ssh-agent -s)"
 eval "$(rbenv init -)"
@@ -73,10 +73,10 @@ eval "$(rbenv init -)"
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
+ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
@@ -139,6 +139,7 @@ alias rc='rails console'
 alias rs='./bin/server'
 alias be='bundle exec'
 alias killruby='killall -9 ruby'
+alias killnode='killall -9 node'
 
 function feat {
   git checkout -b feature/$1
