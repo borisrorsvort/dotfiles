@@ -25,21 +25,10 @@ source $ZSH/oh-my-zsh.sh
 
 export EDITOR="lvim"
 export BUNDLER_EDITOR="lvim"
-export LDFLAGS="-L/usr/local/opt/openssl@1.1/lib"
-export CPPFLAGS="-I/usr/local/opt/openssl@1.1/include"^
 export CC=/usr/bin/gcc
-export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
-export PATH="$HOME/.local/bin:$PATH"
-export PATH="$HOME/.rbenv/bin:$HOME/.rbenv/shims:/usr/local/bin:/bin:/usr/sbin:/sbin:/usr/local/sbin:/usr/X11/bin:/usr/local/share/npm/bin:$PATH:`yarn global bin`"
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-
-# NVM config
-# export NVM_LAZY=1
-# export NVM_AUTOLOAD=1
-# export NVM_HOMEBREW=$(brew --prefix nvm)
-
-# eval "$(ssh-agent -s)"
-eval "$(rbenv init -)"
+PATH="$HOME/.local/bin:$PATH"
+PATH="$HOME/.yarn/bin:$PATH"
+export PATH="$PATH:`yarn global bin`"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -78,42 +67,12 @@ ENABLE_CORRECTION="true"
 # Uncomment the following line to display red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true"
 
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# You can set one of the optional three formats:
-# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# or set a custom format using the strftime function format specifications,
-# see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
-# Which plugins would you like to load?
-# Standard plugins can be found in ~/.oh-my-zsh/plugins/*
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-
-
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -141,26 +100,14 @@ alias be='bundle exec'
 alias killruby='killall -9 ruby'
 alias killnode='killall -9 node'
 
-function feat {
-  git checkout -b feature/$1
-}
+# Generator for git flow branch names
+branch_prefixes=("feature" "fix" "chore" "refactor" "build")
 
-function fix {
-  git checkout -b fix/$1
-}
+for prefix in "${branch_prefixes[@]}"; do
+  eval "function ${prefix} { git checkout -b ${prefix}/\$1; }"
+done
 
-function chore {
-  git checkout -b chore/$1
-}
-
-function refactor {
-  git checkout -b refactor/$1
-}
-
-function build {
-  git checkout -b build/$1
-}
-
+# NVM detection
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
@@ -188,3 +135,4 @@ add-zsh-hook chpwd load-nvmrc
 load-nvmrc
 
 eval "$(starship init zsh)"
+eval "$(rbenv init -)"
