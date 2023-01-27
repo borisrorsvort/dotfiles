@@ -104,7 +104,7 @@ alias killnode='killall -9 node'
 branch_prefixes=("feature" "fix" "chore" "refactor" "build")
 
 for prefix in "${branch_prefixes[@]}"; do
-  eval "function ${prefix} { git checkout -b ${prefix}/\$1; }"
+  typeset -fx "${prefix}(){ git checkout -b ${prefix}/\$1; }"
 done
 
 # NVM detection
