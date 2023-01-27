@@ -20,7 +20,12 @@ vim.filetype.add {
 }
 lvim.log.level = "warn"
 lvim.format_on_save.enabled = true
-lvim.colorscheme = "lunar"
+-- lvim.builtin.theme.name="tokyonight" -- temp fix to get the light bg
+-- vim.opt.background = "light"
+-- vim.opt.termguicolors = true
+lvim.colorscheme = "tokyonight-night"
+vim.opt.cmdheight = 4
+vim.opt.guifont = "Fira Code:h16"
 lvim.builtin.alpha.dashboard.section.header.val = {
   "        `       --._    `-._   `-.   `.     :   /  .'   .-'   _.-'    _.--'                 ",
   "        `--.__     `--._   `-._  `-.  `. `. : .' .'  .-'  _.-'   _.--'     __.--'           ",
@@ -58,7 +63,7 @@ lvim.keys.visual_mode["F"] = "<cmd>lua require'hop'.hint_lines()<cr>"
 lvim.keys.normal_mode["<C-f>"] = "<cmd>lua require('spectre').open()<cr>"
 lvim.keys.normal_mode["<CS-f>"] = "<cmd>lua require('spectre').close()<cr>"
 -- lvim.keys.normal_mode["<CS-F>"] = "<Plug>CtrlSFPrompt"
-lvim.keys.visual_mode["<leader>m"] = "<Esc><cmd>lua require('telescope').extensions.refactoring.refactors()<CR>"
+-- lvim.keys.visual_mode["<leader>m"] = "<Esc><cmd>lua require('telescope').extensions.refactoring.refactors()<CR>"
 
 -- unmap a default keymapping
 -- vim.keymap.del("n", "<C-Up>")
@@ -119,11 +124,34 @@ lvim.builtin.nvimtree.setup.renderer.icons.show.git = true
 lvim.builtin.nvimtree.setup.live_filter = {
     always_show_folders = false
 }
+lvim.builtin.nvimtree.setup.view.mappings.list = {
+  { key = "s", action = "" }, -- remove default mapping to allow the remapped move key s to work
+}
+
+
 -- if you don't want all the parsers change this to a table of the ones you want
 -- lvim.builtin.treesitter.ensure_installed = { "all" }
 
 lvim.builtin.treesitter.ignore_install = {"haskell"}
 lvim.builtin.treesitter.highlight.enable = true
+lvim.builtin.treesitter.matchup.enable = true
+lvim.builtin.dap.on_config_done = function(dap)
+  dap.configurations.rb = {
+    type = 'ruby';
+    request = 'launch';
+    name = 'Rails';
+    program = 'foreman';
+    programArgs = {'start', '-f', 'Procfile.dev'};
+    useBundler = true;
+  }
+  dap.adapters.ruby = {
+    type = 'executable';
+    command = 'bundle';
+    args = {'exec', 'readapt', 'stdio'};
+  }
+  dap.configurations.ruby = dap.configurations.rb
+end
+
 
 -- generic LSP settings
 
@@ -132,15 +160,6 @@ lvim.builtin.treesitter.highlight.enable = true
 --     "sumneko_lua",
 --     "jsonls",
 -- }
--- -- change UI setting of `LspInstallInfo`
--- -- see <https://github.com/williamboman/nvim-lsp-installer#default-configuration>
--- lvim.lsp.installer.setup.ui.check_outdated_servers_on_open = false
--- lvim.lsp.installer.setup.ui.border = "rounded"
--- lvim.lsp.installer.setup.ui.keymaps = {
---     uninstall_server = "d",
---     toggle_server_expand = "o",
--- }
-
 -- ---@usage disable automatic installation of servers
 -- lvim.lsp.installer.setup.automatic_installation = false
 
@@ -265,7 +284,7 @@ lvim.plugins = {
         load_coverage_cb = function (ftype)
             vim.notify("Loaded " .. ftype .. " coverage")
         end,
-        lang = { javascript = {coverage_file = "./coverage/resultset.json"}}
+        -- lang = { ruby = {coverage_file = "./coverage/.resultset.json"}}
       })
     end,
   },
@@ -326,7 +345,6 @@ lvim.plugins = {
         require"lsp_signature".on_attach()
     end
   }, 
-  {'nvim-lua/plenary.nvim'}, 
   {
     'windwp/nvim-spectre',
     event = "BufRead",
@@ -360,6 +378,19 @@ lvim.plugins = {
   },
   {
     'rcarriga/nvim-notify'
+  },
+  {
+    'andymass/vim-matchup',
+    setup = function()
+      -- may set any options here
+      vim.g.matchup_matchparen_offscreen = { method = "popup" }
+    end
+  },
+{
+    'nacro90/numb.nvim',
+    config = function()
+      require('numb').setup()
+    end
   }
 }
 
