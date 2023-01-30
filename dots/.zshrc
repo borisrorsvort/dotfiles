@@ -22,6 +22,7 @@ export BUNDLER_EDITOR="lvim"
 export CC=/usr/bin/gcc
 PATH="$HOME/.local/bin:$PATH"
 PATH="$HOME/.yarn/bin:$PATH"
+PATH="/usr/local/sbin:$PATH" # Homebrew
 export PATH="$PATH:`yarn global bin`"
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
