@@ -20,10 +20,28 @@ source $ZSH/oh-my-zsh.sh
 export EDITOR="lvim"
 export BUNDLER_EDITOR="lvim"
 export CC=/usr/bin/gcc
+
+# For compilers to find openssl@3 you may need to set:
+export LDFLAGS="-L/usr/local/opt/openssl@3/lib"
+export CPPFLAGS="-I/usr/local/opt/openssl@3/include"
+# For pkg-config to find openssl@3 you may need to set:
+export PKG_CONFIG_PATH="/usr/local/opt/openssl@3/lib/pkgconfig"
+
+# export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
+export PATH="/usr/local/opt/openssl@3/bin:$PATH"
+#  export PATH="$HOME/.local/bin:$PATH"
+#  export PATH="$HOME/.rbenv/bin:$HOME/.rbenv/shims:/usr/local/bin:/bin:/usr/sbin:/sbin:/usr/local/sbin:/usr/X11/bin:/usr/local/share/npm/bin:$PATH:`yarn global bin`"
+#  export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
 PATH="$HOME/.local/bin:$PATH"
 PATH="$HOME/.yarn/bin:$PATH"
 PATH="/usr/local/sbin:$PATH" # Homebrew
+PATH="/usr/local/share/npm/bin:$PATH"
+PATH="$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export PATH="$PATH:`yarn global bin`"
+
+# Temp fix for legacy webpack
+# export NODE_OPTIONS=--openssl-legacy-provider
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -32,6 +50,7 @@ export PATH="$PATH:`yarn global bin`"
 #
 # Example aliases
 alias v='lvim'
+alias nvim='lvim'
 alias so='source ~/.zshrc'
 alias dir="ls -R | grep ":" | sed -e 's/://' -e 's/[^-][^\/]*\//--/g' -e 's/^/ /' -e 's/-/|/'"
 alias up="git up"
@@ -47,6 +66,9 @@ alias rs='./bin/server'
 alias be='bundle exec'
 alias killruby='killall -9 ruby'
 alias killnode='killall -9 node'
+alias reset_test='bin/rails db:environment:set RAILS_ENV=test;rake db:drop db:create db:migrate RAILS_ENV=test;bin/rails db:environment:set RAILS_ENV=development'
+alias reset_db="rake 'db:copy[staging]'; rake db:migrate RAILS_ENV=development; reset_test"
+
 
 # Generator for git flow branch names
 branch_prefixes=("feature" "fix" "chore" "refactor" "build")

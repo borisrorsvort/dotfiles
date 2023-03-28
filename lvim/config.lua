@@ -5,27 +5,33 @@ linters zouden moeten zijn
 filled in as strings with either
 a global executable or a path to
 an executable
-]] -- THESE ARE EXAMPLE CONFIGS FEEL FREE TO CHANGE TO WHATEVER YOU WANT
+]]
+-- THESE ARE EXAMPLE CONFIGS FEEL FREE TO CHANGE TO WHATEVER YOU WANT
 -- general
 vim.g.translator_target_lang = "fr"
 vim.g.translator_source_lang = "en"
-vim.opt.mouse =  "a" -- allow the mouse to be used in neovim
+vim.g.neovide_cursor_animation_length = 0
+vim.opt.mouse = "a" -- allow the mouse to be used in neovim
 -- vim.opt.scrolloff = 999
 vim.opt.relativenumber = true
 vim.filetype.add {
-    extension = {
-        mjml = "eruby",
-        js = "typescriptreact"
-    }
+  extension = {
+    mjml = "eruby",
+    js = "typescriptreact"
+  }
 }
 lvim.log.level = "warn"
 lvim.format_on_save.enabled = true
--- lvim.builtin.theme.name="tokyonight" -- temp fix to get the light bg
+vim.opt.termguicolors = false
 -- vim.opt.background = "light"
--- vim.opt.termguicolors = true
-lvim.colorscheme = "tokyonight-night"
-vim.opt.cmdheight = 4
-vim.opt.guifont = "Fira Code:h16"
+-- lvim.colorscheme = "github_light"
+-- lvim.builtin.theme.name="catppuccin" -- temp fix to get the light bg
+lvim.colorscheme = "catppuccin-mocha"
+
+vim.opt.cmdheight = 1
+-- vim.opt.guifont = "Fira Code:h16"
+vim.opt.guifont = "Hack:h16"
+
 lvim.builtin.alpha.dashboard.section.header.val = {
   "        `       --._    `-._   `-.   `.     :   /  .'   .-'   _.-'    _.--'                 ",
   "        `--.__     `--._   `-._  `-.  `. `. : .' .'  .-'  _.-'   _.--'     __.--'           ",
@@ -74,19 +80,23 @@ lvim.keys.normal_mode["<CS-f>"] = "<cmd>lua require('spectre').close()<cr>"
 -- we use protected-mode (pcall) just in case the plugin wasn't loaded yet.
 local _, actions = pcall(require, "telescope.actions")
 lvim.builtin.telescope.defaults.mappings = {
-    -- for input mode
-    i = {
-      ["<C-t>"] = actions.move_selection_next,
-      ["<C-s>"] = actions.move_selection_previous,
-      ["<C-r>"] = actions.cycle_history_next,
-      ["<C-c>"] = actions.cycle_history_prev
-    },
-    -- for normal mode
-    n = {
-      ["<C-r>"] = actions.move_selection_next,
-      ["<C-c>"] = actions.move_selection_previous
-    }
+  -- for input mode
+  i = {
+    ["<C-t>"] = actions.move_selection_next,
+    ["<C-s>"] = actions.move_selection_previous,
+    ["<C-r>"] = actions.cycle_history_next,
+    ["<C-c>"] = actions.cycle_history_prev,
+    ["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist
+  },
+  -- for normal mode
+  n = {
+    ["<C-r>"] = actions.move_selection_next,
+    ["<C-c>"] = actions.move_selection_previous,
+    ["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist
+  }
 }
+
+lvim.builtin.telescope.defaults.path_display = { "absolute" }
 
 -- Change theme settings
 -- lvim.builtin.theme.options.dim_inactive = true
@@ -105,10 +115,10 @@ lvim.builtin.telescope.defaults.mappings = {
 -- }
 
 lvim.builtin.which_key.mappings["T"] = {
-    name = "Test",
-    f = {"<cmd>TestFile<cr>", "File"},
-    n = {"<cmd>TestNearest<cr>", "Nearest"},
-    s = {"<cmd>TestSuite<cr>", "Suite"}
+  name = "Test",
+  f = { "<cmd>TestFile<cr>", "File" },
+  n = { "<cmd>TestNearest<cr>", "Nearest" },
+  s = { "<cmd>TestSuite<cr>", "Suite" }
 }
 
 -- TODO: User Config for predefined plugins
@@ -122,7 +132,7 @@ lvim.builtin.nvimtree.setup.view.side = "left"
 lvim.builtin.nvimtree.setup.renderer.icons.show.git = false
 lvim.builtin.nvimtree.setup.renderer.icons.show.git = true
 lvim.builtin.nvimtree.setup.live_filter = {
-    always_show_folders = false
+  always_show_folders = false
 }
 lvim.builtin.nvimtree.setup.view.mappings.list = {
   { key = "s", action = "" }, -- remove default mapping to allow the remapped move key s to work
@@ -132,22 +142,22 @@ lvim.builtin.nvimtree.setup.view.mappings.list = {
 -- if you don't want all the parsers change this to a table of the ones you want
 -- lvim.builtin.treesitter.ensure_installed = { "all" }
 
-lvim.builtin.treesitter.ignore_install = {"haskell"}
+lvim.builtin.treesitter.ignore_install = { "haskell" }
 lvim.builtin.treesitter.highlight.enable = true
 lvim.builtin.treesitter.matchup.enable = true
 lvim.builtin.dap.on_config_done = function(dap)
   dap.configurations.rb = {
-    type = 'ruby';
-    request = 'launch';
-    name = 'Rails';
-    program = 'foreman';
-    programArgs = {'start', '-f', 'Procfile.dev'};
-    useBundler = true;
+    type = 'ruby',
+    request = 'launch',
+    name = 'Rails',
+    program = 'foreman',
+    programArgs = { 'start', '-f', 'Procfile.dev' },
+    useBundler = true,
   }
   dap.adapters.ruby = {
-    type = 'executable';
-    command = 'bundle';
-    args = {'exec', 'readapt', 'stdio'};
+    type = 'executable',
+    command = 'bundle',
+    args = { 'exec', 'readapt', 'stdio' },
   }
   dap.configurations.ruby = dap.configurations.rb
 end
@@ -161,7 +171,7 @@ end
 --     "jsonls",
 -- }
 -- ---@usage disable automatic installation of servers
--- lvim.lsp.installer.setup.automatic_installation = false
+lvim.lsp.installer.setup.automatic_installation = true
 
 -- ---configure a server manually. !!Requires `:LvimCacheReset` to take effect!!
 -- ---see the full default list `:lua print(vim.inspect(lvim.lsp.automatic_configuration.skipped_servers))`
@@ -185,28 +195,27 @@ end
 --   buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 -- end
 
--- TODO: reactivate later
 local common_opts = require("lvim/lsp").get_common_opts()
-vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, {"solargraph"})
+vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "solargraph" })
 local util = require("lspconfig/util")
 local opts = {
-    cmd = {"solargraph", "stdio"},
-    filetypes = {"ruby"},
-    root_dir = util.root_pattern("Gemfile", ".git"),
-    settings = {
-        solargraph = {
-            autoformat = true,
-            completion = true,
-            useBundler = true,
-            diagnostic = true,
-            logLevel = "debug",
-            folding = true,
-            references = true,
-            formatting = true,
-            rename = true,
-            symbols = true
-        }
+  cmd = { "solargraph", "stdio" },
+  filetypes = { "ruby" },
+  root_dir = util.root_pattern("Gemfile", ".git"),
+  settings = {
+    solargraph = {
+      autoformat = true,
+      completion = true,
+      useBundler = true,
+      diagnostic = true,
+      logLevel = "debug",
+      folding = true,
+      references = true,
+      formatting = true,
+      rename = true,
+      symbols = true
     }
+  }
 }
 require("lspconfig")["solargraph"].setup(vim.tbl_extend("force", opts, common_opts))
 
@@ -246,10 +255,52 @@ require("lspconfig")["solargraph"].setup(vim.tbl_extend("force", opts, common_op
 
 -- Additional Plugins
 lvim.plugins = {
-  {"michamos/vim-bepo"}, 
-  { 
+  { "michamos/vim-bepo" },
+  { 'liuchengxu/space-vim-theme' },
+  -- {
+  --   'projekt0n/github-nvim-theme', tag = 'v0.0.7',
+  -- -- or                            branch = '0.0.x'
+  --   config = function()
+  --     require('github-theme').setup({
+  --       -- ...
+  --       -- theme_style="light"
+  --     })
+  --   end
+  -- },
+  {
+    "gennaro-tedesco/nvim-jqx",
+    ft = { "json", "yaml" },
+  },
+  {
+    'norcalli/nvim-colorizer.lua',
+    config = function()
+      require 'colorizer'.setup()
+    end
+  },
+  {
+    "catppuccin/nvim",
+    as = "catppuccin",
+    config = function()
+      -- require("catppuccin").setup {
+      --   flavour = "mocha",
+      --   color_overrides = {
+      --       latte = {
+      --           base = "#cccccc",
+      --           text = "#148389"
+      --           -- mantle = "#242424",
+      --           -- crust = "#cccccc",
+      --       },
+      --       frappe = {},
+      --       macchiato = {},
+      --       mocha = {},
+      --   }
+      -- }
+    end
+  },
+  { 'kristijanhusak/vim-carbon-now-sh' },
+  {
     'weizheheng/ror.nvim',
-    config = function() 
+    config = function()
       -- The default settings
       require("ror").setup({
         test = {
@@ -273,16 +324,16 @@ lvim.plugins = {
           pass_icon = "✅",
           fail_icon = "❌"
         }
-      })  
+      })
     end
-  }, 
+  },
   {
     "andythigpen/nvim-coverage",
     requires = "nvim-lua/plenary.nvim",
     config = function()
       require("coverage").setup({
-        load_coverage_cb = function (ftype)
-            vim.notify("Loaded " .. ftype .. " coverage")
+        load_coverage_cb = function(ftype)
+          vim.notify("Loaded " .. ftype .. " coverage")
         end,
         -- lang = { ruby = {coverage_file = "./coverage/.resultset.json"}}
       })
@@ -291,83 +342,81 @@ lvim.plugins = {
   {
     "klen/nvim-test",
     config = function()
-        require('nvim-test').setup {
-            termOpts = {
-                direction = "vertical", -- terminal's direction ("horizontal"|"vertical"|"float")
-                width = 70, -- terminal's width (for vertical|float)
-                height = 14, -- terminal's height (for horizontal|float)
-                go_back = false, -- return focus to original window after executing
-                stopinsert = "auto", -- exit from insert mode (true|false|"auto")
-                keep_one = true -- keep only one terminal for testing
-            }
+      require('nvim-test').setup {
+        termOpts = {
+          direction = "vertical", -- terminal's direction ("horizontal"|"vertical"|"float")
+          width = 70,             -- terminal's width (for vertical|float)
+          height = 14,            -- terminal's height (for horizontal|float)
+          go_back = false,        -- return focus to original window after executing
+          stopinsert = "auto",    -- exit from insert mode (true|false|"auto")
+          keep_one = true         -- keep only one terminal for testing
         }
+      }
     end
-  }, 
+  },
   {
     "tpope/vim-rails",
-    ft = {'ruby','eruby'}, 
-    cmd = {"Eview", "Econtroller", "Emodel", "Smodel", "Sview", "Scontroller", "Vmodel", "Vview", "Vcontroller",
-           "Tmodel", "Tview", "Tcontroller", "Rails", "Generate", "Runner", "Extract"}
-  }, 
-  {'alvan/vim-closetag'}, 
-  {'ecomba/vim-ruby-refactoring'},
-  {'vim-ruby/vim-ruby'},
-  {'farmergreg/vim-lastplace'}, 
+    ft = { 'ruby', 'eruby' },
+    cmd = { "Eview", "Econtroller", "Emodel", "Smodel", "Sview", "Scontroller", "Vmodel", "Vview", "Vcontroller",
+      "Tmodel", "Tview", "Tcontroller", "Rails", "Generate", "Runner", "Extract" }
+  },
+  { 'alvan/vim-closetag' },
+  { 'ecomba/vim-ruby-refactoring' },
+  { 'vim-ruby/vim-ruby' },
   {
     "tpope/vim-bundler",
-    cmd = {"Bundler", "Bopen", "Bsplit", "Btabedit"}
-  }, 
-  {'tpope/vim-unimpaired'}, 
-  {'nvim-treesitter/nvim-treesitter-textobjects'}, 
+    cmd = { "Bundler", "Bopen", "Bsplit", "Btabedit" }
+  },
+  { 'tpope/vim-unimpaired' },
+  { 'nvim-treesitter/nvim-treesitter-textobjects' },
   {
     "tpope/vim-surround",
     -- make sure to change the value of `timeoutlen` if it's not triggering correctly, see https://github.com/tpope/vim-surround/issues/117
     setup = function()
-        vim.o.timeoutlen = 500
+      vim.o.timeoutlen = 500
     end
-  }, 
+  },
   {
     "tiagovla/scope.nvim",
     config = function()
-        require("scope").setup()
+      require("scope").setup()
     end
-  }, 
+  },
   {
     'phaazon/hop.nvim',
     config = function()
-        require('hop').setup()
+      require('hop').setup()
     end
-  }, 
+  },
   {
     "ray-x/lsp_signature.nvim",
     event = "BufRead",
     config = function()
-        require"lsp_signature".on_attach()
+      require "lsp_signature".on_attach()
     end
-  }, 
+  },
   {
     'windwp/nvim-spectre',
     event = "BufRead",
     config = function()
-        require("spectre").setup({
-            live_update = true,
-            is_insert_mode = true
-        })
+      require("spectre").setup({
+        live_update = true,
+        is_insert_mode = true
+      })
     end
-  }, 
-  {'dyng/ctrlsf.vim'}, 
+  },
   {
     "folke/todo-comments.nvim",
     event = "BufRead",
     config = function()
-        require("todo-comments").setup()
+      require("todo-comments").setup()
     end
   },
   {
     "ThePrimeagen/refactoring.nvim",
     requires = {
-        {"nvim-lua/plenary.nvim"},
-        {"nvim-treesitter/nvim-treesitter"}
+      { "nvim-lua/plenary.nvim" },
+      { "nvim-treesitter/nvim-treesitter" }
     },
     config = function()
       require('refactoring').setup()
@@ -377,16 +426,13 @@ lvim.plugins = {
     'voldikss/vim-translator'
   },
   {
-    'rcarriga/nvim-notify'
-  },
-  {
     'andymass/vim-matchup',
     setup = function()
       -- may set any options here
       vim.g.matchup_matchparen_offscreen = { method = "popup" }
     end
   },
-{
+  {
     'nacro90/numb.nvim',
     config = function()
       require('numb').setup()
@@ -394,26 +440,12 @@ lvim.plugins = {
   }
 }
 
--- Autocommands (https://neovim.io/doc/user/autocmd.html)
--- vim.api.nvim_create_autocmd("BufEnter", {
---   pattern = { "*.json", "*.jsonc" },
---   -- enable wrap mode for json files only
---   command = "setlocal wrap",
--- })
--- vim.api.nvim_create_autocmd("FileType", {
---   pattern = "zsh",
---   callback = function()
---     -- let treesitter use bash highlight for zsh files as well
---     require("nvim-treesitter.highlight").attach(0, "bash")
---   end,
--- })
---
 -- With luasnip installed, you will need to add this line to your config
 require("luasnip.loaders.from_vscode").lazy_load()
 require("telescope").load_extension("refactoring")
 require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
-  ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'javascript', 'help', 'vim', 'ruby', 'html', 'css', 'tsx' },
+  ensure_installed = { 'lua', 'javascript', 'help', 'json', 'vim', 'ruby', 'html', 'css', 'tsx' },
 
   highlight = { enable = true },
   indent = { enable = true, disable = { 'python' } },
@@ -423,6 +455,7 @@ require('nvim-treesitter.configs').setup {
       init_selection = '<c-space>',
       node_incremental = '<c-space>',
       scope_incremental = '<c-s>',
+      -- scope_decremental = '<c-t>', -- waiting for https://github.com/nvim-treesitter/nvim-treesitter/issues/4494
       node_decremental = '<c-backspace>',
     },
   },
