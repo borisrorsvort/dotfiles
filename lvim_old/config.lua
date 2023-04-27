@@ -11,8 +11,11 @@ an executable
 vim.g.translator_target_lang = "fr"
 vim.g.translator_source_lang = "en"
 vim.g.neovide_cursor_animation_length = 0
-vim.opt.mouse = "a" -- allow the mouse to be used in neovim
--- vim.opt.scrolloff = 999
+
+vim.g.copilot_no_tab_map = true
+vim.g.copilot_assume_mapped = true
+vim.g.copilot_tab_fallback = ""
+
 vim.opt.relativenumber = true
 vim.filetype.add {
   extension = {
@@ -25,25 +28,30 @@ lvim.format_on_save.enabled = true
 vim.opt.termguicolors = false
 -- vim.opt.background = "light"
 -- lvim.colorscheme = "github_light"
--- lvim.builtin.theme.name="catppuccin" -- temp fix to get the light bg
+-- lvim.builtin.theme.name = "catppuccin" -- temp fix to get the light bg
 lvim.colorscheme = "catppuccin-mocha"
 
 vim.opt.cmdheight = 1
 -- vim.opt.guifont = "Fira Code:h16"
-vim.opt.guifont = "Hack:h16"
+vim.opt.guifont = "Hack Nerd Font:h16"
 
 lvim.builtin.alpha.dashboard.section.header.val = {
-  "        `       --._    `-._   `-.   `.     :   /  .'   .-'   _.-'    _.--'                 ",
-  "        `--.__     `--._   `-._  `-.  `. `. : .' .'  .-'  _.-'   _.--'     __.--'           ",
-  "           __    `--.__    `--._  `-._ `-. `. :/ .' .-' _.-'  _.--'    __.--'    __         ",
-  "            `--..__   `--.__   `--._ `-._`-.`_=_'.-'_.-' _.--'   __.--'   __..--'           ",
-  "          --..__   `--..__  `--.__  `--._`-q(-_-)p-'_.--'  __.--'  __..--'   __..--         ",
-  "                ``--..__  `--..__ `--.__ `-'_) (_`-' __.--' __..--'  __..--''               ",
-  "          ...___        ``--..__ `--..__`--/__/  --'__..--' __..--''        ___...          ",
-  "                ```---...___    ``--..__`_(<_   _/)_'__..--''    ___...---'''               ",
-  "           ```-----....._____```---...___(____|_/__)___...---'''_____.....-----'''          ",
-  "    ",
-  "Virtue is what you do when nobody is looking. The rest is marketing. - Nassim Nicholas Taleb",
+  "                  _________-----_____",
+  "       _____------           __      ----_",
+  "___----             ___------              \\",
+  "   ----________        ----                 \\",
+  "               -----__    |             _____)",
+  "                    __-                /     \\",
+  "        _______-----    ___--          \\    /)\\",
+  "  ------_______      ---____            \\__/  /",
+  "               -----__    \\ --    _          /\\",
+  "                      --__--__     \\_____/   \\_/\\",
+  "                              ----|   /          |",
+  "                                  |  |___________|",
+  "                                  |  | ((_(_)| )_)",
+  "                                  |  \\_((_(_)|/(_)",
+  "                                  \\             (",
+  "                                   \\_____________)",
 }
 
 -- to disable icons and use a minimalist setup, uncomment the following
@@ -98,22 +106,6 @@ lvim.builtin.telescope.defaults.mappings = {
 
 lvim.builtin.telescope.defaults.path_display = { "absolute" }
 
--- Change theme settings
--- lvim.builtin.theme.options.dim_inactive = true
--- lvim.builtin.theme.options.style = "storm"
-
--- Use which-key to add extra bindings with the leader-key prefix
--- lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
--- lvim.builtin.which_key.mappings["t"] = {
---   name = "+Trouble",
---   r = { "<cmd>Trouble lsp_references<cr>", "References" },
---   f = { "<cmd>Trouble lsp_definitions<cr>", "Definitions" },
---   d = { "<cmd>Trouble document_diagnostics<cr>", "Diagnostics" },
---   q = { "<cmd>Trouble quickfix<cr>", "QuickFix" },
---   l = { "<cmd>Trouble loclist<cr>", "LocationList" },
---   w = { "<cmd>Trouble workspace_diagnostics<cr>", "Workspace Diagnostics" },
--- }
-
 lvim.builtin.which_key.mappings["T"] = {
   name = "Test",
   f = { "<cmd>TestFile<cr>", "File" },
@@ -121,26 +113,47 @@ lvim.builtin.which_key.mappings["T"] = {
   s = { "<cmd>TestSuite<cr>", "Suite" }
 }
 
--- TODO: User Config for predefined plugins
--- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
 lvim.builtin.alpha.active = true
 lvim.builtin.alpha.mode = "dashboard"
 lvim.builtin.terminal.active = true
 lvim.builtin.terminal.open_mapping = [[<CS-t>]]
 lvim.builtin.terminal.direction = "horizontal"
 lvim.builtin.nvimtree.setup.view.side = "left"
-lvim.builtin.nvimtree.setup.renderer.icons.show.git = false
 lvim.builtin.nvimtree.setup.renderer.icons.show.git = true
+lvim.builtin.nvimtree.setup.renderer.icons.folder = {
+  default = "",
+  open = "",
+  symlink = "",
+}
+local cmp = require "cmp"
+
+lvim.builtin.cmp.mapping["<Tab>"] = function(fallback)
+  local copilot_keys = vim.fn["copilot#Accept"]()
+  if cmp.visible() then
+    cmp.confirm({ select = true })
+  elseif copilot_keys ~= "" and type(copilot_keys) == "string" then
+    vim.api.nvim_feedkeys(copilot_keys, "n", true)
+  else
+    fallback()
+  end
+  -- -- if cmp.visible() then
+  -- --   cmp.select_next_item()
+  -- -- else
+  -- local copilot_keys = vim.fn["copilot#Accept"]()
+  -- if copilot_keys ~= "" then
+  --   vim.api.nvim_feedkeys(copilot_keys, "i", true)
+  -- else
+  --   fallback()
+  -- end
+  -- -- end
+end
+
 lvim.builtin.nvimtree.setup.live_filter = {
   always_show_folders = false
 }
 lvim.builtin.nvimtree.setup.view.mappings.list = {
   { key = "s", action = "" }, -- remove default mapping to allow the remapped move key s to work
 }
-
-
--- if you don't want all the parsers change this to a table of the ones you want
--- lvim.builtin.treesitter.ensure_installed = { "all" }
 
 lvim.builtin.treesitter.ignore_install = { "haskell" }
 lvim.builtin.treesitter.highlight.enable = true
@@ -163,13 +176,6 @@ lvim.builtin.dap.on_config_done = function(dap)
 end
 
 
--- generic LSP settings
-
--- -- make sure server will always be installed even if the server is in skipped_servers list
--- lvim.lsp.installer.setup.ensure_installed = {
---     "sumneko_lua",
---     "jsonls",
--- }
 -- ---@usage disable automatic installation of servers
 lvim.lsp.installer.setup.automatic_installation = true
 
@@ -256,21 +262,10 @@ require("lspconfig")["solargraph"].setup(vim.tbl_extend("force", opts, common_op
 -- Additional Plugins
 lvim.plugins = {
   { "michamos/vim-bepo" },
+  { 'metakirby5/codi.vim' },
+  { 'sheerun/vim-polyglot' },
   { 'liuchengxu/space-vim-theme' },
-  -- {
-  --   'projekt0n/github-nvim-theme', tag = 'v0.0.7',
-  -- -- or                            branch = '0.0.x'
-  --   config = function()
-  --     require('github-theme').setup({
-  --       -- ...
-  --       -- theme_style="light"
-  --     })
-  --   end
-  -- },
-  {
-    "gennaro-tedesco/nvim-jqx",
-    ft = { "json", "yaml" },
-  },
+  { "gennaro-tedesco/nvim-jqx",  ft = { "json", "yaml" }, },
   {
     'norcalli/nvim-colorizer.lua',
     config = function()
@@ -280,24 +275,9 @@ lvim.plugins = {
   {
     "catppuccin/nvim",
     as = "catppuccin",
-    config = function()
-      -- require("catppuccin").setup {
-      --   flavour = "mocha",
-      --   color_overrides = {
-      --       latte = {
-      --           base = "#cccccc",
-      --           text = "#148389"
-      --           -- mantle = "#242424",
-      --           -- crust = "#cccccc",
-      --       },
-      --       frappe = {},
-      --       macchiato = {},
-      --       mocha = {},
-      --   }
-      -- }
-    end
   },
   { 'kristijanhusak/vim-carbon-now-sh' },
+  { "github/copilot.vim" },
   {
     'weizheheng/ror.nvim',
     config = function()
@@ -363,10 +343,7 @@ lvim.plugins = {
   { 'alvan/vim-closetag' },
   { 'ecomba/vim-ruby-refactoring' },
   { 'vim-ruby/vim-ruby' },
-  {
-    "tpope/vim-bundler",
-    cmd = { "Bundler", "Bopen", "Bsplit", "Btabedit" }
-  },
+  { "tpope/vim-bundler",                          cmd = { "Bundler", "Bopen", "Bsplit", "Btabedit" } },
   { 'tpope/vim-unimpaired' },
   { 'nvim-treesitter/nvim-treesitter-textobjects' },
   {
@@ -374,12 +351,6 @@ lvim.plugins = {
     -- make sure to change the value of `timeoutlen` if it's not triggering correctly, see https://github.com/tpope/vim-surround/issues/117
     setup = function()
       vim.o.timeoutlen = 500
-    end
-  },
-  {
-    "tiagovla/scope.nvim",
-    config = function()
-      require("scope").setup()
     end
   },
   {
@@ -439,6 +410,8 @@ lvim.plugins = {
     end
   }
 }
+
+
 
 -- With luasnip installed, you will need to add this line to your config
 require("luasnip.loaders.from_vscode").lazy_load()

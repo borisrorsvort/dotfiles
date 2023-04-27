@@ -49,8 +49,7 @@ export PATH="$PATH:`yarn global bin`"
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-alias v='lvim'
-alias nvim='lvim'
+alias v='nvim'
 alias so='source ~/.zshrc'
 alias dir="ls -R | grep ":" | sed -e 's/://' -e 's/[^-][^\/]*\//--/g' -e 's/^/ /' -e 's/-/|/'"
 alias up="git up"
@@ -68,7 +67,6 @@ alias killruby='killall -9 ruby'
 alias killnode='killall -9 node'
 alias reset_test='bin/rails db:environment:set RAILS_ENV=test;rake db:drop db:create db:migrate RAILS_ENV=test;bin/rails db:environment:set RAILS_ENV=development'
 alias reset_db="rake 'db:copy[staging]'; rake db:migrate RAILS_ENV=development; reset_test"
-
 
 # Generator for git flow branch names
 branch_prefixes=("feature" "fix" "chore" "refactor" "build")
