@@ -17,6 +17,10 @@
   # Checkout
   co = checkout
   cb = checkout -b
+  feat = "!sh -c 'git checkout -b feature/$1' -"
+  fix = "!sh -c 'git checkout -b fix/$1' -"
+  refactor = "!sh -c 'git checkout -b refactor/$1' -"
+  chore = "!sh -c 'git checkout -b chore/$1' -"
 
   # Cherry-pick
   cp = cherry-pick

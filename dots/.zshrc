@@ -68,13 +68,6 @@ alias killnode='killall -9 node'
 alias reset_test='bin/rails db:environment:set RAILS_ENV=test;rake db:drop db:create db:migrate RAILS_ENV=test;bin/rails db:environment:set RAILS_ENV=development'
 alias reset_db="rake 'db:copy[staging]'; rake db:migrate RAILS_ENV=development; reset_test"
 
-# Generator for git flow branch names
-branch_prefixes=("feature" "fix" "chore" "refactor" "build")
-
-for prefix in "${branch_prefixes[@]}"; do
-  typeset -fx "${prefix}(){ git checkout -b ${prefix}/\$1; }"
-done
-
 # NVM detection
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm

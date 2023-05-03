@@ -9,7 +9,9 @@ return {
   {
     "projekt0n/github-nvim-theme",
     branch = "main",
-    config = function() require("github-theme").setup() end,
+    config = function()
+      require("github-theme").setup()
+    end,
   },
   { "gennaro-tedesco/nvim-jqx",         ft = { "json", "yaml" } },
   {
@@ -19,22 +21,25 @@ return {
   { "kristijanhusak/vim-carbon-now-sh", event = "BufRead" },
   {
     "ten3roberts/qf.nvim",
-    config = function() require("qf").setup {} end,
+    config = function()
+      require("qf").setup({})
+    end,
   },
   {
     "nvim-neotest/neotest",
     config = function()
       -- get neotest namespace (api call creates or returns namespace)
-      local neotest_ns = vim.api.nvim_create_namespace "neotest"
+      local neotest_ns = vim.api.nvim_create_namespace("neotest")
       vim.diagnostic.config({
         virtual_text = {
           format = function(diagnostic)
-            local message = diagnostic.message:gsub("\n", " "):gsub("\t", " "):gsub("%s+", " "):gsub("^%s+", "")
+            local message =
+                diagnostic.message:gsub("\n", " "):gsub("\t", " "):gsub("%s+", " "):gsub("^%s+", "")
             return message
           end,
         },
       }, neotest_ns)
-      require("neotest").setup {
+      require("neotest").setup({
         -- your neotest config here
         icons = {
           child_indent = "│",
@@ -63,14 +68,14 @@ return {
           signs = true,
         },
         adapters = {
-          require "neotest-rspec",
-          require "neotest-jest" {
+          require("neotest-rspec"),
+          require("neotest-jest")({
             jestCommand = "npm test --",
             jestConfigFile = "jest.config.js",
             env = { CI = true },
-          },
+          }),
         },
-      }
+      })
     end,
     ft = { "ruby", "javascript" },
     dependencies = {
@@ -84,32 +89,6 @@ return {
   {
     "weizheheng/ror.nvim",
     event = "BufRead",
-    config = function()
-      -- The default settings
-      require("ror").setup {
-        test = {
-          message = {
-            -- These are the default title for nvim-notify
-            file = "Running test file...",
-            line = "Running single test...",
-          },
-          coverage = {
-            -- To customize replace with the hex color you want for the highlight
-            -- guibg=#354a39
-            up = "DiffAdd",
-            -- guibg=#4a3536
-            down = "DiffDelete",
-          },
-          notification = {
-            -- Using timeout false will replace the progress notification window
-            -- Otherwise, the progress and the result will be a different notification window
-            timeout = false,
-          },
-          pass_icon = "✅",
-          fail_icon = "❌",
-        },
-      }
-    end,
   },
   {
     "tpope/vim-rails",
@@ -136,37 +115,41 @@ return {
   },
   { "vim-ruby/vim-ruby",                           event = "BufRead" },
   { "tpope/vim-bundler",                           cmd = { "Bundle", "Bundler", "Bopen", "Bsplit", "Btabedit" } },
-  -- { 'tpope/vim-unimpaired',                        event = "BufRead" },
   { "nvim-treesitter/nvim-treesitter-textobjects", event = "BufRead" },
   {
-    "tpope/vim-surround",
-    event = "BufRead",
-    -- make sure to change the value of `timeoutlen` if it's not triggering correctly, see https://github.com/tpope/vim-surround/issues/117
-    config = function() vim.o.timeoutlen = 500 end,
+    "kylechui/nvim-surround",
+    version = "*", -- Use for stability; omit to use `main` branch for the latest features
+    event = "VeryLazy",
   },
   {
     "phaazon/hop.nvim",
-    config = function() require("hop").setup() end,
+    config = function()
+      require("hop").setup()
+    end,
   },
   {
     "ray-x/lsp_signature.nvim",
     event = "BufRead",
-    config = function() require("lsp_signature").on_attach() end,
+    config = function()
+      require("lsp_signature").on_attach()
+    end,
   },
   {
     "windwp/nvim-spectre",
     event = "BufRead",
     config = function()
-      require("spectre").setup {
+      require("spectre").setup({
         live_update = true,
         is_insert_mode = true,
-      }
+      })
     end,
   },
   {
     "folke/todo-comments.nvim",
     event = "BufRead",
-    config = function() require("todo-comments").setup() end,
+    config = function()
+      require("todo-comments").setup()
+    end,
   },
   {
     "ThePrimeagen/refactoring.nvim",
@@ -175,14 +158,16 @@ return {
       { "nvim-lua/plenary.nvim" },
       { "nvim-treesitter/nvim-treesitter" },
     },
-    config = function() require("refactoring").setup() end,
+    config = function()
+      require("refactoring").setup()
+    end,
   },
   {
     "voldikss/vim-translator",
     lazy = false,
   },
   {
-    "andymass/vim-matchup",
+    "andymass/vim-matchup", -- better % navigation
     event = "BufRead",
     config = function()
       -- may set any options here
@@ -190,8 +175,10 @@ return {
     end,
   },
   {
-    "nacro90/numb.nvim",
+    "nacro90/numb.nvim", -- line preview when using :[num]
     event = "BufRead",
-    config = function() require("numb").setup() end,
+    config = function()
+      require("numb").setup()
+    end,
   },
 }
