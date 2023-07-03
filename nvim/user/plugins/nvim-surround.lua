@@ -12,6 +12,7 @@ return {
 			visual_line = "gS",
 			delete = "ds",
 			change = "ls",
+			change_line = "lS",
 		},
 	},
 }

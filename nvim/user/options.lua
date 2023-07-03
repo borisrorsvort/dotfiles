@@ -8,7 +8,8 @@ return {
 		signcolumn = "auto", -- sets vim.opt.signcolumn to auto
 		wrap = false,        -- sets vim.opt.wrap
 		swapfile = false,
-		scrolloff = 999,
+		background = "light",
+		-- scrolloff = 999,
 		guifont = "FiraCode_Nerd_Font_Mono:h16",
 	},
 	g = {

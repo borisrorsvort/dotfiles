@@ -65,8 +65,9 @@ alias rs='./bin/server'
 alias be='bundle exec'
 alias killruby='killall -9 ruby'
 alias killnode='killall -9 node'
+# TODO: replace with rails db:reset
 alias reset_test='bin/rails db:environment:set RAILS_ENV=test;rake db:drop db:create db:migrate RAILS_ENV=test;bin/rails db:environment:set RAILS_ENV=development'
-alias reset_db="rake 'db:copy[staging]'; rake db:migrate RAILS_ENV=development; reset_test"
+alias reset_db="rake 'db:copy[staging]'; rake db:migrate RAILS_ENV=development"
 
 # NVM detection
 export NVM_DIR="$HOME/.nvm"

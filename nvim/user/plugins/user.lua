@@ -13,7 +13,7 @@ return {
 			require("github-theme").setup()
 		end,
 	},
-	{ "gennaro-tedesco/nvim-jqx", ft = { "json", "yaml" } },
+	{ "gennaro-tedesco/nvim-jqx",         ft = { "json", "yaml" } },
 	{
 		"catppuccin/nvim",
 		as = "catppuccin",
@@ -26,6 +26,7 @@ return {
 	{ "kristijanhusak/vim-carbon-now-sh", event = "BufRead" },
 	{
 		"ten3roberts/qf.nvim",
+
 		config = function()
 			require("qf").setup({})
 		end,
@@ -39,7 +40,7 @@ return {
 				virtual_text = {
 					format = function(diagnostic)
 						local message =
-							diagnostic.message:gsub("\n", " "):gsub("\t", " "):gsub("%s+", " "):gsub("^%s+", "")
+								diagnostic.message:gsub("\n", " "):gsub("\t", " "):gsub("%s+", " "):gsub("^%s+", "")
 						return message
 					end,
 				},
@@ -118,8 +119,8 @@ return {
 			"Extract",
 		},
 	},
-	{ "vim-ruby/vim-ruby", event = "BufRead" },
-	{ "tpope/vim-bundler", cmd = { "Bundle", "Bundler", "Bopen", "Bsplit", "Btabedit" } },
+	{ "vim-ruby/vim-ruby",                           event = "BufRead" },
+	{ "tpope/vim-bundler",                           cmd = { "Bundle", "Bundler", "Bopen", "Bsplit", "Btabedit" } },
 	{ "nvim-treesitter/nvim-treesitter-textobjects", event = "BufRead" },
 	{
 		"kylechui/nvim-surround",
