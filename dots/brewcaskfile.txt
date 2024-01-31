@@ -1,0 +1,8 @@
+adoptopenjdk8
+alt-tab
+amethyst
+docker
+font-sf-mono-nerd-font-ligaturized
+neovide
+responsively
+shortcat

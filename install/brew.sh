@@ -7,47 +7,8 @@ brew upgrade
 brew tap homebrew/cask-versions
 
 # Install packages
-brew install ack
-brew install autoconf
-brew install cmatrix
-brew install gcc
-brew install geoip
-brew install cargo
-brew install pip
-brew install make
-brew install gist
-brew install git
-brew install graphicsmagick
-brew install imagemagick
-brew install lazygit
-brew install memcached
-brew install mongodb
-brew install mysql
-brew install nginx
-brew install node
-brew install openssl
-brew install ossp-uuid
-brew install postgresql
-brew install python
-brew install rbenv
-brew install readline
-brew install redis
-brew install ruby-build
-brew install ruby-install
-brew install spark
-brew install sqlite
-brew install terminal-notifier
-brew install tig
-brew install watchman
-brew install wifi-password
-brew install yarn
-brew install z
-brew install zsh
-brew install heroku
-brew install htop
-brew install neovim
-brew install gnu-sed # nvim pluging spectre requirement
-brew install ripgrep
+xargs brew install < ~/dotfiles/dots/brewfile.txt
+xargs brew install < ~/dotfiles/dots/brewcaskfile.txt
 
 # Wait a bit before moving on...
 sleep 1
