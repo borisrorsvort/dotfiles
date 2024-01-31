@@ -18,11 +18,21 @@ return {
 	},
 	-- Set colorscheme to use
 	-- colorscheme = "catppuccin",
-	colorscheme = "github_dark",
+	-- colorscheme = "",
+	-- colorscheme = "github_dark_dimmed",
+	-- colorscheme = "github_light_default",
+	colorscheme = "tokyonight-storm",
 	-- Diagnostics configuration (for vim.diagnostics.config({...})) when diagnostics are on
 	diagnostics = {
 		virtual_text = true,
 		underline = true,
+	},
+	heirline = {
+		separators = {
+			left = { "", " " }, -- separator for the left side of the statusline
+			right = { " ", "" }, -- separator for the right side of the statusline
+			tab = { "", "" },
+		},
 	},
 	lsp = {
 		-- customize lsp formatting options
@@ -39,7 +49,7 @@ return {
 			},
 			disabled = { -- disable formatting capabilities for the listed language servers
 				-- disable lua_ls formatting capability if you want to use StyLua to format your lua code
-				-- "lua_ls",
+				"lua_ls",
 			},
 			timeout_ms = 4000, -- default format timeout
 			-- filter = function(client) -- fully override the default formatting function

@@ -5,32 +5,63 @@ return {
 	},
 	{ "metakirby5/codi.vim" },
 	{ "sheerun/vim-polyglot" },
-	{ "liuchengxu/space-vim-theme" },
 	{
-		"projekt0n/github-nvim-theme",
-		branch = "main",
-		config = function()
-			require("github-theme").setup()
-		end,
+		"folke/tokyonight.nvim",
+		lazy = false,
+		priority = 1000,
+		opts = {},
 	},
-	{ "gennaro-tedesco/nvim-jqx",         ft = { "json", "yaml" } },
+	{ "gennaro-tedesco/nvim-jqx", ft = { "json", "yaml" } },
+	-- {
+	-- 	"catppuccin/nvim",
+	-- 	as = "catppuccin",
+	-- 	config = function()
+	-- 		require("catppuccin").setup({
+	-- 			flavour = "mocha",
+	-- 		})
+	-- 	end,
+	-- },
 	{
-		"catppuccin/nvim",
-		as = "catppuccin",
+		"AstroNvim/astrotheme",
 		config = function()
-			require("catppuccin").setup({
-				flavour = "mocha",
+			require("astrotheme").setup({
+				background = { -- :h background, palettes to use when using the core vim background colors
+					light = "astrolight",
+					dark = "astrodark",
+				},
+
+				-- termguicolors = false, -- Bool value, toggles if termguicolors are set by AstroTheme.
+				-- terminal_color = false, -- Bool value, toggles if terminal_colors are set by AstroTheme.
+				palettes = {
+					global = {},
+					astrodark = {},
+					astrolight = {
+						ui = {
+							-- base = "#FFFFFF",
+						},
+					},
+				},
 			})
 		end,
 	},
-	{ "kristijanhusak/vim-carbon-now-sh", event = "BufRead" },
 	{
-		"ten3roberts/qf.nvim",
-
+		"projekt0n/github-nvim-theme",
 		config = function()
-			require("qf").setup({})
+			require("github-theme").setup({
+				-- ...
+			})
+
+			-- vim.cmd('colorscheme github_dark')
 		end,
 	},
+	{ "kristijanhusak/vim-carbon-now-sh", event = "BufRead" },
+	-- {
+	-- 	"ten3roberts/qf.nvim",
+	--
+	-- 	config = function()
+	-- 		require("qf").setup({})
+	-- 	end,
+	-- },
 	{
 		"nvim-neotest/neotest",
 		config = function()
@@ -40,7 +71,7 @@ return {
 				virtual_text = {
 					format = function(diagnostic)
 						local message =
-								diagnostic.message:gsub("\n", " "):gsub("\t", " "):gsub("%s+", " "):gsub("^%s+", "")
+							diagnostic.message:gsub("\n", " "):gsub("\t", " "):gsub("%s+", " "):gsub("^%s+", "")
 						return message
 					end,
 				},
@@ -90,6 +121,17 @@ return {
 			"antoinemadec/FixCursorHold.nvim",
 			"olimorris/neotest-rspec",
 			"haydenmeade/neotest-jest",
+			{
+				"folke/neodev.nvim",
+				opts = function(_, opts)
+					opts.library = opts.library or {}
+					if opts.library.plugins ~= true then
+						opts.library.plugins =
+							require("astronvim.utils").list_insert_unique(opts.library.plugins, "neotest")
+					end
+					opts.library.types = true
+				end,
+			},
 		},
 	},
 	{
@@ -119,8 +161,8 @@ return {
 			"Extract",
 		},
 	},
-	{ "vim-ruby/vim-ruby",                           event = "BufRead" },
-	{ "tpope/vim-bundler",                           cmd = { "Bundle", "Bundler", "Bopen", "Bsplit", "Btabedit" } },
+	{ "vim-ruby/vim-ruby", event = "BufRead" },
+	{ "tpope/vim-bundler", cmd = { "Bundle", "Bundler", "Bopen", "Bsplit", "Btabedit" } },
 	{ "nvim-treesitter/nvim-treesitter-textobjects", event = "BufRead" },
 	{
 		"kylechui/nvim-surround",
@@ -133,22 +175,26 @@ return {
 			require("hop").setup()
 		end,
 	},
+	-- {
+	-- 	"ray-x/lsp_signature.nvim",
+	-- 	event = "BufRead",
+	-- 	config = function()
+	-- 		require("lsp_signature").on_attach()
+	-- 	end,
+	-- },
 	{
-		"ray-x/lsp_signature.nvim",
-		event = "BufRead",
-		config = function()
-			require("lsp_signature").on_attach()
-		end,
+		"amadeus/vim-mjml",
 	},
 	{
 		"windwp/nvim-spectre",
 		event = "BufRead",
-		config = function()
-			require("spectre").setup({
-				live_update = true,
-				is_insert_mode = true,
-			})
-		end,
+		-- config = function()
+		-- 	require("spectre").setup({
+		-- 		live_update = true,
+		-- 		is_insert_mode = true,
+		--
+		-- 	})
+		-- end,
 	},
 	{
 		"folke/todo-comments.nvim",
@@ -185,6 +231,17 @@ return {
 		event = "BufRead",
 		config = function()
 			require("numb").setup()
+		end,
+	},
+	{
+		"tpope/vim-dadbod",
+		lazy = false,
+	},
+	{
+		"kristijanhusak/vim-dadbod-ui",
+		lazy = false,
+		config = function()
+			require("vim-dabbod").setup()
 		end,
 	},
 }

@@ -17,8 +17,8 @@ unsetopt correct
 
 source $ZSH/oh-my-zsh.sh
 
-export EDITOR="lvim"
-export BUNDLER_EDITOR="lvim"
+export EDITOR="nvim"
+export BUNDLER_EDITOR="nvim"
 export CC=/usr/bin/gcc
 
 # For compilers to find openssl@3 you may need to set:
@@ -95,6 +95,8 @@ load-nvmrc() {
 }
 add-zsh-hook chpwd load-nvmrc
 load-nvmrc
+
+export PGGSSENCMODE="disable" # fix rails-pg
 
 eval "$(starship init zsh)"
 eval "$(rbenv init -)"

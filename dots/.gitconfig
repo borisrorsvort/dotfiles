@@ -3,7 +3,7 @@
 	email = boris@rorsvort.com
 	signingkey = boris@rorsvort.com
 [core]
-  editor = code --wait
+  editor = nvim
 	ignorecase = false
 [alias]
   # Add

@@ -1,8 +1,12 @@
-local actions = require "telescope.actions"
+local actions = require("telescope.actions")
 return {
   "nvim-telescope/telescope.nvim",
   opts = {
     defaults = {
+      preview = {
+        treesitter = false,
+      },
+      file_ignore_patterns = { "node_modules", ".git", "*.lock" },
       path_display = { "absolute" },
       mappings = {
         -- for input mode
@@ -11,15 +15,15 @@ return {
           ["<C-s>"] = actions.move_selection_previous,
           ["<C-r>"] = actions.cycle_history_next,
           ["<C-c>"] = actions.cycle_history_prev,
-          ["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist
+          ["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
         },
         -- for normal mode
         n = {
           ["<C-r>"] = actions.move_selection_next,
           ["<C-c>"] = actions.move_selection_previous,
-          ["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist
-        }
-      }
-    }
-  }
+          ["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
+        },
+      },
+    },
+  },
 }
