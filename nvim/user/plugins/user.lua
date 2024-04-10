@@ -135,8 +135,18 @@ return {
 		},
 	},
 	{
+		"stevearc/dressing.nvim",
+	},
+	{
 		"weizheheng/ror.nvim",
 		event = "BufRead",
+		config = function()
+			require("dressing").setup({
+				input = {
+					min_width = { 60, 0.9 },
+				},
+			})
+		end,
 	},
 	{
 		"tpope/vim-rails",

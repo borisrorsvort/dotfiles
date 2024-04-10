@@ -8,6 +8,7 @@ DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && cd .. && pwd )"
 # Clear cache
 # . "$DOTFILES_DIR/bin/dotfiles" clean
 # Add symlinks
+. "$DOTFILES_DIR/bin/dotfiles" brew
 . "$DOTFILES_DIR/bin/dotfiles" symlinks
 
 # Replace default hosts file

@@ -22,13 +22,13 @@ export BUNDLER_EDITOR="nvim"
 export CC=/usr/bin/gcc
 
 # For compilers to find openssl@3 you may need to set:
-export LDFLAGS="-L/usr/local/opt/openssl@3/lib"
-export CPPFLAGS="-I/usr/local/opt/openssl@3/include"
+# export LDFLAGS="-L/usr/local/opt/openssl@3/lib"
+# export CPPFLAGS="-I/usr/local/opt/openssl@3/include"
 # For pkg-config to find openssl@3 you may need to set:
-export PKG_CONFIG_PATH="/usr/local/opt/openssl@3/lib/pkgconfig"
+# export PKG_CONFIG_PATH="/usr/local/opt/openssl@3/lib/pkgconfig"
 
 # export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
-export PATH="/usr/local/opt/openssl@3/bin:$PATH"
+# export PATH="/usr/local/opt/openssl@3/bin:$PATH"
 #  export PATH="$HOME/.local/bin:$PATH"
 #  export PATH="$HOME/.rbenv/bin:$HOME/.rbenv/shims:/usr/local/bin:/bin:/usr/sbin:/sbin:/usr/local/sbin:/usr/X11/bin:/usr/local/share/npm/bin:$PATH:`yarn global bin`"
 #  export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
@@ -55,6 +55,7 @@ alias dir="ls -R | grep ":" | sed -e 's/://' -e 's/[^-][^\/]*\//--/g' -e 's/^/ /
 alias up="git up"
 alias bu="bundle update"
 alias sync="up; gp"
+alias dotfiles="nvim ~/.dotfiles"
 alias fixup='gc -am "fix: quickfix"; gp'
 alias gs="lazygit"
 alias develop="g checkout develop"
@@ -66,8 +67,9 @@ alias be='bundle exec'
 alias killruby='killall -9 ruby'
 alias killnode='killall -9 node'
 # TODO: replace with rails db:reset
-alias reset_test='bin/rails db:environment:set RAILS_ENV=test;rake db:drop db:create db:migrate RAILS_ENV=test;bin/rails db:environment:set RAILS_ENV=development'
-alias reset_db="rake 'db:copy[staging]'; rake db:migrate RAILS_ENV=development"
+# alias reset_test='bin/rails db:environment:set RAILS_ENV=test;rake db:drop db:create db:migrate RAILS_ENV=test;bin/rails db:environment:set RAILS_ENV=development'
+alias reset_test='rake db:reset RAILS_ENV=test'
+alias reset_db="rake 'db:copy[staging, true]'; rake db:migrate RAILS_ENV=development"
 
 # NVM detection
 export NVM_DIR="$HOME/.nvm"
@@ -75,26 +77,26 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # Automatically call nvm use
-autoload -U add-zsh-hook
-load-nvmrc() {
-  local node_version="$(nvm version)"
-  local nvmrc_path="$(nvm_find_nvmrc)"
-
-  if [ -n "$nvmrc_path" ]; then
-    local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
-
-    if [ "$nvmrc_node_version" = "N/A" ]; then
-      nvm install
-    elif [ "$nvmrc_node_version" != "$node_version" ]; then
-      nvm use
-    fi
-  elif [ "$node_version" != "$(nvm version default)" ]; then
-    echo "Reverting to nvm default version"
-    nvm use default
-  fi
-}
-add-zsh-hook chpwd load-nvmrc
-load-nvmrc
+# autoload -U add-zsh-hook
+# load-nvmrc() {
+#   local node_version="$(nvm version)"
+#   local nvmrc_path="$(nvm_find_nvmrc)"
+#
+#   if [ -n "$nvmrc_path" ]; then
+#     local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
+#
+#     if [ "$nvmrc_node_version" = "N/A" ]; then
+#       nvm install
+#     elif [ "$nvmrc_node_version" != "$node_version" ]; then
+#       nvm use
+#     fi
+#   elif [ "$node_version" != "$(nvm version default)" ]; then
+#     echo "Reverting to nvm default version"
+#     nvm use default
+#   fi
+# }
+# add-zsh-hook chpwd load-nvmrc
+# load-nvmrc
 
 export PGGSSENCMODE="disable" # fix rails-pg
 

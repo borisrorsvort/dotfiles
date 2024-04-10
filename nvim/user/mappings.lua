@@ -24,6 +24,10 @@ return {
 		["<C-q>"] = { "<cmd>lua require'qf'.toggle('c', false)<CR>", noremap = { true }, desc = "Toggle quickfix" }, -- toggle("c", false) dont stay in current window
 		["f"] = { "<cmd>lua require'hop'.hint_words()<cr>", desc = "Hop toggle" },
 		["<C-s>"] = { ":w!<cr>", desc = "Save File" },
+		["<leader>ff"] = {
+			"<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({}))<cr>",
+			desc = "Find files",
+		},
 		["<leader>fs"] = { "<cmd>lua require('spectre').toggle()<cr>", desc = "Open Spectre" },
 		["<leader>fS"] = {
 			function()
