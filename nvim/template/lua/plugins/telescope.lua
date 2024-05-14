@@ -1,0 +1,45 @@
+-- if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
+
+-- Customize Treesitter
+local actions = require "telescope.actions"
+return {
+  "nvim-telescope/telescope.nvim",
+  opts = {
+    defaults = {
+      path_display = { "truncate" },
+      preview = {
+        treesitter = false,
+      },
+      file_ignore_patterns = { "node_modules", ".git", "*.lock" },
+      pickers = {
+        find_files = {
+          theme = "ivy",
+        },
+      },
+      layout_config = {
+        vertical = {
+          width = 0.95,
+        },
+        horizontal = {
+          width = 0.95,
+        },
+      },
+      mappings = {
+        -- for input mode
+        i = {
+          ["<C-t>"] = actions.move_selection_next,
+          ["<C-s>"] = actions.move_selection_previous,
+          ["<C-r>"] = actions.cycle_history_next,
+          ["<C-c>"] = actions.cycle_history_prev,
+          ["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
+        },
+        -- for normal mode
+        n = {
+          ["<C-r>"] = actions.move_selection_next,
+          ["<C-c>"] = actions.move_selection_previous,
+          ["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
+        },
+      },
+    },
+  },
+}

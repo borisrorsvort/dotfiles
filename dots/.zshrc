@@ -71,6 +71,7 @@ alias killnode='killall -9 node'
 alias reset_test='rake db:reset RAILS_ENV=test; rake db:migrate RAILS_ENV=test'
 alias reset_db="rake 'db:copy[staging, true]'; rake db:migrate RAILS_ENV=development"
 alias rp="git log \$(git describe --tags \`git rev-list --tags --max-count=1\`)..master --oneline" # Release preview
+alias deploy="./bin/deploy"
 
 # NVM detection
 export NVM_DIR="$HOME/.nvm"

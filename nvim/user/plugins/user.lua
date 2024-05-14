@@ -12,15 +12,6 @@ return {
 		opts = {},
 	},
 	{ "gennaro-tedesco/nvim-jqx", ft = { "json", "yaml" } },
-	-- {
-	-- 	"catppuccin/nvim",
-	-- 	as = "catppuccin",
-	-- 	config = function()
-	-- 		require("catppuccin").setup({
-	-- 			flavour = "mocha",
-	-- 		})
-	-- 	end,
-	-- },
 	{
 		"AstroNvim/astrotheme",
 		config = function()
@@ -29,9 +20,6 @@ return {
 					light = "astrolight",
 					dark = "astrodark",
 				},
-
-				-- termguicolors = false, -- Bool value, toggles if termguicolors are set by AstroTheme.
-				-- terminal_color = false, -- Bool value, toggles if terminal_colors are set by AstroTheme.
 				palettes = {
 					global = {},
 					astrodark = {},
@@ -44,24 +32,7 @@ return {
 			})
 		end,
 	},
-	{
-		"projekt0n/github-nvim-theme",
-		config = function()
-			require("github-theme").setup({
-				-- ...
-			})
-
-			-- vim.cmd('colorscheme github_dark')
-		end,
-	},
 	{ "kristijanhusak/vim-carbon-now-sh", event = "BufRead" },
-	-- {
-	-- 	"ten3roberts/qf.nvim",
-	--
-	-- 	config = function()
-	-- 		require("qf").setup({})
-	-- 	end,
-	-- },
 	{
 		"nvim-neotest/neotest",
 		config = function()
@@ -185,26 +156,12 @@ return {
 			require("hop").setup()
 		end,
 	},
-	-- {
-	-- 	"ray-x/lsp_signature.nvim",
-	-- 	event = "BufRead",
-	-- 	config = function()
-	-- 		require("lsp_signature").on_attach()
-	-- 	end,
-	-- },
 	{
 		"amadeus/vim-mjml",
 	},
 	{
 		"windwp/nvim-spectre",
 		event = "BufRead",
-		-- config = function()
-		-- 	require("spectre").setup({
-		-- 		live_update = true,
-		-- 		is_insert_mode = true,
-		--
-		-- 	})
-		-- end,
 	},
 	{
 		"folke/todo-comments.nvim",
