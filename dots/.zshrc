@@ -1,7 +1,7 @@
 # Zsh Path to your oh-my-zsh configuration.
 ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="af-magic"
-plugins=(z git brew bundler rbenv node npm gem rails ruby command-not-found ssh-agent nvm)
+plugins=(z git aliases brew bundler rbenv node npm gem rails ruby command-not-found ssh-agent nvm)
 
 # For pkg-config to find zlib you may need to set:
 export PKG_CONFIG_PATH="/usr/local/opt/zlib/lib/pkgconfig"
@@ -51,19 +51,14 @@ export PATH="$PATH:`yarn global bin`"
 # Example aliases
 alias v='nvim'
 alias so='source ~/.zshrc'
-alias dir="ls -R | grep ":" | sed -e 's/://' -e 's/[^-][^\/]*\//--/g' -e 's/^/ /' -e 's/-/|/'"
 alias up="git up"
 alias bu="bundle update"
 alias sync="up; gp"
 alias dotfiles="nvim ~/.dotfiles"
 alias fixup='gc -am "fix: quickfix"; gp'
 alias gs="lazygit"
-alias develop="g checkout develop"
-alias master="g checkout master"
 alias dev="ruby ~/.dotfiles/dev_scripts/services.rb"
-alias rc='rails console'
 alias rs='./bin/server'
-alias be='bundle exec'
 alias killruby='killall -9 ruby'
 alias killnode='killall -9 node'
 # TODO: replace with rails db:reset

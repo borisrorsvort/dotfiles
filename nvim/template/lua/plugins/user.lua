@@ -88,12 +88,6 @@ return {
   },
   { "metakirby5/codi.vim" },
   { "sheerun/vim-polyglot" },
-  {
-    "folke/tokyonight.nvim",
-    lazy = false,
-    priority = 1000,
-    opts = {},
-  },
   { "gennaro-tedesco/nvim-jqx", ft = { "json", "yaml" } },
   {
     "AstroNvim/astrotheme",

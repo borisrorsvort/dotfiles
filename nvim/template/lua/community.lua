@@ -10,8 +10,11 @@ return {
   { import = "astrocommunity.pack.lua" },
   { import = "astrocommunity.pack.typescript" },
   { import = "astrocommunity.pack.yaml" },
-  { import = "astrocommunity.pack.markdown.yaml" },
-  { import = "astrocommunity.pack.json.yaml" },
+  { import = "astrocommunity.pack.markdown" },
+  { import = "astrocommunity.pack.json" },
+  { import = "astrocommunity.colorscheme.tokyonight-nvim" },
+  { import = "astrocommunity.colorscheme.nord-nvim" },
+  { import = "astrocommunity.colorscheme.nordic-nvim" },
   { import = "astrocommunity.completion.copilot-lua" },
   {
     "hrsh7th/nvim-cmp",
