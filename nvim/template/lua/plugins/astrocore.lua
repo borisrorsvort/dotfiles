@@ -33,8 +33,8 @@ return {
         signcolumn = "auto", -- sets vim.opt.signcolumn to auto
         wrap = false, -- sets vim.opt.wrap
         swapfile = false,
-        background = "dark",
-        guifont = "FiraCode_Nerd_Font_Mono:h16",
+        -- background = "dark",
+        guifont = "FiraCode_Nerd_Font_Mono:h21",
         conceallevel = 2, -- enable conceal
         foldenable = false,
         foldexpr = "nvim_treesitter#foldexpr()", -- set Treesitter based folding

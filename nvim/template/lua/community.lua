@@ -1,5 +1,3 @@
--- if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
-
 -- AstroCommunity: import any community modules here
 -- We import this file in `lazy_setup.lua` before the `plugins/` folder.
 -- This guarantees that the specs are processed before any user plugins.
@@ -12,6 +10,8 @@ return {
   { import = "astrocommunity.pack.yaml" },
   { import = "astrocommunity.pack.markdown" },
   { import = "astrocommunity.pack.json" },
+  { import = "astrocommunity.recipes.heirline-nvchad-statusline" },
+  { import = "astrocommunity.recipes.heirline-vscode-winbar" },
   { import = "astrocommunity.colorscheme.tokyonight-nvim" },
   { import = "astrocommunity.colorscheme.nord-nvim" },
   { import = "astrocommunity.colorscheme.nordic-nvim" },
@@ -50,29 +50,7 @@ return {
         if copilot.is_visible() then copilot.prev() end
       end)
 
-      -- opts.mapping["<C-é>"] = cmp.mapping(function()
-      --   if copilot.is_visible() then copilot.accept_word() end
-      -- end)
-      --
-      -- opts.mapping["<C-l>"] = cmp.mapping(function()
-      --   if copilot.is_visible() then copilot.accept_word() end
-      -- end)
-      --
-      -- opts.mapping["<C-down>"] = cmp.mapping(function()
-      --   if copilot.is_visible() then copilot.accept_line() end
-      -- end)
-      --
-      -- opts.mapping["<C-j>"] = cmp.mapping(function()
-      --   if copilot.is_visible() then copilot.accept_line() end
-      -- end)
-
-      -- opts.mapping["<C-c>"] = cmp.mapping(function()
-      --   if copilot.is_visible() then copilot.dismiss() end
-      -- end)
-      --
       return opts
     end,
   },
-
-  -- import/override with your plugins folder
 }

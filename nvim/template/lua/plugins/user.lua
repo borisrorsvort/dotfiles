@@ -5,19 +5,12 @@
 
 ---@type LazySpec
 return {
-
-  -- == Examples of Adding Plugins ==
-
   "andweeb/presence.nvim",
   {
     "ray-x/lsp_signature.nvim",
     event = "BufRead",
     config = function() require("lsp_signature").setup() end,
   },
-
-  -- == Examples of Overriding Plugins ==
-
-  -- customize alpha options
   {
     "goolord/alpha-nvim",
     opts = function(_, opts)
@@ -39,10 +32,7 @@ return {
     end,
   },
 
-  -- You can disable default plugins as follows:
-  { "max397574/better-escape.nvim", enabled = false },
-
-  -- You can also easily customize additional setup of plugins that is outside of the plugin's setup call
+  { "max397574/better-escape.nvim" },
   {
     "L3MON4D3/LuaSnip",
     config = function(plugin, opts)
@@ -89,26 +79,6 @@ return {
   { "metakirby5/codi.vim" },
   { "sheerun/vim-polyglot" },
   { "gennaro-tedesco/nvim-jqx", ft = { "json", "yaml" } },
-  {
-    "AstroNvim/astrotheme",
-    config = function()
-      require("astrotheme").setup {
-        background = { -- :h background, palettes to use when using the core vim background colors
-          light = "astrolight",
-          dark = "astrodark",
-        },
-        palettes = {
-          global = {},
-          astrodark = {},
-          astrolight = {
-            ui = {
-              -- base = "#FFFFFF",
-            },
-          },
-        },
-      }
-    end,
-  },
   { "kristijanhusak/vim-carbon-now-sh", event = "BufRead" },
   {
     "nvim-neotest/neotest",
@@ -145,9 +115,11 @@ return {
           open = false,
         },
         output_panel = {
+          enabled = true,
           open = "rightbelow vsplit | resize 30",
         },
         status = {
+          enabled = true,
           virtual_text = false,
           signs = true,
         },
@@ -258,10 +230,7 @@ return {
   {
     "andymass/vim-matchup", -- better % navigation
     event = "BufRead",
-    config = function()
-      -- may set any options here
-      vim.g.matchup_matchparen_offscreen = { method = "popup" }
-    end,
+    config = function() vim.g.matchup_matchparen_offscreen = { method = "popup" } end,
   },
   {
     "nacro90/numb.nvim", -- line preview when using :[num]

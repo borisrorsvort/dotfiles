@@ -1,5 +1,3 @@
--- if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
-
 -- Customize Treesitter
 local actions = require "telescope.actions"
 return {
@@ -11,19 +9,6 @@ return {
         treesitter = false,
       },
       file_ignore_patterns = { "node_modules", ".git", "*.lock" },
-      pickers = {
-        find_files = {
-          theme = "ivy",
-        },
-      },
-      layout_config = {
-        vertical = {
-          width = 0.95,
-        },
-        horizontal = {
-          width = 0.95,
-        },
-      },
       mappings = {
         -- for input mode
         i = {
