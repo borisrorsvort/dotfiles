@@ -8,7 +8,7 @@ local function setup_diagnostics(client, buffer)
     client.request("textDocument/diagnostic", { textDocument = params }, function(err, result)
       if err then
         local err_msg = string.format("diagnostics error - %s", vim.inspect(err))
-        vim.lsp.log.error(err_msg)
+        -- vim.lsp.log.error(err_msg)
       end
       local diagnostic_items = {}
       if result then diagnostic_items = result.items end

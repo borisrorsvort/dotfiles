@@ -61,10 +61,11 @@ alias dev="ruby ~/.dotfiles/dev_scripts/services.rb"
 alias rs='./bin/server'
 alias killruby='killall -9 ruby'
 alias killnode='killall -9 node'
+alias master='git checkout master'
 # TODO: replace with rails db:reset
 # alias reset_test='bin/rails db:environment:set RAILS_ENV=test;rake db:drop db:create db:migrate RAILS_ENV=test;bin/rails db:environment:set RAILS_ENV=development'
 alias reset_test='rake db:reset RAILS_ENV=test; rake db:migrate RAILS_ENV=test'
-alias reset_db="rake 'db:copy[staging, true]'; rake db:migrate RAILS_ENV=development"
+alias reset_db="rake 'db:copy[staging, true, true]'; rake db:migrate RAILS_ENV=development"
 alias rp="git log \$(git describe --tags \`git rev-list --tags --max-count=1\`)..master --oneline" # Release preview
 alias deploy="./bin/deploy"
 
