@@ -5,7 +5,21 @@
 return {
   "nvim-treesitter/nvim-treesitter",
   opts = {
-    ensure_installed = { "lua", "javascript", "vimdoc", "json", "vim", "ruby", "html", "css", "tsx", "yaml" },
+    ensure_installed = {
+      "lua",
+      "javascript",
+      "vimdoc",
+      "json",
+      "vim",
+      "ruby",
+      "html",
+      "css",
+      "tsx",
+      "styled",
+      "yaml",
+      "markdown",
+      "bash",
+    },
     highlight = { enable = true },
     indent = { enable = true, disable = { "python" } },
     incremental_selection = {

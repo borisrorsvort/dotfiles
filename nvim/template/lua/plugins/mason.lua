@@ -17,7 +17,7 @@ return {
         "eslint",
         "jsonls",
         "ruby_lsp",
-        "tsserver",
+        "vtsls",
         -- add more arguments for adding more language servers
       })
       opts.automatic_installation = true
