@@ -7,8 +7,9 @@ return {
   "windwp/nvim-spectre",
   opts = {
     live_update = true,
-    is_insert_mode = false,
-    mappings = {
+    is_insert_mode = true,
+    lnum_for_results = true,
+    mapping = {
       ["change_replace_sed"] = {
         map = "jrs",
         cmd = "<cmd>lua require('spectre').change_engine_replace('sed')<CR>",

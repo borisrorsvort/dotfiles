@@ -18,6 +18,7 @@ return {
       diagnostics_mode = 3, -- diagnostic mode on start (0 = off, 1 = no signs/virtual text, 2 = no virtual text, 3 = on)
       highlighturl = true, -- highlight URLs at start
       notifications = true, -- enable notifications at start
+      code_lens = true, -- enable code lens at start
     },
     -- Diagnostics configuration (for vim.diagnostics.config({...})) when diagnostics are on
     diagnostics = {
@@ -122,6 +123,9 @@ return {
           "<Esc><cmd>lua require('telescope').extensions.refactoring.refactors()<CR>",
           desc = "Bring up the refacoring menu",
         },
+      },
+      t = {
+        ["<Esc>"] = "<C-\\><C-n>",
       },
     },
   },
