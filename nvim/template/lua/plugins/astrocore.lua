@@ -101,20 +101,6 @@ return {
           function() require("astrocore.buffer").nav(-(vim.v.count > 0 and vim.v.count or 1)) end,
           desc = "Previous buffer",
         },
-        ["<Leader>T"] = { name = "Test" },
-        ["<Leader>Tn"] = {
-          function() require("neotest").run.run() end,
-          desc = "Run test under cursor",
-        },
-        ["<Leader>Tf"] = {
-          function() require("neotest").run.run(vim.fn.expand "%") end,
-          desc = "Run test file",
-        },
-        ["<Leader>Ts"] = {
-          function() require("neotest").summary.toggle() end,
-          desc = "Open test summary",
-        },
-        ["<Leader>tc"] = { "<cmd>lua require('ror.commands').list_commands()<CR>", desc = "Open Rails menu" },
       },
       v = {
         ["f"] = { "<cmd>lua require'hop'.hint_words()<cr>", desc = "Hop toggle" },

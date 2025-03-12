@@ -7,7 +7,7 @@ return {
   "windwp/nvim-spectre",
   opts = {
     live_update = true,
-    is_insert_mode = true,
+    is_insert_mode = false,
     lnum_for_results = true,
     mapping = {
       ["change_replace_sed"] = {
