@@ -8,6 +8,7 @@ return {
     "zbirenbaum/copilot.lua",
     opts = function(_, opts)
       -- Merge or override existing options
+      opts.copilot_model = "claude-3.7-sonnet"
       opts.suggestion = vim.tbl_deep_extend("force", opts.suggestion or {}, {
         enabled = true,
         auto_trigger = true, -- Ensures auto-trigger for Copilot

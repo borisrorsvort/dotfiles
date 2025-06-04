@@ -40,6 +40,8 @@ PATH="/usr/local/share/npm/bin:$PATH"
 PATH="$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export PATH="$PATH:`yarn global bin`"
 
+NOTE_PATH='/Users/ghost/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/Notes'
+
 # Temp fix for legacy webpack
 # export NODE_OPTIONS=--openssl-legacy-provider
 
@@ -54,14 +56,16 @@ alias so='source ~/.zshrc'
 alias up="git up"
 alias bu="bundle update"
 alias sync="up; gp"
-alias dotfiles="nvim ~/.dotfiles"
+alias dotfiles="nvim ~/dotfiles"
 alias fixup='gc -am "fix: quickfix"; gp'
 alias gs="lazygit"
-alias dev="ruby ~/.dotfiles/dev_scripts/services.rb"
+alias dev="ruby ~/dotfiles/dev_scripts/services.rb"
 alias rs='./bin/server'
 alias killruby='killall -9 ruby'
 alias killnode='killall -9 node'
 alias master='git checkout master'
+alias notes="cd $NOTE_PATH; nvim ./Goals.md"
+
 # TODO: replace with rails db:reset
 # alias reset_test='bin/rails db:environment:set RAILS_ENV=test;rake db:drop db:create db:migrate RAILS_ENV=test;bin/rails db:environment:set RAILS_ENV=development'
 alias reset_test='rake db:reset RAILS_ENV=test; rake db:migrate RAILS_ENV=test'

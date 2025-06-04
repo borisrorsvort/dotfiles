@@ -47,5 +47,15 @@ return {
         env = { CI = true },
       },
     }
+    -- Add a hook to attach the panel when byebug is triggered
+    opts.hooks = {
+      before_test_run = function()
+        -- Check if byebug is active
+        if vim.fn.exists ":Byebug" == 2 then
+          -- Attach the neotest panel
+          require("neotest").run.attach()
+        end
+      end,
+    }
   end,
 }

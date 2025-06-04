@@ -42,7 +42,10 @@ return {
       luasnip.filetype_extend("javascript", { "javascriptreact" })
     end,
   },
-
+  {
+    "benfowler/telescope-luasnip.nvim",
+    config = function() require("telescope").load_extension "luasnip" end,
+  },
   {
     "windwp/nvim-autopairs",
     config = function(plugin, opts)
@@ -178,7 +181,21 @@ return {
     version = false, -- Set this to "*" to always pull the latest release version, or set it to false to update to the latest code changes.
     opts = {
       provider = "copilot",
+      providers = {
+        copilot = {
+          model = "claude-3.7-sonnet",
+          endpoint = "https://api.githubcopilot.com",
+          allow_insecure = false,
+          timeout = 10 * 60 * 1000,
+          extra_request_body = {
+            temperature = 0,
+          },
+          max_completion_tokens = 1000000,
+          reasoning_effort = "high",
+        },
+      },
     },
+    -- providers.copilot.extra_request_body.temperature
     -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
     build = "make",
     -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
@@ -186,11 +203,25 @@ return {
       auto_suggestions = true, -- Experimental stage
       auto_set_highlight_group = true,
       auto_set_keymaps = true,
-      auto_apply_diff_after_generation = false,
+      auto_apply_diff_after_generation = true,
       support_paste_from_clipboard = false,
       minimize_diff = true, -- Whether to remove unchanged lines when applying a code block
       enable_token_counting = false, -- Whether to enable token counting. Default to true.
-      enable_cursor_planning_mode = false, -- Whether to enable Cursor Planning Mode. Default to false.
+      enable_cursor_planning_mode = true, -- Whether to enable Cursor Planning Mode. Default to false.
+    },
+    mappings = {
+      sidebar = {
+        apply_all = "A",
+        apply_cursor = "a",
+        retry_user_request = "r",
+        edit_user_request = "e",
+        switch_windows = "<Tab>",
+        reverse_switch_windows = "<S-Tab>",
+        remove_file = "d",
+        add_file = "@",
+        close = { "<Esc>", "q" },
+        close_from_input = nil, -- e.g., { normal = "<Esc>", insert = "<C-d>" }
+      },
     },
     dependencies = {
       "stevearc/dressing.nvim",
@@ -203,6 +234,7 @@ return {
       "ibhagwan/fzf-lua", -- for file_selector provider fzf
       "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
       "zbirenbaum/copilot.lua", -- for providers='copilot'
+      "MeanderingProgrammer/render-markdown.nvim",
       {
         -- support for image pasting
         "HakonHarnes/img-clip.nvim",
@@ -219,14 +251,6 @@ return {
             use_absolute_path = true,
           },
         },
-      },
-      {
-        -- Make sure to set this up properly if you have lazy=true
-        "MeanderingProgrammer/render-markdown.nvim",
-        opts = {
-          file_types = { "markdown", "Avante" },
-        },
-        ft = { "markdown", "Avante" },
       },
     },
   },

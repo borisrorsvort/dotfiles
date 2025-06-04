@@ -86,8 +86,8 @@ return {
         },
         ["<Leader>fs"] = { "<cmd>lua require('spectre').toggle()<cr>", desc = "Open Spectre" },
         ["<Leader>fS"] = {
-          function() require("spectre").open_file_search() end,
-          desc = "Spectre (current file)",
+          function() require("telescope").extensions.luasnip.luasnip {} end,
+          desc = "Find snippets",
         },
         ["<Leader>fc"] = {
           function() require("spectre").open_visual { select_word = true } end,
@@ -101,6 +101,8 @@ return {
           function() require("astrocore.buffer").nav(-(vim.v.count > 0 and vim.v.count or 1)) end,
           desc = "Previous buffer",
         },
+        -- ["<Leader>T"] = { name = "Test" },
+        ["<Leader>tc"] = { "<cmd>lua require('ror.commands').list_commands()<CR>", desc = "Open Rails menu" },
       },
       v = {
         ["f"] = { "<cmd>lua require'hop'.hint_words()<cr>", desc = "Hop toggle" },
