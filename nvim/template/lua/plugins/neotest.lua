@@ -7,6 +7,7 @@ return {
     "nvim-treesitter/nvim-treesitter",
     "antoinemadec/FixCursorHold.nvim",
     "olimorris/neotest-rspec",
+    "nvim-neotest/neotest",
     "haydenmeade/neotest-jest",
   },
   -- Add options here

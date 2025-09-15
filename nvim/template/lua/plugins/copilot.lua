@@ -9,6 +9,9 @@ return {
     opts = function(_, opts)
       -- Merge or override existing options
       opts.copilot_model = "claude-3.7-sonnet"
+      opts.filetypes = {
+        ["*"] = true, -- disable for all other filetypes and ignore default `filetypes`
+      }
       opts.suggestion = vim.tbl_deep_extend("force", opts.suggestion or {}, {
         enabled = true,
         auto_trigger = true, -- Ensures auto-trigger for Copilot

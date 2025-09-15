@@ -9,11 +9,12 @@ export PKG_CONFIG_PATH="/usr/local/opt/zlib/lib/pkgconfig"
 HISTSIZE=20000
 HISTFILE=~/.zsh_history
 SAVEHIST=20000
-ENABLE_CORRECTION="true"
+ENABLE_CORRECTION="false"
 COMPLETION_WAITING_DOTS="true"
 
 unsetopt correct_all
 unsetopt correct
+
 
 source $ZSH/oh-my-zsh.sh
 

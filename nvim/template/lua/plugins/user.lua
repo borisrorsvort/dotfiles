@@ -183,15 +183,15 @@ return {
       provider = "copilot",
       providers = {
         copilot = {
-          model = "claude-3.7-sonnet",
+          model = "claude-sonnet-3.5",
           endpoint = "https://api.githubcopilot.com",
-          allow_insecure = false,
-          timeout = 10 * 60 * 1000,
           extra_request_body = {
+            allow_insecure = false,
+            timeout = 10 * 60 * 1000, -- Timeout in milliseconds, increase this for reasoning models
             temperature = 0,
+            reasoning_effort = "high",
+            max_completion_tokens = 1000000,
           },
-          max_completion_tokens = 1000000,
-          reasoning_effort = "high",
         },
       },
     },
