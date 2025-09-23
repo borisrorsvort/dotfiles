@@ -183,7 +183,7 @@ return {
       provider = "copilot",
       providers = {
         copilot = {
-          model = "claude-sonnet-3.5",
+          model = "claude-sonnet-4",
           endpoint = "https://api.githubcopilot.com",
           extra_request_body = {
             allow_insecure = false,

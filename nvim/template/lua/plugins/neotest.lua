@@ -9,6 +9,7 @@ return {
     "olimorris/neotest-rspec",
     "nvim-neotest/neotest",
     "haydenmeade/neotest-jest",
+    "zidhuss/neotest-minitest",
   },
   -- Add options here
   opts = function(_, opts)
@@ -42,6 +43,16 @@ return {
     }
     opts.adapters = {
       require "neotest-rspec",
+      require "neotest-minitest" {
+        test_cmd = function()
+          return vim.fn.flatten {
+            "bundle",
+            "exec",
+            "rails",
+            "test",
+          }
+        end,
+      },
       require "neotest-jest" {
         jestCommand = "npm test --",
         jestConfigFile = "jest.config.js",
