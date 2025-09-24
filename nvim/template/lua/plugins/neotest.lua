@@ -32,10 +32,6 @@ return {
       enabled = false,
       open = false,
     }
-    -- opts.output_panel = {
-    --   enabled = true,
-    --   open = "rightbelow vsplit | resize 30",
-    -- }
     opts.status = {
       enabled = true,
       virtual_text = false,
