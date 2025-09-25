@@ -78,17 +78,17 @@ return {
           desc = "Pick to close",
         },
         ["<C-q>"] = { "<cmd>lua require'qf'.toggle('c', false)<CR>", noremap = { true }, desc = "Toggle quickfix" }, -- toggle("c", false) dont stay in current window
-        ["f"] = { "<cmd>lua require'hop'.hint_words()<cr>", desc = "Hop toggle" },
         ["<C-s>"] = { ":w!<cr>", desc = "Save File" },
+        ["f"] = { "<cmd>lua require'hop'.hint_words()<cr>", desc = "Hop toggle" },
+        ["<Leader>fS"] = {
+          function() require("telescope").extensions.luasnip.luasnip {} end,
+          desc = "Find snippets",
+        },
         ["<Leader>ff"] = {
           "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({}))<cr>",
           desc = "Find files",
         },
         ["<Leader>fs"] = { "<cmd>lua require('spectre').toggle()<cr>", desc = "Open Spectre" },
-        ["<Leader>fS"] = {
-          function() require("telescope").extensions.luasnip.luasnip {} end,
-          desc = "Find snippets",
-        },
         ["<Leader>fc"] = {
           function() require("spectre").open_visual { select_word = true } end,
           desc = "Spectre (current word)",
