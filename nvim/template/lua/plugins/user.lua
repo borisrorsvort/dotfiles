@@ -79,13 +79,9 @@ return {
     "michamos/vim-bepo",
     lazy = false,
   },
-  { "metakirby5/codi.vim" },
-  { "sheerun/vim-polyglot" },
-  { "gennaro-tedesco/nvim-jqx", ft = { "json", "yaml" } },
-  { "kristijanhusak/vim-carbon-now-sh", event = "BufRead" },
-  {
-    "stevearc/dressing.nvim",
-  },
+  { "sheerun/vim-polyglot" }, -- Language packs
+  { "gennaro-tedesco/nvim-jqx", ft = { "json", "yaml" } }, -- List and manipulate JSON objects
+  { "kristijanhusak/vim-carbon-now-sh", event = "BufRead" }, -- Code screenshots
   {
     "weizheheng/ror.nvim",
     event = "BufRead",
@@ -131,9 +127,6 @@ return {
   {
     "phaazon/hop.nvim",
     config = function() require("hop").setup() end,
-  },
-  {
-    "amadeus/vim-mjml",
   },
   {
     "windwp/nvim-spectre",
@@ -224,7 +217,6 @@ return {
       },
     },
     dependencies = {
-      "stevearc/dressing.nvim",
       "nvim-lua/plenary.nvim",
       "MunifTanjim/nui.nvim",
       --- The below dependencies are optional,
@@ -234,7 +226,14 @@ return {
       "ibhagwan/fzf-lua", -- for file_selector provider fzf
       "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
       "zbirenbaum/copilot.lua", -- for providers='copilot'
-      "MeanderingProgrammer/render-markdown.nvim",
+      {
+        -- Make sure to set this up properly if you have lazy=true
+        "MeanderingProgrammer/render-markdown.nvim",
+        opts = {
+          file_types = { "markdown", "Avante" },
+        },
+        ft = { "markdown", "Avante" },
+      },
     },
   },
 }

@@ -61,6 +61,7 @@ alias reset_test='rake db:reset RAILS_ENV=test; rake db:migrate RAILS_ENV=test'
 alias reset_db="rake 'db:copy[staging, true, true]'; rake db:migrate RAILS_ENV=development"
 alias rp="git log \$(git describe --tags \`git rev-list --tags --max-count=1\`)..master --oneline" # Release preview
 alias deploy="./bin/deploy"
+alias robert='nvim -c "lua vim.defer_fn(function()require(\"avante.api\").zen_mode()end, 100)"'
 
 export NVM_DIR="$HOME/.nvm"
   [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
