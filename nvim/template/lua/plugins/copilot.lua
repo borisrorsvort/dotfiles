@@ -8,7 +8,7 @@ return {
     "zbirenbaum/copilot.lua",
     opts = function(_, opts)
       -- Merge or override existing options
-      opts.copilot_model = "claude-sonnet-3.7"
+      opts.copilot_model = "claude-3.5-sonnet"
       opts.filetypes = {
         ["*"] = true, -- disable for all other filetypes and ignore default `filetypes`
       }
