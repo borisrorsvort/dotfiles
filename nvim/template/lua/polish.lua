@@ -53,5 +53,9 @@ vim.api.nvim_create_autocmd("FileType", {
     -- Match border colors with tokyonight-moon theme
     vim.api.nvim_set_hl(0, "SnacksBorder", { link = "FloatBorder" })
     vim.api.nvim_set_hl(0, "SnacksBackdrop", { bg = "#000000", blend = 60 })
+    -- Disable heirline statusline and winbar for terminal windows
+    vim.opt_local.winbar = ""
+    vim.opt_local.statusline = ""
+    vim.opt_local.statuscolumn = ""
   end,
 })
