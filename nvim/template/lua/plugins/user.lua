@@ -173,7 +173,29 @@ return {
     event = "VeryLazy",
     config = function()
       ---@type opencode.Opts
-      vim.g.opencode_opts = {}
+      vim.g.opencode_opts = {
+        server = {
+          start = function()
+            require('snacks.terminal').open('opencode --port', {
+              win = {
+                position = 'right',
+                width = 0.40,
+              },
+            })
+          end,
+          stop = function()
+            require('snacks.terminal').get('opencode --port', {}):close()
+          end,
+          toggle = function()
+            require('snacks.terminal').toggle('opencode --port', {
+              win = {
+                position = 'right',
+                width = 0.40,
+              },
+            })
+          end,
+        },
+      }
       vim.o.autoread = true
     end,
   },
@@ -183,8 +205,11 @@ return {
     event = "VeryLazy",
     opts = {
       terminal = {
-        split_side = "right",
-        split_width_percentage = 0.35,
+        provider = "snacks",
+        snacks_win_opts = {
+          position = "right",
+          width = 0.40,
+        },
       },
     },
   },
