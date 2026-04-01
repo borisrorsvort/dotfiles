@@ -176,12 +176,13 @@ return {
         win = {
           position = 'right',
           width = 0.40,
-          border = 'hpad',
+          border = { '', '', '', '  ', '', '', '', '  ' },
           backdrop = 60,
           wo = {
             winblend = 0,
             number = false,
             relativenumber = false,
+            signcolumn = 'no',
           },
         },
       }
@@ -212,12 +213,13 @@ return {
         snacks_win_opts = {
           position = "right",
           width = 0.40,
-          border = 'hpad',
+          border = { '', '', '', '  ', '', '', '', '  ' },
           backdrop = 60,
           wo = {
             winblend = 0,
             number = false,
             relativenumber = false,
+            signcolumn = 'no',
           },
         },
       },
