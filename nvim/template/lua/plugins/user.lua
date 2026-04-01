@@ -172,27 +172,30 @@ return {
     version = "*",
     event = "VeryLazy",
     config = function()
+      local snacks_opts = {
+        win = {
+          position = 'right',
+          width = 0.40,
+          border = 'rounded',
+          backdrop = 60,
+          wo = {
+            winblend = 0,
+            number = false,
+            relativenumber = false,
+          },
+        },
+      }
       ---@type opencode.Opts
       vim.g.opencode_opts = {
         server = {
           start = function()
-            require('snacks.terminal').open('opencode --port', {
-              win = {
-                position = 'right',
-                width = 0.40,
-              },
-            })
+            require('snacks.terminal').open('opencode --port', snacks_opts)
           end,
           stop = function()
             require('snacks.terminal').get('opencode --port', {}):close()
           end,
           toggle = function()
-            require('snacks.terminal').toggle('opencode --port', {
-              win = {
-                position = 'right',
-                width = 0.40,
-              },
-            })
+            require('snacks.terminal').toggle('opencode --port', snacks_opts)
           end,
         },
       }
@@ -209,6 +212,13 @@ return {
         snacks_win_opts = {
           position = "right",
           width = 0.40,
+          border = 'rounded',
+          backdrop = 60,
+          wo = {
+            winblend = 0,
+            number = false,
+            relativenumber = false,
+          },
         },
       },
     },
