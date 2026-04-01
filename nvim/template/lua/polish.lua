@@ -24,3 +24,34 @@ vim.g.translator_source_lang = "en"
 vim.diagnostic.config {
   virtual_text = true,
 }
+
+-- Terminal theme integration for AI assistants
+-- Makes Claude Code and opencode blend with tokyonight-moon theme
+vim.api.nvim_create_autocmd("TermOpen", {
+  pattern = "*",
+  callback = function()
+    -- Disable line numbers and sign column in terminal
+    vim.opt_local.number = false
+    vim.opt_local.relativenumber = false
+    vim.opt_local.signcolumn = "no"
+    
+    -- Blend terminal with editor background (tokyonight-moon: #1e2030)
+    vim.api.nvim_set_hl(0, "Terminal", { bg = "#1e2030" })
+    
+    -- Ensure terminal background matches Normal background
+    local normal_bg = vim.api.nvim_get_hl(0, { name = "Normal" }).bg
+    if normal_bg then
+      vim.api.nvim_set_hl(0, "Terminal", { bg = normal_bg })
+    end
+  end,
+})
+
+-- Additional styling for snacks terminal windows
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "snacks_terminal",
+  callback = function()
+    -- Match border colors with tokyonight-moon theme
+    vim.api.nvim_set_hl(0, "SnacksBorder", { link = "FloatBorder" })
+    vim.api.nvim_set_hl(0, "SnacksBackdrop", { bg = "#000000", blend = 60 })
+  end,
+})
