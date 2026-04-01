@@ -121,7 +121,7 @@ return {
   { "nvim-treesitter/nvim-treesitter-textobjects", event = "BufRead" },
   {
     "kylechui/nvim-surround",
-    version = "*", -- Use for stability; omit to use `main` branch for the latest features
+    version = "*",
     event = "VeryLazy",
   },
   {
@@ -168,68 +168,23 @@ return {
     config = function() require("dap-ruby").setup() end,
   },
   {
-    "yetone/avante.nvim",
+    "nickjvandyke/opencode.nvim",
+    version = "*",
     event = "VeryLazy",
-    lazy = false,
-    version = false, -- Set this to "*" to always pull the latest release version, or set it to false to update to the latest code changes.
+    config = function()
+      ---@type opencode.Opts
+      vim.g.opencode_opts = {}
+      vim.o.autoread = true
+    end,
+  },
+  {
+    "coder/claudecode.nvim",
+    dependencies = { "folke/snacks.nvim" },
+    event = "VeryLazy",
     opts = {
-      provider = "copilot",
-      providers = {
-        copilot = {
-          endpoint = "https://api.githubcopilot.com",
-          model = "claude-3.5-sonnet",
-          extra_request_body = {
-            allow_insecure = false,
-            timeout = 10 * 60 * 1000, -- Timeout in milliseconds, increase this for reasoning models
-            temperature = 0,
-            reasoning_effort = "high",
-            max_completion_tokens = 1000000,
-          },
-        },
-      },
-    },
-    build = "make",
-    behaviour = {
-      auto_suggestions = true, -- Experimental stage
-      auto_set_highlight_group = true,
-      auto_set_keymaps = true,
-      auto_apply_diff_after_generation = true,
-      support_paste_from_clipboard = false,
-      minimize_diff = true, -- Whether to remove unchanged lines when applying a code block
-      enable_token_counting = false, -- Whether to enable token counting. Default to true.
-      enable_cursor_planning_mode = true, -- Whether to enable Cursor Planning Mode. Default to false.
-    },
-    mappings = {
-      sidebar = {
-        apply_all = "A",
-        apply_cursor = "a",
-        retry_user_request = "r",
-        edit_user_request = "e",
-        switch_windows = "<Tab>",
-        reverse_switch_windows = "<S-Tab>",
-        remove_file = "d",
-        add_file = "@",
-        close = { "<Esc>", "q" },
-        close_from_input = nil, -- e.g., { normal = "<Esc>", insert = "<C-d>" }
-      },
-    },
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "MunifTanjim/nui.nvim",
-      --- The below dependencies are optional,
-      "echasnovski/mini.pick", -- for file_selector provider mini.pick
-      "nvim-telescope/telescope.nvim", -- for file_selector provider telescope
-      "hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
-      "ibhagwan/fzf-lua", -- for file_selector provider fzf
-      "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
-      "zbirenbaum/copilot.lua", -- for providers='copilot'
-      {
-        -- Make sure to set this up properly if you have lazy=true
-        "MeanderingProgrammer/render-markdown.nvim",
-        opts = {
-          file_types = { "markdown", "Avante" },
-        },
-        ft = { "markdown", "Avante" },
+      terminal = {
+        split_side = "right",
+        split_width_percentage = 0.35,
       },
     },
   },

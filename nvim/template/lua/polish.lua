@@ -20,9 +20,7 @@
 vim.g.neo_show_hidden = 1
 vim.g.translator_target_lang = "fr"
 vim.g.translator_source_lang = "en"
-vim.g.copilot_no_tab_map = true
-vim.g.copilot_assume_mapped = true
-vim.g.copilot_tab_fallback = ""
+
 vim.diagnostic.config {
   virtual_text = true,
 }

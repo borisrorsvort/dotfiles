@@ -16,6 +16,6 @@ return {
   { import = "astrocommunity.colorscheme.nord-nvim" },
   { import = "astrocommunity.colorscheme.nordic-nvim" },
   { import = "astrocommunity.colorscheme.kanagawa-nvim" },
-  { import = "astrocommunity.completion.copilot-lua-cmp" },
+
   { import = "astrocommunity.test.neotest" },
 }

@@ -70,8 +70,10 @@ return {
     ---@type AstroLSPOpts
     opts = {
       on_attach = function(client, buffer)
-        setup_diagnostics(client, buffer)
-        add_ruby_deps_command(client, buffer)
+        if client.name == "ruby_lsp" then
+          setup_diagnostics(client, buffer)
+          add_ruby_deps_command(client, buffer)
+        end
       end,
     },
   },
