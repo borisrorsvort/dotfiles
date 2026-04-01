@@ -183,6 +183,8 @@ return {
             number = false,
             relativenumber = false,
             signcolumn = 'no',
+            winbar = '',
+            statusline = '',
           },
         },
       }
