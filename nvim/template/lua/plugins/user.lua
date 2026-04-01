@@ -176,7 +176,6 @@ return {
         win = {
           position = 'right',
           width = 0.40,
-          border = { '', '', '', '  ', '', '', '', '  ' },
           backdrop = 60,
           wo = {
             winblend = 0,
@@ -215,7 +214,6 @@ return {
         snacks_win_opts = {
           position = "right",
           width = 0.40,
-          border = { '', '', '', '  ', '', '', '', '  ' },
           backdrop = 60,
           wo = {
             winblend = 0,
