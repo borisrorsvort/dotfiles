@@ -153,6 +153,7 @@ return {
           ["<Leader>Ob"] = { "<cmd>ClaudeCodeAdd %<cr>", desc = "Add buffer" },
           ["<Leader>Oa"] = { "<cmd>ClaudeCodeDiffAccept<cr>", desc = "Accept diff" },
           ["<Leader>Od"] = { "<cmd>ClaudeCodeDiffDeny<cr>", desc = "Deny diff" },
+          ["<Leader>OD"] = { "<cmd>ClaudeCode --dangerously-skip-permissions<cr>", desc = "Toggle (dangerous)" },
         },
 
         -- ── Visual mode ──────────────────────────────────────────────
