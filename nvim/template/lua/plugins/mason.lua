@@ -6,7 +6,7 @@
 return {
   -- use mason-lspconfig to configure LSP installations
   {
-    "williamboman/mason-lspconfig.nvim",
+    "mason-org/mason-lspconfig.nvim",
     -- overrides `require("mason-lspconfig").setup(...)`
     opts = function(_, opts)
       -- add more things to the ensure_installed table protecting against community packs modifying it
@@ -21,7 +21,6 @@ return {
         "stylelint_lsp",
         -- add more arguments for adding more language servers
       })
-      opts.automatic_installation = true
     end,
   },
   -- {

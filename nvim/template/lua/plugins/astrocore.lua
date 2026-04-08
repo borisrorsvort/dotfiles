@@ -34,6 +34,72 @@ return {
         notifications = true, -- enable notifications at start
         code_lens = true, -- enable code lens at start
       },
+      -- Treesitter configuration (moved from treesitter.lua for AstroNvim v6)
+      treesitter = {
+        ensure_installed = {
+          "lua",
+          "javascript",
+          "vimdoc",
+          "json",
+          "vim",
+          "ruby",
+          "html",
+          "css",
+          "tsx",
+          "styled",
+          "yaml",
+          "markdown",
+          "bash",
+        },
+        highlight = true,
+        indent = true,
+        incremental_selection = {
+          keymaps = {
+            init_selection = "<c-space>",
+            node_incremental = "<c-space>",
+            scope_incremental = "<c-s>",
+            node_decremental = "<c-backspace>",
+          },
+        },
+        textobjects = {
+          select = {
+            select_textobject = {
+              ["aa"] = { query = "@parameter.outer", desc = "around parameter" },
+              ["ia"] = { query = "@parameter.inner", desc = "inside parameter" },
+              ["af"] = { query = "@function.outer", desc = "around function" },
+              ["if"] = { query = "@function.inner", desc = "inside function" },
+              ["ac"] = { query = "@class.outer", desc = "around class" },
+              ["ic"] = { query = "@class.inner", desc = "inside class" },
+            },
+          },
+          move = {
+            goto_next_start = {
+              ["]m"] = { query = "@function.outer", desc = "Next function start" },
+              ["]]"] = { query = "@class.outer", desc = "Next class start" },
+            },
+            goto_next_end = {
+              ["]M"] = { query = "@function.outer", desc = "Next function end" },
+              ["]["] = { query = "@class.outer", desc = "Next class end" },
+            },
+            goto_previous_start = {
+              ["[m"] = { query = "@function.outer", desc = "Previous function start" },
+              ["[["] = { query = "@class.outer", desc = "Previous class start" },
+            },
+            goto_previous_end = {
+              ["[M"] = { query = "@function.outer", desc = "Previous function end" },
+              ["[]"] = { query = "@class.outer", desc = "Previous class end" },
+            },
+          },
+          swap = {
+            swap_next = {
+              ["<leader>a"] = { query = "@parameter.inner", desc = "Swap next parameter" },
+            },
+            swap_previous = {
+              ["<leader>A"] = { query = "@parameter.inner", desc = "Swap previous parameter" },
+            },
+          },
+        },
+      },
       -- Diagnostics configuration (for vim.diagnostics.config({...})) when diagnostics are on
       diagnostics = {
         virtual_text = true,
@@ -52,7 +118,7 @@ return {
           guifont = "FiraCode_Nerd_Font_Mono:h21",
           conceallevel = 2, -- enable conceal
           foldenable = false,
-          foldexpr = "nvim_treesitter#foldexpr()", -- set Treesitter based folding
+          foldexpr = "v:lua.vim.treesitter.foldexpr()", -- set Treesitter based folding
           foldmethod = "expr",
           linebreak = true, -- linebreak soft wrap at words
           list = true, -- show whitespace characters
@@ -82,6 +148,10 @@ return {
           ["<C-l>"] = false,
           ["k"] = false, -- cancel overwrite in https://github.com/AstroNvim/AstroNvim/blob/148a513072e6fc2a40fe8ad89534d4b6d00db5e7/lua/astronvim/mappings.lua#L23
           ["j"] = false, -- cancel overwrite in https://github.com/AstroNvim/AstroNvim/blob/148a513072e6fc2a40fe8ad89534d4b6d00db5e7/lua/astronvim/mappings.lua#L24
+
+          -- Disable AstroNvim default <Leader>o (Neo-tree focus) to use as which-key group for Opencode
+          ["<Leader>o"] = false,
+
           ["<C-s>"] = { ":w!<cr>", desc = "Save File" },
           ["f"] = { hop_words, desc = "Hop toggle" },
 
@@ -134,8 +204,7 @@ return {
           -- Rails
           ["<Leader>rc"] = { "<cmd>lua require('ror.commands').list_commands()<CR>", desc = "Open Rails menu" },
 
-          -- Opencode
-          ["<Leader>o"] = { desc = "Opencode" },
+          -- Opencode (which-key group auto-detected from sub-mappings)
           ["<Leader>ot"] = { opencode_toggle, desc = "Toggle" },
           ["<Leader>oa"] = { opencode_ask, desc = "Ask" },
           ["<Leader>os"] = { opencode_select, desc = "Select action" },
@@ -170,8 +239,7 @@ return {
             desc = "Bring up the refacoring menu",
           },
 
-          -- Opencode
-          ["<Leader>o"] = { desc = "Opencode" },
+          -- Opencode (which-key group auto-detected from sub-mappings)
           ["<Leader>ot"] = { opencode_toggle, desc = "Toggle" },
           ["<Leader>oa"] = { opencode_ask_submit, desc = "Ask (selection)" },
           ["<Leader>os"] = { opencode_select, desc = "Select action" },

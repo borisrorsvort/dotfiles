@@ -13,33 +13,15 @@ return {
   },
   {
     "goolord/alpha-nvim",
-    opts = function(_, opts)
-      -- customize the dashboard header
-      opts.section.header.val = {
-        "        888                     888    ",
-        "        888                     888    ",
-        "        888                     888    ",
-        " .d88b. 88888b.  .d88b. .d8888b 888888 ",
-        'd88P"88b888 "88bd88""88b88K     888    ',
-        '888  888888  888888  888"Y8888b.888    ',
-        "Y88b 888888  888Y88..88P     X88Y88b.  ",
-        '"Y88888888  888 "Y88P"  88888P\' "Y888 ',
-        "     888                               ",
-        "Y8b d88P                               ",
-        '"Y88P"       ',
-      }
-      return opts
-    end,
+    enabled = false, -- AstroNvim v6 uses snacks.nvim dashboard instead
   },
 
   { "max397574/better-escape.nvim" },
   {
     "L3MON4D3/LuaSnip",
-    config = function(plugin, opts)
-      require "astronvim.plugins.configs.luasnip"(plugin, opts) -- include the default astronvim config that calls the setup call
-      -- add more custom luasnip configuration such as filetype extend or custom snippets
-      local luasnip = require "luasnip"
-      luasnip.filetype_extend("javascript", { "javascriptreact" })
+    config = function(_, opts)
+      require("luasnip").setup(opts)
+      require("luasnip").filetype_extend("javascript", { "javascriptreact" })
     end,
   },
   {
@@ -48,10 +30,9 @@ return {
   },
   {
     "windwp/nvim-autopairs",
-    config = function(plugin, opts)
-      require "astronvim.plugins.configs.nvim-autopairs"(plugin, opts) -- include the default astronvim config that calls the setup call
-      -- add more custom autopairs configuration such as custom rules
+    config = function(_, opts)
       local npairs = require "nvim-autopairs"
+      npairs.setup(opts)
       local Rule = require "nvim-autopairs.rule"
       local cond = require "nvim-autopairs.conds"
       npairs.add_rules(
@@ -85,13 +66,6 @@ return {
   {
     "weizheheng/ror.nvim",
     event = "BufRead",
-    config = function()
-      require("dressing").setup {
-        input = {
-          min_width = { 60, 0.9 },
-        },
-      }
-    end,
   },
   {
     "tpope/vim-rails",
@@ -118,7 +92,6 @@ return {
   },
   { "vim-ruby/vim-ruby", event = "BufRead" },
   { "tpope/vim-bundler", cmd = { "Bundle", "Bundler", "Bopen", "Bsplit", "Btabedit" } },
-  { "nvim-treesitter/nvim-treesitter-textobjects", event = "BufRead" },
   {
     "kylechui/nvim-surround",
     version = "*",
