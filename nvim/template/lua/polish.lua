@@ -34,15 +34,13 @@ vim.api.nvim_create_autocmd("TermOpen", {
     vim.opt_local.number = false
     vim.opt_local.relativenumber = false
     vim.opt_local.signcolumn = "no"
-    
+
     -- Blend terminal with editor background (tokyonight-moon: #1e2030)
     vim.api.nvim_set_hl(0, "Terminal", { bg = "#1e2030" })
-    
+
     -- Ensure terminal background matches Normal background
     local normal_bg = vim.api.nvim_get_hl(0, { name = "Normal" }).bg
-    if normal_bg then
-      vim.api.nvim_set_hl(0, "Terminal", { bg = normal_bg })
-    end
+    if normal_bg then vim.api.nvim_set_hl(0, "Terminal", { bg = normal_bg }) end
   end,
 })
 

@@ -13,9 +13,10 @@ return {
   { import = "astrocommunity.recipes.heirline-nvchad-statusline" },
   { import = "astrocommunity.recipes.heirline-vscode-winbar" },
   { import = "astrocommunity.colorscheme.tokyonight-nvim" },
+  { import = "astrocommunity.colorscheme.nightfox-nvim" },
   { import = "astrocommunity.colorscheme.nord-nvim" },
   { import = "astrocommunity.colorscheme.nordic-nvim" },
-  { import = "astrocommunity.colorscheme.kanagawa-nvim" },
-
   { import = "astrocommunity.test.neotest" },
+  { import = "astrocommunity.pack.python" },
+  { import = "astrocommunity.completion.copilot-lua-cmp" },
 }

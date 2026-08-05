@@ -1,7 +1,7 @@
 # Zsh Path to your oh-my-zsh configuration.
 ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="af-magic"
-plugins=(z git aliases brew bundler rbenv node npm gem rails ruby command-not-found ssh-agent nvm direnv)
+plugins=(z git aliases brew bundler rbenv node npm gem rails ruby command-not-found ssh-agent nvm direnv web-search)
 
 # For pkg-config to find zlib you may need to set:
 export PKG_CONFIG_PATH="/usr/local/opt/zlib/lib/pkgconfig"
@@ -26,6 +26,7 @@ PATH="$HOME/.local/bin:$PATH"
 PATH="$HOME/.yarn/bin:$PATH"
 PATH="/usr/local/sbin:$PATH" # Homebrew
 PATH="/usr/local/share/npm/bin:$PATH"
+PATH="$HOME/dotfiles/scripts/photos:$PATH" # Photo scripts
 export PATH="$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 NOTE_PATH='/Users/ghost/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/Notes'
@@ -54,6 +55,8 @@ alias killnode='killall -9 node'
 alias master='git checkout master'
 alias main='git checkout main'
 alias notes="cd $NOTE_PATH; nvim ./Goals.md"
+alias photos="photos.rb"
+alias create_folders="photos sort" # kept for muscle memory
 
 # TODO: replace with rails db:reset
 # alias reset_test='bin/rails db:environment:set RAILS_ENV=test;rake db:drop db:create db:migrate RAILS_ENV=test;bin/rails db:environment:set RAILS_ENV=development'

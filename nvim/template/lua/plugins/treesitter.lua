@@ -1,2 +1,3 @@
--- Treesitter configuration has moved to astrocore.lua (AstroNvim v6)
+-- nvim-treesitter rewrite: setup() only accepts install_dir.
+-- highlight/indent/selection are handled by AstroNvim or polish.lua.
 return {}

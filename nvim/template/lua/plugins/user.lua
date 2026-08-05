@@ -6,16 +6,6 @@
 ---@type LazySpec
 return {
   "andweeb/presence.nvim",
-  {
-    "ray-x/lsp_signature.nvim",
-    event = "BufRead",
-    config = function() require("lsp_signature").setup() end,
-  },
-  {
-    "goolord/alpha-nvim",
-    enabled = false, -- AstroNvim v6 uses snacks.nvim dashboard instead
-  },
-
   { "max397574/better-escape.nvim" },
   {
     "L3MON4D3/LuaSnip",
@@ -110,15 +100,15 @@ return {
     event = "BufRead",
     config = function() require("todo-comments").setup() end,
   },
-  {
-    "ThePrimeagen/refactoring.nvim",
-    event = "BufRead",
-    requires = {
-      { "nvim-lua/plenary.nvim" },
-      { "nvim-treesitter/nvim-treesitter" },
-    },
-    config = function() require("refactoring").setup() end,
-  },
+  -- {
+  --   "ThePrimeagen/refactoring.nvim",
+  --   event = "BufRead",
+  --   requires = {
+  --     { "nvim-lua/plenary.nvim" },
+  --     { "nvim-treesitter/nvim-treesitter" },
+  --   },
+  --   config = function() require("refactoring").setup() end,
+  -- },
   {
     "voldikss/vim-translator",
     lazy = false,
@@ -147,35 +137,41 @@ return {
     config = function()
       local snacks_opts = {
         win = {
-          position = 'right',
+          position = "right",
           width = 0.40,
           backdrop = 60,
           wo = {
             winblend = 0,
             number = false,
             relativenumber = false,
-            signcolumn = 'no',
-            winbar = '',
-            statusline = '',
+            signcolumn = "no",
+            winbar = "",
+            statusline = "",
           },
         },
       }
       ---@type opencode.Opts
       vim.g.opencode_opts = {
         server = {
-          start = function()
-            require('snacks.terminal').open('opencode --port', snacks_opts)
-          end,
-          stop = function()
-            require('snacks.terminal').get('opencode --port', {}):close()
-          end,
-          toggle = function()
-            require('snacks.terminal').toggle('opencode --port', snacks_opts)
-          end,
+          start = function() require("snacks.terminal").open("opencode --port", snacks_opts) end,
+          stop = function() require("snacks.terminal").get("opencode --port", {}):close() end,
+          toggle = function() require("snacks.terminal").toggle("opencode --port", snacks_opts) end,
         },
       }
       vim.o.autoread = true
     end,
+  },
+  {
+    "sustech-data/wildfire.nvim",
+    event = "VeryLazy",
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
+    opts = {
+      keymaps = {
+        init_selection = "<C-Space>",
+        node_incremental = "<C-Space>",
+        node_decremental = "<C-BS>",
+      },
+    },
   },
   {
     "coder/claudecode.nvim",
@@ -192,7 +188,7 @@ return {
             winblend = 0,
             number = false,
             relativenumber = false,
-            signcolumn = 'no',
+            signcolumn = "no",
           },
         },
       },

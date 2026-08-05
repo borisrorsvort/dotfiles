@@ -34,72 +34,6 @@ return {
         notifications = true, -- enable notifications at start
         code_lens = true, -- enable code lens at start
       },
-      -- Treesitter configuration (moved from treesitter.lua for AstroNvim v6)
-      treesitter = {
-        ensure_installed = {
-          "lua",
-          "javascript",
-          "vimdoc",
-          "json",
-          "vim",
-          "ruby",
-          "html",
-          "css",
-          "tsx",
-          "styled",
-          "yaml",
-          "markdown",
-          "bash",
-        },
-        highlight = true,
-        indent = true,
-        incremental_selection = {
-          keymaps = {
-            init_selection = "<c-space>",
-            node_incremental = "<c-space>",
-            scope_incremental = "<c-s>",
-            node_decremental = "<c-backspace>",
-          },
-        },
-        textobjects = {
-          select = {
-            select_textobject = {
-              ["aa"] = { query = "@parameter.outer", desc = "around parameter" },
-              ["ia"] = { query = "@parameter.inner", desc = "inside parameter" },
-              ["af"] = { query = "@function.outer", desc = "around function" },
-              ["if"] = { query = "@function.inner", desc = "inside function" },
-              ["ac"] = { query = "@class.outer", desc = "around class" },
-              ["ic"] = { query = "@class.inner", desc = "inside class" },
-            },
-          },
-          move = {
-            goto_next_start = {
-              ["]m"] = { query = "@function.outer", desc = "Next function start" },
-              ["]]"] = { query = "@class.outer", desc = "Next class start" },
-            },
-            goto_next_end = {
-              ["]M"] = { query = "@function.outer", desc = "Next function end" },
-              ["]["] = { query = "@class.outer", desc = "Next class end" },
-            },
-            goto_previous_start = {
-              ["[m"] = { query = "@function.outer", desc = "Previous function start" },
-              ["[["] = { query = "@class.outer", desc = "Previous class start" },
-            },
-            goto_previous_end = {
-              ["[M"] = { query = "@function.outer", desc = "Previous function end" },
-              ["[]"] = { query = "@class.outer", desc = "Previous class end" },
-            },
-          },
-          swap = {
-            swap_next = {
-              ["<leader>a"] = { query = "@parameter.inner", desc = "Swap next parameter" },
-            },
-            swap_previous = {
-              ["<leader>A"] = { query = "@parameter.inner", desc = "Swap previous parameter" },
-            },
-          },
-        },
-      },
       -- Diagnostics configuration (for vim.diagnostics.config({...})) when diagnostics are on
       diagnostics = {
         virtual_text = true,
@@ -260,6 +194,8 @@ return {
 
         -- ── Insert mode ─────────────────────────────────────────────
         i = {
+          ["<C-s>"] = { "<Esc>:w!<cr>", desc = "Save File" },
+
           -- Surround
           ["<C-g>s"] = { "<Plug>(nvim-surround-insert)", desc = "Add surround" },
           ["<C-g>S"] = { "<Plug>(nvim-surround-insert-line)", desc = "Add surround (new lines)" },
