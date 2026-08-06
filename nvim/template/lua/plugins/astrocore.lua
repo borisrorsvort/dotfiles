@@ -23,6 +23,7 @@ local function opencode_interrupt() require("opencode").command "session.interru
 -- ── Terminal window options (shared across all AI providers) ──
 local function ai_terminal_opts()
   return {
+    count = 1,
     win = {
       position = "right",
       width = 0.40,
@@ -83,7 +84,10 @@ local function agy_ask(mode)
     local prompt = "Review " .. file .. line_info .. ": " .. input
     local opts = ai_terminal_opts()
     if not send_to_terminal("agy", prompt, opts) then
-      require("snacks.terminal").open({ "agy", prompt }, opts)
+      require("snacks.terminal").open("agy", opts)
+      vim.defer_fn(function()
+        send_to_terminal("agy", prompt, opts)
+      end, 300)
     end
   end)
 end
