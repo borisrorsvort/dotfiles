@@ -1,0 +1,48 @@
+AllCops:
+  TargetRubyVersion: 3.4
+  NewCops: enable
+  DisplayStyleGuide: true
+  ExtraDetails: true
+  DisplayCopNames:
+    Enabled: true
+
+Style/AsciiComments:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Metrics/ClassLength:
+  Enabled: false
+
+Metrics/BlockLength:
+  Enabled: false
+
+Layout/LineLength:
+  Max: 120
+
+Metrics/ParameterLists:
+  Enabled: false
+
+Metrics/MethodLength:
+  Enabled: false
+
+Metrics/ModuleLength:
+  Enabled: false
+
+Layout/HashAlignment:
+  EnforcedHashRocketStyle: table
+  EnforcedColonStyle: table
+
+Style/HashEachMethods:
+  Enabled: false
+
+Style/HashTransformKeys:
+  Enabled: false
+
+Style/HashTransformValues:
+  Enabled: false
+
+Style/StringLiterals:
+  Enabled: true
+  EnforcedStyle: double_quotes

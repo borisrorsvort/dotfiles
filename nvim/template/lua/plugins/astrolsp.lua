@@ -47,7 +47,8 @@ return {
     config = {
       ruby_lsp = {
         mason = false,
-        cmd = { vim.fn.expand("~/.rbenv/shims/ruby-lsp") },
+        -- cmd = { vim.fn.expand("~/.rbenv/shims/ruby-lsp") },
+        cmd = { "ruby-lsp" },
       },
     },
     -- customize how language servers are attached

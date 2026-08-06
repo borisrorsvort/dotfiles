@@ -1,3 +1,4 @@
 .DS_Store
 ./scripts/photos/.env
 *.env
+/.omc

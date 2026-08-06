@@ -53,18 +53,38 @@ end
 -- ── AntiGravity helpers ─────────────────────────────────────
 local function agy_toggle() require("snacks.terminal").toggle("agy", ai_terminal_opts()) end
 
-local function agy_ask()
+local function agy_ask(mode)
   local file = vim.fn.expand "%"
   if file == "" then
     vim.notify("No file in current buffer", vim.log.levels.WARN)
     return
   end
-  vim.ui.input({ prompt = "Ask AntiGravity: " }, function(input)
+
+  local line_info = ""
+  if mode == "v" then
+    -- Get line range of visual selection
+    local s_start = vim.fn.getpos "'<"
+    local s_end = vim.fn.getpos "'>"
+    local start_line = s_start[2]
+    local end_line = s_end[2]
+    if start_line == end_line then
+      line_info = ":" .. start_line
+    else
+      line_info = "#L" .. start_line .. "-L" .. end_line
+    end
+  else
+    -- Single cursor line
+    local cursor_line = vim.fn.line "."
+    line_info = ":" .. cursor_line
+  end
+
+  vim.ui.input({ prompt = "Ask AntiGravity (" .. file .. line_info .. "): " }, function(input)
     if not input or input == "" then return end
-    local prompt = "Review " .. file .. ": " .. input
+    local prompt = "Review " .. file .. line_info .. ": " .. input
     local opts = ai_terminal_opts()
-    require("snacks.terminal").toggle("agy", opts)
-    vim.defer_fn(function() send_to_terminal("agy", prompt, opts) end, 300)
+    if not send_to_terminal("agy", prompt, opts) then
+      require("snacks.terminal").open({ "agy", prompt }, opts)
+    end
   end)
 end
 
@@ -201,7 +221,7 @@ return {
 
           -- Claude Code (under <Leader>ac prefix)
           ["<Leader>ac"] = { desc = "Claude Code" },
-          ["<Leader>act"] = { "<cmd>ClaudeCode<cr>", desc = "Toggle" },
+          ["<Leader>act"] = { "<cmd>ClaudeCode --dangerously-skip-permissions<cr>", desc = "Toggle (dangerous)" },
           ["<Leader>acf"] = { "<cmd>ClaudeCodeFocus<cr>", desc = "Focus" },
           ["<Leader>acr"] = { "<cmd>ClaudeCode --resume<cr>", desc = "Resume" },
           ["<Leader>acc"] = { "<cmd>ClaudeCode --continue<cr>", desc = "Continue" },
@@ -209,7 +229,6 @@ return {
           ["<Leader>acb"] = { "<cmd>ClaudeCodeAdd %<cr>", desc = "Add buffer" },
           ["<Leader>aca"] = { "<cmd>ClaudeCodeDiffAccept<cr>", desc = "Accept diff" },
           ["<Leader>acd"] = { "<cmd>ClaudeCodeDiffDeny<cr>", desc = "Deny diff" },
-          ["<Leader>acD"] = { "<cmd>ClaudeCode --dangerously-skip-permissions<cr>", desc = "Toggle (dangerous)" },
 
           -- AntiGravity (under <Leader>aa prefix)
           ["<Leader>aa"] = { desc = "AntiGravity" },
@@ -239,14 +258,14 @@ return {
 
           -- Claude Code (under <Leader>ac prefix)
           ["<Leader>ac"] = { desc = "Claude Code" },
-          ["<Leader>act"] = { "<cmd>ClaudeCode<cr>", desc = "Toggle" },
+          ["<Leader>act"] = { "<cmd>ClaudeCode --dangerously-skip-permissions<cr>", desc = "Toggle (dangerous)" },
           ["<Leader>acs"] = { "<cmd>ClaudeCodeSend<cr>", desc = "Send to Claude" },
           ["<Leader>acb"] = { "<cmd>ClaudeCodeAdd %<cr>", desc = "Add buffer" },
 
           -- AntiGravity (under <Leader>aa prefix)
           ["<Leader>aa"] = { desc = "AntiGravity" },
           ["<Leader>aat"] = { agy_toggle, desc = "Toggle" },
-          ["<Leader>aaa"] = { agy_ask, desc = "Ask" },
+          ["<Leader>aaa"] = { function() agy_ask "v" end, desc = "Ask (selection)" },
         },
 
         -- ── Visual-only mode (x) ────────────────────────────────────

@@ -12,11 +12,12 @@ require "fileutils"
 
 Dotenv.load(File.join(__dir__, ".env"), ".env")
 
-$LOAD_PATH.unshift(File.join(__dir__, "lib"))
-require "folder_sorter"
-require "publisher"
+require_relative "lib/folder_sorter"
+require_relative "lib/publisher"
 
 class PhotosCLI
+
+
   COMMANDS = {
     "sort"    => "Sort a card dump into YYYYMMDD-shooting/{jpg,DNG}",
     "publish" => "Export, watermark, tag EXIF and push to Immich"
