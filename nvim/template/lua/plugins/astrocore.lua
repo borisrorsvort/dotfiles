@@ -9,13 +9,66 @@
 local function hop_words() require("hop").hint_words() end
 local function spectre_open_visual() require("spectre").open_visual() end
 
-local function opencode_toggle() require("opencode").toggle() end
+local function opencode_toggle()
+  require "opencode"
+  vim.g.opencode_opts.server.toggle()
+end
 local function opencode_ask() require("opencode").ask("@this: ", { submit = false }) end
 local function opencode_ask_submit() require("opencode").ask("@this: ", { submit = true }) end
 local function opencode_select() require("opencode").select() end
 local function opencode_new_session() require("opencode").command "session.new" end
 local function opencode_compact() require("opencode").command "session.compact" end
 local function opencode_interrupt() require("opencode").command "session.interrupt" end
+
+-- ── Terminal window options (shared across all AI providers) ──
+local function ai_terminal_opts()
+  return {
+    win = {
+      position = "right",
+      width = 0.40,
+      backdrop = 60,
+      wo = {
+        winblend = 0,
+        number = false,
+        relativenumber = false,
+        signcolumn = "no",
+        winbar = "",
+        statusline = "",
+      },
+    },
+  }
+end
+
+-- ── Send text to a running snacks terminal ───────────────────
+local function send_to_terminal(cmd, text, opts)
+  local Snacks = require "snacks"
+  local terminal = Snacks.terminal.get(cmd, vim.tbl_deep_extend("force", opts or {}, { create = false }))
+  if not terminal or not terminal.buf or not vim.api.nvim_buf_is_valid(terminal.buf) then return false end
+  local channel = vim.bo[terminal.buf].channel
+  if not channel or channel == 0 then return false end
+  vim.api.nvim_chan_send(channel, text .. "\r")
+  return true
+end
+
+-- ── AntiGravity helpers ─────────────────────────────────────
+local function agy_toggle() require("snacks.terminal").toggle("agy", ai_terminal_opts()) end
+
+local function agy_ask()
+  local file = vim.fn.expand "%"
+  if file == "" then
+    vim.notify("No file in current buffer", vim.log.levels.WARN)
+    return
+  end
+  vim.ui.input({ prompt = "Ask AntiGravity: " }, function(input)
+    if not input or input == "" then return end
+    local prompt = "Review " .. file .. ": " .. input
+    local opts = ai_terminal_opts()
+    require("snacks.terminal").toggle("agy", opts)
+    vim.defer_fn(function() send_to_terminal("agy", prompt, opts) end, 300)
+  end)
+end
+
+local function agy_continue() require("snacks.terminal").open("agy --continue", ai_terminal_opts()) end
 
 ---@type LazySpec
 return {
@@ -83,7 +136,7 @@ return {
           ["k"] = false, -- cancel overwrite in https://github.com/AstroNvim/AstroNvim/blob/148a513072e6fc2a40fe8ad89534d4b6d00db5e7/lua/astronvim/mappings.lua#L23
           ["j"] = false, -- cancel overwrite in https://github.com/AstroNvim/AstroNvim/blob/148a513072e6fc2a40fe8ad89534d4b6d00db5e7/lua/astronvim/mappings.lua#L24
 
-          -- Disable AstroNvim default <Leader>o (Neo-tree focus) to use as which-key group for Opencode
+          -- Disable AstroNvim default <Leader>o (Neo-tree focus) - AI now lives under <Leader>a
           ["<Leader>o"] = false,
 
           ["<C-s>"] = { ":w!<cr>", desc = "Save File" },
@@ -138,25 +191,31 @@ return {
           -- Rails
           ["<Leader>rc"] = { "<cmd>lua require('ror.commands').list_commands()<CR>", desc = "Open Rails menu" },
 
-          -- Opencode (which-key group auto-detected from sub-mappings)
-          ["<Leader>ot"] = { opencode_toggle, desc = "Toggle" },
-          ["<Leader>oa"] = { opencode_ask, desc = "Ask" },
-          ["<Leader>os"] = { opencode_select, desc = "Select action" },
-          ["<Leader>on"] = { opencode_new_session, desc = "New session" },
-          ["<Leader>oc"] = { opencode_compact, desc = "Compact session" },
-          ["<Leader>oi"] = { opencode_interrupt, desc = "Interrupt" },
+          -- OpenCode (under <Leader>ao prefix)
+          ["<Leader>aot"] = { opencode_toggle, desc = "Toggle" },
+          ["<Leader>aoa"] = { opencode_ask, desc = "Ask" },
+          ["<Leader>aos"] = { opencode_select, desc = "Select action" },
+          ["<Leader>aon"] = { opencode_new_session, desc = "New session" },
+          ["<Leader>aoc"] = { opencode_compact, desc = "Compact session" },
+          ["<Leader>aoi"] = { opencode_interrupt, desc = "Interrupt" },
 
-          -- Claude Code
-          ["<Leader>O"] = { desc = "Claude Code" },
-          ["<Leader>Ot"] = { "<cmd>ClaudeCode<cr>", desc = "Toggle" },
-          ["<Leader>Of"] = { "<cmd>ClaudeCodeFocus<cr>", desc = "Focus" },
-          ["<Leader>Or"] = { "<cmd>ClaudeCode --resume<cr>", desc = "Resume" },
-          ["<Leader>Oc"] = { "<cmd>ClaudeCode --continue<cr>", desc = "Continue" },
-          ["<Leader>Om"] = { "<cmd>ClaudeCodeSelectModel<cr>", desc = "Select model" },
-          ["<Leader>Ob"] = { "<cmd>ClaudeCodeAdd %<cr>", desc = "Add buffer" },
-          ["<Leader>Oa"] = { "<cmd>ClaudeCodeDiffAccept<cr>", desc = "Accept diff" },
-          ["<Leader>Od"] = { "<cmd>ClaudeCodeDiffDeny<cr>", desc = "Deny diff" },
-          ["<Leader>OD"] = { "<cmd>ClaudeCode --dangerously-skip-permissions<cr>", desc = "Toggle (dangerous)" },
+          -- Claude Code (under <Leader>ac prefix)
+          ["<Leader>ac"] = { desc = "Claude Code" },
+          ["<Leader>act"] = { "<cmd>ClaudeCode<cr>", desc = "Toggle" },
+          ["<Leader>acf"] = { "<cmd>ClaudeCodeFocus<cr>", desc = "Focus" },
+          ["<Leader>acr"] = { "<cmd>ClaudeCode --resume<cr>", desc = "Resume" },
+          ["<Leader>acc"] = { "<cmd>ClaudeCode --continue<cr>", desc = "Continue" },
+          ["<Leader>acm"] = { "<cmd>ClaudeCodeSelectModel<cr>", desc = "Select model" },
+          ["<Leader>acb"] = { "<cmd>ClaudeCodeAdd %<cr>", desc = "Add buffer" },
+          ["<Leader>aca"] = { "<cmd>ClaudeCodeDiffAccept<cr>", desc = "Accept diff" },
+          ["<Leader>acd"] = { "<cmd>ClaudeCodeDiffDeny<cr>", desc = "Deny diff" },
+          ["<Leader>acD"] = { "<cmd>ClaudeCode --dangerously-skip-permissions<cr>", desc = "Toggle (dangerous)" },
+
+          -- AntiGravity (under <Leader>aa prefix)
+          ["<Leader>aa"] = { desc = "AntiGravity" },
+          ["<Leader>aat"] = { agy_toggle, desc = "Toggle" },
+          ["<Leader>aaa"] = { agy_ask, desc = "Ask" },
+          ["<Leader>aac"] = { agy_continue, desc = "Continue" },
         },
 
         -- ── Visual mode ──────────────────────────────────────────────
@@ -173,16 +232,21 @@ return {
             desc = "Bring up the refacoring menu",
           },
 
-          -- Opencode (which-key group auto-detected from sub-mappings)
-          ["<Leader>ot"] = { opencode_toggle, desc = "Toggle" },
-          ["<Leader>oa"] = { opencode_ask_submit, desc = "Ask (selection)" },
-          ["<Leader>os"] = { opencode_select, desc = "Select action" },
+          -- OpenCode (under <Leader>ao prefix)
+          ["<Leader>aot"] = { opencode_toggle, desc = "Toggle" },
+          ["<Leader>aoa"] = { opencode_ask_submit, desc = "Ask (selection)" },
+          ["<Leader>aos"] = { opencode_select, desc = "Select action" },
 
-          -- Claude Code
-          ["<Leader>O"] = { desc = "Claude Code" },
-          ["<Leader>Ot"] = { "<cmd>ClaudeCode<cr>", desc = "Toggle" },
-          ["<Leader>Os"] = { "<cmd>ClaudeCodeSend<cr>", desc = "Send to Claude" },
-          ["<Leader>Ob"] = { "<cmd>ClaudeCodeAdd %<cr>", desc = "Add buffer" },
+          -- Claude Code (under <Leader>ac prefix)
+          ["<Leader>ac"] = { desc = "Claude Code" },
+          ["<Leader>act"] = { "<cmd>ClaudeCode<cr>", desc = "Toggle" },
+          ["<Leader>acs"] = { "<cmd>ClaudeCodeSend<cr>", desc = "Send to Claude" },
+          ["<Leader>acb"] = { "<cmd>ClaudeCodeAdd %<cr>", desc = "Add buffer" },
+
+          -- AntiGravity (under <Leader>aa prefix)
+          ["<Leader>aa"] = { desc = "AntiGravity" },
+          ["<Leader>aat"] = { agy_toggle, desc = "Toggle" },
+          ["<Leader>aaa"] = { agy_ask, desc = "Ask" },
         },
 
         -- ── Visual-only mode (x) ────────────────────────────────────
