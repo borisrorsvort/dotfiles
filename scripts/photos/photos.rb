@@ -85,7 +85,7 @@ class PhotosCLI
 
   def banner
     puts TTY::Box.frame(
-      "photos",
+      "Photos workflow CLI",
       padding: [0, 2],
       border:  :thick,
       align:   :center,

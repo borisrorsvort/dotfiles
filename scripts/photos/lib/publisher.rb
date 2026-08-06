@@ -58,6 +58,7 @@ class Publisher
 
     choices = candidates.each_with_object({}) do |path, hash|
       base  = File.basename(path)
+      # e.g. "20240115" → "20240115  (15-01-2024)"
       label = base =~ /\A(\d{4})(\d{2})(\d{2})/ ? "#{base}  (#{$3}-#{$2}-#{$1})" : base
       hash[label] = path
     end
