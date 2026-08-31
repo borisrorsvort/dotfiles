@@ -19,20 +19,33 @@ sub_help () {
     echo
     echo "Commands:"
     echo "   help             This help message"
-    echo "   update           Update packages and pkg managers (OS, brew, node, npm, yarn, commposer)"
+    echo "   install          Run the master install script to bootstrap the system"
+    echo "   backup           Dump current brew packages, commit changes, and push to git"
     echo "   clean            Clean up caches (brew, npm, yarn, composer)"
     echo "   symlinks         Run symlinks script"
     echo "   brew             Run brew script"
-
-    echo "   defaults         Run MacOS defaults script"
 }
 
-sub_update () {
-    sudo softwareupdate -i -a
-    sudo n lts # install last lts node instance
-    brew update
-    brew upgrade
-    echo -e "${GREEN}$ARROW Success! Update command finished.${NC}"
+sub_install () {
+    . "$DOTFILES_DIR/install/install.sh"
+    echo -e "${GREEN}$ARROW Success! Install command finished.${NC}"
+}
+
+sub_backup () {
+    echo -e "${YELLOW}$ARROW Dumping Homebrew state...${NC}"
+    brew leaves > "$DOTFILES_DIR/dots/brewfile.txt"
+    brew list --cask > "$DOTFILES_DIR/dots/brewcaskfile.txt"
+    
+    cd "$DOTFILES_DIR" || exit
+    git add .
+    
+    if git diff --staged --quiet; then
+        echo -e "${GREEN}$ARROW No changes to backup!${NC}"
+    else
+        git commit -m "chore: backup system state"
+        git push
+        echo -e "${GREEN}$ARROW Success! Backup pushed to GitHub.${NC}"
+    fi
 }
 
 sub_clean () {
@@ -53,11 +66,6 @@ sub_brew () {
 }
 
 
-
-sub_defaults () {
-    . "$DOTFILES_DIR/macos/defaults.sh"
-    echo -e "${GREEN}$ARROW Success! MacOS defaults command finished.${NC}"
-}
 
 case $COMMAND_NAME in
     "" | "-h" | "--help")

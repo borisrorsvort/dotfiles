@@ -1,7 +1,5 @@
 
-# Setup macos defaults and add apps to dock
-# . "$DOTFILES_DIR/macos/defaults.sh"
-# . "$DOTFILES_DIR/macos/dock.sh"
+
 export DOTFILES_DIR EXTRA_DIR
 DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && cd .. && pwd )"
 

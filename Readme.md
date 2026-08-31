@@ -4,13 +4,10 @@ Dotfiles I use with MacOS.
 
 Contains:
 
-1. [System defaults](https://github.com/mihaliak/dotfiles/blob/master/macos/defaults.sh) and [Dock icons setup](https://github.com/mihaliak/dotfiles/blob/master/macos/dock.sh)
-2. [Git config](https://github.com/mihaliak/dotfiles/blob/master/dots/.gitconfig), [Git global ignore](https://github.com/mihaliak/dotfiles/blob/master/dots/.gitignore_global)
-3. Custom [/etc/hosts](https://github.com/mihaliak/dotfiles/blob/master/etc/hosts) file with blocked Ads, Trackers & 🔥 stuff on internet
-4. iTerm2 profile
-5. `ssh-manager` command to manage ssh config hosts and keys, including copy public keys to clipboard, transfer to server and more with autocomplete
-6. Packages / CLI (brew, brew cask, dockutil, htop, iftop, openssl, git, node, python, wget, yarn)
-7. Applications (google-chrome, slack, spotify, sublime-text, postman, iterm2, spectacle, appcleaner, ...)
+1. [Git config](https://github.com/mihaliak/dotfiles/blob/master/dots/.gitconfig), [Git global ignore](https://github.com/mihaliak/dotfiles/blob/master/dots/.gitignore_global)
+2. iTerm2 profile
+3. Packages / CLI (brew, brew cask, dockutil, htop, iftop, openssl, git, node, python, wget, yarn)
+4. Applications (google-chrome, slack, spotify, sublime-text, postman, iterm2, spectacle, appcleaner, ...)
 
 ## Install
 
@@ -39,35 +36,18 @@ chmod -R +wx ~/dotfiles/bin
 
 1. Copy settings from ./~/dotfiles/vscode/settings.json
 
-## The `dotfiles` command
+## The `dots` command
 
-    $ dotfiles
-    ￫ Usage: dotfiles <command>
+    $ dots
+    ￫ Usage: dots <command>
 
     Commands:
        help             This help message
-       update           Update packages and pkg managers (OS, brew, npm, yarn, commposer)
+       install          Run the master install script to bootstrap the system
+       backup           Dump current brew packages, commit changes, and push to git
        clean            Clean up caches (brew, npm, yarn, composer)
        symlinks         Run symlinks script
        brew             Run brew script
-       hosts            Run hosts script
-       defaults         Run MacOS defaults script
-       dock             Run MacOS dock script
-
-## The `ssh-manager` command
-
-    $ ssh-manager
-    ￫ Usage: ssh-manager <command>
-
-    Commands:
-       help             This help message
-       list             List of all SSH keys and hosts in SSH config
-       list-keys        List of all SSH keys
-       copy             Copy public SSH key
-       new              Generate new SSH key
-       host             Add host to SSH config, use --key to generate new key
-       remove           Remove host from SSH config
-       list-host        List of all hosts in SSH config
 
 ## Credits
 
