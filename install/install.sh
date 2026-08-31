@@ -6,10 +6,10 @@ export DOTFILES_DIR EXTRA_DIR
 DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && cd .. && pwd )"
 
 # Clear cache
-# . "$DOTFILES_DIR/bin/dotfiles" clean
+# . "$DOTFILES_DIR/bin/dots" clean
 # Add symlinks
-. "$DOTFILES_DIR/bin/dotfiles" brew
-. "$DOTFILES_DIR/bin/dotfiles" symlinks
+. "$DOTFILES_DIR/bin/dots" brew
+. "$DOTFILES_DIR/bin/dots" symlinks
 
 
 
