@@ -42,7 +42,22 @@ sub_backup () {
     if git diff --staged --quiet; then
         echo -e "${GREEN}$ARROW No changes to backup!${NC}"
     else
-        git commit -m "chore: backup system state"
+        # Extract additions and removals
+        BREW_ADDED=$(git diff --staged dots/brewfile.txt dots/brewcaskfile.txt 2>/dev/null | grep -E '^\+[^+]' | sed 's/^+//' | paste -sd, -)
+        BREW_REMOVED=$(git diff --staged dots/brewfile.txt dots/brewcaskfile.txt 2>/dev/null | grep -E '^-[^-]' | sed 's/^-//' | paste -sd, -)
+        OTHER_FILES=$(git diff --staged --name-status | grep -v 'brew\(cask\)\?file.txt' | awk '{print $2}' | paste -sd, -)
+
+        # Print summary to console
+        [[ -n "$BREW_ADDED" ]] && echo -e "${GREEN}$ARROW Added packages: $BREW_ADDED${NC}"
+        [[ -n "$BREW_REMOVED" ]] && echo -e "${RED}$ARROW Removed packages: $BREW_REMOVED${NC}"
+        [[ -n "$OTHER_FILES" ]] && echo -e "${YELLOW}$ARROW Modified files: $OTHER_FILES${NC}"
+
+        # Commit with summary in body
+        git commit -m "chore: backup system state" \
+            ${BREW_ADDED:+-m "Added packages: $BREW_ADDED"} \
+            ${BREW_REMOVED:+-m "Removed packages: $BREW_REMOVED"} \
+            ${OTHER_FILES:+-m "Modified files: $OTHER_FILES"}
+        
         git push
         echo -e "${GREEN}$ARROW Success! Backup pushed to GitHub.${NC}"
     fi
