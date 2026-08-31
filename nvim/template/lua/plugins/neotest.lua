@@ -10,6 +10,7 @@ return {
     "nvim-neotest/neotest",
     "haydenmeade/neotest-jest",
     "zidhuss/neotest-minitest",
+    "nvim-neotest/neotest-python",
   },
   -- Add options here
   opts = function(_, opts)
@@ -38,6 +39,7 @@ return {
       signs = true,
     }
     opts.adapters = {
+      require "neotest-python",
       require "neotest-rspec",
       require "neotest-minitest" {
         test_cmd = function()

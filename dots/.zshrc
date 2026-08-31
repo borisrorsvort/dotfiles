@@ -1,7 +1,7 @@
 # Zsh Path to your oh-my-zsh configuration.
 ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="af-magic"
-plugins=(z git aliases brew bundler rbenv node npm gem rails ruby command-not-found ssh-agent nvm direnv web-search)
+plugins=(z git aliases brew bundler rbenv node npm gem rails ruby command-not-found ssh-agent nvm direnv web-search eza)
 
 # For pkg-config to find zlib you may need to set:
 export PKG_CONFIG_PATH="/usr/local/opt/zlib/lib/pkgconfig"

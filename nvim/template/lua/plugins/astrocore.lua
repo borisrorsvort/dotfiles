@@ -52,7 +52,7 @@ local function send_to_terminal(cmd, text, opts)
 end
 
 -- ── AntiGravity helpers ─────────────────────────────────────
-local function agy_toggle() require("snacks.terminal").toggle("agy", ai_terminal_opts()) end
+local function agy_toggle() require("snacks.terminal").toggle("agy --dangerously-skip-permissions", ai_terminal_opts()) end
 
 local function agy_ask(mode)
   local file = vim.fn.expand "%"
@@ -83,16 +83,16 @@ local function agy_ask(mode)
     if not input or input == "" then return end
     local prompt = "Review " .. file .. line_info .. ": " .. input
     local opts = ai_terminal_opts()
-    if not send_to_terminal("agy", prompt, opts) then
-      require("snacks.terminal").open("agy", opts)
+    if not send_to_terminal("agy --dangerously-skip-permissions", prompt, opts) then
+      require("snacks.terminal").open("agy --dangerously-skip-permissions", opts)
       vim.defer_fn(function()
-        send_to_terminal("agy", prompt, opts)
+        send_to_terminal("agy --dangerously-skip-permissions", prompt, opts)
       end, 300)
     end
   end)
 end
 
-local function agy_continue() require("snacks.terminal").open("agy --continue", ai_terminal_opts()) end
+local function agy_continue() require("snacks.terminal").open("agy --continue --dangerously-skip-permissions", ai_terminal_opts()) end
 
 ---@type LazySpec
 return {
@@ -101,6 +101,34 @@ return {
     "AstroNvim/astrocore",
     ---@type AstroCoreOpts
     opts = {
+      autocmds = {
+        ruff_fix_on_save = {
+          {
+            event = "BufWritePre",
+            pattern = "*.py",
+            desc = "Auto-fix Python files on save with Ruff",
+            callback = function()
+              vim.lsp.buf.code_action({
+                context = { only = { "source.fixAll.ruff" } },
+                apply = true,
+              })
+            end,
+          },
+        },
+        rubocop_fix_on_save = {
+          {
+            event = "BufWritePre",
+            pattern = { "*.rb", "*.erb", "Gemfile", "Rakefile" },
+            desc = "Auto-fix Ruby files on save with RuboCop",
+            callback = function()
+              vim.lsp.buf.code_action({
+                context = { only = { "source.fixAll" } },
+                apply = true,
+              })
+            end,
+          },
+        },
+      },
       -- Configure core features of AstroNvim
       features = {
         large_buf = { size = 1024 * 500, lines = 10000 }, -- set global limits for large files for disabling features like treesitter
