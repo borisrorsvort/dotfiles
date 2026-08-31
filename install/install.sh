@@ -11,8 +11,7 @@ DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && cd .. && pwd )"
 . "$DOTFILES_DIR/bin/dotfiles" brew
 . "$DOTFILES_DIR/bin/dotfiles" symlinks
 
-# Replace default hosts file
-# . "$DOTFILES_DIR/install/hosts.sh"
+
 
 # Add keys from keychain to ssh agent
 ssh-add -A 2>/dev/null;

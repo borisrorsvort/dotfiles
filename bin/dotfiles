@@ -23,7 +23,7 @@ sub_help () {
     echo "   clean            Clean up caches (brew, npm, yarn, composer)"
     echo "   symlinks         Run symlinks script"
     echo "   brew             Run brew script"
-    echo "   hosts            Run hosts script"
+
     echo "   defaults         Run MacOS defaults script"
 }
 
@@ -52,10 +52,7 @@ sub_brew () {
     echo -e "${GREEN}$ARROW Success! Brew command finished.${NC}"
 }
 
-sub_hosts () {
-    . "$DOTFILES_DIR/install/hosts.sh"
-    echo -e "${GREEN}$ARROW Success! Hosts command finished.${NC}"
-}
+
 
 sub_defaults () {
     . "$DOTFILES_DIR/macos/defaults.sh"
