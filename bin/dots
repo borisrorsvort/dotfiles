@@ -32,9 +32,14 @@ sub_install () {
 }
 
 sub_backup () {
-    echo -e "${YELLOW}$ARROW Dumping Homebrew state...${NC}"
-    brew leaves > "$DOTFILES_DIR/dots/brewfile.txt"
-    brew list --cask > "$DOTFILES_DIR/dots/brewcaskfile.txt"
+    OS="$(uname -s)"
+    if [ "$OS" = "Darwin" ]; then
+        echo -e "${YELLOW}$ARROW Dumping Homebrew state...${NC}"
+        brew leaves > "$DOTFILES_DIR/dots/brewfile.txt"
+        brew list --cask > "$DOTFILES_DIR/dots/brewcaskfile.txt"
+    else
+        echo -e "${YELLOW}$ARROW Skipping Homebrew dump on Linux...${NC}"
+    fi
     
     cd "$DOTFILES_DIR" || exit
     git add .

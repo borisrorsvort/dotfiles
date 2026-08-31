@@ -1,15 +1,22 @@
-
+#!/usr/bin/env bash
 
 export DOTFILES_DIR EXTRA_DIR
 DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && cd .. && pwd )"
+OS="$(uname -s)"
 
 # Clear cache
 # . "$DOTFILES_DIR/bin/dots" clean
-# Add symlinks
-. "$DOTFILES_DIR/bin/dots" brew
+
+# Add symlinks (this script is already cross-platform)
 . "$DOTFILES_DIR/bin/dots" symlinks
 
-
+# Run OS-specific package managers
+if [ "$OS" = "Darwin" ]; then
+    . "$DOTFILES_DIR/bin/dots" brew
+elif [ "$OS" = "Linux" ]; then
+    echo "Linux detected. Skipping Homebrew setup."
+    # We can add a `. "$DOTFILES_DIR/bin/dots" arch` call here later if needed
+fi
 
 # Add keys from keychain to ssh agent
 ssh-add -A 2>/dev/null;

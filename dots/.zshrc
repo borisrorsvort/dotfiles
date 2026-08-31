@@ -41,7 +41,7 @@ NOTE_PATH='/Users/ghost/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/N
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-alias v='nvim'
+alias v='NVIM_APPNAME=nvim-astro nvim'
 alias so='source ~/.zshrc'
 alias up="git up"
 alias bu="bundle update"
