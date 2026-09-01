@@ -14,7 +14,7 @@ return {
     -- colorscheme = "nord",
     -- colorscheme = "habamax",
     -- colorscheme = "astromars",
-    colorschemes = "carbonfox",
+    colorscheme = "carbonfox",
     -- AstroUI allows you to easily modify highlight groups easily for any and all colorschemes
     -- highlights = {
     --   -- init applies to all themes, used as fallback
