@@ -14,8 +14,7 @@ OS="$(uname -s)"
 if [ "$OS" = "Darwin" ]; then
     . "$DOTFILES_DIR/bin/dots" brew
 elif [ "$OS" = "Linux" ]; then
-    echo "Linux detected. Skipping Homebrew setup."
-    # We can add a `. "$DOTFILES_DIR/bin/dots" arch` call here later if needed
+    . "$DOTFILES_DIR/bin/dots" linux
 fi
 
 # Add keys from keychain to ssh agent

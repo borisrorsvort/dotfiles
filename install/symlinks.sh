@@ -2,7 +2,8 @@
 
 # Detect OS
 OS="$(uname -s)"
-DOTS_DIR="$HOME/dotfiles/dots"
+DOTFILES_DIR="${DOTFILES_DIR:-$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)}"
+DOTS_DIR="$DOTFILES_DIR/dots"
 
 # ---------------------------------------------------------
 # Declarative Configuration Lists
@@ -14,14 +15,14 @@ COMMON_LINKS=(
   ".gitconfig"
   ".gitignore_global"
   ".zshrc"
-  ".config/gh"
-  ".config/git"
   ".config/opencode"
   # Install Neovim as a side-config everywhere to preserve defaults
   ".config/nvim-astro"
 )
 
 MAC_LINKS=(
+  ".config/gh"
+  ".config/git"
   ".config/karabiner"
 )
 

@@ -73,7 +73,8 @@ export NVM_DIR="$HOME/.nvm"
 
 export PGGSSENCMODE="disable" # fix rails-pg
 
-eval "$(direnv hook zsh)"
-eval "$(starship init zsh)"
-eval "$(rbenv init -)"
+command -v direnv >/dev/null 2>&1 && eval "$(direnv hook zsh)"
+command -v starship >/dev/null 2>&1 && eval "$(starship init zsh)"
+command -v rbenv >/dev/null 2>&1 && eval "$(rbenv init -)"
+command -v mise >/dev/null 2>&1 && eval "$(mise activate zsh)"
 

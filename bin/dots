@@ -23,7 +23,8 @@ sub_help () {
     echo "   backup           Dump current brew packages, commit changes, and push to git"
     echo "   clean            Clean up caches (brew, npm, yarn, composer)"
     echo "   symlinks         Run symlinks script"
-    echo "   brew             Run brew script"
+    echo "   brew             Run brew script (macOS)"
+    echo "   linux            Run linux package installation"
 }
 
 sub_install () {
@@ -83,6 +84,11 @@ sub_symlinks () {
 sub_brew () {
     . "$DOTFILES_DIR/install/brew.sh"
     echo -e "${GREEN}$ARROW Success! Brew command finished.${NC}"
+}
+
+sub_linux () {
+    . "$DOTFILES_DIR/install/linux.sh"
+    echo -e "${GREEN}$ARROW Success! Linux command finished.${NC}"
 }
 
 
