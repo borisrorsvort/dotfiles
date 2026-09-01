@@ -12,6 +12,7 @@ PACKAGES=(
   jq
   tmux
   lazygit
+  mise
 )
 
 echo "Installing Linux packages: ${PACKAGES[*]}..."

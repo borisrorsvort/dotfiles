@@ -41,13 +41,13 @@ luarocks
 macos-term-size
 memcached
 micro
+mise
 mkcert
 mysql
 neovim
 nghttp2
 nginx
 node
-nvm
 openvino
 ossp-uuid
 pandoc
@@ -58,10 +58,8 @@ pyqt@5
 python-tk@3.9
 python@3.10
 python@3.12
-rbenv
 redis
 rtk
-ruby-install
 rust
 slides
 spark

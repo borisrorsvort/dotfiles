@@ -1,7 +1,7 @@
 # Zsh Path to your oh-my-zsh configuration.
 ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="af-magic"
-plugins=(z git aliases brew bundler rbenv node npm gem rails ruby command-not-found ssh-agent nvm direnv web-search eza)
+plugins=(z git aliases brew bundler node npm gem rails ruby command-not-found ssh-agent direnv web-search eza)
 
 # For pkg-config to find zlib you may need to set:
 export PKG_CONFIG_PATH="/usr/local/opt/zlib/lib/pkgconfig"
@@ -67,14 +67,12 @@ alias rp="git log \$(git describe --tags \`git rev-list --tags --max-count=1\`).
 alias deploy="./bin/deploy"
 alias robert='nvim -c "lua vim.defer_fn(function()require(\"avante.api\").zen_mode()end, 100)"'
 
-export NVM_DIR="$HOME/.nvm"
-  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
-  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 export PGGSSENCMODE="disable" # fix rails-pg
 
 command -v direnv >/dev/null 2>&1 && eval "$(direnv hook zsh)"
 command -v starship >/dev/null 2>&1 && eval "$(starship init zsh)"
-command -v rbenv >/dev/null 2>&1 && eval "$(rbenv init -)"
 command -v mise >/dev/null 2>&1 && eval "$(mise activate zsh)"
 
+
+. "$HOME/.local/share/../bin/env"
