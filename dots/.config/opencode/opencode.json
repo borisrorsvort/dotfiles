@@ -13,16 +13,29 @@
       },
       "models": {
         "auto": {
-          "name": "auto",
+          "name": "auto"
         },
         "auto/best-reasoning": {
-          "name": "auto/best-reasoning",
+          "name": "auto/best-reasoning"
         },
         "auto/best-fast": {
-          "name": "auto/best-fast",
+          "name": "auto/best-fast"
         },
         "auto/best-coding": {
-          "name": "auto/best-coding",
+          "name": "auto/best-coding"
+        }
+      }
+    },
+    "llama": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "Llama.cpp",
+      "options": {
+        "baseURL": "http://localhost:8080/v1",
+        "apiKey": "sk-llama"
+      },
+      "models": {
+        "Qwen3.8-27B-Q8_0.gguf": {
+          "name": "Qwen3.8-27B-Q4_0.gguf"
         }
       }
     }

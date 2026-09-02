@@ -66,6 +66,7 @@ alias reset_db="rake 'db:copy[staging, true, true]'; rake db:migrate RAILS_ENV=d
 alias rp="git log \$(git describe --tags \`git rev-list --tags --max-count=1\`)..master --oneline" # Release preview
 alias deploy="./bin/deploy"
 alias robert='nvim -c "lua vim.defer_fn(function()require(\"avante.api\").zen_mode()end, 100)"'
+alias services="systemctl list-units --type=service"
 
 
 export PGGSSENCMODE="disable" # fix rails-pg

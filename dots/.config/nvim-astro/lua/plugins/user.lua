@@ -88,7 +88,7 @@ return {
     event = "VeryLazy",
   },
   {
-    "phaazon/hop.nvim",
+    "wsdjeg/hop.nvim",
     config = function() require("hop").setup() end,
   },
   {
