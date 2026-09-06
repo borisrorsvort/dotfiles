@@ -1,0 +1,18 @@
+{
+  "name": "stop-slop",
+  "version": "1.0.0",
+  "description": "Remove AI writing patterns from prose. Eliminates predictable AI tells like throat-clearing openers, binary contrasts, false agency, and business jargon.",
+  "author": {
+    "name": "Hardik Pandya",
+    "url": "https://hvpandya.com"
+  },
+  "repository": "https://github.com/hardikpandya/stop-slop",
+  "license": "MIT",
+  "keywords": [
+    "writing",
+    "prose",
+    "anti-slop",
+    "editing",
+    "style"
+  ]
+}

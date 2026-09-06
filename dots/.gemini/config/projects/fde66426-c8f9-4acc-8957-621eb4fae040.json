@@ -1,0 +1,25 @@
+{
+  "id": "fde66426-c8f9-4acc-8957-621eb4fae040",
+  "name": "harmony-composition-table",
+  "projectResources": {
+    "resources": [
+      {
+        "folderUri": "file:///Users/ghost/Sites/harmony-composition-table"
+      }
+    ]
+  },
+  "permissionGrants": {
+    "permissionGrants": {
+      "allow": [
+        "unsandboxed(cp)"
+      ]
+    }
+  },
+  "settings": {
+    "fileAccessPolicy": "AGENT_SETTING_POLICY_ASK",
+    "internetPolicy": "AGENT_SETTING_POLICY_ASK",
+    "autoExecutionPolicy": "CASCADE_COMMANDS_AUTO_EXECUTION_OFF",
+    "artifactReviewMode": "ARTIFACT_REVIEW_MODE_ALWAYS"
+  },
+  "updatedAt": "2026-07-19T16:53:33.658413Z"
+}

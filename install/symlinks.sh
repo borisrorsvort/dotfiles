@@ -18,6 +18,7 @@ COMMON_LINKS=(
   ".config/opencode"
   # Install Neovim as a side-config everywhere to preserve defaults
   ".config/nvim-astro"
+  ".gemini/config"
 )
 
 MAC_LINKS=(

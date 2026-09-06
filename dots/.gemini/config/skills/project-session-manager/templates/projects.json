@@ -1,0 +1,19 @@
+{
+  "aliases": {
+    "omc": {
+      "repo": "Yeachan-Heo/oh-my-Antigravitycode",
+      "local": "~/Workspace/oh-my-Antigravitycode",
+      "default_base": "main"
+    },
+    "cc": {
+      "repo": "anthropics/Antigravity-code",
+      "local": "~/Workspace/Antigravity-code",
+      "default_base": "main"
+    }
+  },
+  "defaults": {
+    "worktree_root": "~/.psm/worktrees",
+    "cleanup_after_days": 14,
+    "auto_cleanup_merged": true
+  }
+}
