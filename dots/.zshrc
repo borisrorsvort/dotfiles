@@ -1,7 +1,7 @@
 # Zsh Path to your oh-my-zsh configuration.
 ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="af-magic"
-plugins=(z git aliases brew bundler node npm gem rails ruby command-not-found ssh-agent direnv web-search eza)
+plugins=(z git aliases brew fzf bundler node npm gem rails ruby command-not-found ssh-agent direnv web-search eza)
 
 # For pkg-config to find zlib you may need to set:
 export PKG_CONFIG_PATH="/usr/local/opt/zlib/lib/pkgconfig"
@@ -18,8 +18,8 @@ unsetopt correct
 
 source $ZSH/oh-my-zsh.sh
 
-export EDITOR="nvim"
-export BUNDLER_EDITOR="nvim"
+export EDITOR="v"
+export BUNDLER_EDITOR="v"
 export CC=/usr/bin/gcc
 
 PATH="$HOME/.local/bin:$PATH"
@@ -46,7 +46,7 @@ alias so='source ~/.zshrc'
 alias up="git up"
 alias bu="bundle update"
 alias sync="up; gp"
-alias dotfiles="cd ~/dotfiles; nvim ."
+alias dotfiles="cd ~/dotfiles; v ."
 alias fixup='gc -am "fix: quickfix"; gp'
 alias gs="lazygit"
 alias dev="ruby ~/dotfiles/scripts/services.rb"
@@ -55,19 +55,13 @@ alias killruby='killall -9 ruby'
 alias killnode='killall -9 node'
 alias master='git checkout master'
 alias main='git checkout main'
-alias notes="cd $NOTE_PATH; nvim ./Goals.md"
 alias photos="photos.rb"
 alias create_folders="photos sort" # kept for muscle memory
-
-# TODO: replace with rails db:reset
-# alias reset_test='bin/rails db:environment:set RAILS_ENV=test;rake db:drop db:create db:migrate RAILS_ENV=test;bin/rails db:environment:set RAILS_ENV=development'
 alias reset_test='rake db:reset RAILS_ENV=test; rake db:migrate RAILS_ENV=test'
 alias reset_db="rake 'db:copy[staging, true, true]'; rake db:migrate RAILS_ENV=development"
 alias rp="git log \$(git describe --tags \`git rev-list --tags --max-count=1\`)..master --oneline" # Release preview
 alias deploy="./bin/deploy"
-alias robert='nvim -c "lua vim.defer_fn(function()require(\"avante.api\").zen_mode()end, 100)"'
 alias services="systemctl list-units --type=service"
-
 
 export PGGSSENCMODE="disable" # fix rails-pg
 
@@ -75,5 +69,5 @@ command -v direnv >/dev/null 2>&1 && eval "$(direnv hook zsh)"
 command -v starship >/dev/null 2>&1 && eval "$(starship init zsh)"
 command -v mise >/dev/null 2>&1 && eval "$(mise activate zsh)"
 
-
 . "$HOME/.local/share/../bin/env"
+alias update-kawai="~/dotfiles/scripts/update-kawai.sh"

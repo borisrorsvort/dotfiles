@@ -34,8 +34,11 @@
         "apiKey": "sk-llama"
       },
       "models": {
-        "Qwen3.8-27B-Q8_0.gguf": {
-          "name": "Qwen3.8-27B-Q4_0.gguf"
+        "Qwen3.6-27B": {
+          "name": "Qwen 3.6 (27B) - CPU/GPU Split (Slow)"
+        },
+        "gemma-4-12B-it-Q4_0.gguf": {
+          "name": "Gemma 4 (12B Q4_0) - Fast"
         }
       }
     }
