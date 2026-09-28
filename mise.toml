@@ -33,7 +33,6 @@ git-filter-repo = "latest"
 "~/.config/rclone" = { source = "dots/.config/rclone" }
 "~/.config/rencal" = { source = "dots/.config/rencal" }
 "~/.agents/skills" = { source = "dots/.agents/skills" }
-"~/.opencode/skills" = { source = "dots/.opencode/skills" }
 "~/.claude/settings.json" = { source = "dots/.claude/settings.json" }
 "~/.claude/skills" = { source = "dots/.claude/skills" }
 "~/.claude/themes" = { source = "dots/.claude/themes" }
@@ -44,6 +43,7 @@ git-filter-repo = "latest"
 "~/.gemini/config/config.json" = { source = "dots/.gemini/config/config.json" }
 "~/.gemini/config/mcp_config.json" = { source = "dots/.gemini/config/mcp_config.json" }
 "~/.gemini/config/skills" = { source = "dots/.gemini/config/skills" }
+"~/.gemini/config/skills.json" = { source = "dots/.gemini/config/skills.json" }
 "~/.gemini/config/plugins" = { source = "dots/.gemini/config/plugins" }
 
 [tasks.bootstrap]

@@ -104,6 +104,12 @@ run = """
 set -e
 echo "🍏 Setting up Bépo layout for macOS..."
 DEST_DIR="$HOME/Library/Keyboard Layouts"
+
+if ls "$DEST_DIR"/*bepo*.bundle 1> /dev/null 2>&1 || ls "$DEST_DIR"/*bepo*.keylayout 1> /dev/null 2>&1; then
+    echo "✅ Bépo layout is already installed in $DEST_DIR."
+    exit 0
+fi
+
 mkdir -p "$DEST_DIR"
 DMG_URL="https://cdn.bepo.fr/macosx/fr-dvorak-bepo-macosx-1.1rc2.dmg"
 TEMP_DMG="/tmp/bepo.dmg"

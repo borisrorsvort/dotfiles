@@ -13,17 +13,25 @@ echo "🐧 Setting up Bépo layout for Linux..."
 # 1. Omarchy / Hyprland (Wayland)
 if command -v hyprctl >/dev/null 2>&1 || [ -n "$HYPRLAND_INSTANCE_SIGNATURE" ]; then
     echo "💠 Omarchy/Hyprland detected."
-    hyprctl keyword input:kb_layout fr 2>/dev/null || true
-    hyprctl keyword input:kb_variant bepo 2>/dev/null || true
-    echo "✅ Runtime layout updated via hyprctl."
-    echo "⚠️  Action Required: Persist this in your Hyprland config:"
-    echo -e "input {\\n    kb_layout = fr\\n    kb_variant = bepo\\n}"
+    if hyprctl getoption input:kb_variant 2>/dev/null | grep -q "bepo"; then
+        echo "✅ Bépo layout is already active in Hyprland."
+    else
+        hyprctl keyword input:kb_layout fr 2>/dev/null || true
+        hyprctl keyword input:kb_variant bepo 2>/dev/null || true
+        echo "✅ Runtime layout updated via hyprctl."
+        echo "⚠️  Action Required: Persist this in your Hyprland config:"
+        echo -e "input {\\n    kb_layout = fr\\n    kb_variant = bepo\\n}"
+    fi
 fi
 
 # 2. X11 / System-wide fallback
 if command -v localectl >/dev/null 2>&1; then
-    echo "⚙️ Setting system-wide X11/Console keymap via localectl..."
-    sudo localectl set-x11-keymap fr pc105 bepo || echo "⚠️  localectl failed (requires sudo)."
+    if localectl status | grep -q "X11 Variant: bepo"; then
+        echo "✅ Bépo layout is already configured system-wide."
+    else
+        echo "⚙️ Setting system-wide X11/Console keymap via localectl..."
+        sudo localectl set-x11-keymap fr pc105 bepo || echo "⚠️  localectl failed (requires sudo)."
+    fi
 fi
 if command -v setxkbmap >/dev/null 2>&1; then
     echo "⚙️ Setting current X11 session keymap..."
