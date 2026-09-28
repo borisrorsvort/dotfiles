@@ -1,0 +1,13 @@
+[dotfiles]
+# Mac-specific dotfiles
+"~/.config/karabiner" = { source = "dots/.config/karabiner" }
+
+[bootstrap.packages]
+# Brew casks (macOS apps)
+"brew:google-chrome" = "latest"
+"brew:figma" = "latest"
+"brew:notion" = "latest"
+"brew:obsidian" = "latest"
+"brew:ghostty" = "latest"
+"brew:discord" = "latest"
+"brew:vlc" = "latest"

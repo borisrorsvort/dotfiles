@@ -1,0 +1,40 @@
+[bootstrap.services.mise-history]
+builtin = "history-watch"
+
+[tools]
+node = "latest"
+python = "latest"
+ruby = "latest"
+go = "latest"
+rust = "latest"
+
+[bootstrap.packages]
+# Common CLI tools
+fd = "latest"
+fzf = "latest"
+gh = "latest"
+jq = "latest"
+lazygit = "latest"
+neovim = "latest"
+ripgrep = "latest"
+starship = "latest"
+tmux = "latest"
+wget = "latest"
+yq = "latest"
+zsh = "latest"
+eza = "latest"
+direnv = "latest"
+pipx = "latest"
+
+[dotfiles]
+# Map existing dots folder to target paths
+"~/.zshrc" = { source = "dots/.zshrc" }
+"~/.gitconfig" = { source = "dots/.gitconfig" }
+"~/.gitignore_global" = { source = "dots/.gitignore_global" }
+
+"~/.config/gh" = { source = "dots/.config/gh" }
+"~/.config/git" = { source = "dots/.config/git" }
+"~/.config/nvim-astro" = { source = "dots/.config/nvim-astro" }
+"~/.config/opencode" = { source = "dots/.config/opencode" }
+"~/.config/rclone" = { source = "dots/.config/rclone" }
+"~/.config/rencal" = { source = "dots/.config/rencal" }

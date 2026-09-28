@@ -4,43 +4,30 @@
     "opencode-antigravity-auth-updated@latest"
   ],
   "provider": {
-    "omniroute": {
+    "ollama": {
       "npm": "@ai-sdk/openai-compatible",
-      "name": "OmniRoute",
+      "name": "Ollama",
       "options": {
-        "baseURL": "http://localhost:20128/v1",
-        "apiKey": "sk-be5523e716f15589-3ade8b-ef8aa992"
+        "baseURL": "http://localhost:11434/v1",
+        "apiKey": "ollama"
       },
       "models": {
-        "auto": {
-          "name": "auto"
-        },
-        "auto/best-reasoning": {
-          "name": "auto/best-reasoning"
-        },
-        "auto/best-fast": {
-          "name": "auto/best-fast"
-        },
-        "auto/best-coding": {
-          "name": "auto/best-coding"
+        "qwen3-coder:30b": {
+          "name": "Qwen3 Coder 30B (Local)",
+          "tool_call": true
         }
       }
-    },
-    "llama": {
-      "npm": "@ai-sdk/openai-compatible",
-      "name": "Llama.cpp",
-      "options": {
-        "baseURL": "http://localhost:8080/v1",
-        "apiKey": "sk-llama"
-      },
-      "models": {
-        "Qwen3.6-27B": {
-          "name": "Qwen 3.6 (27B) - CPU/GPU Split (Slow)"
-        },
-        "gemma-4-12B-it-Q4_0.gguf": {
-          "name": "Gemma 4 (12B Q4_0) - Fast"
-        }
-      }
+    }
+  },
+  "mcp": {
+    "postgres": {
+      "type": "local",
+      "command": [
+        "npx",
+        "-y",
+        "@modelcontextprotocol/server-postgres",
+        "postgresql://localhost/mydb"
+      ]
     }
   }
 }
