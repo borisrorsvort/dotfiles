@@ -22,71 +22,29 @@ yq = "latest"
 awscli = "latest"
 git-filter-repo = "latest"
 
-[dotfiles."~/.zshrc"]
-source = "dots/.zshrc"
-
-[dotfiles."~/.gitconfig"]
-source = "dots/.gitconfig"
-
-[dotfiles."~/.gitignore_global"]
-source = "dots/.gitignore_global"
-
-[dotfiles."~/.config/gh"]
-source = "dots/.config/gh"
-
-[dotfiles."~/.config/git"]
-source = "dots/.config/git"
-
-[dotfiles."~/.config/nvim-astro"]
-source = "dots/.config/nvim-astro"
-
-[dotfiles."~/.config/opencode"]
-source = "dots/.config/opencode"
-
-[dotfiles."~/.config/rclone"]
-source = "dots/.config/rclone"
-
-[dotfiles."~/.config/rencal"]
-source = "dots/.config/rencal"
-
-[dotfiles."~/.agents/skills"]
-source = "dots/.agents/skills"
-
-[dotfiles."~/.opencode/skills"]
-source = "dots/.opencode/skills"
-
-[dotfiles."~/.claude/settings.json"]
-source = "dots/.claude/settings.json"
-
-[dotfiles."~/.claude/skills"]
-source = "dots/.claude/skills"
-
-[dotfiles."~/.claude/themes"]
-source = "dots/.claude/themes"
-
-[dotfiles."~/.claude/hooks"]
-source = "dots/.claude/hooks"
-
-[dotfiles."~/.copilot/config.json"]
-source = "dots/.copilot/config.json"
-
-[dotfiles."~/.gemini/antigravity-cli/settings.json"]
-source = "dots/.gemini/antigravity-cli/settings.json"
-
-[dotfiles."~/.gemini/antigravity-cli/mcp"]
-source = "dots/.gemini/antigravity-cli/mcp"
-
-[dotfiles."~/.gemini/config/config.json"]
-source = "dots/.gemini/config/config.json"
-
-[dotfiles."~/.gemini/config/mcp_config.json"]
-source = "dots/.gemini/config/mcp_config.json"
-
-[dotfiles."~/.gemini/config/skills"]
-source = "dots/.gemini/config/skills"
-
-[dotfiles."~/.gemini/config/plugins"]
-source = "dots/.gemini/config/plugins"
+[dotfiles]
+"~/.zshrc" = { source = "dots/.zshrc" }
+"~/.gitconfig" = { source = "dots/.gitconfig" }
+"~/.gitignore_global" = { source = "dots/.gitignore_global" }
+"~/.config/gh" = { source = "dots/.config/gh" }
+"~/.config/git" = { source = "dots/.config/git" }
+"~/.config/nvim-astro" = { source = "dots/.config/nvim-astro" }
+"~/.config/opencode" = { source = "dots/.config/opencode" }
+"~/.config/rclone" = { source = "dots/.config/rclone" }
+"~/.config/rencal" = { source = "dots/.config/rencal" }
+"~/.agents/skills" = { source = "dots/.agents/skills" }
+"~/.opencode/skills" = { source = "dots/.opencode/skills" }
+"~/.claude/settings.json" = { source = "dots/.claude/settings.json" }
+"~/.claude/skills" = { source = "dots/.claude/skills" }
+"~/.claude/themes" = { source = "dots/.claude/themes" }
+"~/.claude/hooks" = { source = "dots/.claude/hooks" }
+"~/.copilot/config.json" = { source = "dots/.copilot/config.json" }
+"~/.gemini/antigravity-cli/settings.json" = { source = "dots/.gemini/antigravity-cli/settings.json" }
+"~/.gemini/antigravity-cli/mcp" = { source = "dots/.gemini/antigravity-cli/mcp" }
+"~/.gemini/config/config.json" = { source = "dots/.gemini/config/config.json" }
+"~/.gemini/config/mcp_config.json" = { source = "dots/.gemini/config/mcp_config.json" }
+"~/.gemini/config/skills" = { source = "dots/.gemini/config/skills" }
+"~/.gemini/config/plugins" = { source = "dots/.gemini/config/plugins" }
 
 [tasks.bootstrap]
 description = "Run post-install setup commands"

@@ -1,0 +1,34 @@
+[bootstrap.packages]
+"pacman:zsh" = "latest"
+"pacman:tmux" = "latest"
+"pacman:git" = "latest"
+
+[tasks.setup-bepo]
+description = "Install and configure Bépo keyboard layout for Omarchy"
+run = """
+#!/bin/bash
+set -e
+echo "🐧 Setting up Bépo layout for Linux..."
+
+# 1. Omarchy / Hyprland (Wayland)
+if command -v hyprctl >/dev/null 2>&1 || [ -n "$HYPRLAND_INSTANCE_SIGNATURE" ]; then
+    echo "💠 Omarchy/Hyprland detected."
+    hyprctl keyword input:kb_layout fr 2>/dev/null || true
+    hyprctl keyword input:kb_variant bepo 2>/dev/null || true
+    echo "✅ Runtime layout updated via hyprctl."
+    echo "⚠️  Action Required: Persist this in your Hyprland config:"
+    echo -e "input {\\n    kb_layout = fr\\n    kb_variant = bepo\\n}"
+fi
+
+# 2. X11 / System-wide fallback
+if command -v localectl >/dev/null 2>&1; then
+    echo "⚙️ Setting system-wide X11/Console keymap via localectl..."
+    sudo localectl set-x11-keymap fr pc105 bepo || echo "⚠️  localectl failed (requires sudo)."
+fi
+if command -v setxkbmap >/dev/null 2>&1; then
+    echo "⚙️ Setting current X11 session keymap..."
+    setxkbmap fr bepo 2>/dev/null || true
+fi
+
+echo "✅ Linux Bépo setup complete."
+"""

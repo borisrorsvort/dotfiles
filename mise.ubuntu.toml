@@ -1,7 +1,4 @@
 [bootstrap.packages]
-"pacman:zsh" = "latest"
 "apt:zsh" = "latest"
-"pacman:tmux" = "latest"
 "apt:tmux" = "latest"
-"pacman:git" = "latest"
 "apt:git" = "latest"

@@ -24,9 +24,20 @@ The configuration is cleanly split across three files:
    - Heavy GUI Casks (`discord`, `figma`, `chrome`, `obsidian`, `vlc`).
    - System-bound Brew formulas requiring macOS dynamic libraries or C compilation (`ffmpeg`, `cmake`, `git`).
 
-3. **`mise.linux.toml`** (Linux / Omarchy Environment)
-   - Login shell and terminal multiplexers (`zsh`, `tmux`).
-   - OS-level package manager fallback (`pacman`, `apt`) for dependencies.
+3. **`mise.omarchy.toml`** (Omarchy Desktop Environment)
+   - Desktop apps, `pacman` dependencies (`zsh`, `tmux`), and Bépo tasks.
+
+4. **`mise.ubuntu.toml`** (Ubuntu Headless Environment)
+   - Minimal server setup using `apt` dependencies (`zsh`, `tmux`, `git`).
+
+---
+
+## ⌨️ Keyboard Layout (Bépo)
+
+If you use the Bépo keyboard layout, a cross-platform setup task is included. It automatically downloads the macOS `.bundle` drivers, sets up Omarchy/Hyprland runtime variables, and applies Linux `localectl` configurations natively:
+```bash
+mise -E <os> run setup-bepo
+```
 
 ---
 
@@ -54,11 +65,18 @@ cd ~/Projects/dotfiles
 mise -E macos bootstrap --yes
 ```
 
-### 🐧 Linux (Omarchy) Setup
-Navigate to the directory and tell `mise` to bootstrap the `linux` environment:
+### 🐧 Desktop Linux (Omarchy) Setup
+Navigate to the directory and tell `mise` to bootstrap the `omarchy` environment:
 ```bash
 cd ~/Projects/dotfiles
-mise -E linux bootstrap --yes
+mise -E omarchy bootstrap --yes
+```
+
+### 🖥️ Headless Server (Ubuntu) Setup
+Navigate to the directory and tell `mise` to bootstrap the `ubuntu` environment:
+```bash
+cd ~/Projects/dotfiles
+mise -E ubuntu bootstrap --yes
 ```
 
 ---

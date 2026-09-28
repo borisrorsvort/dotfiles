@@ -71,7 +71,6 @@ source = "dots/.config/karabiner"
 
 # --- Homebrew Casks (GUI Apps) ---
 "brew:anki" = "latest"
-"brew:antigravity" = "latest"
 "brew:antigravity-cli" = "latest"
 "brew:applite" = "latest"
 "brew:claude" = "latest"
@@ -87,7 +86,6 @@ source = "dots/.config/karabiner"
 "brew:google-gemini" = "latest"
 "brew:libreoffice" = "latest"
 "brew:linearmouse" = "latest"
-"brew:microsoft-auto-update" = "latest"
 "brew:notion" = "latest"
 "brew:obsidian" = "latest"
 "brew:ollama-app" = "latest"
@@ -96,7 +94,33 @@ source = "dots/.config/karabiner"
 "brew:remanager" = "latest"
 "brew:soundsource" = "latest"
 "brew:stremio" = "latest"
-"brew:synology-drive" = "latest"
-"brew:tigervnc" = "latest"
 "brew:transcribe" = "latest"
 "brew:vlc" = "latest"
+
+[tasks.setup-bepo]
+description = "Install and configure Bépo keyboard layout for macOS"
+run = """
+#!/bin/bash
+set -e
+echo "🍏 Setting up Bépo layout for macOS..."
+DEST_DIR="$HOME/Library/Keyboard Layouts"
+mkdir -p "$DEST_DIR"
+DMG_URL="https://cdn.bepo.fr/macosx/fr-dvorak-bepo-macosx-1.1rc2.dmg"
+TEMP_DMG="/tmp/bepo.dmg"
+
+echo "Downloading Bépo macOS driver..."
+curl -sL "$DMG_URL" -o "$TEMP_DMG"
+
+echo "Mounting DMG..."
+VOLUME=$(hdiutil attach "$TEMP_DMG" | grep -o "/Volumes/.*")
+
+echo "Installing layout bundle to $DEST_DIR..."
+cp -r "$VOLUME"/*.bundle "$DEST_DIR/"
+
+echo "Unmounting DMG..."
+hdiutil detach "$VOLUME" >/dev/null
+rm "$TEMP_DMG"
+
+echo "✅ Bépo layout installed!"
+echo "⚠️  Action Required: Restart your Mac (or log out), then go to System Settings -> Keyboard -> Edit/Input Sources -> Add 'Bépo'."
+"""
