@@ -1,58 +1,95 @@
-# Dotfiles
+<div align="center">
+  <img src="docs/assets/banner.jpg" alt="Omarchy Dotfiles Banner" width="100%" />
+  
+  # ✦ DOTFILES ✦
+  
+  **A highly optimized, declarative, cross-platform environment powered entirely by `mise`.**
+</div>
 
-Dotfiles I use with MacOS.
+---
 
-Contains:
+## 🏗️ Architecture
 
-1. [Git config](https://github.com/mihaliak/dotfiles/blob/master/dots/.gitconfig), [Git global ignore](https://github.com/mihaliak/dotfiles/blob/master/dots/.gitignore_global)
-2. iTerm2 profile
-3. Packages / CLI (brew, brew cask, dockutil, htop, iftop, openssl, git, node, python, wget, yarn)
-4. Applications (google-chrome, slack, spotify, sublime-text, postman, iterm2, spectacle, appcleaner, ...)
+This repository has been fully modernized. All legacy Bash scripts and convoluted Homebrew wrappers have been eliminated. The entire ecosystem is strictly declarative and managed universally by [mise](https://mise.jdx.dev/).
 
-## Install
+The configuration is cleanly split across three files:
 
-On fresh installation of MacOS:
+1. **`mise.toml`** (The Core Base)
+   - Universal language runtimes (`python`, `node`, `ruby`, `go`, `rust`).
+   - Package managers (`yarn`, `pnpm`, `uv`, `pipx`).
+   - Cross-platform, natively compiled CLIs (`gh`, `fzf`, `ripgrep`, `fd`, `jq`, `lazygit`, `starship`, `eza`, `direnv`, `yq`, `awscli`).
+   - All dotfile symlink mappings (git configs, zsh, nvim, opencode, gemini, etc.).
 
-    sudo softwareupdate -i -a
-    xcode-select --install
+2. **`mise.macos.toml`** (macOS Environment)
+   - Heavy GUI Casks (`discord`, `figma`, `chrome`, `obsidian`, `vlc`).
+   - System-bound Brew formulas requiring macOS dynamic libraries or C compilation (`ffmpeg`, `cmake`, `git`).
 
-Clone and install dotfiles:
+3. **`mise.linux.toml`** (Linux / Omarchy Environment)
+   - Login shell and terminal multiplexers (`zsh`, `tmux`).
+   - OS-level package manager fallback (`pacman`, `apt`) for dependencies.
+
+---
+
+## 🚀 Installation
+
+Because `mise` handles everything (including dotfile symlinking), bootstrapping a brand new machine is incredibly simple. 
+
+### Prerequisites
+First, install `mise` using their standalone script (this works anywhere):
+```bash
+curl https://mise.run | sh
+~/.local/bin/mise --version
 ```
-git clone https://github.com/grsmto/dotfiles.git ~/dotfiles
-chmod +wx ~/dotfiles/install/install.sh
-chmod -R +wx ~/dotfiles/bin
-~/dotfiles/install/install.sh
+*(Make sure to follow the shell activation prompt if it's your first time!)*
+
+Clone the repository to your home directory:
+```bash
+git clone https://github.com/mihaliak/dotfiles.git ~/Projects/dotfiles
 ```
 
-## Additional steps
+### 🍎 macOS Setup
+Navigate to the directory and tell `mise` to bootstrap the `macos` environment:
+```bash
+cd ~/Projects/dotfiles
+mise -E macos bootstrap --yes
+```
 
-### Iterm
+### 🐧 Linux (Omarchy) Setup
+Navigate to the directory and tell `mise` to bootstrap the `linux` environment:
+```bash
+cd ~/Projects/dotfiles
+mise -E linux bootstrap --yes
+```
 
-1. In iterm `Preferences > General > Load preferences from a custom folder or URL` and set it to `~/dotfiles/iterm`
-2. `sudo reboot`
-3. Enjoy
+---
 
-### VScode
+## 🌌 Omarchy / Desktop Configuration
 
-1. Copy settings from ./~/dotfiles/vscode/settings.json
+If you are running the **Omarchy** tiling window manager environment on Linux (Hyprland, Waybar, Foot, etc.), your UI configs are automatically symlinked via `mise.toml` if they are in the `dots/` directory.
 
-## The `dots` command
+### Quick Tips for Omarchy:
+- **Wallpaper / Aesthetics**: Handled natively by the dotfiles config. 
+- **Window Rules / Keybinds**: Edit the corresponding `~/.config/hypr/` or `~/.config/omarchy/` symlinks.
+- **Reloading**: Simply restart your window manager or use the built-in Omarchy reload keybinding after bootstrapping to apply the new GTK and layout themes.
 
-    $ dots
-    ￫ Usage: dots <command>
+---
 
-    Commands:
-       help             This help message
-       install          Run the master install script to bootstrap the system
-       backup           Dump current brew packages, commit changes, and push to git
-       clean            Clean up caches (brew, npm, yarn, composer)
-       symlinks         Run symlinks script
-       brew             Run brew script
+## 🛠️ Maintenance & Updating
 
-## Credits
+You no longer need to run custom `backup` or `clean` scripts. 
 
-All credits for the scripts and ideas from [mihaliak dotfiles](https://github.com/mihaliak/dotfiles). Thanks!
+- To update all language tools and binaries across your system:
+  ```bash
+  mise up
+  ```
+- To update your environment after pulling new dotfiles commits:
+  ```bash
+  mise dotfiles apply
+  ```
+- To safely test what a bootstrap *would* do without changing anything:
+  ```bash
+  mise -E <os> bootstrap plan
+  ```
 
-## TODO
-
-- [ ] Add `/Sites` folder
+---
+*Powered by Google Antigravity & `mise`*

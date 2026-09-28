@@ -1,0 +1,1 @@
+{"name":"query","description":"Run a read-only SQL query","parameters":{"properties":{"sql":{"type":"string"}},"type":"object"}}

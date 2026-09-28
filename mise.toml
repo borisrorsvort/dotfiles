@@ -1,40 +1,96 @@
-[bootstrap.services.mise-history]
-builtin = "history-watch"
-
 [tools]
+"npm:oh-my-claude-sisyphus" = "latest"
 node = "latest"
-python = "latest"
+python = [ "3.12", "3.10",]
 ruby = "latest"
 go = "latest"
 rust = "latest"
-
-[bootstrap.packages]
-# Common CLI tools
-fd = "latest"
-fzf = "latest"
+yarn = "latest"
+pnpm = "latest"
+uv = "latest"
+pipx = "latest"
 gh = "latest"
+fzf = "latest"
+ripgrep = "latest"
+fd = "latest"
 jq = "latest"
 lazygit = "latest"
-neovim = "latest"
-ripgrep = "latest"
 starship = "latest"
-tmux = "latest"
-wget = "latest"
-yq = "latest"
-zsh = "latest"
 eza = "latest"
 direnv = "latest"
-pipx = "latest"
+yq = "latest"
+awscli = "latest"
+git-filter-repo = "latest"
 
-[dotfiles]
-# Map existing dots folder to target paths
-"~/.zshrc" = { source = "dots/.zshrc" }
-"~/.gitconfig" = { source = "dots/.gitconfig" }
-"~/.gitignore_global" = { source = "dots/.gitignore_global" }
+[dotfiles."~/.zshrc"]
+source = "dots/.zshrc"
 
-"~/.config/gh" = { source = "dots/.config/gh" }
-"~/.config/git" = { source = "dots/.config/git" }
-"~/.config/nvim-astro" = { source = "dots/.config/nvim-astro" }
-"~/.config/opencode" = { source = "dots/.config/opencode" }
-"~/.config/rclone" = { source = "dots/.config/rclone" }
-"~/.config/rencal" = { source = "dots/.config/rencal" }
+[dotfiles."~/.gitconfig"]
+source = "dots/.gitconfig"
+
+[dotfiles."~/.gitignore_global"]
+source = "dots/.gitignore_global"
+
+[dotfiles."~/.config/gh"]
+source = "dots/.config/gh"
+
+[dotfiles."~/.config/git"]
+source = "dots/.config/git"
+
+[dotfiles."~/.config/nvim-astro"]
+source = "dots/.config/nvim-astro"
+
+[dotfiles."~/.config/opencode"]
+source = "dots/.config/opencode"
+
+[dotfiles."~/.config/rclone"]
+source = "dots/.config/rclone"
+
+[dotfiles."~/.config/rencal"]
+source = "dots/.config/rencal"
+
+[dotfiles."~/.agents/skills"]
+source = "dots/.agents/skills"
+
+[dotfiles."~/.opencode/skills"]
+source = "dots/.opencode/skills"
+
+[dotfiles."~/.claude/settings.json"]
+source = "dots/.claude/settings.json"
+
+[dotfiles."~/.claude/skills"]
+source = "dots/.claude/skills"
+
+[dotfiles."~/.claude/themes"]
+source = "dots/.claude/themes"
+
+[dotfiles."~/.claude/hooks"]
+source = "dots/.claude/hooks"
+
+[dotfiles."~/.copilot/config.json"]
+source = "dots/.copilot/config.json"
+
+[dotfiles."~/.gemini/antigravity-cli/settings.json"]
+source = "dots/.gemini/antigravity-cli/settings.json"
+
+[dotfiles."~/.gemini/antigravity-cli/mcp"]
+source = "dots/.gemini/antigravity-cli/mcp"
+
+[dotfiles."~/.gemini/config/config.json"]
+source = "dots/.gemini/config/config.json"
+
+[dotfiles."~/.gemini/config/mcp_config.json"]
+source = "dots/.gemini/config/mcp_config.json"
+
+[dotfiles."~/.gemini/config/skills"]
+source = "dots/.gemini/config/skills"
+
+[dotfiles."~/.gemini/config/plugins"]
+source = "dots/.gemini/config/plugins"
+
+[tasks.bootstrap]
+description = "Run post-install setup commands"
+run = "omc setup"
+
+[bootstrap.services.mise-history]
+builtin = "history-watch"

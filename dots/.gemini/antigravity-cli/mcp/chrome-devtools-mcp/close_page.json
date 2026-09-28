@@ -1,0 +1,1 @@
+{"name":"close_page","description":"Closes the page by its index. The last open page cannot be closed.","parameters":{"$schema":"https://json-schema.org/draft/2020-12/schema","additionalProperties":{},"properties":{"pageId":{"description":"The ID of the page to close. Call list_pages to list pages.","type":"number"}},"required":["pageId"],"type":"object"}}

@@ -1,0 +1,10 @@
+// User settings belong in settings.json.
+// This file is managed automatically.
+{
+  "firstLaunchAt": "2026-09-18T09:49:32.103Z",
+  "appTipShown": true,
+  "reasoningSummariesCleanupDone": true,
+  "trustedFolders": [
+    "/home/boris/Work"
+  ]
+}
