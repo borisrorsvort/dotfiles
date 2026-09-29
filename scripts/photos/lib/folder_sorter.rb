@@ -22,7 +22,7 @@ class FolderSorter
     sort_by_exif
     shooting_dirs.each { |d| process(d) }
     @logger.success("Done — #{@dir}")
-    system("open", @dir)
+    system("xdg-open", @dir) || system("open", @dir)
   end
 
   private

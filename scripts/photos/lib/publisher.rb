@@ -14,7 +14,7 @@ class Publisher
     @prompt = prompt
     @logger = logger
 
-    @shooting_path  = ENV.fetch("SHOOTING_PATH", "/Volumes/Shootings")
+    @shooting_path  = ENV.fetch("RAW_ARCHIVE_PATH") { abort("Please set RAW_ARCHIVE_PATH in .env") }
     raw_wm_path     = ENV.fetch("WATERMARK_PATH") { abort("Set WATERMARK_PATH in .env first.") }
     @watermark_path = File.expand_path(raw_wm_path, File.expand_path("..", __dir__))
     @immich_server  = ENV["IMMICH_SERVER"]
@@ -259,7 +259,7 @@ class Publisher
 
   def open_insta_dirs(dirs)
     if dirs.any?
-      system("open", *dirs)
+      dirs.each { |d| system("xdg-open", d) || system("open", d) }
     else
       @logger.warn("No insta exports produced — nothing to open.")
     end

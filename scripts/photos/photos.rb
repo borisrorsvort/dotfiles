@@ -13,12 +13,12 @@ require "fileutils"
 Dotenv.load(File.join(__dir__, ".env"), ".env")
 
 require_relative "lib/folder_sorter"
+require_relative "lib/importer"
 require_relative "lib/publisher"
 
 class PhotosCLI
-
-
   COMMANDS = {
+    "import"  => "Import photos from camera mount into /mnt/darkmatter/CameraRoll Raws",
     "sort"    => "Sort a card dump into YYYYMMDD-shooting/{jpg,DNG}",
     "publish" => "Export, watermark, tag EXIF and push to Immich"
   }.freeze
@@ -35,6 +35,7 @@ class PhotosCLI
     args = @argv
 
     case cmd
+    when "import"               then import_cmd(args)
     when "sort"                 then sort(args)
     when "publish"              then publish
     when "help", "--help", "-h" then usage
@@ -49,6 +50,11 @@ class PhotosCLI
 
   private
 
+  def import_cmd(args)
+    dir = args.first || pick_mount_dir
+    Importer.new(dir, logger: @logger).run
+  end
+
   def sort(args)
     dir = args.first || Dir.pwd
     FolderSorter.new(dir, logger: @logger).run
@@ -62,6 +68,9 @@ class PhotosCLI
     choices = COMMANDS.each_with_object({}) { |(cmd, desc), h| h["#{cmd.ljust(8)} - #{desc}"] = cmd }
     choice = @prompt.select("What do you want to do?", choices, cycle: true)
     case choice
+    when "import"
+      dir = pick_mount_dir
+      import_cmd([dir])
     when "sort"
       dir = pick_sort_dir
       sort([dir])
@@ -70,8 +79,34 @@ class PhotosCLI
     end
   end
 
+  def pick_mount_dir
+    candidates = []
+    if ENV["CAMERA_MOUNT_PATH"]
+      path = ENV["CAMERA_MOUNT_PATH"].strip
+      candidates << path if path.start_with?("mtp://", "gphoto2://") || Dir.exist?(path)
+    end
+    candidates += Dir.glob("/run/media/*/*/").select { |d| File.directory?(d) }.map { |d| d.chomp("/") }
+    candidates += Dir.glob("/media/*/*/").select { |d| File.directory?(d) }.map { |d| d.chomp("/") }
+    candidates += Dir.glob("/Volumes/*/").select { |d| File.directory?(d) }.map { |d| d.chomp("/") }
+    candidates.uniq!
+
+    if candidates.empty?
+      @logger.warn("No automatically detected mounts found.")
+      return @prompt.ask("Enter path to camera mount manually:", default: Dir.pwd)
+    end
+
+    choices = candidates.each_with_object({}) { |path, h| h[path] = path }
+    choices["Enter a custom path…"] = :custom
+
+    picked = @prompt.select("Camera mount to import from:", choices)
+    picked == :custom ? @prompt.ask("Path:", default: Dir.pwd) : picked
+  end
+
   def pick_sort_dir
     candidates = [Dir.pwd]
+    candidates << ENV["RAW_ARCHIVE_PATH"] if ENV["RAW_ARCHIVE_PATH"] && Dir.exist?(ENV["RAW_ARCHIVE_PATH"])
+    candidates += Dir.glob("/run/media/*/*/").select { |d| File.directory?(d) }.map { |d| d.chomp("/") }
+    candidates += Dir.glob("/media/*/*/").select { |d| File.directory?(d) }.map { |d| d.chomp("/") }
     candidates += Dir.glob("/Volumes/*/").select { |d| File.directory?(d) }.map { |d| d.chomp("/") }
     candidates.uniq!
 
@@ -96,7 +131,7 @@ class PhotosCLI
 
   def usage
     puts "Usage: photos <command> [options]\n\n"
-    COMMANDS.each { |name, desc| puts "  %-10s %s" % [name, desc] }
+    COMMANDS.each { |name, desc| puts format("  %-10s %s", name, desc) }
     puts
   end
 end
