@@ -8,16 +8,17 @@ require_relative "folder_sorter"
 class Importer
   def initialize(source_dir, logger:)
     # Do not chomp trailing slash or expand path if it is an MTP/Gphoto2 URI
-    if source_dir.to_s.start_with?("mtp://", "gphoto2://")
-      @source_dir = source_dir.to_s
-    else
-      @source_dir = File.expand_path(source_dir.to_s.chomp("/"))
-    end
-    @dest_dir   = ENV.fetch("RAW_ARCHIVE_PATH") { abort("Please set RAW_ARCHIVE_PATH in .env") }
+    @source_dir = if source_dir.to_s.start_with?("mtp://", "gphoto2://")
+                    source_dir.to_s
+                  else
+                    File.expand_path(source_dir.to_s.chomp("/"))
+                  end
+    @dest_dir = ENV.fetch("RAW_ARCHIVE_PATH") { abort("Please set RAW_ARCHIVE_PATH in .env") }
     @logger = logger
   end
 
   def run
+    abort("Error: 'exiftool' is not installed. Please install it first.") unless system("which exiftool > /dev/null 2>&1")
     FileUtils.mkdir_p(@dest_dir)
 
     if @source_dir.start_with?("mtp://", "gphoto2://")
@@ -34,55 +35,56 @@ class Importer
   private
 
   def import_from_mtp
+    system("gio", "mount", @source_dir, out: File::NULL, err: File::NULL)
     spinner = TTY::Spinner.new("[:spinner] Indexing MTP device and local archive…", format: :dots)
     spinner.auto_spin
-    
+
     existing = {}
     Dir.glob(File.join(@dest_dir, "**", "*")).each do |f|
       next if File.directory?(f)
+
       existing[[File.basename(f), File.size(f)]] = true
     end
-    
+
     pending_uris = []
-    
-    scan_mtp = ->(uri) do
-      require 'open3'
+
+    scan_mtp = lambda do |uri|
+      require "open3"
       output, _err, _status = Open3.capture3("gio", "list", "-l", uri)
       output.lines.each do |line|
         parts = line.chomp.split("\t")
         name = parts[0]
         size = parts[1].to_i
         type = parts.last
-        
+
         child_uri = uri.chomp("/") + "/" + name
-        
+
         if type.to_s.include?("directory")
           scan_mtp.call(child_uri)
         else
           next unless name.to_s.match?(/\.(jpg|jpeg|dng|mp4|mov|avi)$/i)
-          unless existing[[name, size]]
-            pending_uris << child_uri
-          end
+
+          pending_uris << child_uri unless existing[[name, size]]
         end
       end
     end
-    
+
     scan_mtp.call(@source_dir)
     spinner.stop(pending_uris.empty? ? "No new files found." : "Found #{pending_uris.size} new files.")
     return if pending_uris.empty?
-    
-    staging_dir = File.join(@dest_dir, ".mtp_staging")
+
+    staging_dir = File.join(@dest_dir, "tmp_mtp_staging")
     FileUtils.mkdir_p(staging_dir)
-    
+
     download_spinner = TTY::Spinner.new("[:spinner] Downloading #{pending_uris.size} files over MTP…", format: :dots)
     download_spinner.auto_spin
-    
+
     pending_uris.each do |uri|
       dest = File.join(staging_dir, File.basename(uri))
       system("gio", "copy", uri, dest, out: File::NULL, err: File::NULL)
     end
     download_spinner.success("done.")
-    
+
     import_by_exif(staging_dir)
     FileUtils.rm_rf(staging_dir)
   end

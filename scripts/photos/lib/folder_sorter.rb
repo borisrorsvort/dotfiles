@@ -18,11 +18,21 @@ class FolderSorter
   end
 
   def run
+    abort("Error: 'exiftool' is not installed. Please install it first.") unless system("which exiftool > /dev/null 2>&1")
     abort "Directory not found: #{@dir}" unless Dir.exist?(@dir)
     sort_by_exif
     shooting_dirs.each { |d| process(d) }
     @logger.success("Done — #{@dir}")
-    system("xdg-open", @dir) || system("open", @dir)
+    begin
+      pid = Process.spawn("xdg-open", @dir, out: File::NULL, err: File::NULL)
+      Process.detach(pid)
+    rescue Errno::ENOENT
+      begin
+        pid = Process.spawn("open", @dir, out: File::NULL, err: File::NULL)
+        Process.detach(pid)
+      rescue Errno::ENOENT
+      end
+    end
   end
 
   private
