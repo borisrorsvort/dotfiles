@@ -52,5 +52,23 @@ run = [
     "mise run setup-bepo"
 ]
 
+[tasks.safe-apply]
+description = "Safely apply dotfiles by merging local directories first, preventing --force deletions"
+run = """
+#!/bin/bash
+# If ~/.agents/skills exists and is a real folder (not a symlink), merge it
+if [ -d ~/.agents/skills ] && [ ! -L ~/.agents/skills ]; then
+    echo "📦 Found unlinked ~/.agents/skills folder. Merging into dotfiles..."
+    mkdir -p ~/dotfiles/dots/.agents/skills
+    cp -R ~/.agents/skills/* ~/dotfiles/dots/.agents/skills/ 2>/dev/null || true
+    rm -rf ~/.agents/skills
+fi
+
+# Run the normal apply without needing --force
+echo "🔗 Applying dotfiles..."
+mise dotfiles apply
+echo "✅ Dotfiles applied safely!"
+"""
+
 [bootstrap.services.mise-history]
 builtin = "history-watch"
