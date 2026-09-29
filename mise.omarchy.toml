@@ -40,3 +40,18 @@ fi
 
 echo "✅ Linux Bépo setup complete."
 """
+
+[tasks.link-omarchy-skills]
+description = "Link system-wide Omarchy AI skills into local agents folder"
+run = """
+#!/bin/bash
+set -e
+mkdir -p ~/.agents/skills
+if [ -d /usr/share/omarchy/default/agents/skills/omarchy ]; then
+    ln -sfn /usr/share/omarchy/default/agents/skills/omarchy ~/.agents/skills/omarchy
+fi
+if [ -d /usr/share/omarchy/default/agents/skills/diagnose-crash ]; then
+    ln -sfn /usr/share/omarchy/default/agents/skills/diagnose-crash ~/.agents/skills/diagnose-crash
+fi
+echo "Linked Omarchy system skills."
+"""
