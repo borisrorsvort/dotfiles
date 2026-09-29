@@ -3,3 +3,4 @@
 *.env
 /.omc
 dots/.config/rclone/rclone.conf
+!dots/.agents/
