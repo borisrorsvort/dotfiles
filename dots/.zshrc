@@ -58,7 +58,6 @@ alias main='git checkout main'
 alias photos="photos.rb"
 alias create_folders="photos sort" # kept for muscle memory
 alias reset_test='rake db:reset RAILS_ENV=test; rake db:migrate RAILS_ENV=test'
-alias agy="agy --add-dir ~/.agents"
 alias reset_db="rake 'db:copy[staging, true, true]'; rake db:migrate RAILS_ENV=development"
 alias rp="git log \$(git describe --tags \`git rev-list --tags --max-count=1\`)..master --oneline" # Release preview
 alias deploy="./bin/deploy"

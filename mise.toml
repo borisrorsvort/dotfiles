@@ -30,7 +30,6 @@ git-filter-repo = "latest"
 "~/.config/git" = { source = "dots/.config/git" }
 "~/.config/nvim-astro" = { source = "dots/.config/nvim-astro" }
 "~/.config/opencode" = { source = "dots/.config/opencode" }
-"~/.config/rclone" = { source = "dots/.config/rclone" }
 "~/.config/rencal" = { source = "dots/.config/rencal" }
 "~/.agents/skills" = { source = "dots/.agents/skills" }
 "~/.claude/settings.json" = { source = "dots/.claude/settings.json" }
@@ -49,7 +48,8 @@ git-filter-repo = "latest"
 description = "Run post-install setup commands"
 run = [
     "mkdir -p ~/.gemini/config",
-    "echo '{\"entries\": [{\"path\": \"'$HOME'/.agents/skills\"}]}' > ~/.gemini/config/skills.json"
+    "echo '{\"entries\": [{\"path\": \"'$HOME'/.agents/skills\"}]}' > ~/.gemini/config/skills.json",
+    "mise run setup-bepo"
 ]
 
 [bootstrap.services.mise-history]

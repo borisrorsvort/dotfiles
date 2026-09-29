@@ -2,3 +2,38 @@
 "apt:zsh" = "latest"
 "apt:tmux" = "latest"
 "apt:git" = "latest"
+
+[tasks.setup-bepo]
+description = "Install and configure Bépo keyboard layout for Ubuntu Server"
+run = """
+#!/bin/bash
+set -e
+echo "🐧 Setting up Bépo layout for Ubuntu Server / Console..."
+
+if [ -f /etc/default/keyboard ]; then
+    echo "⚙️ Updating /etc/default/keyboard..."
+    sudo sed -i 's/^XKBLAYOUT=.*/XKBLAYOUT="fr"/' /etc/default/keyboard
+    sudo sed -i 's/^XKBVARIANT=.*/XKBVARIANT="bepo"/' /etc/default/keyboard
+    
+    if command -v dpkg-reconfigure >/dev/null 2>&1; then
+        echo "⚙️ Reconfiguring keyboard-configuration..."
+        sudo DEBIAN_FRONTEND=noninteractive dpkg-reconfigure keyboard-configuration || true
+    fi
+    
+    if command -v setupcon >/dev/null 2>&1; then
+        echo "⚙️ Applying console keymap (setupcon)..."
+        sudo setupcon || true
+    fi
+    echo "✅ Console layout updated to Bépo."
+else
+    echo "⚠️ /etc/default/keyboard not found. Is this an Ubuntu system?"
+fi
+
+# Fallback to localectl for virtual console if available
+if command -v localectl >/dev/null 2>&1; then
+    echo "⚙️ Setting VC keymap via localectl..."
+    sudo localectl set-keymap fr bepo || true
+fi
+
+echo "✅ Ubuntu Server Bépo setup complete."
+"""
