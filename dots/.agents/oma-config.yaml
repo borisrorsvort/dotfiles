@@ -1,0 +1,47 @@
+# OMA (Oh My Agent) Universal Configuration
+# Controls subagent execution and model tier routing
+
+default_cli: antigravity
+
+agents:
+  # Deep reasoning archetypes -> Pro tier
+  architecture:
+    model: pro
+  qa:
+    model: pro
+  pm:
+    model: pro
+  analyst:
+    model: pro
+  critic:
+    model: pro
+  security:
+    model: pro
+  refactor:
+    model: pro
+
+  # Workhorse archetypes -> Flash tier
+  backend:
+    model: flash
+  frontend:
+    model: flash
+  mobile:
+    model: flash
+  db:
+    model: flash
+  debug:
+    model: flash
+  designer:
+    model: flash
+  dev-workflow:
+    model: flash
+
+  # Lightweight scanning & documentation -> Flash-Lite tier
+  explore:
+    model: flash_lite
+  docs:
+    model: flash_lite
+  scm:
+    model: flash_lite
+  search:
+    model: flash_lite

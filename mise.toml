@@ -32,6 +32,7 @@ git-filter-repo = "latest"
 "~/.config/opencode" = { source = "dots/.config/opencode" }
 "~/.config/rencal" = { source = "dots/.config/rencal" }
 "~/.agents/skills" = { source = "dots/.agents/skills" }
+"~/.agents/oma-config.yaml" = { source = "dots/.agents/oma-config.yaml" }
 "~/.claude/settings.json" = { source = "dots/.claude/settings.json" }
 "~/.claude/skills" = { source = "dots/.claude/skills" }
 "~/.claude/themes" = { source = "dots/.claude/themes" }
