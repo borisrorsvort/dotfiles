@@ -28,6 +28,7 @@ PATH="/usr/local/sbin:$PATH" # Homebrew
 PATH="/usr/local/share/npm/bin:$PATH"
 PATH="$HOME/dotfiles/scripts/photos:$PATH" # Photo scripts
 PATH="$HOME/dotfiles/bin:$PATH" # Dotfiles CLI tools
+PATH="/home/boris/.cache/.bun/bin:$PATH"
 export PATH="$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 NOTE_PATH='/Users/ghost/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/Notes'

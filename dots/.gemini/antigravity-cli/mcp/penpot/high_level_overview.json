@@ -1,0 +1,1 @@
+{"name":"high_level_overview","description":"Returns basic high-level instructions on the usage of Penpot-related tools and the Penpot API. If you have already read the 'Penpot High-Level Overview', you must not call this tool.","parameters":{"$schema":"http://json-schema.org/draft-07/schema#","properties":{},"type":"object"}}

@@ -4,6 +4,7 @@ require "fileutils"
 require "time"
 require "json"
 require "tty-spinner"
+require "shellwords"
 
 # Interactive pipeline: RapidRAW export → watermark → EXIF tag → rename → Immich
 class Publisher
@@ -17,8 +18,8 @@ class Publisher
     @shooting_path  = ENV.fetch("RAW_ARCHIVE_PATH") { abort("Please set RAW_ARCHIVE_PATH in .env") }
     raw_wm_path     = ENV.fetch("WATERMARK_PATH") { abort("Set WATERMARK_PATH in .env first.") }
     @watermark_path = File.expand_path(raw_wm_path, File.expand_path("..", __dir__))
-    @immich_server  = ENV["IMMICH_SERVER"]
-    @immich_api_key = ENV["IMMICH_API_KEY"]
+    @immich_server  = ENV.fetch("IMMICH_SERVER", nil)
+    @immich_api_key = ENV.fetch("IMMICH_API_KEY", nil)
 
     abort("Watermark not found at #{@watermark_path}") unless File.exist?(@watermark_path)
 
@@ -59,7 +60,7 @@ class Publisher
     choices = candidates.each_with_object({}) do |path, hash|
       base  = File.basename(path)
       # e.g. "20240115" → "20240115  (15-01-2024)"
-      label = base =~ /\A(\d{4})(\d{2})(\d{2})/ ? "#{base}  (#{$3}-#{$2}-#{$1})" : base
+      label = base =~ /\A(\d{4})(\d{2})(\d{2})/ ? "#{base}  (#{::Regexp.last_match(3)}-#{::Regexp.last_match(2)}-#{::Regexp.last_match(1)})" : base
       hash[label] = path
     end
 
@@ -80,6 +81,7 @@ class Publisher
     if push
       abort("Set IMMICH_SERVER in .env first.")  unless @immich_server
       abort("Set IMMICH_API_KEY in .env first.") unless @immich_api_key
+      abort("Immich CLI not found. Run: npm i -g @immich/cli") unless system("command -v immich > /dev/null 2>&1")
     end
     push
   end
@@ -152,16 +154,17 @@ class Publisher
       next unless wm_basenames.any? { |wm| base.start_with?(wm) }
 
       insta_file = File.join(insta_dir, File.basename(orig_file))
-      dims  = `magick identify -format "%w %h" "#{orig_file}"`.strip.split
-      w, h  = dims[0].to_i, dims[1].to_i
+      dims = `magick identify -format "%w %h" "#{orig_file}"`.strip.split
+      w = dims[0].to_i
+      h = dims[1].to_i
       wm_w  = (w * 0.15).to_i
       off_x = w / 6
       off_y = h / 6
       e_x   = (w / 2.5).to_i
       e_y   = (h / 2.5).to_i
 
-      cmd = %(magick "#{orig_file}" ) +
-            %(\( "#{@watermark_path}" -resize #{wm_w}x -channel A -evaluate multiply 0.15 +channel -write mpr:wm +delete \) ) +
+      cmd = %(magick #{orig_file.shellescape} ) +
+            %(\( #{@watermark_path.shellescape} -resize #{wm_w}x -channel A -evaluate multiply 0.15 +channel -write mpr:wm +delete \) ) +
             %(-gravity center ) +
             %( mpr:wm -geometry -#{off_x}-#{off_y} -compose over -composite ) +
             %( mpr:wm -geometry +#{off_x}-#{off_y} -compose over -composite ) +
@@ -171,7 +174,7 @@ class Publisher
             %( mpr:wm -geometry +#{e_x}-#{e_y}     -compose over -composite ) +
             %( mpr:wm -geometry -#{e_x}+#{e_y}     -compose over -composite ) +
             %( mpr:wm -geometry +#{e_x}+#{e_y}     -compose over -composite ) +
-            %(-quality 90 "#{insta_file}")
+            %(-quality 90 #{insta_file.shellescape})
 
       with_spinner("  Watermarking #{File.basename(orig_file)}…") { run!(cmd) }
     end
@@ -188,6 +191,8 @@ class Publisher
   end
 
   def export_with_rapidraw(source, dest)
+    abort("RapidRAW is required to export edits, but it was not found.") unless @rapidraw_cmd
+
     rapidraw_dir = File.dirname(@rapidraw_cmd)
     if File.directory?(rapidraw_dir) && @rapidraw_cmd.start_with?("/")
       Dir.chdir(rapidraw_dir) { run_rapidraw(source, dest) }
@@ -197,7 +202,7 @@ class Publisher
   end
 
   def run_rapidraw(source, dest)
-    run!(%("#{@rapidraw_cmd}" export "#{source}" --output "#{dest}" --format jpeg --quality 100 --keep-metadata true))
+    run!(%(#{@rapidraw_cmd.shellescape} export #{source.shellescape} --output #{dest.shellescape} --format jpeg --quality 100 --keep-metadata true))
   end
 
   def find_wm_basenames(folder)
@@ -228,19 +233,27 @@ class Publisher
     files = Dir.glob(File.join(dir, "*.jpg"))
     return if files.empty?
 
+    t = title.shellescape
     run!(
       %(exiftool -overwrite_original ) +
-      %(-Artist="#{AUTHOR}" -Copyright="#{COPYRIGHT}" ) +
-      %(-XMP:Creator="#{AUTHOR}" -IPTC:By-line="#{AUTHOR}" -XMP:Rights="#{COPYRIGHT}" ) +
-      %(-XMP:Title="#{title}" -IPTC:ObjectName="#{title}" -ImageDescription="#{title}" ) +
-      %("#{dir}"/*.jpg),
+      %(-Artist=#{AUTHOR.shellescape} -Copyright=#{COPYRIGHT.shellescape} ) +
+      %(-XMP:Creator=#{AUTHOR.shellescape} -IPTC:By-line=#{AUTHOR.shellescape} -XMP:Rights=#{COPYRIGHT.shellescape} ) +
+      %(-XMP:Title=#{t} -IPTC:ObjectName=#{t} -ImageDescription=#{t} ) +
+      %(#{dir.shellescape}/*.jpg),
       quiet: true
     )
   end
 
   def push_to_immich(dir)
+    files = Dir.glob(File.join(dir, "*.{jpg,jpeg,png,JPG,JPEG,PNG}"))
+    if files.empty?
+      @logger.warn("No images found to upload in #{dir}")
+      return
+    end
+
     with_spinner("Uploading to Immich…") do
-      run!(%(immich --url="#{@immich_server}" --key="#{@immich_api_key}" upload --album-name="#{@title}" "#{dir}"))
+      escaped_files = files.map(&:shellescape).join(" ")
+      run!(%(immich --url=#{@immich_server.shellescape} --key=#{@immich_api_key.shellescape} upload --album-name=#{@title.shellescape} #{escaped_files}))
     end
   end
 
@@ -267,7 +280,9 @@ class Publisher
 
   def date_from_folder(folder)
     base = File.basename(folder)
-    return "#{$3}-#{$2}-#{$1}" if base =~ /\A(\d{4})(\d{2})(\d{2})/
+    if base =~ /\A(\d{4})(\d{2})(\d{2})/
+      return "#{::Regexp.last_match(3)}-#{::Regexp.last_match(2)}-#{::Regexp.last_match(1)}"
+    end
 
     img = Dir.glob(File.join(folder, "*.{jpg,jpeg,JPG,JPEG,DNG,dng}")).first
     if img
@@ -282,15 +297,16 @@ class Publisher
   def resolve_rapidraw
     candidates = [
       "/Applications/RapidRAW.app/Contents/MacOS/RapidRAW",
+      `command -v RapidRAW 2>/dev/null`.strip,
       `command -v rapidraw 2>/dev/null`.strip
     ]
     candidates.find { |c| c && !c.empty? && File.exist?(c) }
   end
 
   def check_tools!
-    missing = %w[exiftool immich magick].reject { |cmd| system("command -v #{cmd} > /dev/null 2>&1") }
+    missing = %w[exiftool magick].reject { |cmd| system("command -v #{cmd} > /dev/null 2>&1") }
     missing << "RapidRAW" unless @rapidraw_cmd
-    abort("Missing required tools: #{missing.join(", ")}") if missing.any?
+    abort("Missing required tools: #{missing.join(', ')}") if missing.any?
   end
 
   def run!(cmd, quiet: false)

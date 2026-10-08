@@ -28,6 +28,13 @@
         "@modelcontextprotocol/server-postgres",
         "postgresql://localhost/mydb"
       ]
+    },
+    "obsidian": {
+      "type": "remote",
+      "url": "http://127.0.0.1:27123/mcp/",
+      "headers": {
+        "Authorization": "Bearer fc853221c83a60b7f7732f7f5c581ac0b75334d28030683298b03b6e21ab8e57"
+      }
     }
   }
 }

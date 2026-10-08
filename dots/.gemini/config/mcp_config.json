@@ -1,5 +1,17 @@
 {
   "mcpServers": {
+    "obsidian": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "obsidian-mcp-server"
+      ],
+      "env": {
+        "OBSIDIAN_API_KEY": "fc853221c83a60b7f7732f7f5c581ac0b75334d28030683298b03b6e21ab8e57",
+        "OBSIDIAN_BASE_URL": "https://127.0.0.1:27124",
+        "NODE_TLS_REJECT_UNAUTHORIZED": "0"
+      }
+    },
     "chrome-devtools-mcp": {
       "command": "npx",
       "args": [
