@@ -72,10 +72,11 @@ Utilise l'outil de recherche web pour trouver des informations sur l'entreprise.
 - Formate le nom de l'entreprise et l'intitulé du poste (sans espaces ni caractères spéciaux, ex: `Alstom_LeadDevBackend`).
 - Crée un nouveau sous-dossier : `2-Areas/Carrière/Job ads/[date]_[NomEntreprise]_[Poste]`.
 - **Humanize** : Passe le texte généré par le skill `humanizer` avant de l'enregistrer.
-- Sauvegarde le CV généré (fichier markdown) dans ce sous-dossier sous le nom `CV_[NomEntreprise]_[Poste].md` (ainsi que la version JSON `_data.json`).
+- Sauvegarde le CV généré sous forme de fichier Markdown uniquement : `CV_[NomEntreprise]_[Poste].md` (Single Source of Truth avec frontmatter YAML).
 - Le CV généré DOIT être dans la même langue que l'offre (détectée en étape 1). Traduisez le contenu de Master_Career si nécessaire.
-- **Génération & QA PDF** : Exécute le script `render_pdf.py` dans `/home/boris/Projects/cvs/` avec le JSON généré. Vérifie avec les skills de QA (ex: `oma-qa`) ou par vérification système que le PDF généré ne dépasse pas **1 page A4 maximale**. Si c'est le cas, réduis le contenu et regénère.
-- **Copie du PDF** : Copie le fichier `.pdf` généré directement dans le sous-dossier Obsidian (`2-Areas/Carrière/Job ads/...`).
+- **Génération & QA PDF** : Exécute le script `render_pdf.py` directement sur le fichier Markdown :
+  `python3 /home/boris/Projects/cvs/render_pdf.py "[Target Folder]/CV_[NomEntreprise]_[Poste].md" "[Target Folder]/attachments/CV_[NomEntreprise]_[Poste].pdf"`
+  Le script crée automatiquement le JSON synchronisé et vérifie avec `qpdf` que le PDF fait strictement **1 page A4**. Si une erreur `OVERFLOW ERROR` est levée, raccourcis les descriptions dans le fichier Markdown et relance jusqu'à validation.
 
 6. **Écriture de la note structurée**
 Crée une nouvelle note structurée dans ce même sous-dossier. Respecte exactement ce format Markdown :
@@ -121,6 +122,14 @@ match_score: [Score]
 - **Enjeux :** [Défis actuels]
 - **Fondateurs :** [Noms et bref parcours]
 
+## Préparation d'entretien (Questions probables & STAR)
+- **Question probable 1 (RH / Motivation) :** [Question pertinente selon le profil de la boîte]
+  - *Axe de réponse / STAR :* [Situation, Action, Résultat concret tiré du parcours de Boris]
+- **Question probable 2 (Technique / Architecture) :** [Question ciblée sur les défis techniques de l'offre]
+  - *Axe de réponse / STAR :* [Comment Boris aborde le problème avec son expérience de Lead / Archi]
+- **Bridge Answer (Points d'attention / Faiblesses) :** [Question piège potentielle sur une compétence ou techno manquante de l'offre]
+  - *Réponse passerelle :* [Formulation honnête montrant la maîtrise des fondamentaux et la capacité d'apprentissage rapide sans inventer d'expérience]
+
 ---
 ## Offre (texte nettoyé)
 **Source :** [URL source de l'offre]
@@ -156,3 +165,9 @@ match_score: [Score]
 - OBLIGATOIRE en dernier, uniquement après vérification que le nouveau dossier contient : note structurée + `CV_....md` + `LM_....md`. (Sauf si la candidature a été rejetée à l'étape 2, auquel cas supprime-la dès l'étape 2).
 - `obsidian delete path="<chemin exact de la note clippée d'origine>"` (sans `permanent` : envoi à la corbeille).
 - Ne supprime JAMAIS un fichier situé dans `2-Areas/Carrière/Job ads/`.
+
+12. **Audit des candidatures existantes (Tag `stale`)**
+- À chaque fin de batch, inspecte toutes les notes de candidature dans `2-Areas/Carrière/Job ads/` dont le statut est `inbox` ou `pending`.
+- Si la date de la candidature (extraite du nom de dossier `YYYY-MM-DD`) a plus de 10 jours par rapport à la date du jour :
+  - Vérifie si le tag `stale` est présent dans `tags:`.
+  - Si absent, ajoute `stale` aux tags (ex: `tags: [candidature, job_ad, stale]`) pour remonter l'alerte sur le tableau de bord Kanban.
