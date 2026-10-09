@@ -98,3 +98,6 @@
 	process = git-lfs filter-process
 [init]
 	defaultBranch = main
+[filter "agnostic-lockfile"]
+	clean = sed -e 's|/home/[^/]*|~|g' -e 's|/Users/[^/]*|~|g'
+	smudge = cat

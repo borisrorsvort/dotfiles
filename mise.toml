@@ -31,10 +31,9 @@ git-filter-repo = "latest"
 "~/.config/nvim-astro" = { source = "dots/.config/nvim-astro" }
 "~/.config/opencode" = { source = "dots/.config/opencode" }
 "~/.config/rencal" = { source = "dots/.config/rencal" }
-"~/.agents/skills" = { source = "dots/.agents/skills" }
 "~/.agents/oma-config.yaml" = { source = "dots/.agents/oma-config.yaml" }
+"~/.agents/.skill-lock.json" = { source = "dots/.agents/.skill-lock.json" }
 "~/.claude/settings.json" = { source = "dots/.claude/settings.json" }
-"~/.claude/skills" = { source = "dots/.claude/skills" }
 "~/.claude/themes" = { source = "dots/.claude/themes" }
 "~/.claude/hooks" = { source = "dots/.claude/hooks" }
 "~/.copilot/config.json" = { source = "dots/.copilot/config.json" }
@@ -45,6 +44,34 @@ git-filter-repo = "latest"
 "~/.gemini/config/skills" = { source = "dots/.gemini/config/skills" }
 "~/.gemini/config/plugins" = { source = "dots/.gemini/config/plugins" }
 
+[tasks."skills:sync"]
+description = "Installer les skills (personnalisés et tiers)"
+run = """
+#!/bin/bash
+# 1. Installer vos skills personnalisés locaux pour tous les agents
+for skill in ~/Projects/dotfiles/dots/custom-skills/*; do
+  if [ -d "$skill" ]; then
+    npx --yes skills add "$skill" -g -a '*' || true
+  fi
+done
+
+# 2. Lien externe pour autoproject
+npx --yes skills add ~/.config/herdr/plugins/github/herdr-projects-b1278ffb803c/skill/autoproject -g -a '*' || true
+
+# 3. Réinstallation des bibliothèques globales (OMA et Social Media)
+npx --yes skills add first-fluke/oh-my-agent -g -a '*' || true
+npx --yes skills add charlie947/social-media-skills -g -a '*' || true
+
+# 4. Restaurer dynamiquement les autres skills tiers depuis le lockfile global
+if [ -f ~/.agents/.skill-lock.json ]; then
+  echo "Lecture du .skill-lock.json..."
+  jq -r '.skills | to_entries[] | "\\(.value.sourceUrl) --skill \\(.value.agentfiles.installName)"' ~/.agents/.skill-lock.json | while read -r args; do
+    echo "Installation de $args..."
+    npx --yes skills add $args -g -a '*' < /dev/null || true
+  done
+fi
+"""
+
 [tasks.bootstrap]
 description = "Run post-install setup commands"
 run = [
@@ -54,21 +81,14 @@ run = [
 ]
 
 [tasks.safe-apply]
-description = "Safely apply dotfiles by merging local directories first, preventing --force deletions"
+description = "Safely apply dotfiles and sync skills"
 run = """
 #!/bin/bash
-# If ~/.agents/skills exists and is a real folder (not a symlink), merge it
-if [ -d ~/.agents/skills ] && [ ! -L ~/.agents/skills ]; then
-    echo "📦 Found unlinked ~/.agents/skills folder. Merging into dotfiles..."
-    mkdir -p ~/dotfiles/dots/.agents/skills
-    cp -R ~/.agents/skills/* ~/dotfiles/dots/.agents/skills/ 2>/dev/null || true
-    rm -rf ~/.agents/skills
-fi
-
-# Run the normal apply without needing --force
 echo "🔗 Applying dotfiles..."
 mise dotfiles apply
 echo "✅ Dotfiles applied safely!"
+echo "🔄 Syncing skills..."
+mise run skills:sync
 """
 
 [bootstrap.services.mise-history]

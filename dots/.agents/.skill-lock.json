@@ -1,0 +1,99 @@
+{
+  "version": 3,
+  "skills": {
+    "find-skills": {
+      "source": "vercel-labs/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/vercel-labs/skills",
+      "ref": "48dc9e8eb8aa19040e91cb90ba0b642c9cbad57e",
+      "skillPath": "skills/find-skills/SKILL.md",
+      "skillFolderHash": "76a98a285cb0434f3d39e1a873823556330e398b",
+      "installedAt": "2026-10-07T19:35:06.778Z",
+      "updatedAt": "2026-10-07T19:35:06.778Z",
+      "agentfiles": {
+        "agents": [
+          "claude-code",
+          "opencode"
+        ],
+        "globalInstall": true,
+        "installName": "find-skills",
+        "paths": [
+          "~/.agents/skills/find-skills",
+          "~/.claude/skills/find-skills",
+          "~/.config/opencode/skills/find-skills"
+        ],
+        "projectRoot": "~/Documents/Notes",
+        "skillId": "find-skills"
+      }
+    },
+    "obsidian-cli": {
+      "source": "kepano/obsidian-skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/kepano/obsidian-skills",
+      "ref": "3ccff5338ea700537839b21900aa5358a0402c98",
+      "skillPath": "skills/obsidian-cli/SKILL.md",
+      "skillFolderHash": "96254a554e480359de7b685571876f2e7f9ba57d",
+      "installedAt": "2026-10-07T20:27:51.858Z",
+      "updatedAt": "2026-10-07T20:27:51.858Z",
+      "agentfiles": {
+        "agents": [
+          "claude-code"
+        ],
+        "globalInstall": true,
+        "installName": "obsidian-cli",
+        "paths": [
+          "~/.agents/skills/obsidian-cli",
+          "~/.claude/skills/obsidian-cli"
+        ],
+        "projectRoot": "~/Documents/Notes",
+        "skillId": "obsidian-cli"
+      }
+    },
+    "cover-letter-generator": {
+      "source": "davila7/claude-code-templates",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/davila7/claude-code-templates",
+      "ref": "8293bc3e6130e49391c1a3530cd73212f01aec83",
+      "skillPath": "cli-tool/components/skills/career/cover-letter-generator/SKILL.md",
+      "skillFolderHash": "33aa5b406b075f701b9f7176c0e45461da41a2fc",
+      "installedAt": "2026-10-07T21:49:09.022Z",
+      "updatedAt": "2026-10-07T21:49:09.022Z",
+      "agentfiles": {
+        "agents": [
+          "claude-code"
+        ],
+        "globalInstall": true,
+        "installName": "cover-letter-generator",
+        "paths": [
+          "~/.agents/skills/cover-letter-generator",
+          "~/.claude/skills/cover-letter-generator"
+        ],
+        "projectRoot": "~/Documents/Notes",
+        "skillId": "cover-letter-generator"
+      }
+    },
+    "typography": {
+      "source": "glebis/claude-skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/glebis/claude-skills",
+      "ref": "3b8826108af86135b90f6b264934ccbfaa48f205",
+      "skillPath": "typography/SKILL.md",
+      "skillFolderHash": "f2e49a536c61118631d2816972668c1014ebda4d",
+      "installedAt": "2026-10-08T09:37:45.781Z",
+      "updatedAt": "2026-10-08T09:37:45.781Z",
+      "agentfiles": {
+        "agents": [
+          "claude-code"
+        ],
+        "globalInstall": true,
+        "installName": "typography",
+        "paths": [
+          "~/.agents/skills/typography",
+          "~/.claude/skills/typography"
+        ],
+        "projectRoot": "~/Documents/Notes",
+        "skillId": "typography"
+      }
+    }
+  }
+}
