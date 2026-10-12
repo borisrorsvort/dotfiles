@@ -70,7 +70,7 @@ command -v direnv >/dev/null 2>&1 && eval "$(direnv hook zsh)"
 command -v starship >/dev/null 2>&1 && eval "$(starship init zsh)"
 command -v mise >/dev/null 2>&1 && eval "$(mise activate zsh)"
 
-. "$HOME/.local/share/../bin/env"
+[ -f "$HOME/.local/bin/env" ] && . "$HOME/.local/bin/env"
 alias update-kawai="~/dotfiles/scripts/update-kawai.sh"
 
 
