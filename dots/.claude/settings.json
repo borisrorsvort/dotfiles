@@ -6,66 +6,8 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash '/home/boris/.claude/hooks/herdr-agent-state.sh' session",
+            "command": "bash \"${CLAUDE_CONFIG_DIR:-$HOME/.claude}/hooks/herdr-agent-state.sh\" session",
             "timeout": 10
-          }
-        ]
-      }
-    ],
-    "UserPromptSubmit": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "node \"${CLAUDE_CONFIG_DIR:-$HOME/.claude}/hooks/keyword-detector.mjs\""
-          }
-        ]
-      }
-    ],
-    "PreToolUse": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "node \"${CLAUDE_CONFIG_DIR:-$HOME/.claude}/hooks/pre-tool-use.mjs\""
-          }
-        ]
-      }
-    ],
-    "PostToolUse": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "node \"${CLAUDE_CONFIG_DIR:-$HOME/.claude}/hooks/post-tool-use.mjs\""
-          }
-        ]
-      }
-    ],
-    "PostToolUseFailure": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "node \"${CLAUDE_CONFIG_DIR:-$HOME/.claude}/hooks/post-tool-use-failure.mjs\""
-          }
-        ]
-      }
-    ],
-    "Stop": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "node \"${CLAUDE_CONFIG_DIR:-$HOME/.claude}/hooks/persistent-mode.mjs\""
-          }
-        ]
-      },
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "node \"${CLAUDE_CONFIG_DIR:-$HOME/.claude}/hooks/code-simplifier.mjs\""
           }
         ]
       }
