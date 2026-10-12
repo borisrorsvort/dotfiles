@@ -46,31 +46,77 @@ git-filter-repo = "latest"
 
 [tasks."skills:sync"]
 description = "Installer les skills (personnalisés et tiers)"
-run = """
-#!/bin/bash
+run = '''
+#!/usr/bin/env bash
+# Racine du dépôt : mise la fournit, quel que soit l'emplacement du clone
+# (~/Projects/dotfiles sous Linux, ~/dotfiles sous macOS).
+DOTFILES="${MISE_CONFIG_ROOT:-$PWD}"
+CUSTOM_SKILLS="$DOTFILES/dots/custom-skills"
+LOCKFILE="$DOTFILES/dots/.agents/.skill-lock.json"
+[ -f "$LOCKFILE" ] || LOCKFILE="$HOME/.agents/.skill-lock.json"
+failed=0
+
+add() {
+  echo "→ skills add $*"
+  npx --yes skills add "$@" -g -a '*' -y < /dev/null || failed=$((failed + 1))
+}
+
+# 0. Un lien mort à la place de ~/.claude/skills (ancien lien vers
+#    dots/.claude/skills) fait échouer chaque installation pour Claude Code.
+mkdir -p "$HOME/.agents/skills" "$HOME/.claude"
+if [ -L "$HOME/.claude/skills" ] && [ ! -e "$HOME/.claude/skills" ]; then
+  echo "Suppression du lien mort ~/.claude/skills -> $(readlink "$HOME/.claude/skills")"
+  rm "$HOME/.claude/skills"
+fi
+mkdir -p "$HOME/.claude/skills"
+
 # 1. Installer vos skills personnalisés locaux pour tous les agents
-for skill in ~/Projects/dotfiles/dots/custom-skills/*; do
+for skill in "$CUSTOM_SKILLS"/*/; do
+  [ -f "${skill}SKILL.md" ] && add "${skill%/}"
+done
+
+# 2. Lien externe pour autoproject (le suffixe du dossier herdr varie selon la machine)
+for skill in "$HOME"/.config/herdr/plugins/github/herdr-projects-*/skill/autoproject; do
   if [ -d "$skill" ]; then
-    npx --yes skills add "$skill" -g -a '*' || true
+    add "$skill"
+  else
+    echo "autoproject : plugin herdr absent, ignoré."
   fi
 done
 
-# 2. Lien externe pour autoproject
-npx --yes skills add ~/.config/herdr/plugins/github/herdr-projects-b1278ffb803c/skill/autoproject -g -a '*' || true
-
 # 3. Réinstallation des bibliothèques globales (OMA et Social Media)
-npx --yes skills add first-fluke/oh-my-agent -g -a '*' || true
-npx --yes skills add charlie947/social-media-skills -g -a '*' || true
+add first-fluke/oh-my-agent
+add charlie947/social-media-skills
 
-# 4. Restaurer dynamiquement les autres skills tiers depuis le lockfile global
-if [ -f ~/.agents/.skill-lock.json ]; then
-  echo "Lecture du .skill-lock.json..."
-  jq -r '.skills | to_entries[] | "\\(.value.sourceUrl) --skill \\(.value.agentfiles.installName)"' ~/.agents/.skill-lock.json | while read -r args; do
-    echo "Installation de $args..."
-    npx --yes skills add $args -g -a '*' < /dev/null || true
-  done
+# 4. Restaurer les autres skills tiers depuis le lockfile, un appel par dépôt.
+#    Les sources locales et les dépôts de l'étape 3 sont déjà traités.
+if [ -f "$LOCKFILE" ]; then
+  echo "Lecture de $LOCKFILE..."
+  jq -r '
+    .skills | to_entries
+    | map(select(.value.sourceUrl // "" | test("^https?://")))
+    | map(select(.value.sourceUrl | test("first-fluke/oh-my-agent|charlie947/social-media-skills") | not))
+    | group_by(.value.sourceUrl | sub("\\.git$"; ""))[]
+    | [.[0].value.sourceUrl] + map(.value.agentfiles.installName // .key)
+    | @tsv
+  ' "$LOCKFILE" > "${TMPDIR:-/tmp}/skills-sync.$$"
+  while IFS="$(printf '\t')" read -r url names; do
+    args=("$url")
+    IFS="$(printf '\t')" read -r -a list <<< "$names"
+    for name in "${list[@]}"; do
+      args+=(--skill "$name")
+    done
+    add "${args[@]}"
+  done < "${TMPDIR:-/tmp}/skills-sync.$$"
+  rm -f "${TMPDIR:-/tmp}/skills-sync.$$"
 fi
-"""
+
+echo "Skills installés : $(ls "$HOME/.agents/skills" | wc -l | tr -d ' ') dans ~/.agents/skills, $(ls "$HOME/.claude/skills" | wc -l | tr -d ' ') dans ~/.claude/skills"
+if [ "$failed" -gt 0 ]; then
+  echo "⚠️  $failed installation(s) en échec, voir la sortie ci-dessus."
+  exit 1
+fi
+'''
 
 [tasks.bootstrap]
 description = "Run post-install setup commands"
@@ -82,14 +128,26 @@ run = [
 
 [tasks.safe-apply]
 description = "Safely apply dotfiles and sync skills"
-run = """
-#!/bin/bash
+run = '''
+#!/usr/bin/env bash
 echo "🔗 Applying dotfiles..."
-mise dotfiles apply
-echo "✅ Dotfiles applied safely!"
+# mise refuse d'appliquer quoi que ce soit si un fichier réel occupe la place
+# d'un lien : on le met de côté (sauvegarde horodatée) au lieu de l'écraser.
+stamp="$(date +%Y%m%d-%H%M%S)"
+mise dotfiles status 2>/dev/null | awk '/exists but is not a symlink/ {print $1}' | while read -r target; do
+  path="${target/#\~/$HOME}"
+  echo "📦 $target existe déjà, sauvegarde vers $target.bak-$stamp"
+  mv "$path" "$path.bak-$stamp"
+done
+if mise dotfiles apply; then
+  echo "✅ Dotfiles applied safely!"
+else
+  echo "❌ mise dotfiles apply a échoué, synchronisation des skills annulée."
+  exit 1
+fi
 echo "🔄 Syncing skills..."
 mise run skills:sync
-"""
+'''
 
 [bootstrap.services.mise-history]
 builtin = "history-watch"
