@@ -1,5 +1,4 @@
 [tools]
-"npm:oh-my-claude-sisyphus" = "latest"
 node = "latest"
 python = [ "3.12", "3.10",]
 ruby = "latest"
