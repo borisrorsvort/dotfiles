@@ -2,6 +2,7 @@
 "apt:zsh" = "latest"
 "apt:tmux" = "latest"
 "apt:git" = "latest"
+"apt:libatomic1" = "latest"
 
 [tasks.setup-bepo]
 description = "Install and configure Bépo keyboard layout for Ubuntu Server"
