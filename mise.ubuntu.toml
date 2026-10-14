@@ -1,3 +1,6 @@
+[tools]
+neovim = "latest"
+
 [bootstrap.packages]
 "apt:zsh" = "latest"
 "apt:tmux" = "latest"
