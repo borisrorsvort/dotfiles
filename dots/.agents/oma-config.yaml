@@ -1,7 +1,7 @@
 # OMA (Oh My Agent) Universal Configuration
 # Controls subagent execution and model tier routing
 
-default_cli: antigravity
+default_cli: claude
 
 agents:
   # Deep reasoning archetypes -> Pro tier

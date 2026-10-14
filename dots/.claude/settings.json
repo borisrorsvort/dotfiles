@@ -13,7 +13,20 @@
       }
     ]
   },
+  "enabledPlugins": {
+    "cloudflare@cloudflare": true
+  },
+  "extraKnownMarketplaces": {
+    "cloudflare": {
+      "source": {
+        "source": "github",
+        "repo": "cloudflare/skills"
+      }
+    }
+  },
+  "tui": "fullscreen",
   "skipDangerousModePermissionPrompt": true,
   "theme": "custom:omarchy",
+  "model": "sonnet",
   "terminalProgressBarEnabled": false
 }
