@@ -9,7 +9,7 @@ ssh -t kawai 'sudo apt update && sudo apt upgrade -y && cd services/ && for d in
 echo "======================================"
 echo " Updating kawai-remote..."
 echo "======================================"
-ssh -t kawai-remote 'apt update && apt upgrade -y'
+ssh -t kawai-remote 'apt update && apt upgrade -y && if [ -d services/ ]; then cd services/ && for d in */; do [ -f "${d}docker-compose.yml" ] && echo "=== $d ===" && docker compose -f "${d}docker-compose.yml" pull && docker compose -f "${d}docker-compose.yml" up -d; done && docker image prune -af; fi'
 
 echo "======================================"
 echo " Done!"
