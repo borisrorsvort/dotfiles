@@ -16,20 +16,22 @@ unsetopt correct_all
 unsetopt correct
 
 
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.yarn/bin:$PATH"
+export PATH="/usr/local/sbin:$PATH" # Homebrew
+export PATH="/usr/local/share/npm/bin:$PATH"
+export PATH="$HOME/dotfiles/scripts/photos:$PATH" # Photo scripts
+export PATH="$HOME/dotfiles/bin:$PATH" # Dotfiles CLI tools
+export PATH="/home/boris/.cache/.bun/bin:$PATH"
+export PATH="$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+command -v mise >/dev/null 2>&1 && eval "$(mise activate zsh)"
+
 source $ZSH/oh-my-zsh.sh
 
 export EDITOR="v"
 export BUNDLER_EDITOR="v"
 export CC=/usr/bin/gcc
-
-PATH="$HOME/.local/bin:$PATH"
-PATH="$HOME/.yarn/bin:$PATH"
-PATH="/usr/local/sbin:$PATH" # Homebrew
-PATH="/usr/local/share/npm/bin:$PATH"
-PATH="$HOME/dotfiles/scripts/photos:$PATH" # Photo scripts
-PATH="$HOME/dotfiles/bin:$PATH" # Dotfiles CLI tools
-PATH="/home/boris/.cache/.bun/bin:$PATH"
-export PATH="$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 NOTE_PATH='/Users/ghost/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/Notes'
 
@@ -68,7 +70,6 @@ export PGGSSENCMODE="disable" # fix rails-pg
 
 command -v direnv >/dev/null 2>&1 && eval "$(direnv hook zsh)"
 command -v starship >/dev/null 2>&1 && eval "$(starship init zsh)"
-command -v mise >/dev/null 2>&1 && eval "$(mise activate zsh)"
 
 [ -f "$HOME/.local/bin/env" ] && . "$HOME/.local/bin/env"
 alias update-kawai="~/dotfiles/scripts/update-kawai.sh"

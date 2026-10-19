@@ -10,3 +10,4 @@
 
 ~/dotfiles/lvim/plugin/packer_compiled.lua
 .agents/
+**/.claude/settings.local.json
