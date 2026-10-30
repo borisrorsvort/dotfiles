@@ -77,3 +77,6 @@ alias update-kawai="~/dotfiles/scripts/update-kawai.sh"
 
 # Added by Antigravity CLI installer
 export PATH="/home/boris/.local/bin:$PATH"
+
+# bun completions
+[ -s "/Users/ghost/.bun/_bun" ] && source "/Users/ghost/.bun/_bun"
