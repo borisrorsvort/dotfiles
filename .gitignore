@@ -2,3 +2,6 @@
 ./scripts/photos/.env
 *.env
 !dots/.agents/
+dots/.claude/settings.json.bak
+/.omc/template-version.json
+/dots/.config/opencode/service.json

@@ -3,6 +3,11 @@ ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="af-magic"
 plugins=(z git aliases brew fzf bundler node npm gem rails ruby command-not-found ssh-agent direnv web-search eza)
 
+# Load ssh key into the agent using the passphrase stored in gnome-keyring
+zstyle ':omz:plugins:ssh-agent' identities id_ed25519
+export SSH_ASKPASS="$HOME/.local/bin/ssh-askpass-keyring"
+export SSH_ASKPASS_REQUIRE=prefer
+
 # For pkg-config to find zlib you may need to set:
 export PKG_CONFIG_PATH="/usr/local/opt/zlib/lib/pkgconfig"
 
@@ -77,6 +82,3 @@ alias update-kawai="~/dotfiles/scripts/update-kawai.sh"
 
 # Added by Antigravity CLI installer
 export PATH="/home/boris/.local/bin:$PATH"
-
-# bun completions
-[ -s "/Users/ghost/.bun/_bun" ] && source "/Users/ghost/.bun/_bun"

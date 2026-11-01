@@ -32,14 +32,13 @@ git-filter-repo = "latest"
 "~/.config/rencal" = { source = "dots/.config/rencal" }
 "~/.agents/oma-config.yaml" = { source = "dots/.agents/oma-config.yaml" }
 "~/.agents/.skill-lock.json" = { source = "dots/.agents/.skill-lock.json" }
+"~/.agents/mcp.json" = { source = "dots/.agents/mcp.json" }
+"~/.claude/mcp.json" = { source = "dots/.claude/mcp.json" }
 "~/.claude/settings.json" = { source = "dots/.claude/settings.json" }
 "~/.claude/themes" = { source = "dots/.claude/themes" }
 "~/.claude/hooks" = { source = "dots/.claude/hooks" }
-"~/.copilot/config.json" = { source = "dots/.copilot/config.json" }
-"~/.gemini/antigravity-cli/settings.json" = { source = "dots/.gemini/antigravity-cli/settings.json" }
 "~/.gemini/antigravity-cli/mcp" = { source = "dots/.gemini/antigravity-cli/mcp" }
 "~/.gemini/config/config.json" = { source = "dots/.gemini/config/config.json" }
-"~/.gemini/config/mcp_config.json" = { source = "dots/.gemini/config/mcp_config.json" }
 "~/.gemini/config/skills" = { source = "dots/.gemini/config/skills" }
 "~/.gemini/config/plugins" = { source = "dots/.gemini/config/plugins" }
 

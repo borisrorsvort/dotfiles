@@ -89,7 +89,22 @@ class Importer
     FileUtils.rm_rf(staging_dir)
   end
 
+  # A camera whose clock was reset stamps files Jan 1 00:00, so they get filed
+  # under a bogus shooting folder. Flag them before they are imported.
+  def warn_suspicious_dates(source_path)
+    require "open3"
+    names, _err, _status = Open3.capture3(
+      "exiftool", "-r", "-q", "-q", "-ext", "jpg", "-ext", "jpeg", "-ext", "dng",
+      "-if", '$DateTimeOriginal =~ /^\d{4}:01:01 00:00:/', "-p", '$FileName', source_path
+    )
+    names = names.lines.map(&:chomp)
+    return if names.empty?
+
+    @logger.warn("#{names.size} file(s) have a clock-reset date (Jan 1, 00:00) and will land in a wrong shooting folder: #{names.first(5).join(', ')}#{names.size > 5 ? ', …' : ''}")
+  end
+
   def import_by_exif(source_path)
+    warn_suspicious_dates(source_path)
     spinner = TTY::Spinner.new("[:spinner] Importing files from #{source_path}…", format: :dots)
     spinner.auto_spin
 

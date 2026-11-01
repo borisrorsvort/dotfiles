@@ -11,8 +11,6 @@ dark = "ren"
 
 [groups]
 default = [
-    "family",
-    "reminders-warning",
     "boris",
     "lena",
 ]

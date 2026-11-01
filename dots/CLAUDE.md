@@ -23,3 +23,8 @@ Eliminate AI writing patterns from all prose output. Source: https://github.com/
 9. **Trust readers.** Skip softening, justification, hand-holding. No permission-granting ("And that's okay."). No manufactured sincerity.
 
 10. **Cut quotables.** If it sounds like a pull-quote, rewrite it.
+
+## Pull Requests & Visual Evidence
+- **Task Deliverables**: Each task must result in a PR with visual evidence (screenshots, and videos only when there are interactions).
+- **Screenshots in PR Description Only**: Screenshots must NEVER be committed to the git repository. Attach them directly to the PR description (e.g. using `gh pr create/edit --attach`).
+- **PR Monitoring**: Watch out for and act on any comments, reviews, or approvals in pull requests.
