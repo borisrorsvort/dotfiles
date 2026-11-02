@@ -14,7 +14,17 @@ for f in PROJECT.md INDEX.md handoff.md; do
 done
 
 if grep -qsF '**Before starting work,** read `memory/PROJECT.md`' AGENTS.md; then
-  echo "kept      AGENTS.md (already has the block)"
+  if grep -qsF 'load the `project-memory` skill' AGENTS.md; then
+    echo "kept      AGENTS.md (already has the block)"
+  else
+    # An older block: add the line that loads the skill. cat keeps a linked AGENTS.md a link.
+    load="$(grep -F 'load the `project-memory` skill' "$SKILL/templates/AGENTS-block.md")"
+    tmp="$(mktemp)"
+    LOAD="$load" awk '/^\*\*Before starting work,\*\*/ && !done { print ENVIRON["LOAD"]; print ""; done = 1 } { print }' AGENTS.md > "$tmp"
+    cat "$tmp" > AGENTS.md
+    rm -f "$tmp"
+    echo "updated   AGENTS.md"
+  fi
 else
   [ -s AGENTS.md ] && printf '\n' >> AGENTS.md
   cat "$SKILL/templates/AGENTS-block.md" >> AGENTS.md

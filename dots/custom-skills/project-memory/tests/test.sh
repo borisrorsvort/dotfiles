@@ -107,5 +107,27 @@ d="$TMP/withremote"; mkdir -p "$d"; (cd "$d" && git init -q && git remote add or
 out=$(bash "$INIT" "$d" 2>&1); ok "init exits 0 with a remote" "$?" 0
 has "init warns about the remote" "$out" "Check this repo is private"
 
+# init: every agent is told to load the skill, ahead of the other steps
+LOAD='load the `project-memory` skill'
+d=$(fresh load)
+has "new block loads the skill" "$(cat "$d/AGENTS.md")" "$LOAD"
+has "new block has a path without a skill tool" "$(cat "$d/AGENTS.md")" '~/.agents/skills/project-memory/SKILL.md'
+ok "load comes before reading memory" "$(awk '/load the `project-memory` skill/ { l = NR } /Before starting work/ { b = NR } END { print (l && b && l < b) ? "y" : "n" }' "$d/AGENTS.md")" y
+
+# init: a project set up with the older block is upgraded in place, once, keeping its rules
+d="$TMP/oldblock"; mkdir -p "$d"
+grep -vF "$LOAD" "$HERE/templates/AGENTS-block.md" > "$d/AGENTS.md"
+printf '\n- 2026-01-01 (Boris): Never use the word synergy.\n' >> "$d/AGENTS.md"
+bash "$INIT" "$d" > "$TMP/out"; ok "upgrade exits 0" "$?" 0
+has "upgrade reports it" "$(cat "$TMP/out")" "updated   AGENTS.md"
+ok "upgrade adds the line once" "$(grep -cF "$LOAD" "$d/AGENTS.md")" 1
+ok "upgrade keeps the rules" "$(grep -c 'Never use the word synergy' "$d/AGENTS.md")" 1
+ok "upgrade keeps one block" "$(grep -c 'Before starting work' "$d/AGENTS.md")" 1
+ok "upgrade puts load first" "$(awk '/load the `project-memory` skill/ { l = NR } /Before starting work/ { b = NR } END { print (l && b && l < b) ? "y" : "n" }' "$d/AGENTS.md")" y
+before=$(cat "$d/AGENTS.md"); bash "$INIT" "$d" >/dev/null; ok "second upgrade changes nothing" "$(cat "$d/AGENTS.md")" "$before"
+# A linked AGENTS.md stays a link
+d="$TMP/oldlink"; mkdir -p "$d"; grep -vF "$LOAD" "$HERE/templates/AGENTS-block.md" > "$d/real.md"; ln -s real.md "$d/AGENTS.md"
+bash "$INIT" "$d" >/dev/null; ok "upgrade keeps a link" "$([ -L "$d/AGENTS.md" ] && echo y)" y; ok "upgrade writes through the link" "$(grep -cF "$LOAD" "$d/real.md")" 1
+
 echo "passed $pass, failed $fail"
 [ "$fail" -eq 0 ]

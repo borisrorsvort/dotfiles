@@ -6,6 +6,8 @@ Follow these on every task. Each rule gets its own line, with the date and who s
 
 `memory/` holds this project's shared notes, for every agent working here.
 
+**On every task, first** load the `project-memory` skill. If you have no skill tool, read `~/.agents/skills/project-memory/SKILL.md`.
+
 **Before starting work,** read `memory/PROJECT.md`, `memory/INDEX.md` and `memory/handoff.md`, plus any decision listed in the index that touches your task. If the request conflicts with an active decision or a rule in this file, say so before acting.
 
 **As you work,** record these:
