@@ -36,5 +36,5 @@ fi
 
 if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
   url="$(git remote get-url origin 2>/dev/null || true)"
-  [ -n "$url" ] && echo "Check this repo is private before committing memory/: $url"
+  if [ -n "$url" ]; then echo "Check this repo is private before committing memory/: $url"; fi
 fi

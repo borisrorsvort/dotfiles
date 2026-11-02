@@ -98,5 +98,14 @@ has "AGENTS has the rules section" "$(cat "$d/AGENTS.md")" "## Preferences and c
 ok "no preferences file" "$([ -e "$d/memory/preferences.md" ] && echo y || echo n)" n
 ok "no client file" "$([ -e "$d/memory/client-constraints.md" ] && echo y || echo n)" n
 
+# init: success exits 0 in a git repo with no remote, and with a remote prints the warning
+d="$TMP/noremote"; mkdir -p "$d"; (cd "$d" && git init -q); bash "$INIT" "$d" >/dev/null 2>&1
+ok "init exits 0 with no remote" "$?" 0
+bash "$INIT" "$d" >/dev/null 2>&1
+ok "re-run exits 0 with no remote" "$?" 0
+d="$TMP/withremote"; mkdir -p "$d"; (cd "$d" && git init -q && git remote add origin https://example.com/r.git)
+out=$(bash "$INIT" "$d" 2>&1); ok "init exits 0 with a remote" "$?" 0
+has "init warns about the remote" "$out" "Check this repo is private"
+
 echo "passed $pass, failed $fail"
 [ "$fail" -eq 0 ]

@@ -1,13 +1,20 @@
 ---
 name: project-memory
-description: Use when a project has a memory/ folder or its AGENTS.md mentions project memory, when a decision, working preference, client rule or lesson comes up that later agents will need, when a session ends and someone resumes later (resume context, session notes), or when setting up shared notes for a project used by several agents.
+description: Use when the user says new project, or asks to start, set up or initialise project memory, when a project has a memory/ folder or its AGENTS.md mentions project memory, when a decision, working preference, client rule or lesson comes up that later agents will need, when a session ends and someone resumes later (resume context, session notes), or when setting up shared notes for a project used by several agents.
 ---
 
 # Project memory
 
 Shared notes in `memory/` at the project root, readable by every agent. Plain markdown, committed with the project. The reason behind a choice lives here, so the next agent doesn't redo or reverse it. Standing rules live in `AGENTS.md`, which agents load automatically.
 
-**Setup:** `bash scripts/init.sh <project-dir>` (from this skill's folder). It never overwrites existing files.
+## Starting a project
+
+When the user says "new project" or asks to set up project memory, do all of this yourself:
+
+1. Run `bash scripts/init.sh <project-dir>` from this skill's folder. The project is the current folder unless the user names another; create a named folder that doesn't exist. Existing files are kept.
+2. Fill in `memory/PROJECT.md` from the user's words, the README and the repo. Ask for anything still missing in one message.
+3. Set the state line in `memory/INDEX.md`, and write `memory/handoff.md` with setup done and the first step next.
+4. Report what you created and any warning from the script.
 
 ## Where each thing goes
 
