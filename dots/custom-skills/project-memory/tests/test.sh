@@ -12,7 +12,7 @@ code() { bash "$CHECK" "$1" >/dev/null 2>&1; echo $?; }
 
 # init: creates everything, passes the linter, and is safe to re-run
 d=$(fresh a)
-for f in memory/PROJECT.md memory/INDEX.md memory/handoff.md memory/client-constraints.md AGENTS.md CLAUDE.md; do ok "init creates $f" "$([ -f "$d/$f" ] && echo y)" y; done
+for f in memory/PROJECT.md memory/INDEX.md memory/handoff.md AGENTS.md CLAUDE.md; do ok "init creates $f" "$([ -f "$d/$f" ] && echo y)" y; done
 for f in decisions findings proposals archive; do ok "init creates $f/" "$([ -d "$d/memory/$f" ] && echo y)" y; done
 ok "fresh project is clean" "$(code "$d")" 0
 echo "custom" > "$d/memory/handoff.md"; before=$(cat "$d/AGENTS.md"); bash "$INIT" "$d" >/dev/null
@@ -91,6 +91,12 @@ d="$TMP/bare"; mkdir -p "$d"; printf '## Project memory\n' > "$d/AGENTS.md"; pri
 has "bare heading still gets the block" "$(cat "$d/AGENTS.md")" "memory/handoff.md"
 ok "disabled import is not the import" "$(grep -cx '@AGENTS.md' "$d/CLAUDE.md")" 1
 before=$(cat "$d/AGENTS.md"); bash "$INIT" "$d" >/dev/null; ok "re-run stays stable" "$(cat "$d/AGENTS.md")" "$before"
+
+# init: standing rules live in AGENTS.md, with no separate rule files
+d=$(fresh rules)
+has "AGENTS has the rules section" "$(cat "$d/AGENTS.md")" "## Preferences and client rules"
+ok "no preferences file" "$([ -e "$d/memory/preferences.md" ] && echo y || echo n)" n
+ok "no client file" "$([ -e "$d/memory/client-constraints.md" ] && echo y || echo n)" n
 
 echo "passed $pass, failed $fail"
 [ "$fail" -eq 0 ]

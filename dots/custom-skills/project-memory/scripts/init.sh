@@ -8,7 +8,7 @@ PROJECT="${1:?usage: init.sh <project-dir>}"
 cd -- "$PROJECT"
 
 mkdir -p memory/decisions memory/findings memory/proposals memory/archive
-for f in PROJECT.md INDEX.md handoff.md client-constraints.md; do
+for f in PROJECT.md INDEX.md handoff.md; do
   if [ -e "memory/$f" ]; then echo "kept      memory/$f"
   else cp "$SKILL/templates/memory/$f" "memory/$f"; echo "created   memory/$f"; fi
 done

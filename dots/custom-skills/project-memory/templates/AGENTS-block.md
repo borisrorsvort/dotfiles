@@ -1,14 +1,18 @@
+## Preferences and client rules
+
+Follow these on every task. Each rule gets its own line, with the date and who said it, and states the rule in full: name the exact word, tool or value it refers to, so the rule works without any other context.
+
 ## Project memory
 
 `memory/` holds this project's shared notes, for every agent working here.
 
-**Before starting work,** read `memory/PROJECT.md`, `memory/INDEX.md`, `memory/handoff.md` and `memory/client-constraints.md`, plus any decision listed in the index that touches your task. If the request conflicts with an active decision or a client rule, say so before acting.
+**Before starting work,** read `memory/PROJECT.md`, `memory/INDEX.md` and `memory/handoff.md`, plus any decision listed in the index that touches your task. If the request conflicts with an active decision or a rule in this file, say so before acting.
 
-**As you work,** record these in `memory/`:
+**As you work,** record these:
 
-- A choice with a reason: `decisions/YYYY-MM-DD-title.md`, listed in `INDEX.md`
-- A client or standing rule: `client-constraints.md`
-- A verified gotcha or fact: `findings/YYYY-MM-DD-title.md`, listed in `INDEX.md`
+- How the developer wants work done (tools, models, PR and review habits, workflow), or a rule a client set: one line under `## Preferences and client rules` in this file, without being asked
+- A choice with a reason: `memory/decisions/YYYY-MM-DD-title.md`, listed in `memory/INDEX.md`
+- A verified gotcha or fact the code doesn't already show: `memory/findings/YYYY-MM-DD-title.md`, listed in `memory/INDEX.md`
 
 Decision and finding files start with this frontmatter (`type: finding` for findings), followed by what, why and what was rejected:
 
@@ -20,7 +24,7 @@ status: active
 ---
 ```
 
-If you were told you are a worker or one of several agents, write each of these to `proposals/YYYY-MM-DD-title.md` instead, and skip the last step below.
+If you were told you are a worker or one of several agents, write each of these to `memory/proposals/YYYY-MM-DD-title.md` instead, and skip the last step below.
 
 **Before you finish,** rewrite `memory/handoff.md` as the current state: done, in progress, next, open questions.
 
