@@ -85,6 +85,15 @@ class PhotosCLI
       path = ENV["CAMERA_MOUNT_PATH"].strip
       candidates << path if path.start_with?("mtp://", "gphoto2://") || Dir.exist?(path)
     end
+    begin
+      require "open3"
+      gio_out, _err, _status = Open3.capture3("gio", "mount", "-l")
+      gio_out.scan(/->\s+((?:mtp|gphoto2):\/\/[^\s]+)/).flatten.each do |uri|
+        candidates << uri
+      end
+    rescue StandardError
+      # gio not available or failed
+    end
     candidates += Dir.glob("/run/media/*/*/").select { |d| File.directory?(d) }.map { |d| d.chomp("/") }
     candidates += Dir.glob("/media/*/*/").select { |d| File.directory?(d) }.map { |d| d.chomp("/") }
     candidates += Dir.glob("/Volumes/*/").select { |d| File.directory?(d) }.map { |d| d.chomp("/") }

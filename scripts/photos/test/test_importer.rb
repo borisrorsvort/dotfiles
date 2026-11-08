@@ -32,4 +32,23 @@ class TestImporter < Minitest::Test
       $stderr = original_stderr
     end
   end
+
+  def test_aborts_if_mtp_source_unreachable
+    importer = Importer.new("mtp://fake_camera/DCIM", logger: @logger)
+
+    stderr_capture = StringIO.new
+    original_stderr = $stderr
+    $stderr = stderr_capture
+
+    begin
+      error = assert_raises(SystemExit) do
+        importer.run
+      end
+
+      assert_equal 1, error.status
+      assert_match(/Could not access camera mount/, stderr_capture.string)
+    ensure
+      $stderr = original_stderr
+    end
+  end
 end
