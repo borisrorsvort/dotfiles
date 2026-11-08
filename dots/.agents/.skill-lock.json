@@ -1,437 +1,183 @@
 {
   "version": 3,
   "skills": {
-    "find-skills": {
-      "source": "vercel-labs/skills",
-      "sourceType": "github",
-      "sourceUrl": "https://github.com/vercel-labs/skills",
-      "ref": "48dc9e8eb8aa19040e91cb90ba0b642c9cbad57e",
-      "skillPath": "skills/find-skills/SKILL.md",
-      "skillFolderHash": "76a98a285cb0434f3d39e1a873823556330e398b",
-      "installedAt": "2026-10-07T19:35:06.778Z",
-      "updatedAt": "2026-10-07T19:35:06.778Z",
-      "agentfiles": {
-        "agents": [
-          "claude-code",
-          "opencode"
-        ],
-        "globalInstall": true,
-        "installName": "find-skills",
-        "paths": [
-          "~/.agents/skills/find-skills",
-          "~/.claude/skills/find-skills",
-          "~/.config/opencode/skills/find-skills"
-        ],
-        "projectRoot": "~/Documents/Notes",
-        "skillId": "find-skills"
-      }
-    },
-    "obsidian-cli": {
-      "source": "kepano/obsidian-skills",
-      "sourceType": "github",
-      "sourceUrl": "https://github.com/kepano/obsidian-skills",
-      "ref": "3ccff5338ea700537839b21900aa5358a0402c98",
-      "skillPath": "skills/obsidian-cli/SKILL.md",
-      "skillFolderHash": "96254a554e480359de7b685571876f2e7f9ba57d",
-      "installedAt": "2026-10-07T20:27:51.858Z",
-      "updatedAt": "2026-10-07T20:27:51.858Z",
-      "agentfiles": {
-        "agents": [
-          "claude-code"
-        ],
-        "globalInstall": true,
-        "installName": "obsidian-cli",
-        "paths": [
-          "~/.agents/skills/obsidian-cli",
-          "~/.claude/skills/obsidian-cli"
-        ],
-        "projectRoot": "~/Documents/Notes",
-        "skillId": "obsidian-cli"
-      }
-    },
-    "cover-letter-generator": {
-      "source": "davila7/claude-code-templates",
-      "sourceType": "github",
-      "sourceUrl": "https://github.com/davila7/claude-code-templates",
-      "ref": "8293bc3e6130e49391c1a3530cd73212f01aec83",
-      "skillPath": "cli-tool/components/skills/career/cover-letter-generator/SKILL.md",
-      "skillFolderHash": "33aa5b406b075f701b9f7176c0e45461da41a2fc",
-      "installedAt": "2026-10-07T21:49:09.022Z",
-      "updatedAt": "2026-10-07T21:49:09.022Z",
-      "agentfiles": {
-        "agents": [
-          "claude-code"
-        ],
-        "globalInstall": true,
-        "installName": "cover-letter-generator",
-        "paths": [
-          "~/.agents/skills/cover-letter-generator",
-          "~/.claude/skills/cover-letter-generator"
-        ],
-        "projectRoot": "~/Documents/Notes",
-        "skillId": "cover-letter-generator"
-      }
-    },
-    "typography": {
-      "source": "glebis/claude-skills",
-      "sourceType": "github",
-      "sourceUrl": "https://github.com/glebis/claude-skills",
-      "ref": "3b8826108af86135b90f6b264934ccbfaa48f205",
-      "skillPath": "typography/SKILL.md",
-      "skillFolderHash": "f2e49a536c61118631d2816972668c1014ebda4d",
-      "installedAt": "2026-10-08T09:37:45.781Z",
-      "updatedAt": "2026-10-08T09:37:45.781Z",
-      "agentfiles": {
-        "agents": [
-          "claude-code"
-        ],
-        "globalInstall": true,
-        "installName": "typography",
-        "paths": [
-          "~/.agents/skills/typography",
-          "~/.claude/skills/typography"
-        ],
-        "projectRoot": "~/Documents/Notes",
-        "skillId": "typography"
-      }
-    },
-    "caldir": {
-      "source": "~/dotfiles/dots/custom-skills/caldir",
-      "sourceType": "local",
-      "sourceUrl": "~/dotfiles/dots/custom-skills/caldir",
-      "skillFolderHash": "d3437f143af876889d17c63f66bef5082b714b91027a29ee5e5042f1b2c5ba77",
-      "installedAt": "2026-10-12T21:48:52.264Z",
-      "updatedAt": "2026-10-12T21:48:52.264Z"
-    },
-    "cv-tailor": {
-      "source": "~/dotfiles/dots/custom-skills/cv-tailor",
-      "sourceType": "local",
-      "sourceUrl": "~/dotfiles/dots/custom-skills/cv-tailor",
-      "skillFolderHash": "6320ae2b66ec0db8448f5797de8815043fa716c6f519f554f244e8059aaa577d",
-      "installedAt": "2026-10-12T21:48:53.191Z",
-      "updatedAt": "2026-10-12T21:48:53.191Z"
-    },
-    "motion-framer": {
-      "source": "~/dotfiles/dots/custom-skills/motion-framer",
-      "sourceType": "local",
-      "sourceUrl": "~/dotfiles/dots/custom-skills/motion-framer",
-      "skillFolderHash": "16d7c6f24f1d1208500635331e0cf6e06555a44df461e6b1069e4ddb203fd737",
-      "installedAt": "2026-10-12T21:48:54.338Z",
-      "updatedAt": "2026-10-12T21:48:54.338Z"
-    },
-    "process-job-ads": {
-      "source": "~/dotfiles/dots/custom-skills/process-job-ads",
-      "sourceType": "local",
-      "sourceUrl": "~/dotfiles/dots/custom-skills/process-job-ads",
-      "skillFolderHash": "444002663ce357944d7191f997006cf0a14ba539a96e4a774457e0d5734c3a22",
-      "installedAt": "2026-10-12T21:48:55.309Z",
-      "updatedAt": "2026-10-12T21:48:55.309Z"
-    },
-    "oma-academic-writing": {
-      "source": "first-fluke/oh-my-agent",
-      "sourceType": "github",
-      "sourceUrl": "https://github.com/first-fluke/oh-my-agent.git",
-      "skillPath": "skills/oma-academic-writing/SKILL.md",
-      "skillFolderHash": "0a70b944bf619ce0ee6809ab7ee39000677d5c5c",
-      "installedAt": "2026-10-12T21:49:12.353Z",
-      "updatedAt": "2026-10-12T21:49:12.353Z"
-    },
-    "oma-architecture": {
-      "source": "first-fluke/oh-my-agent",
-      "sourceType": "github",
-      "sourceUrl": "https://github.com/first-fluke/oh-my-agent.git",
-      "skillPath": "skills/oma-architecture/SKILL.md",
-      "skillFolderHash": "86787409142de18e9abbede5db4877d38163e0d4",
-      "installedAt": "2026-10-12T21:49:12.355Z",
-      "updatedAt": "2026-10-12T21:49:12.355Z"
-    },
-    "oma-backend": {
-      "source": "first-fluke/oh-my-agent",
-      "sourceType": "github",
-      "sourceUrl": "https://github.com/first-fluke/oh-my-agent.git",
-      "skillPath": "skills/oma-backend/SKILL.md",
-      "skillFolderHash": "8ce29b9ca751bdf2d2b580d3d55bdd18db2274ec",
-      "installedAt": "2026-10-12T21:49:12.355Z",
-      "updatedAt": "2026-10-12T21:49:12.355Z"
-    },
-    "oma-brainstorm": {
-      "source": "first-fluke/oh-my-agent",
-      "sourceType": "github",
-      "sourceUrl": "https://github.com/first-fluke/oh-my-agent.git",
-      "skillPath": "skills/oma-brainstorm/SKILL.md",
-      "skillFolderHash": "8489162f652146c32c59ef468119fa7071319bdb",
-      "installedAt": "2026-10-12T21:49:12.356Z",
-      "updatedAt": "2026-10-12T21:49:12.356Z"
-    },
-    "oma-coordination": {
-      "source": "first-fluke/oh-my-agent",
-      "sourceType": "github",
-      "sourceUrl": "https://github.com/first-fluke/oh-my-agent.git",
-      "skillPath": "skills/oma-coordination/SKILL.md",
-      "skillFolderHash": "16f628be1cfe6ba258821ea0f240efee8f63abe7",
-      "installedAt": "2026-10-12T21:49:12.356Z",
-      "updatedAt": "2026-10-12T21:49:12.356Z"
-    },
-    "oma-db": {
-      "source": "first-fluke/oh-my-agent",
-      "sourceType": "github",
-      "sourceUrl": "https://github.com/first-fluke/oh-my-agent.git",
-      "skillPath": "skills/oma-db/SKILL.md",
-      "skillFolderHash": "5d9907bac4297b8c7084763bddddadd121eaedf9",
-      "installedAt": "2026-10-12T21:49:12.356Z",
-      "updatedAt": "2026-10-12T21:49:12.356Z"
-    },
-    "oma-debug": {
-      "source": "first-fluke/oh-my-agent",
-      "sourceType": "github",
-      "sourceUrl": "https://github.com/first-fluke/oh-my-agent.git",
-      "skillPath": "skills/oma-debug/SKILL.md",
-      "skillFolderHash": "1380a9a671b34fb62e32f8c66b1b14cb25862259",
-      "installedAt": "2026-10-12T21:49:12.357Z",
-      "updatedAt": "2026-10-12T21:49:12.357Z"
-    },
-    "oma-design": {
-      "source": "first-fluke/oh-my-agent",
-      "sourceType": "github",
-      "sourceUrl": "https://github.com/first-fluke/oh-my-agent.git",
-      "skillPath": "skills/oma-design/SKILL.md",
-      "skillFolderHash": "cf7bf1eee0220f1155b6a8c401ee9c0e36e4c481",
-      "installedAt": "2026-10-12T21:49:12.357Z",
-      "updatedAt": "2026-10-12T21:49:12.357Z"
-    },
-    "oma-dev-workflow": {
-      "source": "first-fluke/oh-my-agent",
-      "sourceType": "github",
-      "sourceUrl": "https://github.com/first-fluke/oh-my-agent.git",
-      "skillPath": "skills/oma-dev-workflow/SKILL.md",
-      "skillFolderHash": "522fe7c7cf310c49ac5ff8d2f24428232441295e",
-      "installedAt": "2026-10-12T21:49:12.358Z",
-      "updatedAt": "2026-10-12T21:49:12.358Z"
-    },
-    "oma-docs": {
-      "source": "first-fluke/oh-my-agent",
-      "sourceType": "github",
-      "sourceUrl": "https://github.com/first-fluke/oh-my-agent.git",
-      "skillPath": "skills/oma-docs/SKILL.md",
-      "skillFolderHash": "dd8faf9a1fa992224ae79ed8c244dd7149e9e163",
-      "installedAt": "2026-10-12T21:49:12.358Z",
-      "updatedAt": "2026-10-12T21:49:12.358Z"
-    },
-    "oma-explanation": {
-      "source": "first-fluke/oh-my-agent",
-      "sourceType": "github",
-      "sourceUrl": "https://github.com/first-fluke/oh-my-agent.git",
-      "skillPath": "skills/oma-explanation/SKILL.md",
-      "skillFolderHash": "b7188d9f07010093743bc4254349af13eddde5e9",
-      "installedAt": "2026-10-12T21:49:12.358Z",
-      "updatedAt": "2026-10-12T21:49:12.358Z"
-    },
-    "oma-frontend": {
-      "source": "first-fluke/oh-my-agent",
-      "sourceType": "github",
-      "sourceUrl": "https://github.com/first-fluke/oh-my-agent.git",
-      "skillPath": "skills/oma-frontend/SKILL.md",
-      "skillFolderHash": "befea81b141d8cea6f8b2b5aeae42fac5226a02c",
-      "installedAt": "2026-10-12T21:49:12.359Z",
-      "updatedAt": "2026-10-12T21:49:12.359Z"
-    },
-    "oma-hwp": {
-      "source": "first-fluke/oh-my-agent",
-      "sourceType": "github",
-      "sourceUrl": "https://github.com/first-fluke/oh-my-agent.git",
-      "skillPath": "skills/oma-hwp/SKILL.md",
-      "skillFolderHash": "02923d9b67a57fdc43385184f3d3e6e16b656c57",
-      "installedAt": "2026-10-12T21:49:12.359Z",
-      "updatedAt": "2026-10-12T21:49:12.359Z"
-    },
-    "oma-image": {
-      "source": "first-fluke/oh-my-agent",
-      "sourceType": "github",
-      "sourceUrl": "https://github.com/first-fluke/oh-my-agent.git",
-      "skillPath": "skills/oma-image/SKILL.md",
-      "skillFolderHash": "5e94c6fe0c6b51a9ad574dd5cbb94128e17941d2",
-      "installedAt": "2026-10-12T21:49:12.360Z",
-      "updatedAt": "2026-10-12T21:49:12.360Z"
-    },
-    "oma-market": {
-      "source": "first-fluke/oh-my-agent",
-      "sourceType": "github",
-      "sourceUrl": "https://github.com/first-fluke/oh-my-agent.git",
-      "skillPath": "skills/oma-market/SKILL.md",
-      "skillFolderHash": "aa080d12b4fdc1f144a1af2806f1c62028e021e8",
-      "installedAt": "2026-10-12T21:49:12.360Z",
-      "updatedAt": "2026-10-12T21:49:12.360Z"
-    },
-    "oma-mobile": {
-      "source": "first-fluke/oh-my-agent",
-      "sourceType": "github",
-      "sourceUrl": "https://github.com/first-fluke/oh-my-agent.git",
-      "skillPath": "skills/oma-mobile/SKILL.md",
-      "skillFolderHash": "6dc51598ca5ad6e3aab8496520ebc4bb4ff8cbfc",
-      "installedAt": "2026-10-12T21:49:12.361Z",
-      "updatedAt": "2026-10-12T21:49:12.361Z"
-    },
-    "oma-observability": {
-      "source": "first-fluke/oh-my-agent",
-      "sourceType": "github",
-      "sourceUrl": "https://github.com/first-fluke/oh-my-agent.git",
-      "skillPath": "skills/oma-observability/SKILL.md",
-      "skillFolderHash": "043290233c6e6bd6c42f04a5597da4feb8f59768",
-      "installedAt": "2026-10-12T21:49:12.361Z",
-      "updatedAt": "2026-10-12T21:49:12.361Z"
-    },
-    "oma-orchestration": {
-      "source": "first-fluke/oh-my-agent",
-      "sourceType": "github",
-      "sourceUrl": "https://github.com/first-fluke/oh-my-agent.git",
-      "skillPath": "skills/oma-orchestration/SKILL.md",
-      "skillFolderHash": "efd8bc3b99088dc71d01e1abd6d28e09be782a0f",
-      "installedAt": "2026-10-12T21:49:12.362Z",
-      "updatedAt": "2026-10-12T21:49:12.362Z"
-    },
-    "oma-pdf": {
-      "source": "first-fluke/oh-my-agent",
-      "sourceType": "github",
-      "sourceUrl": "https://github.com/first-fluke/oh-my-agent.git",
-      "skillPath": "skills/oma-pdf/SKILL.md",
-      "skillFolderHash": "474791d2ace30f144945b9ce555f005197b89903",
-      "installedAt": "2026-10-12T21:49:12.362Z",
-      "updatedAt": "2026-10-12T21:49:12.362Z"
-    },
-    "oma-pm": {
-      "source": "first-fluke/oh-my-agent",
-      "sourceType": "github",
-      "sourceUrl": "https://github.com/first-fluke/oh-my-agent.git",
-      "skillPath": "skills/oma-pm/SKILL.md",
-      "skillFolderHash": "6bfc17c8bd9a5444f8b43dbd64372ca6a3425e73",
-      "installedAt": "2026-10-12T21:49:12.362Z",
-      "updatedAt": "2026-10-12T21:49:12.362Z"
-    },
-    "oma-qa": {
-      "source": "first-fluke/oh-my-agent",
-      "sourceType": "github",
-      "sourceUrl": "https://github.com/first-fluke/oh-my-agent.git",
-      "skillPath": "skills/oma-qa/SKILL.md",
-      "skillFolderHash": "2cafaed6450033d242fe213c05e1005e921f08ce",
-      "installedAt": "2026-10-12T21:49:12.363Z",
-      "updatedAt": "2026-10-12T21:49:12.363Z"
-    },
-    "oma-recap": {
-      "source": "first-fluke/oh-my-agent",
-      "sourceType": "github",
-      "sourceUrl": "https://github.com/first-fluke/oh-my-agent.git",
-      "skillPath": "skills/oma-recap/SKILL.md",
-      "skillFolderHash": "161ea5497c239d0243f22eae9a08e1d494d33cad",
-      "installedAt": "2026-10-12T21:49:12.363Z",
-      "updatedAt": "2026-10-12T21:49:12.363Z"
-    },
-    "oma-refactor": {
-      "source": "first-fluke/oh-my-agent",
-      "sourceType": "github",
-      "sourceUrl": "https://github.com/first-fluke/oh-my-agent.git",
-      "skillPath": "skills/oma-refactor/SKILL.md",
-      "skillFolderHash": "41a0a79e419580bcd7ff43f1fdccc83676af139f",
-      "installedAt": "2026-10-12T21:49:12.364Z",
-      "updatedAt": "2026-10-12T21:49:12.364Z"
-    },
-    "oma-scholar": {
-      "source": "first-fluke/oh-my-agent",
-      "sourceType": "github",
-      "sourceUrl": "https://github.com/first-fluke/oh-my-agent.git",
-      "skillPath": "skills/oma-scholar/SKILL.md",
-      "skillFolderHash": "a645862989b5085be97f06d7255a531619ac83e3",
-      "installedAt": "2026-10-12T21:49:12.365Z",
-      "updatedAt": "2026-10-12T21:49:12.365Z"
-    },
-    "oma-scm": {
-      "source": "first-fluke/oh-my-agent",
-      "sourceType": "github",
-      "sourceUrl": "https://github.com/first-fluke/oh-my-agent.git",
-      "skillPath": "skills/oma-scm/SKILL.md",
-      "skillFolderHash": "39942408742fad1d588f0a84d14f01893df0ae84",
-      "installedAt": "2026-10-12T21:49:12.365Z",
-      "updatedAt": "2026-10-12T21:49:12.365Z"
-    },
-    "oma-search": {
-      "source": "first-fluke/oh-my-agent",
-      "sourceType": "github",
-      "sourceUrl": "https://github.com/first-fluke/oh-my-agent.git",
-      "skillPath": "skills/oma-search/SKILL.md",
-      "skillFolderHash": "b33221d17dc01187046649e0660cfc236bbd3db5",
-      "installedAt": "2026-10-12T21:49:12.366Z",
-      "updatedAt": "2026-10-12T21:49:12.366Z"
-    },
-    "oma-security": {
-      "source": "first-fluke/oh-my-agent",
-      "sourceType": "github",
-      "sourceUrl": "https://github.com/first-fluke/oh-my-agent.git",
-      "skillPath": "skills/oma-security/SKILL.md",
-      "skillFolderHash": "c2d1e8eef95c2faa52fbf6a8703027029967f1e3",
-      "installedAt": "2026-10-12T21:49:12.366Z",
-      "updatedAt": "2026-10-12T21:49:12.366Z"
-    },
-    "oma-skill-creation": {
-      "source": "first-fluke/oh-my-agent",
-      "sourceType": "github",
-      "sourceUrl": "https://github.com/first-fluke/oh-my-agent.git",
-      "skillPath": "skills/oma-skill-creation/SKILL.md",
-      "skillFolderHash": "b7cac384e4a387537ff739777cd3bfb84b3451a3",
-      "installedAt": "2026-10-12T21:49:12.367Z",
-      "updatedAt": "2026-10-12T21:49:12.367Z"
-    },
-    "oma-slide": {
-      "source": "first-fluke/oh-my-agent",
-      "sourceType": "github",
-      "sourceUrl": "https://github.com/first-fluke/oh-my-agent.git",
-      "skillPath": "skills/oma-slide/SKILL.md",
-      "skillFolderHash": "6c0e94ff816a77d35f53a517ebc214271b6444fd",
-      "installedAt": "2026-10-12T21:49:12.367Z",
-      "updatedAt": "2026-10-12T21:49:12.367Z"
-    },
-    "oma-tf-infra": {
-      "source": "first-fluke/oh-my-agent",
-      "sourceType": "github",
-      "sourceUrl": "https://github.com/first-fluke/oh-my-agent.git",
-      "skillPath": "skills/oma-tf-infra/SKILL.md",
-      "skillFolderHash": "76d65f178fcdf043b265e0d3b1af8137df838e84",
-      "installedAt": "2026-10-12T21:49:12.368Z",
-      "updatedAt": "2026-10-12T21:49:12.368Z"
-    },
-    "oma-translation": {
-      "source": "first-fluke/oh-my-agent",
-      "sourceType": "github",
-      "sourceUrl": "https://github.com/first-fluke/oh-my-agent.git",
-      "skillPath": "skills/oma-translation/SKILL.md",
-      "skillFolderHash": "23fb44bd46d7ef8de0dbd8a9d27e7c25703c4b30",
-      "installedAt": "2026-10-12T21:49:12.368Z",
-      "updatedAt": "2026-10-12T21:49:12.368Z"
-    },
-    "oma-video": {
-      "source": "first-fluke/oh-my-agent",
-      "sourceType": "github",
-      "sourceUrl": "https://github.com/first-fluke/oh-my-agent.git",
-      "skillPath": "skills/oma-video/SKILL.md",
-      "skillFolderHash": "acf02e60374333b898e4637aa5f65ab221fca147",
-      "installedAt": "2026-10-12T21:49:12.368Z",
-      "updatedAt": "2026-10-12T21:49:12.368Z"
-    },
-    "oma-voice": {
-      "source": "first-fluke/oh-my-agent",
-      "sourceType": "github",
-      "sourceUrl": "https://github.com/first-fluke/oh-my-agent.git",
-      "skillPath": "skills/oma-voice/SKILL.md",
-      "skillFolderHash": "a688e87419c4661c468ffe1990d1b50018849c1f",
-      "installedAt": "2026-10-12T21:49:12.369Z",
-      "updatedAt": "2026-10-12T21:49:12.369Z"
-    },
     "analytics-dashboard": {
       "source": "charlie947/social-media-skills",
       "sourceType": "github",
       "sourceUrl": "https://github.com/charlie947/social-media-skills.git",
       "skillPath": "skills/analytics-dashboard/SKILL.md",
       "skillFolderHash": "c22ad7791464a500dd74c5ad31c9a5be9600c1b8",
-      "installedAt": "2026-10-12T21:49:16.511Z",
-      "updatedAt": "2026-10-12T21:49:16.511Z"
+      "installedAt": "2026-10-09T10:32:01.560Z",
+      "updatedAt": "2026-10-09T11:03:42.488Z"
+    },
+    "autoproject": {
+      "source": "~/.config/herdr/plugins/github/herdr-projects-b1278ffb803c/skill/autoproject",
+      "sourceType": "local",
+      "sourceUrl": "~/.config/herdr/plugins/github/herdr-projects-b1278ffb803c/skill/autoproject",
+      "skillFolderHash": "a42c249594ff3bfa885edda7e65f56a61d238696df21addbb9694f5021f3b017",
+      "installedAt": "2026-10-09T10:22:10.185Z",
+      "updatedAt": "2026-10-09T11:03:32.821Z"
+    },
+    "banner-design": {
+      "source": "nextlevelbuilder/ui-ux-pro-max-skill",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill.git",
+      "skillPath": ".claude/skills/banner-design/SKILL.md",
+      "skillFolderHash": "8bb75e7487b992269a3d6a3dafc4710c1591fd50",
+      "installedAt": "2026-10-09T11:01:02.036Z",
+      "updatedAt": "2026-10-09T11:09:21.459Z"
+    },
+    "brainstorming": {
+      "source": "obra/superpowers",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/obra/superpowers.git",
+      "skillPath": "skills/brainstorming/SKILL.md",
+      "skillFolderHash": "03d4c6657cd20ba0fce9d270fc688150bd191c3b",
+      "installedAt": "2026-10-09T11:09:16.423Z",
+      "updatedAt": "2026-10-09T11:09:16.423Z"
+    },
+    "brand": {
+      "source": "nextlevelbuilder/ui-ux-pro-max-skill",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill.git",
+      "skillPath": ".claude/skills/brand/SKILL.md",
+      "skillFolderHash": "516148ed187d380c93052463abc4cb10dca01e70",
+      "installedAt": "2026-10-09T11:01:02.609Z",
+      "updatedAt": "2026-10-09T11:09:21.460Z"
+    },
+    "caldir": {
+      "source": "~/Projects/dotfiles/dots/custom-skills/caldir",
+      "sourceType": "local",
+      "sourceUrl": "~/Projects/dotfiles/dots/custom-skills/caldir",
+      "skillFolderHash": "d3437f143af876889d17c63f66bef5082b714b91027a29ee5e5042f1b2c5ba77",
+      "installedAt": "2026-10-09T11:01:03.014Z",
+      "updatedAt": "2026-11-01T23:25:01.587Z"
+    },
+    "cavecrew": {
+      "source": "juliusbrussee/caveman",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/juliusbrussee/caveman.git",
+      "skillPath": "skills/cavecrew/SKILL.md",
+      "skillFolderHash": "94c53a8c99ee75ca94245b60c6a4e97f79c02987",
+      "installedAt": "2026-10-09T11:09:11.314Z",
+      "updatedAt": "2026-10-09T11:09:11.314Z"
+    },
+    "caveman": {
+      "source": "juliusbrussee/caveman",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/juliusbrussee/caveman.git",
+      "skillPath": "skills/caveman/SKILL.md",
+      "skillFolderHash": "b314dd99b2b8723aae2de5a22079914567f2e58f",
+      "installedAt": "2026-10-09T11:01:03.452Z",
+      "updatedAt": "2026-10-09T11:09:11.315Z"
+    },
+    "caveman-commit": {
+      "source": "juliusbrussee/caveman",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/juliusbrussee/caveman.git",
+      "skillPath": "skills/caveman-commit/SKILL.md",
+      "skillFolderHash": "7b600195c1d3cdd277dc608c56384c86afb7ec11",
+      "installedAt": "2026-10-09T11:09:11.316Z",
+      "updatedAt": "2026-10-09T11:09:11.316Z"
+    },
+    "caveman-compress": {
+      "source": "juliusbrussee/caveman",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/juliusbrussee/caveman.git",
+      "skillPath": "skills/caveman-compress/SKILL.md",
+      "skillFolderHash": "8bfde0c338b80b7a30c6b267ccdeb6fe9dc96a35",
+      "installedAt": "2026-10-09T11:09:11.316Z",
+      "updatedAt": "2026-10-09T11:09:11.316Z"
+    },
+    "caveman-discover": {
+      "source": "juliusbrussee/caveman",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/juliusbrussee/caveman.git",
+      "skillPath": "skills/caveman-discover/SKILL.md",
+      "skillFolderHash": "d43d2ff7268e8df5db2198977b79b765b723b9d9",
+      "installedAt": "2026-10-09T11:09:11.316Z",
+      "updatedAt": "2026-10-09T11:09:11.316Z"
+    },
+    "caveman-evidence-review": {
+      "source": "juliusbrussee/caveman",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/juliusbrussee/caveman.git",
+      "skillPath": "skills/caveman-evidence-review/SKILL.md",
+      "skillFolderHash": "50875bf7d4a1ce7a64d92cc4127b3c63c2e0701a",
+      "installedAt": "2026-10-09T11:09:11.317Z",
+      "updatedAt": "2026-10-09T11:09:11.317Z"
+    },
+    "caveman-explore": {
+      "source": "juliusbrussee/caveman",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/juliusbrussee/caveman.git",
+      "skillPath": "skills/caveman-explore/SKILL.md",
+      "skillFolderHash": "21ae2775d5f2a0a2d6cc89797d75b94c350b8353",
+      "installedAt": "2026-10-09T11:09:11.317Z",
+      "updatedAt": "2026-10-09T11:09:11.317Z"
+    },
+    "caveman-help": {
+      "source": "juliusbrussee/caveman",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/juliusbrussee/caveman.git",
+      "skillPath": "skills/caveman-help/SKILL.md",
+      "skillFolderHash": "f017cd6f707954e2a351d78389432a8322281224",
+      "installedAt": "2026-10-09T11:09:11.318Z",
+      "updatedAt": "2026-10-09T11:09:11.318Z"
+    },
+    "caveman-learn": {
+      "source": "juliusbrussee/caveman",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/juliusbrussee/caveman.git",
+      "skillPath": "skills/caveman-learn/SKILL.md",
+      "skillFolderHash": "60584e4ff4e7602b76140eb650b2073efc748954",
+      "installedAt": "2026-10-09T11:09:11.318Z",
+      "updatedAt": "2026-10-09T11:09:11.318Z"
+    },
+    "caveman-manage": {
+      "source": "juliusbrussee/caveman",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/juliusbrussee/caveman.git",
+      "skillPath": "skills/caveman-manage/SKILL.md",
+      "skillFolderHash": "0a94a5cc3a4fd218b07d8853e4065e9a513fe51f",
+      "installedAt": "2026-10-09T11:09:11.319Z",
+      "updatedAt": "2026-10-09T11:09:11.319Z"
+    },
+    "caveman-optimize": {
+      "source": "juliusbrussee/caveman",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/juliusbrussee/caveman.git",
+      "skillPath": "skills/caveman-optimize/SKILL.md",
+      "skillFolderHash": "3311c453a59a8a27ad0555949e24fea81daf77fa",
+      "installedAt": "2026-10-09T11:09:11.319Z",
+      "updatedAt": "2026-10-09T11:09:11.319Z"
+    },
+    "caveman-review": {
+      "source": "juliusbrussee/caveman",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/juliusbrussee/caveman.git",
+      "skillPath": "skills/caveman-review/SKILL.md",
+      "skillFolderHash": "515d07fbd383fb9a15ad94647d133f681dc56197",
+      "installedAt": "2026-10-09T11:09:11.320Z",
+      "updatedAt": "2026-10-09T11:09:11.320Z"
+    },
+    "caveman-setup": {
+      "source": "juliusbrussee/caveman",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/juliusbrussee/caveman.git",
+      "skillPath": "skills/caveman-setup/SKILL.md",
+      "skillFolderHash": "be2dfccebf403aa38e16bb39e367a3f045e24b07",
+      "installedAt": "2026-10-09T11:09:11.321Z",
+      "updatedAt": "2026-10-09T11:09:11.321Z"
+    },
+    "caveman-stats": {
+      "source": "juliusbrussee/caveman",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/juliusbrussee/caveman.git",
+      "skillPath": "skills/caveman-stats/SKILL.md",
+      "skillFolderHash": "c7b80bfb2ad324f99f87e0f16a81aca38c5d7257",
+      "installedAt": "2026-10-09T11:09:11.321Z",
+      "updatedAt": "2026-10-09T11:09:11.321Z"
     },
     "content-matrix": {
       "source": "charlie947/social-media-skills",
@@ -439,8 +185,97 @@
       "sourceUrl": "https://github.com/charlie947/social-media-skills.git",
       "skillPath": "skills/content-matrix/SKILL.md",
       "skillFolderHash": "e3b4f9a2c9ca1f10e09490f218f7734703b3d456",
-      "installedAt": "2026-10-12T21:49:16.514Z",
-      "updatedAt": "2026-10-12T21:49:16.514Z"
+      "installedAt": "2026-10-09T10:32:01.561Z",
+      "updatedAt": "2026-10-09T11:03:42.489Z"
+    },
+    "cover-letter-generator": {
+      "source": "davila7/claude-code-templates",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/davila7/claude-code-templates.git",
+      "skillPath": "cli-tool/components/skills/career/cover-letter-generator/SKILL.md",
+      "skillFolderHash": "33aa5b406b075f701b9f7176c0e45461da41a2fc",
+      "installedAt": "2026-10-09T10:22:17.061Z",
+      "updatedAt": "2026-10-09T11:03:50.123Z"
+    },
+    "cv-tailor": {
+      "source": "~/Projects/dotfiles/dots/custom-skills/cv-tailor",
+      "sourceType": "local",
+      "sourceUrl": "~/Projects/dotfiles/dots/custom-skills/cv-tailor",
+      "skillFolderHash": "6320ae2b66ec0db8448f5797de8815043fa716c6f519f554f244e8059aaa577d",
+      "installedAt": "2026-10-09T10:20:55.356Z",
+      "updatedAt": "2026-10-09T11:03:32.036Z"
+    },
+    "design": {
+      "source": "nextlevelbuilder/ui-ux-pro-max-skill",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill.git",
+      "skillPath": ".claude/skills/design/SKILL.md",
+      "skillFolderHash": "fd9f8746fdaf4995fe0bc0a497f341ee86c8f547",
+      "installedAt": "2026-10-09T11:01:05.309Z",
+      "updatedAt": "2026-10-09T11:09:21.474Z"
+    },
+    "design-system": {
+      "source": "nextlevelbuilder/ui-ux-pro-max-skill",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill.git",
+      "skillPath": ".claude/skills/design-system/SKILL.md",
+      "skillFolderHash": "4b60947279d885f917ba7baae9154f75ed3d3c1b",
+      "installedAt": "2026-10-09T11:01:05.996Z",
+      "updatedAt": "2026-10-09T11:09:21.475Z"
+    },
+    "diagnosing-superpowers": {
+      "source": "obra/superpowers",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/obra/superpowers.git",
+      "skillPath": "skills/diagnosing-superpowers/SKILL.md",
+      "skillFolderHash": "9a975225f7a42de50cd2d43483701b6348f99fd5",
+      "installedAt": "2026-10-09T11:09:16.424Z",
+      "updatedAt": "2026-10-09T11:09:16.424Z"
+    },
+    "dispatching-parallel-agents": {
+      "source": "obra/superpowers",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/obra/superpowers.git",
+      "skillPath": "skills/dispatching-parallel-agents/SKILL.md",
+      "skillFolderHash": "15697cb0726c26a66bff737494e8b5266667ba0c",
+      "installedAt": "2026-10-09T11:09:16.438Z",
+      "updatedAt": "2026-10-09T11:09:16.438Z"
+    },
+    "executing-plans": {
+      "source": "obra/superpowers",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/obra/superpowers.git",
+      "skillPath": "skills/executing-plans/SKILL.md",
+      "skillFolderHash": "899ffeab92be3de6cd9ed0078b32737b18b8c135",
+      "installedAt": "2026-10-09T11:09:16.439Z",
+      "updatedAt": "2026-10-09T11:09:16.439Z"
+    },
+    "find-skills": {
+      "source": "vercel-labs/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/vercel-labs/skills.git",
+      "skillPath": "skills/find-skills/SKILL.md",
+      "skillFolderHash": "76a98a285cb0434f3d39e1a873823556330e398b",
+      "installedAt": "2026-10-09T10:22:10.736Z",
+      "updatedAt": "2026-10-09T11:03:44.390Z"
+    },
+    "finishing-a-development-branch": {
+      "source": "obra/superpowers",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/obra/superpowers.git",
+      "skillPath": "skills/finishing-a-development-branch/SKILL.md",
+      "skillFolderHash": "3b1205aa5038c71946077dd63b9e71b447729e70",
+      "installedAt": "2026-10-09T11:09:16.439Z",
+      "updatedAt": "2026-10-09T11:09:16.439Z"
+    },
+    "freehire-search": {
+      "source": "madslorentzen/ai-job-search",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/madslorentzen/ai-job-search.git",
+      "skillPath": ".agents/skills/freehire-search/SKILL.md",
+      "skillFolderHash": "812713d04877142d0f29a051ef37d04595474fea",
+      "installedAt": "2026-10-09T11:01:06.943Z",
+      "updatedAt": "2026-10-09T11:09:03.402Z"
     },
     "gemini-carousel": {
       "source": "charlie947/social-media-skills",
@@ -448,8 +283,8 @@
       "sourceUrl": "https://github.com/charlie947/social-media-skills.git",
       "skillPath": "skills/gemini-carousel/SKILL.md",
       "skillFolderHash": "7658196ad43a1f73fe2c35787ee245411e4a39f3",
-      "installedAt": "2026-10-12T21:49:16.515Z",
-      "updatedAt": "2026-10-12T21:49:16.515Z"
+      "installedAt": "2026-10-09T10:32:01.562Z",
+      "updatedAt": "2026-10-09T11:03:42.490Z"
     },
     "gemini-infographic": {
       "source": "charlie947/social-media-skills",
@@ -457,8 +292,8 @@
       "sourceUrl": "https://github.com/charlie947/social-media-skills.git",
       "skillPath": "skills/gemini-infographic/SKILL.md",
       "skillFolderHash": "40ba2a694bcde2aa9e6a0b06a81738460ccc6696",
-      "installedAt": "2026-10-12T21:49:16.516Z",
-      "updatedAt": "2026-10-12T21:49:16.516Z"
+      "installedAt": "2026-10-09T10:32:01.562Z",
+      "updatedAt": "2026-10-09T11:03:42.490Z"
     },
     "graphic-designer": {
       "source": "charlie947/social-media-skills",
@@ -466,8 +301,8 @@
       "sourceUrl": "https://github.com/charlie947/social-media-skills.git",
       "skillPath": "skills/graphic-designer/SKILL.md",
       "skillFolderHash": "e4974eea9510d7ad459697c0a2e992346503737d",
-      "installedAt": "2026-10-12T21:49:16.516Z",
-      "updatedAt": "2026-10-12T21:49:16.516Z"
+      "installedAt": "2026-10-09T10:32:01.563Z",
+      "updatedAt": "2026-10-09T11:03:42.490Z"
     },
     "hook-generator": {
       "source": "charlie947/social-media-skills",
@@ -475,8 +310,98 @@
       "sourceUrl": "https://github.com/charlie947/social-media-skills.git",
       "skillPath": "skills/hook-generator/SKILL.md",
       "skillFolderHash": "521690077df0556dc1585ae92f5d3dc333462af7",
-      "installedAt": "2026-10-12T21:49:16.517Z",
-      "updatedAt": "2026-10-12T21:49:16.517Z"
+      "installedAt": "2026-10-09T10:32:01.563Z",
+      "updatedAt": "2026-10-09T11:03:42.491Z"
+    },
+    "humanizer": {
+      "source": "blader/humanizer",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/blader/humanizer.git",
+      "skillPath": "SKILL.md",
+      "skillFolderHash": "225a6f39ac85f76ee48dbad772ea4abe4ed6c9d8",
+      "pluginName": "humanizer",
+      "installedAt": "2026-10-09T11:01:07.458Z",
+      "updatedAt": "2026-10-09T11:08:44.166Z"
+    },
+    "impeccable": {
+      "source": "pbakaus/impeccable",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/pbakaus/impeccable.git",
+      "skillPath": ".agents/skills/impeccable/SKILL.md",
+      "skillFolderHash": "fbcbff0d9089aaf550488371029cb1398ebd43f3",
+      "installedAt": "2026-10-09T11:01:08.945Z",
+      "updatedAt": "2026-10-09T11:09:13.935Z"
+    },
+    "investigate-first": {
+      "source": "juliusbrussee/caveman",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/juliusbrussee/caveman.git",
+      "skillPath": "skills/investigate-first/SKILL.md",
+      "skillFolderHash": "c20174862b4748fc26ce55192a8431e9ef662947",
+      "installedAt": "2026-10-09T11:09:11.322Z",
+      "updatedAt": "2026-10-09T11:09:11.322Z"
+    },
+    "job-application-assistant": {
+      "source": "madslorentzen/ai-job-search",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/madslorentzen/ai-job-search.git",
+      "skillPath": ".claude/skills/job-application-assistant/SKILL.md",
+      "skillFolderHash": "4b2ccfd8859ac0b08700cd0dbd564f800f17362a",
+      "installedAt": "2026-10-09T11:09:03.419Z",
+      "updatedAt": "2026-10-09T11:09:03.419Z"
+    },
+    "karpathy-guidelines": {
+      "source": "szkocot/andrej-karpathy-skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/szkocot/andrej-karpathy-skills.git",
+      "skillPath": "skills/karpathy-guidelines/SKILL.md",
+      "skillFolderHash": "e119339197d600aa39a24fd7a95c946800c9c949",
+      "installedAt": "2026-10-09T11:01:09.361Z",
+      "updatedAt": "2026-10-09T11:09:17.815Z"
+    },
+    "lean-build": {
+      "source": "juliusbrussee/caveman",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/juliusbrussee/caveman.git",
+      "skillPath": "skills/lean-build/SKILL.md",
+      "skillFolderHash": "47bc09c3509d7f58f0f890836ab7f382987fd487",
+      "installedAt": "2026-10-09T11:09:11.322Z",
+      "updatedAt": "2026-10-09T11:09:11.322Z"
+    },
+    "linkedin-search": {
+      "source": "madslorentzen/ai-job-search",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/madslorentzen/ai-job-search.git",
+      "skillPath": ".agents/skills/linkedin-search/SKILL.md",
+      "skillFolderHash": "123b2e5e11b4a9e1584c6c606e058ed3e30fa425",
+      "installedAt": "2026-10-09T11:01:09.903Z",
+      "updatedAt": "2026-10-09T11:09:03.419Z"
+    },
+    "megacave": {
+      "source": "juliusbrussee/caveman",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/juliusbrussee/caveman.git",
+      "skillPath": "skills/megacave/SKILL.md",
+      "skillFolderHash": "95ace2804e684d6f4dd80a9b9cc203f66e0d8826",
+      "installedAt": "2026-10-09T11:09:11.322Z",
+      "updatedAt": "2026-10-09T11:09:11.322Z"
+    },
+    "migration": {
+      "source": "juliusbrussee/caveman",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/juliusbrussee/caveman.git",
+      "skillPath": "skills/migration/SKILL.md",
+      "skillFolderHash": "b1066e51b4e7cb9a943554a98c3810653ccff059",
+      "installedAt": "2026-10-09T11:09:11.323Z",
+      "updatedAt": "2026-10-09T11:09:11.323Z"
+    },
+    "motion-framer": {
+      "source": "~/Projects/dotfiles/dots/custom-skills/motion-framer",
+      "sourceType": "local",
+      "sourceUrl": "~/Projects/dotfiles/dots/custom-skills/motion-framer",
+      "skillFolderHash": "16d7c6f24f1d1208500635331e0cf6e06555a44df461e6b1069e4ddb203fd737",
+      "installedAt": "2026-10-09T11:01:10.440Z",
+      "updatedAt": "2026-11-01T23:25:02.075Z"
     },
     "newsletter-voice": {
       "source": "charlie947/social-media-skills",
@@ -484,8 +409,8 @@
       "sourceUrl": "https://github.com/charlie947/social-media-skills.git",
       "skillPath": "skills/newsletter-voice/SKILL.md",
       "skillFolderHash": "268e39b6c552243049be6d493f9cbcdd69c2b4f4",
-      "installedAt": "2026-10-12T21:49:16.518Z",
-      "updatedAt": "2026-10-12T21:49:16.518Z"
+      "installedAt": "2026-10-09T10:32:01.563Z",
+      "updatedAt": "2026-10-09T11:03:42.491Z"
     },
     "niche-research": {
       "source": "charlie947/social-media-skills",
@@ -493,8 +418,323 @@
       "sourceUrl": "https://github.com/charlie947/social-media-skills.git",
       "skillPath": "skills/niche-research/SKILL.md",
       "skillFolderHash": "f754ba0339fb0b722ea3d0cb1b9b6940c88439a2",
-      "installedAt": "2026-10-12T21:49:16.518Z",
-      "updatedAt": "2026-10-12T21:49:16.518Z"
+      "installedAt": "2026-10-09T10:32:01.564Z",
+      "updatedAt": "2026-10-09T11:03:42.491Z"
+    },
+    "no-ai-slop": {
+      "source": "petergyang/no-ai-slop",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/petergyang/no-ai-slop.git",
+      "skillPath": "skills/no-ai-slop/SKILL.md",
+      "skillFolderHash": "3d8be37cd59f6601cbc33676ecaf5b42865daf63",
+      "installedAt": "2026-10-09T11:09:07.369Z",
+      "updatedAt": "2026-10-09T11:09:07.369Z"
+    },
+    "obsidian-cli": {
+      "source": "kepano/obsidian-skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/kepano/obsidian-skills.git",
+      "skillPath": "skills/obsidian-cli/SKILL.md",
+      "skillFolderHash": "96254a554e480359de7b685571876f2e7f9ba57d",
+      "installedAt": "2026-10-09T10:22:12.626Z",
+      "updatedAt": "2026-10-09T11:03:45.976Z"
+    },
+    "oma-academic-writing": {
+      "source": "first-fluke/oh-my-agent",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/first-fluke/oh-my-agent.git",
+      "skillPath": "skills/oma-academic-writing/SKILL.md",
+      "skillFolderHash": "8016ad2924d99a622c0cac2f48fa933f7c6b8d63",
+      "installedAt": "2026-10-09T10:31:53.776Z",
+      "updatedAt": "2026-11-02T12:57:36.130Z"
+    },
+    "oma-architecture": {
+      "source": "first-fluke/oh-my-agent",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/first-fluke/oh-my-agent.git",
+      "skillPath": "skills/oma-architecture/SKILL.md",
+      "skillFolderHash": "8f39551b4c229c2fb957aaefbb5c32149b5e1e74",
+      "installedAt": "2026-10-09T10:31:53.778Z",
+      "updatedAt": "2026-11-02T12:57:36.132Z"
+    },
+    "oma-backend": {
+      "source": "first-fluke/oh-my-agent",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/first-fluke/oh-my-agent.git",
+      "skillPath": "skills/oma-backend/SKILL.md",
+      "skillFolderHash": "79399ade266a60547f8069b86c3ad0fd4ba12623",
+      "installedAt": "2026-10-09T10:31:53.791Z",
+      "updatedAt": "2026-11-02T12:57:36.146Z"
+    },
+    "oma-brainstorm": {
+      "source": "first-fluke/oh-my-agent",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/first-fluke/oh-my-agent.git",
+      "skillPath": "skills/oma-brainstorm/SKILL.md",
+      "skillFolderHash": "da5dc92d29a5296be093493ef229ea9d1b1b0fde",
+      "installedAt": "2026-10-09T10:31:53.792Z",
+      "updatedAt": "2026-11-02T12:57:36.146Z"
+    },
+    "oma-coordination": {
+      "source": "first-fluke/oh-my-agent",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/first-fluke/oh-my-agent.git",
+      "skillPath": "skills/oma-coordination/SKILL.md",
+      "skillFolderHash": "bae3ffd2c0242e609e8cf42ff01b8d61b07d571b",
+      "installedAt": "2026-10-09T10:31:53.792Z",
+      "updatedAt": "2026-11-02T12:57:36.147Z"
+    },
+    "oma-db": {
+      "source": "first-fluke/oh-my-agent",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/first-fluke/oh-my-agent.git",
+      "skillPath": "skills/oma-db/SKILL.md",
+      "skillFolderHash": "98ddfae99e6e5c5c2df65f193178080b852514a2",
+      "installedAt": "2026-10-09T10:31:53.792Z",
+      "updatedAt": "2026-11-02T12:57:36.148Z"
+    },
+    "oma-debug": {
+      "source": "first-fluke/oh-my-agent",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/first-fluke/oh-my-agent.git",
+      "skillPath": "skills/oma-debug/SKILL.md",
+      "skillFolderHash": "29e572e2441b47ad85516c944df6cf7678202466",
+      "installedAt": "2026-10-09T10:31:53.792Z",
+      "updatedAt": "2026-11-02T12:57:36.148Z"
+    },
+    "oma-design": {
+      "source": "first-fluke/oh-my-agent",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/first-fluke/oh-my-agent.git",
+      "skillPath": "skills/oma-design/SKILL.md",
+      "skillFolderHash": "3f212a1720fba096f58d7325b1782bd06f194c31",
+      "installedAt": "2026-10-09T10:31:53.793Z",
+      "updatedAt": "2026-11-02T12:57:36.149Z"
+    },
+    "oma-dev-workflow": {
+      "source": "first-fluke/oh-my-agent",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/first-fluke/oh-my-agent.git",
+      "skillPath": "skills/oma-dev-workflow/SKILL.md",
+      "skillFolderHash": "9b35d7e896e4cd57da69d32cc97b0ae106d54faf",
+      "installedAt": "2026-10-09T10:31:53.793Z",
+      "updatedAt": "2026-11-02T12:57:36.149Z"
+    },
+    "oma-docs": {
+      "source": "first-fluke/oh-my-agent",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/first-fluke/oh-my-agent.git",
+      "skillPath": "skills/oma-docs/SKILL.md",
+      "skillFolderHash": "17158f686bed52b292827479f49ec78364487fd1",
+      "installedAt": "2026-10-09T10:31:53.793Z",
+      "updatedAt": "2026-11-02T12:57:36.149Z"
+    },
+    "oma-explanation": {
+      "source": "first-fluke/oh-my-agent",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/first-fluke/oh-my-agent.git",
+      "skillPath": "skills/oma-explanation/SKILL.md",
+      "skillFolderHash": "31792f8d7739bd8ac0ed2292c98c4ebb53ebc43a",
+      "installedAt": "2026-10-09T10:31:53.794Z",
+      "updatedAt": "2026-11-02T12:57:36.150Z"
+    },
+    "oma-frontend": {
+      "source": "first-fluke/oh-my-agent",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/first-fluke/oh-my-agent.git",
+      "skillPath": "skills/oma-frontend/SKILL.md",
+      "skillFolderHash": "7131c5dfb034d898a407206a7d252f0c3ce6ae9b",
+      "installedAt": "2026-10-09T10:31:53.794Z",
+      "updatedAt": "2026-11-02T12:57:36.150Z"
+    },
+    "oma-hwp": {
+      "source": "first-fluke/oh-my-agent",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/first-fluke/oh-my-agent.git",
+      "skillPath": "skills/oma-hwp/SKILL.md",
+      "skillFolderHash": "02923d9b67a57fdc43385184f3d3e6e16b656c57",
+      "installedAt": "2026-10-09T10:31:53.794Z",
+      "updatedAt": "2026-11-02T12:57:36.151Z"
+    },
+    "oma-image": {
+      "source": "first-fluke/oh-my-agent",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/first-fluke/oh-my-agent.git",
+      "skillPath": "skills/oma-image/SKILL.md",
+      "skillFolderHash": "6ce927d5068d04cea1f39b60b876124c76b24f3e",
+      "installedAt": "2026-10-09T10:31:53.794Z",
+      "updatedAt": "2026-11-02T12:57:36.151Z"
+    },
+    "oma-market": {
+      "source": "first-fluke/oh-my-agent",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/first-fluke/oh-my-agent.git",
+      "skillPath": "skills/oma-market/SKILL.md",
+      "skillFolderHash": "82d816ad7773926970cfe304a9cfef493aa495e3",
+      "installedAt": "2026-10-09T10:31:53.794Z",
+      "updatedAt": "2026-11-02T12:57:36.152Z"
+    },
+    "oma-mobile": {
+      "source": "first-fluke/oh-my-agent",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/first-fluke/oh-my-agent.git",
+      "skillPath": "skills/oma-mobile/SKILL.md",
+      "skillFolderHash": "28537f77beec3bd9e50d29b1d4136ff11bf372d2",
+      "installedAt": "2026-10-09T10:31:53.795Z",
+      "updatedAt": "2026-11-02T12:57:36.152Z"
+    },
+    "oma-observability": {
+      "source": "first-fluke/oh-my-agent",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/first-fluke/oh-my-agent.git",
+      "skillPath": "skills/oma-observability/SKILL.md",
+      "skillFolderHash": "75151a9b3487bda8f81cc7860f0137e127d0330f",
+      "installedAt": "2026-10-09T10:31:53.795Z",
+      "updatedAt": "2026-11-02T12:57:36.152Z"
+    },
+    "oma-orchestration": {
+      "source": "first-fluke/oh-my-agent",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/first-fluke/oh-my-agent.git",
+      "skillPath": "skills/oma-orchestration/SKILL.md",
+      "skillFolderHash": "f52675908214b57d31675caeea30ea631bc184f4",
+      "installedAt": "2026-10-09T10:31:53.795Z",
+      "updatedAt": "2026-11-02T12:57:36.153Z"
+    },
+    "oma-pdf": {
+      "source": "first-fluke/oh-my-agent",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/first-fluke/oh-my-agent.git",
+      "skillPath": "skills/oma-pdf/SKILL.md",
+      "skillFolderHash": "fbe723bf9f9713860507d4ad08ba90e9f802458c",
+      "installedAt": "2026-10-09T10:31:53.795Z",
+      "updatedAt": "2026-11-02T12:57:36.153Z"
+    },
+    "oma-pm": {
+      "source": "first-fluke/oh-my-agent",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/first-fluke/oh-my-agent.git",
+      "skillPath": "skills/oma-pm/SKILL.md",
+      "skillFolderHash": "000383fb3f66f9d4d7e061ae92445d2a29c86dbe",
+      "installedAt": "2026-10-09T10:31:53.796Z",
+      "updatedAt": "2026-11-02T12:57:36.154Z"
+    },
+    "oma-qa": {
+      "source": "first-fluke/oh-my-agent",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/first-fluke/oh-my-agent.git",
+      "skillPath": "skills/oma-qa/SKILL.md",
+      "skillFolderHash": "b447b65772d36a977e1c8f92595c20db5a44405f",
+      "installedAt": "2026-10-09T10:31:53.796Z",
+      "updatedAt": "2026-11-02T12:57:36.154Z"
+    },
+    "oma-recap": {
+      "source": "first-fluke/oh-my-agent",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/first-fluke/oh-my-agent.git",
+      "skillPath": "skills/oma-recap/SKILL.md",
+      "skillFolderHash": "161ea5497c239d0243f22eae9a08e1d494d33cad",
+      "installedAt": "2026-10-09T10:31:53.796Z",
+      "updatedAt": "2026-11-02T12:57:36.154Z"
+    },
+    "oma-refactor": {
+      "source": "first-fluke/oh-my-agent",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/first-fluke/oh-my-agent.git",
+      "skillPath": "skills/oma-refactor/SKILL.md",
+      "skillFolderHash": "594a9d21a2fbb3555d9b7150552df6f0b1f3a0b1",
+      "installedAt": "2026-10-09T10:31:53.796Z",
+      "updatedAt": "2026-11-02T12:57:36.155Z"
+    },
+    "oma-scholar": {
+      "source": "first-fluke/oh-my-agent",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/first-fluke/oh-my-agent.git",
+      "skillPath": "skills/oma-scholar/SKILL.md",
+      "skillFolderHash": "0abcf35789867039e72885ca27c3cd1d3aa1b6ec",
+      "installedAt": "2026-10-09T10:31:53.796Z",
+      "updatedAt": "2026-11-02T12:57:36.155Z"
+    },
+    "oma-scm": {
+      "source": "first-fluke/oh-my-agent",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/first-fluke/oh-my-agent.git",
+      "skillPath": "skills/oma-scm/SKILL.md",
+      "skillFolderHash": "cf2534193747e067638eb1c956f3b5631bb5eab2",
+      "installedAt": "2026-10-09T10:31:53.797Z",
+      "updatedAt": "2026-11-02T12:57:36.156Z"
+    },
+    "oma-search": {
+      "source": "first-fluke/oh-my-agent",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/first-fluke/oh-my-agent.git",
+      "skillPath": "skills/oma-search/SKILL.md",
+      "skillFolderHash": "413d91a8314d622eee92d3f54efd3a17947be13a",
+      "installedAt": "2026-10-09T10:31:53.797Z",
+      "updatedAt": "2026-11-02T12:57:36.156Z"
+    },
+    "oma-security": {
+      "source": "first-fluke/oh-my-agent",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/first-fluke/oh-my-agent.git",
+      "skillPath": "skills/oma-security/SKILL.md",
+      "skillFolderHash": "e12f5c6f244fbf8ecf1ea76a849f026a71e9553d",
+      "installedAt": "2026-11-02T12:57:36.156Z",
+      "updatedAt": "2026-11-02T12:57:36.156Z"
+    },
+    "oma-skill-creation": {
+      "source": "first-fluke/oh-my-agent",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/first-fluke/oh-my-agent.git",
+      "skillPath": "skills/oma-skill-creation/SKILL.md",
+      "skillFolderHash": "6b33fc22f462452746784f8e7c489b25efabe6d9",
+      "installedAt": "2026-10-09T10:31:53.797Z",
+      "updatedAt": "2026-11-02T12:57:36.157Z"
+    },
+    "oma-slide": {
+      "source": "first-fluke/oh-my-agent",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/first-fluke/oh-my-agent.git",
+      "skillPath": "skills/oma-slide/SKILL.md",
+      "skillFolderHash": "ba5dfc7e9bdcba7f0e74562e23b45d8a5059d0d7",
+      "installedAt": "2026-10-09T10:31:53.797Z",
+      "updatedAt": "2026-11-02T12:57:36.157Z"
+    },
+    "oma-tf-infra": {
+      "source": "first-fluke/oh-my-agent",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/first-fluke/oh-my-agent.git",
+      "skillPath": "skills/oma-tf-infra/SKILL.md",
+      "skillFolderHash": "3a19f3cf85951b4b23ef69bbc93729296c2489e2",
+      "installedAt": "2026-10-09T10:31:53.798Z",
+      "updatedAt": "2026-11-02T12:57:36.158Z"
+    },
+    "oma-translation": {
+      "source": "first-fluke/oh-my-agent",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/first-fluke/oh-my-agent.git",
+      "skillPath": "skills/oma-translation/SKILL.md",
+      "skillFolderHash": "bc02bfc6aeb4c12c757ffbb76dd4970dec68a4bc",
+      "installedAt": "2026-10-09T10:31:53.798Z",
+      "updatedAt": "2026-11-02T12:57:36.158Z"
+    },
+    "oma-video": {
+      "source": "first-fluke/oh-my-agent",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/first-fluke/oh-my-agent.git",
+      "skillPath": "skills/oma-video/SKILL.md",
+      "skillFolderHash": "ad83779497101e2a353191c74fe32776115de9b2",
+      "installedAt": "2026-10-09T10:31:53.798Z",
+      "updatedAt": "2026-11-02T12:57:36.158Z"
+    },
+    "oma-voice": {
+      "source": "first-fluke/oh-my-agent",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/first-fluke/oh-my-agent.git",
+      "skillPath": "skills/oma-voice/SKILL.md",
+      "skillFolderHash": "6e4ae3a7d809f311be493748075ddb86f81d47e5",
+      "installedAt": "2026-10-09T10:31:53.799Z",
+      "updatedAt": "2026-11-02T12:57:36.159Z"
     },
     "pinned-comment": {
       "source": "charlie947/social-media-skills",
@@ -502,8 +742,8 @@
       "sourceUrl": "https://github.com/charlie947/social-media-skills.git",
       "skillPath": "skills/pinned-comment/SKILL.md",
       "skillFolderHash": "ec93df70546762294d40802a301ded81ea35036d",
-      "installedAt": "2026-10-12T21:49:16.519Z",
-      "updatedAt": "2026-10-12T21:49:16.519Z"
+      "installedAt": "2026-10-09T10:32:01.564Z",
+      "updatedAt": "2026-10-09T11:03:42.492Z"
     },
     "post-formatter": {
       "source": "charlie947/social-media-skills",
@@ -511,8 +751,8 @@
       "sourceUrl": "https://github.com/charlie947/social-media-skills.git",
       "skillPath": "skills/post-formatter/SKILL.md",
       "skillFolderHash": "d20dc930d225ef1e0d30ee3a5652e12d53188449",
-      "installedAt": "2026-10-12T21:49:16.519Z",
-      "updatedAt": "2026-10-12T21:49:16.519Z"
+      "installedAt": "2026-10-09T10:32:01.564Z",
+      "updatedAt": "2026-10-09T11:03:42.492Z"
     },
     "post-scorer": {
       "source": "charlie947/social-media-skills",
@@ -520,8 +760,8 @@
       "sourceUrl": "https://github.com/charlie947/social-media-skills.git",
       "skillPath": "skills/post-scorer/SKILL.md",
       "skillFolderHash": "dd75a6ccd501a5433c9308aa30912c813aa44e39",
-      "installedAt": "2026-10-12T21:49:16.520Z",
-      "updatedAt": "2026-10-12T21:49:16.520Z"
+      "installedAt": "2026-10-09T10:32:01.564Z",
+      "updatedAt": "2026-10-09T11:03:42.492Z"
     },
     "post-writer": {
       "source": "charlie947/social-media-skills",
@@ -529,8 +769,16 @@
       "sourceUrl": "https://github.com/charlie947/social-media-skills.git",
       "skillPath": "skills/post-writer/SKILL.md",
       "skillFolderHash": "641806087371656822353e8ea4d6ec7f08c7ea2d",
-      "installedAt": "2026-10-12T21:49:16.521Z",
-      "updatedAt": "2026-10-12T21:49:16.521Z"
+      "installedAt": "2026-10-09T10:32:01.565Z",
+      "updatedAt": "2026-10-09T11:03:42.493Z"
+    },
+    "process-job-ads": {
+      "source": "~/Projects/dotfiles/dots/custom-skills/process-job-ads",
+      "sourceType": "local",
+      "sourceUrl": "~/Projects/dotfiles/dots/custom-skills/process-job-ads",
+      "skillFolderHash": "444002663ce357944d7191f997006cf0a14ba539a96e4a774457e0d5734c3a22",
+      "installedAt": "2026-10-09T10:22:09.829Z",
+      "updatedAt": "2026-10-09T11:03:32.418Z"
     },
     "profile-optimizer": {
       "source": "charlie947/social-media-skills",
@@ -538,8 +786,16 @@
       "sourceUrl": "https://github.com/charlie947/social-media-skills.git",
       "skillPath": "skills/profile-optimizer/SKILL.md",
       "skillFolderHash": "5bc599425e4156ac420516d9fbab6c378c1be4e9",
-      "installedAt": "2026-10-12T21:49:16.522Z",
-      "updatedAt": "2026-10-12T21:49:16.522Z"
+      "installedAt": "2026-10-09T10:32:01.565Z",
+      "updatedAt": "2026-10-09T11:03:42.493Z"
+    },
+    "project-memory": {
+      "source": "~/Projects/dotfiles/dots/custom-skills/project-memory",
+      "sourceType": "local",
+      "sourceUrl": "~/Projects/dotfiles/dots/custom-skills/project-memory",
+      "skillFolderHash": "3da5a9a4cb63b4b7b9ecce558ef687acce95cb6cb483ec64853a1f3b13643e93",
+      "installedAt": "2026-11-02T11:15:35.948Z",
+      "updatedAt": "2026-11-02T14:35:18.249Z"
     },
     "quote-post": {
       "source": "charlie947/social-media-skills",
@@ -547,8 +803,17 @@
       "sourceUrl": "https://github.com/charlie947/social-media-skills.git",
       "skillPath": "skills/quote-post/SKILL.md",
       "skillFolderHash": "92219c25ae5f974bf820a5a1f539f88741eb47d1",
-      "installedAt": "2026-10-12T21:49:16.522Z",
-      "updatedAt": "2026-10-12T21:49:16.522Z"
+      "installedAt": "2026-10-09T10:32:01.565Z",
+      "updatedAt": "2026-10-09T11:03:42.493Z"
+    },
+    "receiving-code-review": {
+      "source": "obra/superpowers",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/obra/superpowers.git",
+      "skillPath": "skills/receiving-code-review/SKILL.md",
+      "skillFolderHash": "b5e154fc3ec7a6a0b1e710eebacc2168620cc428",
+      "installedAt": "2026-10-09T11:09:16.440Z",
+      "updatedAt": "2026-10-09T11:09:16.440Z"
     },
     "reels-scripting": {
       "source": "charlie947/social-media-skills",
@@ -556,26 +821,35 @@
       "sourceUrl": "https://github.com/charlie947/social-media-skills.git",
       "skillPath": "skills/reels-scripting/SKILL.md",
       "skillFolderHash": "66c50dc3f5995e64a78f5e3552ea9162503b764f",
-      "installedAt": "2026-10-12T21:49:16.523Z",
-      "updatedAt": "2026-10-12T21:49:16.523Z"
+      "installedAt": "2026-10-09T10:32:01.566Z",
+      "updatedAt": "2026-10-09T11:03:42.494Z"
     },
-    "voice-builder": {
-      "source": "charlie947/social-media-skills",
+    "requesting-code-review": {
+      "source": "obra/superpowers",
       "sourceType": "github",
-      "sourceUrl": "https://github.com/charlie947/social-media-skills.git",
-      "skillPath": "skills/voice-builder/SKILL.md",
-      "skillFolderHash": "195856f9321eaf8a59278ccc4840d672e98023a1",
-      "installedAt": "2026-10-12T21:49:16.523Z",
-      "updatedAt": "2026-10-12T21:49:16.523Z"
+      "sourceUrl": "https://github.com/obra/superpowers.git",
+      "skillPath": "skills/requesting-code-review/SKILL.md",
+      "skillFolderHash": "5fcdadfccd8c90987a11969d2f8c844820fee6e1",
+      "installedAt": "2026-10-09T11:09:16.441Z",
+      "updatedAt": "2026-10-09T11:09:16.441Z"
     },
-    "youtube-thumbnail": {
-      "source": "charlie947/social-media-skills",
+    "safe-refactor": {
+      "source": "juliusbrussee/caveman",
       "sourceType": "github",
-      "sourceUrl": "https://github.com/charlie947/social-media-skills.git",
-      "skillPath": "skills/youtube-thumbnail/SKILL.md",
-      "skillFolderHash": "825b4730702ee7c3ec6ba31a0f01530893393c4b",
-      "installedAt": "2026-10-12T21:49:16.524Z",
-      "updatedAt": "2026-10-12T21:49:16.524Z"
+      "sourceUrl": "https://github.com/juliusbrussee/caveman.git",
+      "skillPath": "skills/safe-refactor/SKILL.md",
+      "skillFolderHash": "49fd11fcfa4fd63ab175380ed8f80b992090e5e4",
+      "installedAt": "2026-10-09T11:09:11.323Z",
+      "updatedAt": "2026-10-09T11:09:11.323Z"
+    },
+    "scrape": {
+      "source": "madslorentzen/ai-job-search",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/madslorentzen/ai-job-search.git",
+      "skillPath": ".claude/skills/job-scraper/SKILL.md",
+      "skillFolderHash": "6019008e8f082c42e5b9e530b1f7946714c65d05",
+      "installedAt": "2026-10-09T11:09:03.420Z",
+      "updatedAt": "2026-10-09T11:09:03.420Z"
     },
     "security-audit": {
       "source": "cloudflare/security-audit-skill",
@@ -599,6 +873,169 @@
         "projectRoot": "~/Documents/Notes",
         "skillId": "security-audit"
       }
+    },
+    "slides": {
+      "source": "nextlevelbuilder/ui-ux-pro-max-skill",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill.git",
+      "skillPath": ".claude/skills/slides/SKILL.md",
+      "skillFolderHash": "d08d6ef96f2bd916b8cff258e7a01e5d52f29213",
+      "installedAt": "2026-10-09T11:01:12.018Z",
+      "updatedAt": "2026-10-09T11:09:21.475Z"
+    },
+    "subagent-driven-development": {
+      "source": "obra/superpowers",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/obra/superpowers.git",
+      "skillPath": "skills/subagent-driven-development/SKILL.md",
+      "skillFolderHash": "5d44ced88725298e847c62c67a726dcc29e20d00",
+      "installedAt": "2026-10-09T11:09:16.441Z",
+      "updatedAt": "2026-10-09T11:09:16.441Z"
+    },
+    "surgical-patch": {
+      "source": "juliusbrussee/caveman",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/juliusbrussee/caveman.git",
+      "skillPath": "skills/surgical-patch/SKILL.md",
+      "skillFolderHash": "f7316a9431eff84811b6fd100af70e6984751c91",
+      "installedAt": "2026-10-09T11:09:11.323Z",
+      "updatedAt": "2026-10-09T11:09:11.323Z"
+    },
+    "systematic-debugging": {
+      "source": "obra/superpowers",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/obra/superpowers.git",
+      "skillPath": "skills/systematic-debugging/SKILL.md",
+      "skillFolderHash": "9a48dfda84bf339cba4b03fd803ba0dca2e158e3",
+      "installedAt": "2026-10-09T11:09:16.442Z",
+      "updatedAt": "2026-10-09T11:09:16.442Z"
+    },
+    "test-driven-development": {
+      "source": "obra/superpowers",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/obra/superpowers.git",
+      "skillPath": "skills/test-driven-development/SKILL.md",
+      "skillFolderHash": "847144cf0824095922c0d4875648b9fa74877e1a",
+      "installedAt": "2026-10-09T11:01:12.835Z",
+      "updatedAt": "2026-10-09T11:09:16.442Z"
+    },
+    "typography": {
+      "source": "glebis/claude-skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/glebis/claude-skills.git",
+      "skillPath": "typography/SKILL.md",
+      "skillFolderHash": "f2e49a536c61118631d2816972668c1014ebda4d",
+      "installedAt": "2026-10-09T10:22:19.379Z",
+      "updatedAt": "2026-10-09T11:03:52.380Z"
+    },
+    "ui-styling": {
+      "source": "nextlevelbuilder/ui-ux-pro-max-skill",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill.git",
+      "skillPath": ".claude/skills/ui-styling/SKILL.md",
+      "skillFolderHash": "700e4c528244263c7ae8a3c679eea425967c06a1",
+      "installedAt": "2026-10-09T11:01:13.744Z",
+      "updatedAt": "2026-10-09T11:09:21.476Z"
+    },
+    "ui-ux-pro-max": {
+      "source": "nextlevelbuilder/ui-ux-pro-max-skill",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill.git",
+      "skillPath": ".claude/skills/ui-ux-pro-max/SKILL.md",
+      "skillFolderHash": "0b6619c11598d7ce32041044cb2e6fc6adea1efc",
+      "installedAt": "2026-10-09T11:09:21.476Z",
+      "updatedAt": "2026-10-09T11:09:21.476Z"
+    },
+    "ultracave": {
+      "source": "juliusbrussee/caveman",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/juliusbrussee/caveman.git",
+      "skillPath": "skills/ultracave/SKILL.md",
+      "skillFolderHash": "4046bb0979819379d3f8d052c229bb6ecc2951e6",
+      "installedAt": "2026-10-09T11:09:11.324Z",
+      "updatedAt": "2026-10-09T11:09:11.324Z"
+    },
+    "upskill": {
+      "source": "madslorentzen/ai-job-search",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/madslorentzen/ai-job-search.git",
+      "skillPath": ".claude/skills/upskill/SKILL.md",
+      "skillFolderHash": "166b6a9f1f20d2899fdf91c6d7a90a98608e9570",
+      "installedAt": "2026-10-09T11:09:03.420Z",
+      "updatedAt": "2026-10-09T11:09:03.420Z"
+    },
+    "using-git-worktrees": {
+      "source": "obra/superpowers",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/obra/superpowers.git",
+      "skillPath": "skills/using-git-worktrees/SKILL.md",
+      "skillFolderHash": "d2b8357b922667a091bfe967840abf5ae84ce99c",
+      "installedAt": "2026-10-09T11:09:16.443Z",
+      "updatedAt": "2026-10-09T11:09:16.443Z"
+    },
+    "using-superpowers": {
+      "source": "obra/superpowers",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/obra/superpowers.git",
+      "skillPath": "skills/using-superpowers/SKILL.md",
+      "skillFolderHash": "4c777432715fe58984d212a36aedc6a18472e512",
+      "installedAt": "2026-10-09T11:09:16.443Z",
+      "updatedAt": "2026-10-09T11:09:16.443Z"
+    },
+    "verification-before-completion": {
+      "source": "obra/superpowers",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/obra/superpowers.git",
+      "skillPath": "skills/verification-before-completion/SKILL.md",
+      "skillFolderHash": "a4cb0b69aaefeab540947a7f1642bdaad810e37a",
+      "installedAt": "2026-10-09T11:09:16.444Z",
+      "updatedAt": "2026-10-09T11:09:16.444Z"
+    },
+    "verify-and-stop": {
+      "source": "juliusbrussee/caveman",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/juliusbrussee/caveman.git",
+      "skillPath": "skills/verify-and-stop/SKILL.md",
+      "skillFolderHash": "daaaceac55b83384dc3685c3b946699b9bc29331",
+      "installedAt": "2026-10-09T11:09:11.324Z",
+      "updatedAt": "2026-10-09T11:09:11.324Z"
+    },
+    "voice-builder": {
+      "source": "charlie947/social-media-skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/charlie947/social-media-skills.git",
+      "skillPath": "skills/voice-builder/SKILL.md",
+      "skillFolderHash": "195856f9321eaf8a59278ccc4840d672e98023a1",
+      "installedAt": "2026-10-09T10:32:01.566Z",
+      "updatedAt": "2026-10-09T11:03:42.494Z"
+    },
+    "writing-plans": {
+      "source": "obra/superpowers",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/obra/superpowers.git",
+      "skillPath": "skills/writing-plans/SKILL.md",
+      "skillFolderHash": "cc97fa00eb2ccd4f283e34eb2ba06a48e1e679f7",
+      "installedAt": "2026-10-09T11:09:16.444Z",
+      "updatedAt": "2026-10-09T11:09:16.444Z"
+    },
+    "writing-skills": {
+      "source": "obra/superpowers",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/obra/superpowers.git",
+      "skillPath": "skills/writing-skills/SKILL.md",
+      "skillFolderHash": "f761162236b19330da62b22ad0da20f5dac7c6ab",
+      "installedAt": "2026-10-09T11:09:16.445Z",
+      "updatedAt": "2026-10-09T11:09:16.445Z"
+    },
+    "youtube-thumbnail": {
+      "source": "charlie947/social-media-skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/charlie947/social-media-skills.git",
+      "skillPath": "skills/youtube-thumbnail/SKILL.md",
+      "skillFolderHash": "825b4730702ee7c3ec6ba31a0f01530893393c4b",
+      "installedAt": "2026-10-09T10:32:01.566Z",
+      "updatedAt": "2026-10-09T11:03:42.494Z"
     }
-  }
+  },
+  "dismissed": {}
 }

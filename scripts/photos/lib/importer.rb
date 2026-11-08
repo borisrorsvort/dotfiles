@@ -35,7 +35,9 @@ class Importer
   private
 
   def import_from_mtp
-    system("gio", "mount", @source_dir, out: File::NULL, err: File::NULL)
+    require "open3"
+
+    _mount_out, mount_err, _mount_status = Open3.capture3("gio", "mount", @source_dir)
     spinner = TTY::Spinner.new("[:spinner] Indexing MTP device and local archive…", format: :dots)
     spinner.auto_spin
 
@@ -49,8 +51,18 @@ class Importer
     pending_uris = []
 
     scan_mtp = lambda do |uri|
-      require "open3"
-      output, _err, _status = Open3.capture3("gio", "list", "-l", uri)
+      output, err, status = Open3.capture3("gio", "list", "-l", uri)
+      unless status.success?
+        if uri == @source_dir
+          spinner.error("failed.")
+          details = err.strip.empty? ? mount_err.strip : err.strip
+          abort("Error: Could not access camera mount '#{@source_dir}' (#{details}). Please ensure the camera is connected via USB and powered on.")
+        else
+          @logger.warn("Could not list directory #{uri}: #{err.strip}")
+          return
+        end
+      end
+
       output.lines.each do |line|
         parts = line.chomp.split("\t")
         name = parts[0]

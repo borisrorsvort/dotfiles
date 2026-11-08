@@ -32,6 +32,8 @@ git-filter-repo = "latest"
 "~/.config/rencal" = { source = "dots/.config/rencal" }
 "~/.agents/oma-config.yaml" = { source = "dots/.agents/oma-config.yaml" }
 "~/.agents/.skill-lock.json" = { source = "dots/.agents/.skill-lock.json" }
+# npx skills écrit ici au lieu de ~/.agents quand XDG_STATE_HOME est défini.
+"~/.local/state/skills/.skill-lock.json" = { source = "dots/.agents/.skill-lock.json" }
 "~/.agents/mcp.json" = { source = "dots/.agents/mcp.json" }
 "~/.claude/mcp.json" = { source = "dots/.claude/mcp.json" }
 "~/.claude/settings.json" = { source = "dots/.claude/settings.json" }
